@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        $table->foreignId('product_id')->constrained()->onDelete('cascade');
+        $table->string('design_image')->nullable(); // for canvas export
+        $table->longText('json_data')->nullable(); // canvas JSON
+        $table->timestamps();
         });
     }
 
