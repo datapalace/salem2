@@ -114,8 +114,8 @@
 										</a>
 									</li>
 									<li class="">
-										<a class="sidenav-item-link" href="product-list.html">
-											<span class="nav-text">List Product</span>
+										<a class="sidenav-item-link" href="/products">
+											<span class="nav-text">All Products</span>
 										</a>
 									</li>
 									<li class="">

@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Log;
 use App\Models\Product;
+use App\Models\ProductColor;
 use App\Models\ProductGallery;
+use App\Models\ProductSize;
 use Illuminate\Http\Request;
-
+use Exception;
 use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Storage;
@@ -14,70 +16,98 @@ class ProductController extends Controller
     //
     public function store(Request $request)
     {
-         
-       // Validate the form input
-         $request->validate([
-        'product_name' => 'required|string|max:255',
-        'categories' => 'required|string',
-        'slug' => 'nullable|string',
-        'mainImage' => 'required|image|mimes:jpeg,png,jpg',
-        'galleryImage.*' => 'nullable|image|mimes:jpeg,png,jpg',
-        'sort_description' => 'nullable|string',
-        'price' => 'required|numeric',
-        'quantity' => 'required|integer',
-        'ful_detail' => 'nullable|string',
-        'group_tag' => 'nullable|string',
-        'sizes' => 'nullable|array',
-        'color1' => 'nullable|string',
-        'color2' => 'nullable|string',
-        'color3' => 'nullable|string',
-        'color4' => 'nullable|string',
-    ]);
-    dd($validated);
-    // Generate unique slug
-    $slug = $request->slug ?: Str::slug($request->product_name);
-    $originalSlug = $slug;
-    $counter = 1;
-    while (Product::where('slug', $slug)->exists()) {
-        $slug = $originalSlug . '-' . $counter++;
-    }
+         try {
+      // Validate main product fields
+        $request->validate([
+            'product_name' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
+            'short_description' => 'nullable|string',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+            'product_categories' => 'required|string',
+            'product_tags' => 'nullable|string',
+            'product_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'product_galleries.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'product_colors' => 'nullable|array',
+            'product_sizes' => 'nullable|array',
+        ]);
+       
+        // Handle slug uniqueness
+        $slug = Str::slug($request->slug);
+        $originalSlug = $slug;
+        $count = 1;
+        while (Product::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count++;
+        }
 
-    // Upload main image
-    $mainImagePath = $request->file('mainImage')->store('products/main', 'public');
+        // Handle product image upload
+        $imagePath = null;
+        if ($request->hasFile('product_image')) {
+            $imagePath = $request->file('product_image')->store('products', 'public');
+        }
 
-    // Create product
-    $product = Product::create([
-        'product_name' => $request->product_name,
-        'category' => $request->categories,
-        'slug' => $slug,
-        'main_image' => $mainImagePath,
-        'sort_description' => $request->sort_description,
-        'price' => $request->price,
-        'quantity' => $request->quantity,
-        'ful_detail' => $request->ful_detail,
-        'group_tag' => $request->group_tag,
-        'sizes' => $request->sizes ? json_encode($request->sizes) : null,
-        'colors' => json_encode([
-            $request->color1,
-            $request->color2,
-            $request->color3,
-            $request->color4
-        ])
-    ]);
+        // Create product
+        $product = Product::create([
+            'product_name' => $request->product_name,
+            'slug' => $slug,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'product_categories' => $request->product_categories,
+            'product_tags' => $request->product_tags,
+            'product_image' => $imagePath,
+        ]);
 
-    // Save gallery images
-    if ($request->hasFile('galleryImage')) {
-        foreach ($request->file('galleryImage') as $image) {
-            if ($image) {
-                $path = $image->store('products/gallery', 'public');
-                ProductGallery::create([
+        // Save colors
+        if ($request->product_colors) {
+            foreach ($request->product_colors as $color) {
+                ProductColor::create([
                     'product_id' => $product->id,
-                    'image_path' => $path,
+                    'color' => $color,
                 ]);
             }
         }
-    }
 
+        // Save sizes
+        if ($request->product_sizes) {
+            foreach ($request->product_sizes as $size) {
+                ProductSize::create([
+                    'product_id' => $product->id,
+                    'size' => $size,
+                ]);
+            }
+        }
+
+        // Save galleries
+        if ($request->hasFile('product_galleries')) {
+    foreach ($request->file('product_galleries') as $galleryImage) {
+        $galleryPath = $galleryImage->store('product_galleries', 'public');
+        ProductGallery::create([
+            'product_id' => $product->id,
+            'image_path' => $galleryPath,
+        ]);
+    }
+}
     return redirect()->back()->with('success', 'Product and gallery images saved!');
     }
+    catch (Exception $e) {
+        Log::error('Product creation failed: ' . $e->getMessage(), [
+            'stack' => $e->getTraceAsString(),
+            'request' => $request->all()
+        ]);
+        return redirect()->back()->with('error', 'An error occurred while saving the product.');
+    }
+}
+
+// show all products
+
+    public function show(){
+
+        $products = Product::with(['galleries', 'colors', 'sizes'])->get();
+        return view('products', compact('products'));
+
+    }
+
 }

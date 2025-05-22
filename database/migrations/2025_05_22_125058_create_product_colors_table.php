@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('designs', function (Blueprint $table) {
-            $table->id();
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
+        Schema::create('product_colors', function (Blueprint $table) {
+             $table->id();
         $table->foreignId('product_id')->constrained()->onDelete('cascade');
-        $table->string('design_image')->nullable(); // for canvas export
-        $table->longText('json_data')->nullable(); // canvas JSON
-        $table->timestamps();
+        $table->string('color');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('designs');
+        Schema::dropIfExists('product_colors');
     }
 };

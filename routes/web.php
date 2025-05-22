@@ -18,4 +18,7 @@ Route::get('/products', function () {
 Route::get('/add-product', function () {
     return view('add-a-product');
 });
-Route::post('/add-product', [ProductController::class, 'store'])->name('add-product');
+Route::post('/add-product', [ProductController::class, 'store'])->name('product.store');
+
+// show product
+Route::get('/products', [ProductController::class, 'show'])->name('all-products');

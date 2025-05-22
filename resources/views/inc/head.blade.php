@@ -24,6 +24,6 @@
 	<link id="ekka-css" href="{{ asset('assets/css/ekka.css') }}" rel="stylesheet" />
 
 	<!-- FAVICON -->
-	<link href="{{ asset('assets/img/favicon.png" rel="shortcut icon" />
+	<link href="{{ asset('assets/img/favicon.png') }}" rel="shortcut icon" />
 
 </head>

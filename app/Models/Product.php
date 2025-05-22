@@ -9,26 +9,35 @@ class Product extends Model
     //
     protected $fillable = [
         'product_name',
-        'category',
+        'product_categories',
         'slug',
-        'main_image',
-        'sort_description',
+        'product_image',
+        'short_description',
         'price',
         'quantity',
-        'ful_detail',
-        'group_tag',
-        'sizes',
-        'colors'
+        'description',
+        'product_tags',
+        
     ];
-    protected $casts = [
-        'sizes' => 'array',
-        'colors' => 'array',
-    ];
+  
     
     // app/Models/Product.php
 public function galleries()
 {
     return $this->hasMany(ProductGallery::class);
+}
+
+// size
+
+    public function sizes(){
+    return $this->hasMany(ProductSize::class);
+    }
+
+//color
+
+public function colors(){
+
+    return $this->hasMany(ProductColor::class);
 }
 
 }
