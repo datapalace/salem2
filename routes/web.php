@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/admin/dashboard', function () {
     return view('welcome');
 });
 Route::get('/design', function () {
@@ -22,3 +23,9 @@ Route::post('/add-product', [ProductController::class, 'store'])->name('product.
 
 // show product
 Route::get('/products', [ProductController::class, 'show'])->name('all-products');
+
+
+
+//user Dashboard
+Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
+

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    //
+    protected $table = 'products';
     protected $fillable = [
         'product_name',
         'product_categories',
@@ -17,10 +17,10 @@ class Product extends Model
         'quantity',
         'description',
         'product_tags',
-        
+
     ];
-  
-    
+
+
     // app/Models/Product.php
 public function galleries()
 {
@@ -40,4 +40,16 @@ public function colors(){
     return $this->hasMany(ProductColor::class);
 }
 
+// price
+// In Product.php
+public function price()
+{
+    return $this->hasOne(Pricing::class, 'product_id');
+}
+
+// attributes
+public function attributes()
+{
+    return $this->hasMany(Attribute::class);
+}
 }
