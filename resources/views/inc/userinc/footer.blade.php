@@ -43,48 +43,16 @@
                 <li><a href="#">Support Center</a></li>
               </ul>
             </div>
-            <div class="col-lg-3 width-23">
+            {{-- <div class="col-lg-3 width-23">
               <h4 class="mb-30 color-gray-1000">App &amp; Payment</h4>
               <div>
                 <p class="font-md color-gray-900">Download our Apps and get extra 15% Discount on your first Order&mldr;!</p>
                 <div class="mt-20"><a class="mr-10" href="#"><img src="assets/imgs/template/appstore.png" alt="Ecom"></a><a href="#"><img src="assets/imgs/template/google-play.png" alt="Ecom"></a></div>
                 <p class="font-md color-gray-900 mt-20 mb-10">Secured Payment Gateways</p><img src="assets/imgs/template/payment-method.png" alt="Ecom">
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
-      <div class="footer-2">
-        <div class="footer-bottom-1">
-          <div class="container">
-            <div class="footer-2-top mb-20"><a href="index.html"><img alt="Ecom" src="assets/imgs/template/logo-2.svg"></a><a class="font-xs color-gray-1000" href="#">EcomMarket.com</a><a class="font-xs color-gray-1000" href="#">Ecom Partners</a><a class="font-xs color-gray-1000" href="#">Ecom Bussiness</a><a class="font-xs color-gray-1000" href="#">Ecom Factory</a></div>
-            <div class="footer-2-bottom">
-              <div class="head-left-footer">
-                <h6 class="color-gray-1000">Electronic:</h6>
-              </div>
-              <div class="tags-footer"><a href="shop-fullwidth.html">Cell Phones</a><a href="shop-grid.html">Headphones</a><a href="shop-grid-2.html">Television &amp; Video</a><a href="shop-list.html">Game Controller</a><a href="shop-list-2.html">Apple Watch</a><a href="shop-grid.html">HTC</a><a href="shop-grid.html">Ipad</a><a href="shop-grid.html">Keyboard</a><a href="shop-grid.html">Samsung</a><a href="shop-grid.html">Wireless Speaker</a><a href="shop-grid.html">Samsung Galaxy</a><a href="shop-grid.html">Gaming Mouse</a><a href="shop-grid.html">eBook Readers</a><a href="shop-grid.html">Service Plans</a><a href="shop-grid.html">Home Audio</a><a href="shop-grid.html">Office Electronics</a><a href="shop-grid.html">Lenovo</a><a href="shop-grid.html">Mackbook Pro M1</a><a href="shop-grid.html">HD Videos Player</a></div>
-            </div>
-            <div class="footer-2-bottom">
-              <div class="head-left-footer">
-                <h6 class="color-gray-1000">Furniture:</h6>
-              </div>
-              <div class="tags-footer"><a href="shop-grid.html">Sofa</a><a href="shop-grid.html">Chair</a><a href="shop-grid.html">Dining Table</a><a href="shop-grid.html">Living Room</a><a href="shop-grid.html">Table Lamp</a><a href="shop-grid.html">Night Stand</a><a href="shop-grid.html">Computer Desk</a><a href="shop-grid.html">Bar Table</a><a href="shop-grid.html">Pillow</a><a href="shop-grid.html">Radio</a><a href="shop-grid.html">Clock</a><a href="shop-grid.html">Bad Room</a><a href="shop-grid.html">Stool</a><a href="shop-grid.html">Television</a><a href="shop-grid.html">wardrobe</a><a href="shop-grid.html">Living Room Tables</a><a href="shop-grid.html">Dressers</a><a href="shop-grid.html">Patio Sofas</a><a href="shop-grid.html">Nursery</a><a href="shop-grid.html">Kitchen</a><a href="shop-grid.html">Accent Furniture</a><a href="shop-grid.html">Replacement Parts</a></div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="footer-bottom mt-20">
-            <div class="row">
-              <div class="col-lg-6 col-md-12 text-center text-lg-start"><span class="color-gray-900 font-sm">Copyright &copy; 2022 Ecom Market. All rights reserved.</span></div>
-              <div class="col-lg-6 col-md-12 text-center text-lg-end">
-                <ul class="menu-bottom">
-                  <li><a class="font-sm color-gray-900" href="page-term.html">Conditions of Use</a></li>
-                  <li><a class="font-sm color-gray-900" href="page-term.html">Privacy Notice</a></li>
-                  <li><a class="font-sm color-gray-900" href="page-careers.html">Interest-Based Ads</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </footer>

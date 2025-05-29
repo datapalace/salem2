@@ -2,9 +2,9 @@
       <div class="container-topbar">
         <div class="menu-topbar-left d-none d-xl-block">
           <ul class="nav-small">
-            <li><a class="font-xs" href="page-about-us.html">About Us</a></li>
-            <li><a class="font-xs" href="page-careers.html">Careers</a></li>
-            <li><a class="font-xs" href="page-register.html">Open a shop</a></li>
+            <li><a class="font-xs" href="about-us">About Us</a></li>
+            <li><a class="font-xs" href="#">Careers</a></li>
+            {{-- <li><a class="font-xs" href="page-register.html">Open a shop</a></li> --}}
           </ul>
         </div>
         <div class="info-topbar text-center d-none d-xl-block"><span class="font-xs color-brand-3">Free shipping for all orders over</span><span class="font-sm-bold color-success">  $75.00</span></div>
@@ -116,6 +116,7 @@
 
                 </li>
                 <li><a href="about-us">About Us</a></li>
+                <li><a href="privacy-policy">Privacy Policy</a></li>
                 <li><a href="contact-us">Contact Us</a></li>
 
               </ul>
