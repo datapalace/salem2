@@ -11,6 +11,6 @@
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{{ ('userasset/imgs/template/favicon.svg') }}">
     <link href="{{ asset('userasset/css/style.css?v=3.0.0') }}" rel="stylesheet">
-    <title>Home - Salem Apparels </title>
+
   </head>
 <body>

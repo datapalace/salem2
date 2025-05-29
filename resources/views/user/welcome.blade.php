@@ -1,5 +1,9 @@
 @extends('layout.usermaster')
 @section('usercontent')
+<title>Home - Salem Apparels</title>
+<meta name="description" content="Terms and Conditions for our website.">
+<meta name="keywords" content="terms, conditions, user agreement">
+<meta name="author" content="Salem Apparels">
     <main class="main">
         <section class="section-box">
             <div class="banner-hero banner-1 pt-10">

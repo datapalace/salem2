@@ -2,6 +2,11 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\TermsAndConditionController;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\ContactUsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/dashboard', function () {
@@ -29,3 +34,24 @@ Route::get('/products', [ProductController::class, 'show'])->name('all-products'
 //user Dashboard
 Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
 
+// about us
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
+
+// contact us
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
+
+// terms and condition
+Route::get('/terms-and-condition', [TermsAndConditionController::class, 'index'])->name('terms-and-condition');
+
+// privacy policy
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
+
+// register user
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+// login user
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');

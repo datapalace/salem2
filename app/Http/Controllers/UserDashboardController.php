@@ -122,4 +122,5 @@ return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies'
     }
 
 
+
 }
