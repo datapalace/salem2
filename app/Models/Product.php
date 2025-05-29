@@ -52,4 +52,9 @@ public function attributes()
 {
     return $this->hasMany(Attribute::class);
 }
+public function images()
+{
+    return $this->hasMany(ProductImage::class, 'product_id');
+}
+
 }

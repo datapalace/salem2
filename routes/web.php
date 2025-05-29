@@ -51,6 +51,7 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 // login user
 Route::get('/login', function () {
     return view('auth.login');

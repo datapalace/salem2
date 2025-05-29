@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductGallery;
+use App\Models\ProductImage;
 use App\Models\ProductSize;
 use Illuminate\Http\Request;
 use Exception;
@@ -32,7 +33,7 @@ class ProductController extends Controller
             'product_colors' => 'nullable|array',
             'product_sizes' => 'nullable|array',
         ]);
-       
+
         // Handle slug uniqueness
         $slug = Str::slug($request->slug);
         $originalSlug = $slug;
@@ -109,5 +110,26 @@ class ProductController extends Controller
         return view('products', compact('products'));
 
     }
+
+    public function search(Request $request)
+{
+    $query = $request->get('q');
+
+    $products = \App\Models\Product::with('galleries')
+        ->where('title', 'like', "%{$query}%")
+        ->inRandomOrder()
+        ->take(8)
+        ->get(['id', 'title', 'sku'])
+        ->map(function ($product) {
+            $product->image_url = optional($product->galleries[0])->image_url;
+            unset($product->images); // Optional
+            return $product;
+        });
+
+    return response()->json($products);
+}
+
+
+
 
 }
