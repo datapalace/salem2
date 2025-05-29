@@ -28,8 +28,8 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="contact-form">
-                  <h3 class="color-brand-3 mt-60">Contact Us</h3>
-                  <p class="font-sm color-gray-700 mb-30">Our team would love to hear from you!</p>
+                  <h3 class="color-brand-3 mt-60">Our Privacy Policy</h3>
+                  <p class="font-sm color-gray-700 mb-30">We value your privacy!</p>
                   <div class="row">
                     {{-- Privacy Policy --}}
                     <div class="col-12">
