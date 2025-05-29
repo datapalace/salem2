@@ -33,7 +33,7 @@
                     <li class="hover-up">Corporate Workwear</li>
                   </ul>
                 </div>
-                <div class="col-lg-6"><img src="assets/imgs/page/about/img.png" alt="Ecom"></div>
+                <div class="col-lg-6"><img src="{{asset('userasset/imgs/template/about-us.png')}}" alt="Ecom"></div>
               </div>
               <div class="box-contact-support pt-80 pb-50 pl-50 pr-50 background-gray-50 mt-50 mb-90">
                 <div class="row">
@@ -55,98 +55,21 @@
                   </div>
                 </div>
               </div>
-              <h5 class="color-gray-500 mb-10">Behind The Brands</h5>
-              <h2 class="mb-40">The people who work at Ecom share the vision and values of our community.</h2>
-              <div class="row mb-50">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft1.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Ronald Richards</h5>
-                      <p class="font-md color-gray-500">Chief Executive Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft2.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Jenny Wilson</h5>
-                      <p class="font-md color-gray-500">Chief Financial Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft3.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Cody Fisher</h5>
-                      <p class="font-md color-gray-500">Chief Operating Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft4.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Jacob Jones</h5>
-                      <p class="font-md color-gray-500">Chief Technology Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft5.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Leslie Alexander</h5>
-                      <p class="font-md color-gray-500">Chief Marketing Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft6.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Ralph Edwards</h5>
-                      <p class="font-md color-gray-500">Chief Human Resources Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft7.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Eleanor Pena</h5>
-                      <p class="font-md color-gray-500">Chief Legal Officer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                  <div class="card-staff hover-up">
-                    <div class="image-staff"><img src="assets/imgs/page/about/staft8.png" alt="Ecom"></div>
-                    <div class="info-staff">
-                      <h5>Theresa Webb</h5>
-                      <p class="font-md color-gray-500">Chief Product Officer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h5 class="color-gray-500 mb-10">Our Partners</h5>
-              <h2 class="mb-40">Trusted by 18.000+ Vendors</h2>
-              <div class="box-images-logo"><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/microsoft.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/sony.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/acer.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/nokia.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/asus.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/casio.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/dell.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/panasonic.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/vaio.svg" alt="Ecom"></a><a class="hover-up" href="shop-vendor-single.html"><img src="assets/imgs/page/about/sharp.svg" alt="Ecom"></a></div>
-              <div class="border-1 mb-80 mt-50"></div>
+
+
+              {{-- <div class="border-1 mb-80 mt-50"></div>
               <h2 class="mb-5">Visit our stores</h2>
               <p class="font-sm color-gray-700">Find us at these locations</p>
               <div class="box-contact-address pt-30 pb-50">
                 <div class="row">
                   <div class="col-lg-4">
                     <div class="mb-30">
-                      <h4>Melbourne</h4>
-                      <p class="font-sm color-gray-700">205 North Michigan Avenue, Suite 810<br>Chicago, 60601, USA</p>
+                      <h4>United Kingdom</h4>
+                      <p class="font-sm color-gray-700">Northampton<br>UK</p>
                     </div>
                     <div class="mb-30">
                       <h4>San Francisco</h4>
-                      <p class="font-sm color-gray-700">205 North Michigan Avenue, Suite 810<br>Chicago, 60601, USA</p>
+                      <p class="font-sm color-gray-700">Northampton, <br>UK</p>
                     </div>
                     <div class="mb-30">
                       <h4>Byron Bay</h4>
@@ -182,7 +105,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
