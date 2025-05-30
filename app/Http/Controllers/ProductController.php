@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductGallery;
+use App\Models\ProductImage;
 use App\Models\ProductSize;
 use Illuminate\Http\Request;
 use Exception;
@@ -32,7 +33,7 @@ class ProductController extends Controller
             'product_colors' => 'nullable|array',
             'product_sizes' => 'nullable|array',
         ]);
-       
+
         // Handle slug uniqueness
         $slug = Str::slug($request->slug);
         $originalSlug = $slug;
@@ -109,48 +110,6 @@ class ProductController extends Controller
         $products = Product::with(['galleries', 'colors', 'sizes'])->get();
         return view('products', compact('products'));
 
-    }
-
-    // shop now by users
-    public function shopNow()
-    {
-        $products = Product::with([
-    'galleries',
-    'price',
-    'attributes' => function ($query) {
-        $query->limit(2);
-    }
-    
-])->latest()->inRandomOrder()->paginate(12);
-
-$shopByCatMenus = Product::select('type')
-    ->selectRaw('COUNT(*) as total')
-    ->groupBy('type')->inRandomOrder()->limit(10)
-    ->get();
-    $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
-
-
-        return view('user.shop', compact('products', 'shopByCatMenus', 'brands', ));
-    }
-
-    //shop by category
-    public function shopByCategory($category)
-    {
-        $products = Product::with([
-            'galleries',
-            'price',
-            'attributes' => function ($query) {
-                $query->limit(2);
-            }
-        ])->where('type', $category)->latest()->inRandomOrder()->paginate(12);
-
-        $shopByCatMenus = Product::select('type')
-            ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')->inRandomOrder()->limit(10)
-            ->get();
-        $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
-
-        return view('user.shop-category', compact('products', 'shopByCatMenus', 'brands'));
     }
 
 }

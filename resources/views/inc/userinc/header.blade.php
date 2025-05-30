@@ -33,7 +33,9 @@
                     </select>
                   </div>
                   <div class="box-keysearch">
-                    <input class="form-control font-xs" type="text" value="" placeholder="Search for items">
+                    {{-- filepath: c:\xampp\htdocs\salem2\resources\views\inc\userinc\header.blade.php --}}
+<input id="live-search" class="form-control font-xs" type="text" value="" placeholder="Search for items" autocomplete="off">
+<div id="search-results" class="search-results-dropdown" style="display:none; position:absolute; z-index:1000; background:#fff; width:100%; max-height:300px; overflow-y:auto; border:1px solid #eee;"></div>
                   </div>
                 </form>
               </div>
