@@ -19,5 +19,25 @@
 <script src="{{ asset ('userasset/js/vendors/slick.js') }}"></script>
     <script src="{{ asset ('userasset/js/main.js?v=3.0.0') }}"></script>
     <script src="{{ asset ('userasset/js/shop.js?v=1.2.1') }}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.swiper-testimonial', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+    });
+</script>
   </body>
 </html>
