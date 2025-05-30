@@ -116,7 +116,7 @@ $bannerSides = Product::with([
     'galleries',
     'price',
     'attributes' => function ($query) {
-        $query->limit(2);
+        $query->limit(1);
     }
 ])->where('type', 'hood')->latest()->inRandomOrder()->skip(100)->take(1)->get();
 

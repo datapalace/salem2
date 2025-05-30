@@ -57,20 +57,11 @@
                         <div class="col-xl-5 col-lg-12 col-md-12">
                             <div class="row">
                                 <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
-                                    <div class="bg-metaverse bg-22 pt-25 mb-20 pl-20 h-175">
-                                        <h3 class="mb-10 font-32">Metaverse</h3>
-                                        <p class="font-16">The Future of Creativity</p>
-                                        <div class="mt-10"><a class="btn btn-link-brand-2 btn-arrow-brand-2"
-                                                href="shop-list-2.html">learn more</a></div>
-                                    </div>
-                                    <div class="bg-4 box-bdrd-4 bg-headphone pt-20 mh-307"><span
-                                            class="font-md color-brand-3">Headphone</span>
-                                        <h4 class="font-32 color-gray-1000 mb-10 mt-5">Rockez 547</h4>
-                                        <p class="color-brand-1 font-sm">MUSIC EVERYWHERE<br
-                                                class="d-none d-lg-block">ANYTIME</p>
-                                        <div class="mt-35"><a class="btn btn-brand-2 btn-arrow-right"
-                                                href="shop-list-2.html">Shop Now</a></div>
-                                    </div>
+                                    <img  src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 250px; height: 250px;"
+                                        alt="Embroidery">
+                                      
+                                    <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" alt="" style="width: 250px; height: 250px; margin-top: 20px;">
+                                    
                                 </div>
                                 <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
                                     <div class="box-promotions">
@@ -707,7 +698,7 @@
                                 </div>
                             </div>
                             <div class="mt-20"><a href="shop-single-product.html"><img
-                                        src="{{ asset('userasset/imgs/page/homepage4/banner-ads.png') }}"
+                                        src="{{ asset('userasset/imgs/page/homepage4/cloth_banner.jpg') }}"
                                         alt="Ecom"></a></div>
                         </div>
                         <div class="box-content mt-45">
