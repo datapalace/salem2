@@ -18,7 +18,7 @@
       <div class="container">
         <div class="main-header">
           <div class="header-left">
-            <div class="header-logo"><a href="index.html"><img width="70" alt="Salem Apparels Logo" src="{{asset('userasset/imgs/template/logo.png')}}"></a></div>
+            <div class="header-logo"><a href="/"><img width="70" alt="Salem Apparels Logo" src="{{asset('userasset/imgs/template/logo.png')}}"></a></div>
             <div class="header-search">
               <div class="box-header-search">
                 <form class="form-search" method="post" action="#">
@@ -136,7 +136,7 @@
             <div class="mobile-menu-wrap mobile-header-border">
               <nav class="mt-15">
                 <ul class="mobile-menu font-heading">
-                  <li class="has-children"><a class="active" href="index.html">Home</a>
+                  <li class="has-children"><a class="active" href="/">Home</a>
                     <ul class="sub-menu">
                       <li><a href="/">Home</a></li>
                       </li>
