@@ -7,6 +7,7 @@ use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\TermsAndConditionController;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\CustomizeProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/dashboard', function () {
@@ -41,7 +42,7 @@ Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
 Route::get('/shop/category/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
 
 // shop by category
-Route::get('/shop/customize/{id}', [ProductController::class, 'customize'])->name('customize');
+Route::get('/product/customize/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
 
 
 // about us

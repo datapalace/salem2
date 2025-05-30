@@ -171,4 +171,6 @@ $shopByCatMenus = Product::select('type')
 
     return response()->json($products);
 }
+
+
 }
