@@ -38,7 +38,11 @@ Route::get('/', [UserDashboardController::class, 'index'])->name('product.index'
 Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
 
 // shop by category
-Route::get('/shop/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
+Route::get('/shop/category/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
+
+// shop by category
+Route::get('/shop/customize/{id}', [ProductController::class, 'customize'])->name('customize');
+
 
 // about us
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

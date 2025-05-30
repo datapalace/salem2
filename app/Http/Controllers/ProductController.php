@@ -121,7 +121,7 @@ class ProductController extends Controller
         $query->limit(2);
     }
 
-])->latest()->inRandomOrder()->paginate(12);
+])->latest()->inRandomOrder()->paginate(9);
 
 $shopByCatMenus = Product::select('type')
     ->selectRaw('COUNT(*) as total')
@@ -142,7 +142,7 @@ $shopByCatMenus = Product::select('type')
             'attributes' => function ($query) {
                 $query->limit(2);
             }
-        ])->where('type', $category)->latest()->inRandomOrder()->paginate(12);
+        ])->where('type', $category)->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')

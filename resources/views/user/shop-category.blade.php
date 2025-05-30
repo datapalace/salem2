@@ -57,12 +57,12 @@
                     <div class="card-grid-inner">
                       <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                       <div class="image-box"><span class="label bg-brand-2">-17%</span><a href="shop-single-product.html">
-    <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="Ecom">
+    <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}">
 </a></div>
                       <div class="info-right"><a class="font-xs color-gray-500" href="shop-vendor-single.html">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="shop-single-product.html">{{ $product->title . ' ' . $product->sku }}</a>
                         <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
                         <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
-                        <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="">Customize Now</a></div>
+                        <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="">Customize</a></div>
                         <ul class="list-features">
                         @foreach ($product->attributes as $attribute)
                           <li>{{ $attribute->attribute }}</li>
@@ -134,7 +134,7 @@
                 <div class="sidebar-content">
                   <ul class="list-nav-arrow">
                     @foreach($shopByCatMenus as $shopByCatMenu)
-                    <li><a href="/shop/{{$shopByCatMenu->type}}">{{$shopByCatMenu->type}}<span class="number">{{$shopByCatMenu->total}}</span></a></li>
+                    <li><a href="/shop/category/{{$shopByCatMenu->type}}">{{$shopByCatMenu->type}}<span class="number">{{$shopByCatMenu->total}}</span></a></li>
                     @endforeach
                  
                   </ul>
@@ -151,93 +151,13 @@
                   </div>
                 </div>
               </div>
-              <div class="sidebar-border mb-40">
-                <div class="sidebar-head">
-                  <h6 class="color-gray-900">Products Filter</h6>
-                </div>
-                <div class="sidebar-content">
-                  <h6 class="color-gray-900 mt-10 mb-10">Price</h6>
-                  <div class="box-slider-range mt-20 mb-15">
-                    <div class="row mb-20">
-                      <div class="col-sm-12">
-                        <div id="slider-range"></div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <label class="lb-slider font-sm color-gray-500">Price Range:</label><span class="min-value-money font-sm color-gray-1000"></span>
-                        <label class="lb-slider font-sm font-medium color-gray-1000"></label>-
-                        <span class="max-value-money font-sm font-medium color-gray-1000"></span>
-                      </div>
-                      <div class="col-lg-12">
-                        <input class="form-control min-value" type="hidden" name="min-value" value="">
-                        <input class="form-control max-value" type="hidden" name="max-value" value="">
-                      </div>
-                    </div>
-                  </div>
-                  <ul class="list-checkbox">
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">Free - $100</span><span class="checkmark"></span>
-                      </label><span class="number-item">145</span>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">$100 - $200</span><span class="checkmark"></span>
-                      </label><span class="number-item">56</span>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">$200 - $400</span><span class="checkmark"></span>
-                      </label><span class="number-item">23</span>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">$400 - $600</span><span class="checkmark"></span>
-                      </label><span class="number-item">43</span>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">$600 - $800</span><span class="checkmark"></span>
-                      </label><span class="number-item">65</span>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Over $1000</span><span class="checkmark"></span>
-                      </label><span class="number-item">56</span>
-                    </li>
-                  </ul>
-                  <h6 class="color-gray-900 mt-20 mb-10">Brands</h6>
-                  <ul class="list-checkbox">
-                    @foreach($brands as $brand)
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">{{ $brand->brand}}</span><span class="checkmark"></span>
-                      </label><span class="number-item">12</span>
-                    </li>
-                    @endforeach
-                    
-                  </ul>
-                  <h6 class="color-gray-900 mt-20 mb-10">Color</h6>
-                  <ul class="list-color">
-                    <li><a class="color-red active" href="#"></a><span>Red</span></li>
-                    <li><a class="color-green" href="#"></a><span>Green</span></li>
-                    <li><a class="color-blue" href="#"></a><span>Blue</span></li>
-                    <li><a class="color-purple" href="#"></a><span>Purple</span></li>
-                    <li><a class="color-black" href="#"></a><span>Black</span></li>
-                    <li><a class="color-gray" href="#"></a><span>Gray</span></li>
-                    <li><a class="color-pink" href="#"></a><span>Pink</span></li>
-                    <li><a class="color-brown" href="#"></a><span>Brown</span></li>
-                    <li><a class="color-yellow" href="#"></a><span>Yellow</span></li>
-                  </ul><a class="btn btn-filter font-sm color-brand-3 font-medium mt-10" href="#ModalFiltersForm" data-bs-toggle="modal">More Fillters</a>
-                </div>
-              </div>
+              <br>
              
               <div class="box-slider-item">
                 <div class="head pb-15 border-brand-2">
                   <h5 class="color-gray-900">Product Tags</h5>
                 </div>
-                <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="shop-grid.html">Games</a><a class="btn btn-border mr-5" href="shop-grid.html">Electronics</a><a class="btn btn-border mr-5" href="shop-grid.html">Video</a><a class="btn btn-border mr-5" href="shop-grid.html">Cellphone</a><a class="btn btn-border mr-5" href="shop-grid.html">Indoor</a><a class="btn btn-border mr-5" href="shop-grid.html">VGA Card</a><a class="btn btn-border mr-5" href="shop-grid.html">USB</a><a class="btn btn-border mr-5" href="shop-grid.html">Lightning</a><a class="btn btn-border mr-5" href="shop-grid.html">Camera</a><a class="btn btn-border" href="shop-grid.html">Window</a><a class="btn btn-border mr-5" href="shop-grid.html">Air Vent</a><a class="btn btn-border mr-5" href="shop-grid.html">Bedroom</a><a class="btn btn-border mr-5" href="shop-grid.html">Laptop</a><a class="btn btn-border mr-5" href="shop-grid.html">Dashboard</a><a class="btn btn-border mr-5" href="shop-grid.html">Keyboard</a></div>
+                <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="shop-grid.html">Games</a><a class="btn btn-border mr-5" href="shop-grid.html">Electronics</a></div>
               </div>
               <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
                 <h5 class="font-23 mt-20">Sensitive Touch<br class="d-none d-lg-block">without fingerprint</h5>

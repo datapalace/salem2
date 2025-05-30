@@ -102,7 +102,7 @@
               <ul class="menu-texts menu-close">
 
                 @foreach ($shopByCatMenus as $shopByCatMenu)
-                     <li><a href="#"><span class="img-link"><img src="{{ asset('userasset/imgs/template/game.svg') }}" alt="Salem Apparels Logo"></span><span class="text-link">{{ $shopByCatMenu->type }}</span></a></li>
+                     <li><a href="/shop/category/{{$shopByCatMenu->type}}"><span class="img-link"><img src="{{ asset('userasset/imgs/template/game.svg') }}" alt="Salem Apparels Logo"></span><span class="text-link">{{ $shopByCatMenu->type }}</span></a></li>
                 @endforeach
 
               </ul>
