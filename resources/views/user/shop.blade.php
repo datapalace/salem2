@@ -62,11 +62,11 @@
                       <div class="info-right"><a class="font-xs color-gray-500" href="shop-vendor-single.html">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="shop-single-product.html">{{ $product->title . ' ' . $product->sku }}</a>
                         <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
                         <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
-                        <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="">Customize Now</a></div>
+                        <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="">Customize</a></div>
                         <ul class="list-features">
                         @foreach ($product->attributes as $attribute)
                           <li>{{ $attribute->attribute }}</li>
-                         
+
                           @endforeach
                         </ul>
                       </div>
@@ -136,7 +136,7 @@
                     @foreach($shopByCatMenus as $shopByCatMenu)
                     <li><a href="/shop/{{$shopByCatMenu->type}}">{{$shopByCatMenu->type}}<span class="number">{{$shopByCatMenu->total}}</span></a></li>
                     @endforeach
-                 
+
                   </ul>
                   <div>
                     <div class="collapse" id="moreMenu">
@@ -216,7 +216,7 @@
                       </label><span class="number-item">12</span>
                     </li>
                     @endforeach
-                    
+
                   </ul>
                   <h6 class="color-gray-900 mt-20 mb-10">Color</h6>
                   <ul class="list-color">
@@ -232,7 +232,7 @@
                   </ul><a class="btn btn-filter font-sm color-brand-3 font-medium mt-10" href="#ModalFiltersForm" data-bs-toggle="modal">More Fillters</a>
                 </div>
               </div>
-             
+
               <div class="box-slider-item">
                 <div class="head pb-15 border-brand-2">
                   <h5 class="color-gray-900">Product Tags</h5>

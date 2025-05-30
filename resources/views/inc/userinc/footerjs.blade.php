@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let debounceTimer;
 
     searchInput.addEventListener('input', function () {
-        clearTimeout(debounceTimer); // clear the last timer
+        clearTimeout(debounceTimer);
 
         const query = this.value.trim();
 
@@ -56,6 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 resultsBox.innerHTML = '';
                 return;
             }
+
+            // Show "Please wait..." while searching
+            resultsBox.innerHTML = '<div class="p-2 text-muted">Please wait...</div>';
+            resultsBox.style.display = 'block';
 
             fetch(`/search-products?q=${encodeURIComponent(query)}`)
                 .then(res => res.json())
@@ -75,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                     resultsBox.style.display = 'block';
                 });
-        }, 3000); // Wait 3 seconds after typing stops
+        }, 1000);
     });
 
     // Hide results when clicking outside

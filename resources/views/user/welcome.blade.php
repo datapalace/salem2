@@ -42,7 +42,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="mt-30"><a class="btn btn-brand-2 btn-gray-1000"
-                                                            href="shop-list-2.html">Shop now</a><a
+                                                            href="shop-list-2.html">Customize</a><a
                                                             class="btn btn-link text-underline"
                                                             href="shop-list-2.html">Learn more</a></div>
                                                 </div>
@@ -59,9 +59,9 @@
                                 <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
                                     <img  src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 250px; height: 250px;"
                                         alt="Embroidery">
-                                      
+
                                     <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" alt="" style="width: 250px; height: 250px; margin-top: 20px;">
-                                    
+
                                 </div>
                                 <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
                                     <div class="box-promotions">
@@ -295,7 +295,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -352,7 +352,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -415,7 +415,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -472,7 +472,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -535,7 +535,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -592,7 +592,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -680,7 +680,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -765,7 +765,7 @@
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="shop-cart.html">Add To Cart</a></div>
+                                                                    href="shop-cart.html">Customize</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                     <li>{{ $attribute->attribute }}</li>
@@ -985,8 +985,8 @@
                         </div>
                     </div>
                     @endforeach
-                    
-                  
+
+
                 </div>
             </div>
         </section>
@@ -998,7 +998,7 @@
                             <h3 class="font-xl mb-10">Quick Charge</h3>
                             <p class="font-base color-brand-3 mb-20">Lightweight and Portable<br
                                     class="d-none d-lg-block"> Dual port fast charge</p><a
-                                class="btn btn-brand-2 btn-arrow-right" href="shop-fullwidth.html">Shop Now</a>
+                                class="btn btn-brand-2 btn-arrow-right" href="shop-fullwidth.html">Customize</a>
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 mb-30">

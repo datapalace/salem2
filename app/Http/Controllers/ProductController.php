@@ -32,7 +32,7 @@ class ProductController extends Controller
             'product_colors' => 'nullable|array',
             'product_sizes' => 'nullable|array',
         ]);
-       
+
         // Handle slug uniqueness
         $slug = Str::slug($request->slug);
         $originalSlug = $slug;
@@ -105,7 +105,7 @@ class ProductController extends Controller
 
     public function show(){
 
-        
+
         $products = Product::with(['galleries', 'colors', 'sizes'])->get();
         return view('products', compact('products'));
 
@@ -120,7 +120,7 @@ class ProductController extends Controller
     'attributes' => function ($query) {
         $query->limit(2);
     }
-    
+
 ])->latest()->inRandomOrder()->paginate(12);
 
 $shopByCatMenus = Product::select('type')
@@ -153,4 +153,22 @@ $shopByCatMenus = Product::select('type')
         return view('user.shop-category', compact('products', 'shopByCatMenus', 'brands'));
     }
 
+    // search products
+    public function search(Request $request)
+{
+    $query = $request->get('q');
+
+    $products = \App\Models\Product::with('galleries')
+        ->where('title', 'like', "%{$query}%")
+        ->inRandomOrder()
+        ->take(8)
+        ->get(['id', 'title', 'sku'])
+        ->map(function ($product) {
+            $product->image_url = optional($product->galleries[0])->image_url;
+            unset($product->images); // Optional
+            return $product;
+        });
+
+    return response()->json($products);
+}
 }
