@@ -111,6 +111,15 @@ $topRates = Product::with([
     }
 ])->where('gender', 'Unisex')->latest()->inRandomOrder()->skip(1000)->take(8)->get();
 
+
+$bannerSides = Product::with([
+    'galleries',
+    'price',
+    'attributes' => function ($query) {
+        $query->limit(2);
+    }
+])->where('type', 'hood')->latest()->inRandomOrder()->skip(100)->take(1)->get();
+
 //shop by categories menu
 $shopByCatMenus = Product::select('type')->groupBy('type')->get();
 
@@ -118,7 +127,7 @@ $brands = Product::select('brand')->groupBy('brand')->get();
 
 
         // Return the view with the products
-return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies', 'kids', 'secondKids', 'bannerProducts', 'trendingProducts', 'headwears', 'topRates', 'shopByCatMenus', 'brands', 'footwears', 'topSellings'));
+return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies', 'kids', 'secondKids', 'bannerProducts', 'trendingProducts', 'headwears', 'topRates', 'shopByCatMenus', 'brands', 'footwears', 'topSellings', 'bannerSides'));
     }
 
 

@@ -833,7 +833,7 @@
                                                                 alt="Ecom"><span class="font-xs color-gray-500">
                                                                 (65)</span></div>
                                                         <div class="price-info"><strong
-                                                                class="font-md-bold color-brand-3 price-main">${{ $product->price->single_list_price }}</strong>
+                                                                class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3}}</strong>
                                                                 {{-- <span class="color-gray-500 font-sm price-line">$3225.6</span> --}}
                                                         </div>
                                                     </div>
@@ -847,11 +847,15 @@
                                 </div>
                             </div>
                         </div>
+                        @foreach ($bannerSides as $bannerSide)
                         <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
-                            <h5 class="font-23 mt-20">Sensitive Touch<br class="d-none d-lg-block">without fingerprint
+                            <h5 class="font-23 mt-20">{{ $bannerSide->title }}<br class="d-none d-lg-block">
                             </h5>
-                            <p class="text-desc font-16 mt-15">Smooth handle and accurate click</p>
+                             @foreach ($bannerSide->attributes as $attribute)
+                            <p class="text-desc font-16 mt-15"> {{ $attribute->attribute }} </p>
+                            @endforeach
                         </div>
+                        @endforeach
                         <div class="box-slider-item box-sidebar">
                             <div class="head">
                                 <h4 class="d-inline-block">New Products</h4>
@@ -891,7 +895,7 @@
                                                                 alt="Ecom"><span class="font-xs color-gray-500">
                                                                 (65)</span></div>
                                                         <div class="price-info"><strong
-                                                                class="font-md-bold color-brand-3 price-main">${{ $product->price->single_list_price }}</strong>
+                                                                class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
                                                                 {{-- <span class="color-gray-500 font-sm price-line">$3225.6</span> --}}
                                                         </div>
                                                     </div>
@@ -948,14 +952,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    @foreach ($topSellings as $product)
+                        <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="card-grid-style-2">
                             <div class="image-box"><a href="#"><img
-                                        src="{{ asset('userasset/imgs/page/homepage1/imgsp1.png') }}"
+                                        src="{{ $product->galleries[0]->image_url ?? '' }}"
                                         alt="Ecom"></a></div>
-                            <div class="info-right"><span class="font-xs color-gray-500">SAMSUNG</span><br><a
-                                    class="color-brand-3 font-sm-bold" href="#">SAMSUNG Galaxy Tab S7 Plus
-                                    12.4&quot; 128GB Mystic Black</a>
+                            <div class="info-right"><span class="font-xs color-gray-500">{{ $product->type }}</span><br><a
+                                    class="color-brand-3 font-sm-bold" href="#">{{ $product->title. ' ' .$product->sku }}</a>
                                 <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                         alt="Ecom"><img
                                         src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
@@ -967,60 +971,13 @@
                                         src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                         alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
                                 <div class="price-info"><strong
-                                        class="font-lg-bold color-brand-3 price-main">$2556.3</strong><span
-                                        class="color-gray-500 price-line">$3225.6</span></div>
+                                        class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3}}</strong></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="card-grid-style-2">
-                            <div class="image-box"><a href="#"><img
-                                        src="{{ asset('userasset/imgs/page/homepage1/imgsp2.png') }}"
-                                        alt="Ecom"></a></div>
-                            <div class="info-right"><span class="font-xs color-gray-500">HP</span><br><a
-                                    class="color-brand-3 font-sm-bold" href="#">HP 11.6&quot; Chromebook, AMD A4,
-                                    4GB RAM, 32GB Storage</a>
-                                <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
-                                <div class="price-info"><strong
-                                        class="font-lg-bold color-brand-3 price-main">$2556.3</strong><span
-                                        class="color-gray-500 price-line">$3225.6</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="card-grid-style-2">
-                            <div class="image-box"><a href="#"><img
-                                        src="{{ asset('userasset/imgs/page/homepage1/imgsp1.png') }}"
-                                        alt="Ecom"></a></div>
-                            <div class="info-right"><span class="font-xs color-gray-500">RCA</span><br><a
-                                    class="color-brand-3 font-sm-bold" href="#">RCA 43&quot; Class 4K Ultra HD
-                                    (2160P) HDR Roku Smart</a>
-                                <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
-                                <div class="price-info"><strong
-                                        class="font-lg-bold color-brand-3 price-main">$2556.3</strong><span
-                                        class="color-gray-500 price-line">$3225.6</span></div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforeach
+                    
+                  
                 </div>
             </div>
         </section>
