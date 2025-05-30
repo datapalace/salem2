@@ -34,6 +34,12 @@ Route::get('/products', [ProductController::class, 'show'])->name('all-products'
 //user Dashboard
 Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
 
+//shop now
+Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
+
+// shop by category
+Route::get('/shop/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
+
 // about us
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 

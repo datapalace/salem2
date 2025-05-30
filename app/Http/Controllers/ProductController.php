@@ -105,9 +105,52 @@ class ProductController extends Controller
 
     public function show(){
 
+        
         $products = Product::with(['galleries', 'colors', 'sizes'])->get();
         return view('products', compact('products'));
 
+    }
+
+    // shop now by users
+    public function shopNow()
+    {
+        $products = Product::with([
+    'galleries',
+    'price',
+    'attributes' => function ($query) {
+        $query->limit(2);
+    }
+    
+])->latest()->inRandomOrder()->paginate(12);
+
+$shopByCatMenus = Product::select('type')
+    ->selectRaw('COUNT(*) as total')
+    ->groupBy('type')->inRandomOrder()->limit(10)
+    ->get();
+    $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
+
+
+        return view('user.shop', compact('products', 'shopByCatMenus', 'brands', ));
+    }
+
+    //shop by category
+    public function shopByCategory($category)
+    {
+        $products = Product::with([
+            'galleries',
+            'price',
+            'attributes' => function ($query) {
+                $query->limit(2);
+            }
+        ])->where('type', $category)->latest()->inRandomOrder()->paginate(12);
+
+        $shopByCatMenus = Product::select('type')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('type')->inRandomOrder()->limit(10)
+            ->get();
+        $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
+
+        return view('user.shop-category', compact('products', 'shopByCatMenus', 'brands'));
     }
 
 }
