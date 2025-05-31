@@ -54,17 +54,17 @@
               <div class="d-inline-block box-dropdown-cart"><span class="font-lg icon-list icon-account"><span>Account</span></span>
                 <div class="dropdown-account">
                   <ul>
-                    <li><a href="page-account.html">My Account</a></li>
-                    <li><a href="page-account.html">Order Tracking</a></li>
-                    <li><a href="page-account.html">My Orders</a></li>
-                    <li><a href="page-account.html">My Wishlist</a></li>
-                    <li><a href="page-account.html">Setting</a></li>
-                    <li><a href="page-login.html">Sign out</a></li>
+                    <li><a href="#">My Account</a></li>
+                   
+                    <li><a href="#">My Orders</a></li>
+                    
+                    <li><a href="#">Setting</a></li>
+                    <li><a href="#">Sign out</a></li>
                   </ul>
                 </div>
-              </div><a class="font-lg icon-list icon-wishlist" href="shop-wishlist.html"><span>Wishlist</span><span class="number-item font-xs">5</span></a>
+              </div>
               <div class="d-inline-block box-dropdown-cart"><span class="font-lg icon-list icon-cart"><span>Cart</span><span class="number-item font-xs">2</span></span>
-                <div class="dropdown-cart">
+                <!-- <div class="dropdown-cart">
                   <div class="item-cart mb-20">
                     <div class="cart-image"><img src="assets/imgs/page/homepage1/imgsp5.png" alt="Salem Apparels Logo"></div>
                     <div class="cart-info"><a class="font-sm-bold color-brand-3" href="shop-single-product.html">2022 Apple iMac with Retina 5K Display 8GB RAM, 256GB SSD</a>
@@ -88,8 +88,8 @@
                       <div class="col-6"><a class="btn btn-buy w-auto" href="shop-checkout.html">Checkout</a></div>
                     </div>
                   </div>
-                </div>
-              </div><a class="font-lg icon-list icon-compare" href="shop-compare.html"><span>Compare</span></a>
+                </div> -->
+              </div>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@
 
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/page/homepage4/banner_first.jpg') }}')" style="background-size: cover; background-position: center;">
+                                        <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/page/homepage4/banner_first.jpg') }}')" style="background-size: cover; backgrousnd-position: center;">
 
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -29,35 +29,35 @@
                                     @foreach ($bannerProducts as $bp)
                                     <div class="swiper-slide">
                                         <div class="banner-big sbanner-big-3 bg-22"
-     style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%);">
-    <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
-         alt="{{ $bp->title}}"
-         style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 300px;">
+                                            style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%);">
+                                            <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
+                                                alt="{{ $bp->title}}"
+                                                style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 300px;">
 
-    @php
-    $words = explode(' ', $bp->title);
-    @endphp
+                                            @php
+                                            $words = explode(' ', $bp->title);
+                                            @endphp
 
-    <h2 class="color-gray-100 text-uppercase text-shadow">
-        {{ $words[0] ?? '' }} {{ $words[1] ?? '' }}<br>
-        {{ implode(' ', array_slice($words, 2)) }}
-    </h2>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <ul class="list-disc">
-                @foreach ($bp->attributes as $attribute)
-                <li class="font-lg color-brand-3">
-                    {{ $attribute->attribute }}
-                </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    <div class="mt-30">
-        <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customize</a>
-        <a class="btn btn-link text-underline" href="/product/customize/{{  $bp->id }}">Learn more</a>
-    </div>
-</div>
+                                            <h2 class="color-gray-100 text-uppercase text-shadow">
+                                                {{ $words[0] ?? '' }} {{ $words[1] ?? '' }}<br>
+                                                {{ implode(' ', array_slice($words, 2)) }}
+                                            </h2>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <ul class="list-disc">
+                                                        @foreach ($bp->attributes as $attribute)
+                                                        <li class="font-lg color-brand-3">
+                                                            {{ $attribute->attribute }}
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="mt-30">
+                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customize</a>
+                                                <a class="btn btn-link text-underline" href="/product/customize/{{  $bp->id }}">Learn more</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     @endforeach
 
@@ -67,27 +67,27 @@
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12">
-                <div class="row">
-                  <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
-                    <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%;">
-                      
-                  
-                    <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}"  style="width: 100%;">
-                   
-                  </div>
-                  <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
-                    <div class="box-promotions">
-                      <!-- Swiper-->
-                      <div class="swiper swiper-vertical-1">
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide"><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Ecom"></a></div>
-                          <div class="swiper-slide"><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Ecom"></a></div>
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
+                                <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%; height: auto;">
+
+
+                                <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" style="width: 100%;">
+
+                            </div>
+                            <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
+                                <div class="box-promotions">
+                                    <!-- Swiper-->
+                                    <div class="swiper swiper-vertical-1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Ecom"></a></div>
+                                            <div class="swiper-slide"><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Ecom"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
                 </div>
             </div>
         </div>

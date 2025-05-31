@@ -9,10 +9,9 @@
         <div class="breadcrumbs-div">
           <div class="container">
             <ul class="breadcrumb">
-              <li><a class="font-xs color-gray-1000" href="index.html">Home</a></li>
-              <li><a class="font-xs color-gray-500" href="shop-grid.html">Electronics</a></li>
-              <li><a class="font-xs color-gray-500" href="shop-grid.html">Cell phone</a></li>
-              <li><a class="font-xs color-gray-500" href="shop-grid.html">Accessories</a></li>
+              <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
+              <li><a class="font-xs color-gray-500" href="/shop">Shop</a></li>
+             
             </ul>
           </div>
         </div>
@@ -21,11 +20,11 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-9 order-first order-lg-last">
-              <div class="banner-ads-top mb-30"><a href="shop-single-product-3.html"><img src="{{ asset('userasset/imgs/page/shop/banner.png')}}" alt="Ecom"></a></div>
+              <div class="banner-ads-top mb-30"><a href="/shop"><img src="{{ asset('userasset/imgs/page/shop/banner.png')}}" alt="Ecom"></a></div>
               <div class="box-filters mt-0 pb-5 border-bottom">
                 <div class="row">
-                  <div class="col-xl-2 col-lg-3 mb-10 text-lg-start text-center"><a class="btn btn-filter font-sm color-brand-3 font-medium" href="#ModalFiltersForm" data-bs-toggle="modal">All Fillters</a></div>
-                  <div class="col-xl-10 col-lg-9 mb-10 text-lg-end text-center"><span class="font-sm color-gray-900 font-medium border-1-right span">Showing 1&ndash;16 of 17 results</span>
+                  <!-- <div class="col-xl-2 col-lg-3 mb-10 text-lg-start text-center"><a class="btn btn-filter font-sm color-brand-3 font-medium" href="#ModalFiltersForm" data-bs-toggle="modal">All Fillters</a></div> -->
+                  <div class="col-xl-12 col-lg-9 mb-10 text-lg-end text-center"><span class="font-sm color-gray-900 font-medium border-1-right span">Showing 1&ndash;16 of 17 results</span>
                     <div class="d-inline-block"><span class="font-sm color-gray-500 font-medium">Sort by:</span>
                       <div class="dropdown dropdown-sort border-1-right">
                         <button class="btn dropdown-toggle font-sm color-gray-900 font-medium" id="dropdownSort" type="button" data-bs-toggle="dropdown" aria-expanded="false">Latest products</button>
@@ -40,13 +39,13 @@
                       <div class="dropdown dropdown-sort border-1-right">
                         <button class="btn dropdown-toggle font-sm color-gray-900 font-medium" id="dropdownSort2" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"><span>30 items</span></button>
                         <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort2">
-                          <li><a class="dropdown-item active" href="#">30 items</a></li>
-                          <li><a class="dropdown-item" href="#">50 items</a></li>
-                          <li><a class="dropdown-item" href="#">100 items</a></li>
+                           <li><a class="dropdown-item active" href="/shop?page=30">30 items</a></li>
+                          <li><a class="dropdown-item" href="/shop?page=50">50 items</a></li>
+                          <li><a class="dropdown-item" href="/shop?page=100">100 items</a></li>
                         </ul>
                       </div>
                     </div>
-                    <div class="d-inline-block"><a class="view-type-grid mr-5 active" href="shop-grid.html"></a><a class="view-type-list" href="shop-list.html"></a></div>
+                    <div class="d-inline-block"><a class="view-type-grid mr-5 active" href="/shop"></a><a class="view-type-list" href="/shop"></a></div>
                   </div>
                 </div>
               </div>
@@ -55,14 +54,14 @@
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                   <div class="card-grid-style-3">
                     <div class="card-grid-inner">
-                      <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="shop-compare.html" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
-                      <div class="image-box"><span class="label bg-brand-2">-17%</span><a href="shop-single-product.html">
+                      <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="/shop" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="/shop" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
+                      <div class="image-box"><span class="label bg-brand-2">-17%</span><a href="/product/customize/{{  $product->id }}">
     <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}">
 </a></div>
-                      <div class="info-right"><a class="font-xs color-gray-500" href="shop-vendor-single.html">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="shop-single-product.html">{{ $product->title . ' ' . $product->sku }}</a>
+                      <div class="info-right"><a class="font-xs color-gray-500" href="shop-vendor-single.html">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                         <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
                         <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
-                        <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="">Customize</a></div>
+                        <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customize/{{  $product->id }}">Customize</a></div>
                         <ul class="list-features">
                         @foreach ($product->attributes as $attribute)
                           <li>{{ $attribute->attribute }}</li>
@@ -138,17 +137,7 @@
                     @endforeach
                  
                   </ul>
-                  <div>
-                    <div class="collapse" id="moreMenu">
-                      <ul class="list-nav-arrow">
-                        <li><a href="shop-grid.html">Home theater<span class="number">98</span></a></li>
-                        <li><a href="shop-grid.html">Cameras & drones<span class="number">124</span></a></li>
-                        <li><a href="shop-grid.html">PC gaming<span class="number">56</span></a></li>
-                        <li><a href="shop-grid.html">Smart home<span class="number">87</span></a></li>
-                        <li><a href="shop-grid.html">Networking<span class="number">36</span></a></li>
-                      </ul>
-                    </div><a class="link-see-more mt-5" data-bs-toggle="collapse" href="#moreMenu" role="button" aria-expanded="false" aria-controls="moreMenu">See More</a>
-                  </div>
+                 
                 </div>
               </div>
               <br>
@@ -157,7 +146,7 @@
                 <div class="head pb-15 border-brand-2">
                   <h5 class="color-gray-900">Product Tags</h5>
                 </div>
-                <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="shop-grid.html">Games</a><a class="btn btn-border mr-5" href="shop-grid.html">Electronics</a></div>
+                <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="/shop">Games</a><a class="btn btn-border mr-5" href="/shop">Electronics</a></div>
               </div>
               <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
                 <h5 class="font-23 mt-20">Sensitive Touch<br class="d-none d-lg-block">without fingerprint</h5>
@@ -236,189 +225,7 @@
           </div>
         </div>
       </section>
-      <div class="modal fade" id="ModalFiltersForm" tabindex="-1" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content apply-job-form">
-            <div class="modal-header">
-              <h5 class="modal-title color-gray-1000 filters-icon">Addvance Fillters</h5>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-30">
-              <div class="row">
-                <div class="col-w-1">
-                  <h6 class="color-gray-900 mb-0">Brands</h6>
-                  <ul class="list-checkbox">
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">Apple</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Samsung</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Baseus</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Remax</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Handtown</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Elecom</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Razer</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Auto Focus</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Nillkin</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Logitech</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">ChromeBook</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-w-1">
-                  <h6 class="color-gray-900 mb-0">Special offers</h6>
-                  <ul class="list-checkbox">
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">On sale</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">FREE shipping</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Big deals</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Shop Mall</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
-                  <h6 class="color-gray-900 mb-0 mt-40">Ready to ship in</h6>
-                  <ul class="list-checkbox">
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">1 business day</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">1&ndash;3 business days</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">in 1 week</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Shipping now</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-w-1">
-                  <h6 class="color-gray-900 mb-0">Ordering options</h6>
-                  <ul class="list-checkbox">
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Accepts gift cards</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Customizable</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">Can be gift-wrapped</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Installment 0%</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
-                  <h6 class="color-gray-900 mb-0 mt-40">Rating</h6>
-                  <ul class="list-checkbox">
-                    <li class="mb-5"><a href="#"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><span class="ml-10 font-xs color-gray-500 d-inline-block align-top">(5 stars)</span></a></li>
-                    <li class="mb-5"><a href="#"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><span class="ml-10 font-xs color-gray-500 d-inline-block align-top">(4 stars)</span></a></li>
-                    <li class="mb-5"><a href="#"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><span class="ml-10 font-xs color-gray-500 d-inline-block align-top">(3 stars)</span></a></li>
-                    <li class="mb-5"><a href="#"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><span class="ml-10 font-xs color-gray-500 d-inline-block align-top">(2 stars)</span></a></li>
-                    <li class="mb-5"><a href="#"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star-gray.svg') }}" alt="Ecom"><span class="ml-10 font-xs color-gray-500 d-inline-block align-top">(1 star)</span></a></li>
-                  </ul>
-                </div>
-                <div class="col-w-2">
-                  <h6 class="color-gray-900 mb-0">Material</h6>
-                  <ul class="list-checkbox">
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Nylon (8)</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Tempered Glass (5)</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox" checked="checked"><span class="text-small">Liquid Silicone Rubber (5)</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                    <li>
-                      <label class="cb-container">
-                        <input type="checkbox"><span class="text-small">Aluminium Alloy (3)</span><span class="checkmark"></span>
-                      </label>
-                    </li>
-                  </ul>
-                  <h6 class="color-gray-900 mb-20 mt-40">Product tags</h6>
-                  <div><a class="btn btn-border mr-5" href="#">Games</a><a class="btn btn-border mr-5" href="#">Electronics</a><a class="btn btn-border mr-5" href="#">Video</a><a class="btn btn-border mr-5" href="#">Cellphone</a><a class="btn btn-border mr-5" href="#">Indoor</a><a class="btn btn-border mr-5" href="#">VGA Card</a><a class="btn btn-border mr-5" href="#">USB</a><a class="btn btn-border mr-5" href="#">Lightning</a><a class="btn btn-border mr-5" href="#">Camera</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer justify-content-start pl-30"><a class="btn btn-buy w-auto" href="#">Apply Fillter</a><a class="btn font-sm-bold color-gray-500" href="#">Reset Fillter</a></div>
-          </div>
-        </div>
-      </div>
+      
       <div class="modal fade" id="ModalQuickview" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-xl">
           <div class="modal-content apply-job-form">

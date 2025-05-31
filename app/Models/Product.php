@@ -27,6 +27,7 @@ public function galleries()
     return $this->hasMany(ProductGallery::class);
 }
 
+
 // size
 
     public function sizes(){
@@ -56,5 +57,16 @@ public function images()
 {
     return $this->hasMany(ProductImage::class, 'product_id');
 }
+public function relatedProducts()
+{
+    return $this->hasMany(RelatedProduct::class, 'product_id');
+
+}
+// certifications
+public function certifications()
+{
+    return $this->hasMany(Certification::class, 'product_id');
+}
+
 
 }
