@@ -10,20 +10,19 @@ class CustomizeProductController extends Controller
     //customize product
     public function customize($id)
     {
-        // Here you can fetch the product by ID and pass it to the view
-        // For example:
-        $product = Product::with([
-            'galleries',
-            'price',
-            'attributes' => function ($query) {
-                $query->limit(10);
-            }
-
-        ])->findOrFail($id);
-
         
-        // Ensure the product exists, otherwise handle the error as needed
-        return view('user.customize-product', compact('product'));
+        
+       $product = Product::with([
+    'galleries',
+    'price',
+    'attributes' => function ($query) {
+        $query->limit(10);
+    }
+])->where('id',$id)->first();
+
+        $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+        // E
+        return view('user.customize-product', compact('product', 'shopByCatMenus'));
 
        
     }
