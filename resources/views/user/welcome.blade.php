@@ -28,10 +28,10 @@
                                     </div>
                                     @foreach ($bannerProducts as $bp)
                                     <div class="swiper-slide">
-                                        <div class="banner-big sbanner-big-3 bg-22" 
+                                        <div class="banner-big sbanner-big-3 bg-22"
      style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%);">
-    <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" 
-         alt="{{ $bp->title}}" 
+    <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
+         alt="{{ $bp->title}}"
          style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 300px;">
 
     @php
