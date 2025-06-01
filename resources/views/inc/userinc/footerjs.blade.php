@@ -90,6 +90,139 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+<script>
+    const canvas = new fabric.Canvas('fabricCanvas');
+
+    // Add some basic tools
+    function addText() {
+        const text = new fabric.Textbox('Enter text here', {
+            left: 100,
+            top: 100,
+            width: 200,
+            fontSize: 20
+        });
+        canvas.add(text);
+        canvas.setActiveObject(text);
+    }
+
+    function addRectangle() {
+        const rect = new fabric.Rect({
+            left: 50,
+            top: 50,
+            fill: 'red',
+            width: 100,
+            height: 100
+        });
+        canvas.add(rect);
+    }
+
+    function removeSelected() {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject) {
+            canvas.remove(activeObject);
+        }
+    }
+
+    function saveCanvasAsImage() {
+        const dataURL = canvas.toDataURL({
+            format: 'png'
+        });
+
+        // For testing: show result
+        const img = new Image();
+        img.src = dataURL;
+        document.body.appendChild(img);
+
+        // Optionally, send this image to the server with AJAX
+    }
+</script>
+<script>
+    const canvas = new fabric.Canvas('fabricCanvas');
+
+    function setCanvasBackground(imageURL) {
+        fabric.Image.fromURL(imageURL, function(img) {
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                scaleX: canvas.width / img.width,
+                scaleY: canvas.height / img.height
+            });
+        });
+    }
+
+    // Set initial background (first gallery image)
+    const firstThumb = document.querySelector('.item-thumb img');
+    if (firstThumb) {
+        setCanvasBackground(firstThumb.dataset.url);
+    }
+
+    // Handle thumbnail clicks
+    document.querySelectorAll('.item-thumb img').forEach(img => {
+        img.addEventListener('click', function () {
+            alert('Image URL: ' + this.dataset.url);
+            const imageUrl = this.dataset.url;
+            setCanvasBackground(imageUrl);
+        });
+    });
+</script>
+
+
+<script>
+    let canvas;
+
+    document.getElementById('customizeModal').addEventListener('shown.bs.modal', function () {
+        if (!canvas) {
+            canvas = new fabric.Canvas('fabricCanvas');
+            setCanvasBackground('https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20BLK%20MODEL%203.jpg'); // default
+        }
+    });
+
+    function setCanvasBackground(imageURL) {
+        fabric.Image.fromURL(imageURL, function(img) {
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                scaleX: canvas.width / img.width,
+                scaleY: canvas.height / img.height
+            });
+        });
+    }
+
+    document.querySelectorAll('.thumb').forEach(img => {
+        img.addEventListener('click', function () {
+            setCanvasBackground(this.dataset.url);
+        });
+    });
+
+    function addText() {
+        const text = new fabric.IText('Your Text', {
+            left: 50,
+            top: 50,
+            fontSize: 20,
+            fill: '#000'
+        });
+        canvas.add(text);
+    }
+
+    function uploadLogo(input) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = function (f) {
+            fabric.Image.fromURL(f.target.result, function (img) {
+                img.scaleToWidth(100);
+                canvas.add(img);
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeSelected() {
+        canvas.remove(canvas.getActiveObject());
+    }
+
+    function saveCanvasAsImage() {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = 'custom-design.png';
+        link.click();
+    }
+</script>
 
   </body>
 </html>

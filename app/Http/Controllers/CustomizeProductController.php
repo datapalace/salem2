@@ -11,7 +11,6 @@ class CustomizeProductController extends Controller
     public function customize($id)
     {
 
-
         $product = Product::with([
             'galleries',
             'price',
@@ -23,10 +22,16 @@ class CustomizeProductController extends Controller
             }
         ])->where('id', $id)->first();
         //
-        $relatedProducts = $product->relatedProducts()->limit(10)->get();
 
         $shopByCatMenus = Product::select('type')->groupBy('type')->get();
-        // E
+        $relatedProducts = Product::with([
+    'galleries',
+    'price',
+    'attributes' => function ($query) {
+        $query->limit(3);
+    }
+])->where('style_code', $product->style_code)->latest()->inRandomOrder()->skip(5)->take(10)->get();
+
         return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts'));
     }
 }

@@ -41,7 +41,8 @@ Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
 // shop by category
 Route::get('/shop/category/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
 
-// shop by category
+// view a product
+
 Route::get('/product/customize/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
 
 
