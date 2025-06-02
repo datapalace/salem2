@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="msapplication-TileColor" content="#0E0E0E">
     <meta name="template-color" content="#0E0E0E">
-    <meta name="description" content="Index page">
-    <meta name="keywords" content="index, page">
+    <meta name="description" content="Salem Apparel">
+    <meta name="keywords" content="Home, page">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{{ ('userasset/imgs/template/logo.png') }}">
     <link href="{{ asset('userasset/css/style.css?v=3.0.0') }}" rel="stylesheet">

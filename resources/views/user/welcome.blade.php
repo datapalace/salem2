@@ -32,7 +32,7 @@
                                             style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%);">
                                             <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
                                                 alt="{{ $bp->title}}"
-                                                style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 300px;">
+                                                style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 250px;">
 
                                             @php
                                             $words = explode(' ', $bp->title);
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="mt-30">
                                                 <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customize</a>
-                                                <a class="btn btn-link text-underline" href="/product/customize/{{  $bp->id }}">Learn more</a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -67,26 +67,38 @@
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12">
-                        <div class="row">
-                            <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
-                                <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%; height: auto;">
+                       <div class="row d-none d-sm-flex">
+    <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
+        <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%; height: auto;">
+        <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" style="width: 100%;">
+    </div>
+    <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
+        <div class="box-promotions">
+            <!-- Swiper-->
+            <div class="swiper swiper-vertical-1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
+                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-                                <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" style="width: 100%;">
-
-                            </div>
-                            <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
-                                <div class="box-promotions">
-                                    <!-- Swiper-->
-                                    <div class="swiper swiper-vertical-1">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide"><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Ecom"></a></div>
-                                            <div class="swiper-slide"><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Ecom"></a><a href="shop-list-2.html"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Ecom"></a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -120,12 +132,12 @@
                 <div class="box-swiper">
                     <div class="swiper-container swiper-group-10">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/awdis.png') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Ecom"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/adc.avif') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Ecom"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/anthem.jpg') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Ecom"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/bagbase.png') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Ecom"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/brook.png') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Ecom"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/baby.jpg') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Ecom"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/awdis.png') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Salem Apparel"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/adc.avif') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Salem Apparel"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/anthem.jpg') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Salem Apparel"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/bagbase.png') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Salem Apparel"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/brook.png') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Salem Apparel"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{ asset('userasset/imgs/slider/logo/baby.jpg') }}" style="max-height: 50px; width: auto; opacity: 0.8; object-fit: contain;" alt="Salem Apparel"></a></div>
 
                         </div>
                     </div>
@@ -133,7 +145,7 @@
             </div>
         </div>
     </div>
-    <div class="section-box">
+    <div class="section-box d-none d-sm-flex">
         <div class="container">
             <div class="row mt-60">
                 @php
@@ -143,16 +155,16 @@
                 @foreach($headwearz as $product)
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
                     <div class="card-grid-style-2 card-grid-style-2-small">
-                        <div class="image-box"><a href="shop-fullwidth.html"><img
+                        <div class="image-box"><a href="#"><img
                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$bp->title}}"></a>
                             <div class="mt-10 text-center"><a class="btn btn-gray" href="/product/customize/{{  $product->id }}">customize</a></div>
                         </div>
-                        <div class="info-right"><a class="color-brand-3 font-sm-bold" href="shop-fullwidth.html">
+                        <div class="info-right"><a class="color-brand-3 font-sm-bold" href="#">
                                 <h6>{{$product->type}}</h6>
                             </a>
                             <ul class="list-links-disc">
                                 @foreach ($product->attributes as $attribute)
-                                <li><a class="font-sm" href="shop-fullwidth.html">{{ $attribute->attribute }}</li></a>
+                                <li><a class="font-sm" href="#">{{ $attribute->attribute }}</li></a>
                                 @endforeach
 
 
@@ -219,10 +231,10 @@
                                                         href="#" aria-label="Trend"
                                                         data-bs-placement="left"></a><a
                                                         class="btn btn-wishlist btn-tooltip mb-10"
-                                                        href="shop-wishlist.html"
+                                                        href="#"
                                                         aria-label="Add To Wishlist"></a><a
                                                         class="btn btn-compare btn-tooltip mb-10"
-                                                        href="shop-compare.html" aria-label="Compare"></a><a
+                                                        href="#" aria-label="Compare"></a><a
                                                         class="btn btn-quickview btn-tooltip"
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
@@ -230,22 +242,22 @@
                                                         class="label bg-brand-2">-17%</span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                            alt="Ecom"></a></div>
+                                                            alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
-                                                        href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                        href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
                                                         href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span
+                                                            alt="Salem Apparel"><span
                                                             class="font-xs color-gray-500">(65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -276,10 +288,10 @@
                                                         href="#" aria-label="Trend"
                                                         data-bs-placement="left"></a><a
                                                         class="btn btn-wishlist btn-tooltip mb-10"
-                                                        href="shop-wishlist.html"
+                                                        href="#"
                                                         aria-label="Add To Wishlist"></a><a
                                                         class="btn btn-compare btn-tooltip mb-10"
-                                                        href="shop-compare.html" aria-label="Compare"></a><a
+                                                        href="#" aria-label="Compare"></a><a
                                                         class="btn btn-quickview btn-tooltip"
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
@@ -287,22 +299,22 @@
                                                         class="label bg-brand-2">-17%</span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                            alt="Ecom"></a></div>
+                                                            alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
-                                                        href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                        href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
                                                         href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span
+                                                            alt="Salem Apparel"><span
                                                             class="font-xs color-gray-500">(65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -339,10 +351,10 @@
                                                         href="#" aria-label="Trend"
                                                         data-bs-placement="left"></a><a
                                                         class="btn btn-wishlist btn-tooltip mb-10"
-                                                        href="shop-wishlist.html"
+                                                        href="#"
                                                         aria-label="Add To Wishlist"></a><a
                                                         class="btn btn-compare btn-tooltip mb-10"
-                                                        href="shop-compare.html" aria-label="Compare"></a><a
+                                                        href="#" aria-label="Compare"></a><a
                                                         class="btn btn-quickview btn-tooltip"
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
@@ -350,22 +362,22 @@
                                                         class="label bg-brand-2">-17%</span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                            alt="Ecom"></a></div>
+                                                            alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
-                                                        href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                        href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
                                                         href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span
+                                                            alt="Salem Apparel"><span
                                                             class="font-xs color-gray-500">(65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -396,10 +408,10 @@
                                                         href="#" aria-label="Trend"
                                                         data-bs-placement="left"></a><a
                                                         class="btn btn-wishlist btn-tooltip mb-10"
-                                                        href="shop-wishlist.html"
+                                                        href="#"
                                                         aria-label="Add To Wishlist"></a><a
                                                         class="btn btn-compare btn-tooltip mb-10"
-                                                        href="shop-compare.html" aria-label="Compare"></a><a
+                                                        href="#" aria-label="Compare"></a><a
                                                         class="btn btn-quickview btn-tooltip"
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
@@ -407,22 +419,22 @@
                                                         class="label bg-brand-2">-17%</span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                            alt="Ecom"></a></div>
+                                                            alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
-                                                        href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                        href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
                                                         href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span
+                                                            alt="Salem Apparel"><span
                                                             class="font-xs color-gray-500">(65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -459,10 +471,10 @@
                                                         href="#" aria-label="Trend"
                                                         data-bs-placement="left"></a><a
                                                         class="btn btn-wishlist btn-tooltip mb-10"
-                                                        href="shop-wishlist.html"
+                                                        href="#"
                                                         aria-label="Add To Wishlist"></a><a
                                                         class="btn btn-compare btn-tooltip mb-10"
-                                                        href="shop-compare.html" aria-label="Compare"></a><a
+                                                        href="#" aria-label="Compare"></a><a
                                                         class="btn btn-quickview btn-tooltip"
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
@@ -470,22 +482,22 @@
                                                         class="label bg-brand-2">-17%</span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                            alt="Ecom"></a></div>
+                                                            alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
-                                                        href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                        href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
                                                         href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span
+                                                            alt="Salem Apparel"><span
                                                             class="font-xs color-gray-500">(65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -516,10 +528,10 @@
                                                         href="#" aria-label="Trend"
                                                         data-bs-placement="left"></a><a
                                                         class="btn btn-wishlist btn-tooltip mb-10"
-                                                        href="shop-wishlist.html"
+                                                        href="#"
                                                         aria-label="Add To Wishlist"></a><a
                                                         class="btn btn-compare btn-tooltip mb-10"
-                                                        href="shop-compare.html" aria-label="Compare"></a><a
+                                                        href="#" aria-label="Compare"></a><a
                                                         class="btn btn-quickview btn-tooltip"
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
@@ -527,22 +539,22 @@
                                                         class="label bg-brand-2">-17%</span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                            alt="Ecom"></a></div>
+                                                            alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
-                                                        href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                        href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
                                                         href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span
+                                                            alt="Salem Apparel"><span
                                                             class="font-xs color-gray-500">(65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -604,10 +616,10 @@
                                                                 href="#" aria-label="Trend"
                                                                 data-bs-placement="left"></a><a
                                                                 class="btn btn-wishlist btn-tooltip mb-10"
-                                                                href="shop-wishlist.html"
+                                                                href="#"
                                                                 aria-label="Add To Wishlist"></a><a
                                                                 class="btn btn-compare btn-tooltip mb-10"
-                                                                href="shop-compare.html" aria-label="Compare"></a><a
+                                                                href="#" aria-label="Compare"></a><a
                                                                 class="btn btn-quickview btn-tooltip"
                                                                 aria-label="Quick view" href="#ModalQuickview"
                                                                 data-bs-toggle="modal"></a></div>
@@ -615,22 +627,22 @@
                                                                 class="label bg-brand-2">-17%</span><a
                                                                 href="/product/customize/{{  $product->id }}"><img
                                                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                                    alt="Ecom"></a></div>
+                                                                    alt="Salem Apparel"></a></div>
                                                         <div class="info-right"><a class="font-xs color-gray-500"
-                                                                href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                                href="#">{{ $product->brand }}</a><br><a
                                                                 class="color-brand-3 font-sm-bold"
                                                                 href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                             <div class="rating"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><span
+                                                                    alt="Salem Apparel"><span
                                                                     class="font-xs color-gray-500">(65)</span></div>
                                                             <div class="price-info"><strong
                                                                     class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -656,7 +668,7 @@
                         </div>
                         <div class="mt-20"><a href="/shop"><img
                                     src="{{ asset('userasset/imgs/page/homepage4/cloth_banner.jpg') }}"
-                                    alt="Ecom"></a></div>
+                                    alt="Salem Apparel"></a></div>
                     </div>
                     <div class="box-content mt-45">
                         <div class="head-main bd-gray-200">
@@ -689,10 +701,10 @@
                                                                 href="#" aria-label="Trend"
                                                                 data-bs-placement="left"></a><a
                                                                 class="btn btn-wishlist btn-tooltip mb-10"
-                                                                href="shop-wishlist.html"
+                                                                href="#"
                                                                 aria-label="Add To Wishlist"></a><a
                                                                 class="btn btn-compare btn-tooltip mb-10"
-                                                                href="shop-compare.html" aria-label="Compare"></a><a
+                                                                href="#" aria-label="Compare"></a><a
                                                                 class="btn btn-quickview btn-tooltip"
                                                                 aria-label="Quick view" href="#ModalQuickview"
                                                                 data-bs-toggle="modal"></a></div>
@@ -700,22 +712,22 @@
                                                                 class="label bg-brand-2">-17%</span><a
                                                                 href="/product/customize/{{  $product->id }}"><img
                                                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                                    alt="Ecom"></a></div>
+                                                                    alt="Salem Apparel"></a></div>
                                                         <div class="info-right"><a class="font-xs color-gray-500"
-                                                                href="shop-vendor-single.html">{{ $product->brand }}</a><br><a
+                                                                href="#">{{ $product->brand }}</a><br><a
                                                                 class="color-brand-3 font-sm-bold"
                                                                 href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
                                                             <div class="rating"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><img
+                                                                    alt="Salem Apparel"><img
                                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Ecom"><span
+                                                                    alt="Salem Apparel"><span
                                                                     class="font-xs color-gray-500">(65)</span></div>
                                                             <div class="price-info"><strong
                                                                     class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
@@ -769,15 +781,15 @@
                                                         href="/product/customize/{{  $product->id }}">{{$product->title}} </a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span class="font-xs color-gray-500">
+                                                            alt="Salem Apparel"><span class="font-xs color-gray-500">
                                                             (65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3}}</strong>
@@ -795,7 +807,7 @@
                         </div>
                     </div>
                     @foreach ($bannerSides as $bannerSide)
-                    <div style="
+                    <div class="d-none d-sm-flex" style="
         height: 500px;
         padding: 40px 20px;
         background: linear-gradient(to bottom, #c8e6f9 0%,rgb(255, 255, 255) 100%);
@@ -817,7 +829,7 @@
 
                         {{-- Arm image --}}
                         <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}" alt="{{ $bannerSide->title }}"
-                            style="position: absolute; bottom: 0; left: 0; height: 150px; object-fit: cover; z-index: 0;">
+                            style="position: absolute; bottom: 0; left: 0; height: 350px; object-fit: cover; z-index: 0;">
                     </div>
                     @endforeach
 
@@ -848,15 +860,15 @@
                                                         href="/product/customize/{{  $product->id }}">{{$product->title}} </a>
                                                     <div class="rating"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><img
+                                                            alt="Salem Apparel"><img
                                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Ecom"><span class="font-xs color-gray-500">
+                                                            alt="Salem Apparel"><span class="font-xs color-gray-500">
                                                             (65)</span></div>
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
@@ -877,7 +889,7 @@
             </div>
         </div>
     </div>
-    <section class="section-box pt-50">
+    {{-- <section class="section-box pt-50">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-5 col-md-5 col-sm-12 mb-30">
@@ -904,7 +916,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="section-box mt-50">
         <div class="container">
             <div class="row">
@@ -924,15 +936,15 @@
                         <div class="info-right"><span class="font-xs color-gray-500">{{ $product->type }}</span><br><a
                                 class="color-brand-3 font-sm-bold" href="/product/customize/{{  $product->id }}">{{ $product->title. ' ' .$product->sku }}</a>
                             <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img
+                                    alt="Salem Apparel"><img
                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img
+                                    alt="Salem Apparel"><img
                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img
+                                    alt="Salem Apparel"><img
                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img
+                                    alt="Salem Apparel"><img
                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
+                                    alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span></div>
                             <div class="price-info"><strong
                                     class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3}}</strong></div>
                         </div>
@@ -944,127 +956,14 @@
             </div>
         </div>
     </section>
-    <section class="section-box pt-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-7 col-md-7 col-sm-12 mb-30">
-                    <div class="bg-4 block-charge"><span class="color-brand-3 font-sm-lh32">Power Bank</span>
-                        <h3 class="font-xl mb-10">Quick Charge</h3>
-                        <p class="font-base color-brand-3 mb-20">Lightweight and Portable<br
-                                class="d-none d-lg-block"> Dual port fast charge</p><a
-                            class="btn btn-brand-2 btn-arrow-right" href="shop-fullwidth.html">Customize</a>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 mb-30">
-                    <div class="bg-6 block-player">
-                        <h3 class="font-33 mb-20">Xbox Series XS Game Controller</h3>
-                        <div class="mb-30"><strong class="font-16">Replacement Kit D-pad ABXY Keys</strong></div><a
-                            class="btn btn-brand-3 btn-arrow-right" href="shop-fullwidth.html">learn more</a>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-5 col-md-5 col-sm-12 mb-30">
-                    <div class="bg-5 block-iphone"><span class="color-brand-3 font-sm-lh32">Starting from
-                            $899</span>
-                        <h3 class="font-xl mb-10">iPhone 12 Pro 128Gb</h3>
-                        <p class="font-base color-brand-3 mb-10">Special Sale</p><a class="btn btn-arrow"
-                            href="shop-fullwidth.html">learn more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section-box mt-50">
-        <div class="container">
-            <div class="head-main">
-                <h3 class="mb-5">Latest News &amp; Events</h3>
-                <p class="font-base color-gray-500">From our blog, forum</p>
-                <div class="box-button-slider">
-                    <div class="swiper-button-next swiper-button-next-group-4"></div>
-                    <div class="swiper-button-prev swiper-button-prev-group-4"></div>
-                </div>
-            </div>
-        </div>
-        <div class="container mt-10">
-            <div class="box-swiper">
-                <div class="swiper-container swiper-group-4">
-                    <div class="swiper-wrapper pt-5">
-                        <div class="swiper-slide">
-                            <div class="card-grid-style-1">
-                                <div class="image-box"><a href="blog-single-2.html"></a><img
-                                        src="{{ asset('userasset/imgs/page/blog/blog-1.jpg') }}" alt="Ecom">
-                                </div><a class="tag-dot font-xs" href="blog-list.html">Technology</a><a
-                                    class="color-gray-1100" href="blog-single-2.html">
-                                    <h4>The latest technologies to be used for VR in 2022</h4>
-                                </a>
-                                <div class="mt-20"><span class="color-gray-500 font-xs mr-30">September 02,
-                                        2022</span><span class="color-gray-500 font-xs">4<span> Mins
-                                            read</span></span></div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-grid-style-1">
-                                <div class="image-box"><a href="blog-single.html"></a><img
-                                        src="{{ asset('userasset/imgs/page/blog/blog-2.jpg') }}" alt="Ecom">
-                                </div><a class="tag-dot font-xs" href="blog-list.html">Technology</a><a
-                                    class="color-gray-1100" href="blog-single.html">
-                                    <h4>How can Web 3.0 Bring Changes to the Gaming?</h4>
-                                </a>
-                                <div class="mt-20"><span class="color-gray-500 font-xs mr-30">August 30,
-                                        2022</span><span class="color-gray-500 font-xs">5<span> Mins
-                                            read</span></span></div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-grid-style-1">
-                                <div class="image-box"><a href="blog-single-3.html"></a><img
-                                        src="{{ asset('userasset/imgs/page/blog/blog-3.jpg') }}" alt="Ecom">
-                                </div><a class="tag-dot font-xs" href="blog-list.html">Gaming</a><a
-                                    class="color-gray-1100" href="blog-single-3.html">
-                                    <h4>NFT Blockchain Games That Might Take Off</h4>
-                                </a>
-                                <div class="mt-20"><span class="color-gray-500 font-xs mr-30">August 25,
-                                        2022</span><span class="color-gray-500 font-xs">3<span> Mins
-                                            read</span></span></div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-grid-style-1">
-                                <div class="image-box"><a href="blog-single-2.html"></a><img
-                                        src="{{ asset('userasset/imgs/page/blog/blog-4.jpg') }}" alt="Ecom">
-                                </div><a class="tag-dot font-xs" href="blog-list.html">Blockchain</a><a
-                                    class="color-gray-1100" href="blog-single-2.html">
-                                    <h4>Blockchain Gaming And Its Three Challenges</h4>
-                                </a>
-                                <div class="mt-20"><span class="color-gray-500 font-xs mr-30">August 15,
-                                        2022</span><span class="color-gray-500 font-xs">7<span> Mins
-                                            read</span></span></div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card-grid-style-1">
-                                <div class="image-box"><a href="blog-single-2.html"></a><img
-                                        src="{{ asset('userasset/imgs/page/blog/blog-5.jpg') }}" alt="Ecom">
-                                </div><a class="tag-dot font-xs" href="blog-list.html">Development</a><a
-                                    class="color-gray-1100" href="blog-single-2.html">
-                                    <h4>HTML5 – The Future of Mobile App Development</h4>
-                                </a>
-                                <div class="mt-20"><span class="color-gray-500 font-xs mr-30">August 12,
-                                        2022</span><span class="color-gray-500 font-xs">9<span> Mins
-                                            read</span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <section class="section-box mt-90 mb-50">
         <div class="container">
             <ul class="list-col-5">
                 <li>
                     <div class="item-list">
                         <div class="icon-left"><img src="{{ asset('userasset/imgs/template/delivery.svg') }}"
-                                alt="Ecom"></div>
+                                alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Free Delivery</h5>
                             <p class="font-sm color-gray-500">From all orders over $10</p>
@@ -1074,7 +973,7 @@
                 <li>
                     <div class="item-list">
                         <div class="icon-left"><img src="{{ asset('userasset/imgs/template/support.svg') }}"
-                                alt="Ecom"></div>
+                                alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Support 24/7</h5>
                             <p class="font-sm color-gray-500">Shop with an expert</p>
@@ -1084,7 +983,7 @@
                 <li>
                     <div class="item-list">
                         <div class="icon-left"><img src="{{ asset('userasset/imgs/template/voucher.svg') }}"
-                                alt="Ecom"></div>
+                                alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Gift voucher</h5>
                             <p class="font-sm color-gray-500">Refer a friend</p>
@@ -1094,7 +993,7 @@
                 <li>
                     <div class="item-list">
                         <div class="icon-left"><img src="{{ asset('userasset/imgs/template/return.svg') }}"
-                                alt="Ecom"></div>
+                                alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Return &amp; Refund</h5>
                             <p class="font-sm color-gray-500">Free return over $200</p>
@@ -1104,7 +1003,7 @@
                 <li>
                     <div class="item-list">
                         <div class="icon-left"><img src="{{ asset('userasset/imgs/template/secure.svg') }}"
-                                alt="Ecom"></div>
+                                alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Secure payment</h5>
                             <p class="font-sm color-gray-500">100% Protected</p>
@@ -1114,27 +1013,26 @@
             </ul>
         </div>
     </section>
-    <section class="section-box box-newsletter">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-7 col-sm-12">
-                    <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount
-                    </h3>
-                    <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
-                            class="font-lg-bold">special offers.</span></p>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-12">
-                    <div class="box-form-newsletter mt-15">
-                        <form class="form-newsletter">
-                            <input class="input-newsletter font-xs" value=""
-                                placeholder="Your email Address">
-                            <button class="btn btn-brand-2">Sign Up</button>
-                        </form>
+    <section class="section-box box-newsletter" style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7 col-sm-12" >
+                        <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
+                        <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
+                                class="font-lg-bold">special offers.</span></p>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-sm-12">
+                        <div class="box-form-newsletter mt-15">
+                            <form class="form-newsletter">
+                                <input class="input-newsletter font-xs" value="" placeholder="Your email Address">
+                                <button class="btn btn-brand-2">Sign Up</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
     <div class="modal fade" id="ModalQuickview" tabindex="-1" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-xl">
             <div class="modal-content apply-job-form">
@@ -1225,18 +1123,18 @@
                                 <div class="info-by"><span
                                         class="bytext color-gray-500 font-xs font-medium">by</span><a
                                         class="byAUthor color-gray-900 font-xs font-medium"
-                                        href="shop-vendor-list.html"> Ecom Tech</a>
+                                        href="#"> Ecom Tech</a>
                                     <div class="rating d-inline-block"><img
                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Ecom"><img
+                                            alt="Salem Apparel"><img
                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Ecom"><img
+                                            alt="Salem Apparel"><img
                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Ecom"><img
+                                            alt="Salem Apparel"><img
                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Ecom"><img
+                                            alt="Salem Apparel"><img
                                             src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Ecom"><span class="font-xs color-gray-500 font-medium"> (65
+                                            alt="Salem Apparel"><span class="font-xs color-gray-500 font-medium"> (65
                                             reviews)</span></div>
                                 </div>
                                 <div class="border-bottom pt-10 mb-20"></div>
@@ -1260,22 +1158,22 @@
                                     <ul class="list-colors">
                                         <li class="disabled"><img
                                                 src="{{ asset('userasset/imgs/page/product/img-gallery-1.jpg') }}"
-                                                alt="Ecom" title="Pink"></li>
+                                                alt="Salem Apparel" title="Pink"></li>
                                         <li><img src="{{ asset('userasset/imgs/page/product/img-gallery-2.jpg') }}"
-                                                alt="Ecom" title="Gold"></li>
+                                                alt="Salem Apparel" title="Gold"></li>
                                         <li><img src="{{ asset('userasset/imgs/page/product/img-gallery-3.jpg') }}"
-                                                alt="Ecom" title="Pink Gold"></li>
+                                                alt="Salem Apparel" title="Pink Gold"></li>
                                         <li><img src="{{ asset('userasset/imgs/page/product/img-gallery-4.jpg') }}"
-                                                alt="Ecom" title="Silver"></li>
+                                                alt="Salem Apparel" title="Silver"></li>
                                         <li class="active"><img
                                                 src="{{ asset('userasset/imgs/page/product/img-gallery-5.jpg') }}"
-                                                alt="Ecom" title="Pink Gold"></li>
+                                                alt="Salem Apparel" title="Pink Gold"></li>
                                         <li class="disabled"><img
                                                 src="{{ asset('userasset/imgs/page/product/img-gallery-6.jpg') }}"
-                                                alt="Ecom" title="Black"></li>
+                                                alt="Salem Apparel" title="Black"></li>
                                         <li class="disabled"><img
                                                 src="{{ asset('userasset/imgs/page/product/img-gallery-7.jpg') }}"
-                                                alt="Ecom" title="Red"></li>
+                                                alt="Salem Apparel" title="Red"></li>
                                     </ul>
                                 </div>
                                 <div class="box-product-style-size mt-10">
@@ -1310,8 +1208,8 @@
                                                 value="1"><span class="minus-cart"></span><span
                                                 class="plus-cart"></span>
                                         </div>
-                                        <div class="button-buy"><a class="btn btn-cart" href="shop-cart.html">Add
-                                                to cart</a><a class="btn btn-buy" href="shop-checkout.html">Buy
+                                        <div class="button-buy"><a class="btn btn-cart" href="#">Add
+                                                to cart</a><a class="btn btn-buy" href="#">Buy
                                                 now</a></div>
                                     </div>
                                 </div>

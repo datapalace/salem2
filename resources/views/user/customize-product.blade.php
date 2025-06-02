@@ -13,10 +13,9 @@
             <div class="breadcrumbs-div">
                 <div class="container">
                     <ul class="breadcrumb">
-                        <li><a class="font-xs color-gray-1000" href="index.html">Home</a></li>
-                        <li><a class="font-xs color-gray-500" href="shop-grid.html">Electronics</a></li>
-                        <li><a class="font-xs color-gray-500" href="shop-grid.html">Cell phone</a></li>
-                        <li><a class="font-xs color-gray-500" href="shop-grid.html">Accessories</a></li>
+                        <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
+                        <li><a class="font-xs color-gray-500" href="/shop/category/{{$product->type}}">{{ $product->type}}</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -116,7 +115,7 @@
                                     <input class="font-xl color-brand-3" type="text" value="1"><span
                                         class="minus-cart"></span><span class="plus-cart"></span>
                                 </div>
-                                <div class="button-buy"><a class="btn btn-cart" href="#" data-bs-toggle="modal" data-bs-target="#customizeModal">Customizee</a><a
+                                <div class="button-buy"><a class="btn btn-cart" href="#" data-bs-toggle="modal" data-bs-target="#customizeModal">Customize</a><a
                                         class="btn btn-buy" href="shop-checkout.html">Proceed to Check Out</a></div>
                             </div>
 
@@ -304,10 +303,10 @@
                 </ul>
             </div>
         </section>
-        <section class="section-box box-newsletter">
+        <section class="section-box box-newsletter" style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-7 col-sm-12">
+                    <div class="col-lg-6 col-md-7 col-sm-12" >
                         <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
                         <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
                                 class="font-lg-bold">special offers.</span></p>
