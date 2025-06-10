@@ -59,7 +59,7 @@
                     <li><a href="#">My Orders</a></li>
 
                     <li><a href="#">Setting</a></li>
-                    <li><a href="#">Sign out</a></li>
+                    <li><a href="/logout">Sign out</a></li>
                   </ul>
                 </div>
               </div>
@@ -164,7 +164,7 @@
 
                 <li><a href="/about-us">About Us</a></li>
                 <li><a href="#">Setting</a></li>
-                <li><a href="#">Sign out</a></li>
+                <li><a href="/logout">Sign out</a></li>
               </ul>
             </div>
 
