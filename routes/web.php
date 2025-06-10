@@ -58,6 +58,9 @@ Route::get('/terms-and-condition', [TermsAndConditionController::class, 'index']
 // privacy policy
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
 
+
+Route::get('/customise-product/{id}', [\App\Http\Controllers\CanvasController::class, 'show']);
+
 // register user
 Route::get('/register', function () {
     return view('auth.register');
