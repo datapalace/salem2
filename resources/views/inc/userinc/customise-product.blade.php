@@ -23,39 +23,58 @@
         .toolbar {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             align-items: stretch;
             background: #f8f8f8;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            padding: 20px 18px;
+            padding: 10px 8px;
             margin: 0;
-            min-width: 200px;
-            max-width: 220px;
+            min-width: 120px;
+            max-width: 140px;
+            font-size: 13px;
         }
-        .toolbar button, .toolbar label, .toolbar select {
+        .toolbar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+        .toolbar label {
+            font-size: 12px;
+            margin-bottom: 2px;
+            color: #444;
+            background: none;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+        .toolbar button, .toolbar select, .toolbar input[type="color"] {
             background: #E2B808;
             color: #222;
             border: none;
             border-radius: 4px;
-            padding: 10px 14px;
-            font-size: 15px;
+            padding: 6px 8px;
+            font-size: 13px;
             cursor: pointer;
             transition: background 0.2s, color 0.2s;
-            margin: 0 0 4px 0;
             width: 100%;
-            text-align: left;
+            box-sizing: border-box;
         }
-        .toolbar button:hover, .toolbar label:hover, .toolbar select:hover {
+        .toolbar button:hover, .toolbar select:hover {
             background: #cfa507;
             color: #fff;
         }
         .toolbar input[type="file"] {
             display: none;
         }
-        .toolbar select {
-            min-width: 140px;
+        .toolbar input[type="color"] {
+            padding: 0;
+            height: 28px;
             width: 100%;
+            border-radius: 4px;
+            background: none;
+            border: 1px solid #ddd;
         }
         .slider-nav-thumbnails {
             display: flex;
@@ -89,28 +108,51 @@
             @endforeach
         </div>
     </div>
-    <div class="toolbar">
-        <button id="addTextBtn">Add Text</button>
-        <label for="uploadImageInput">Upload Image</label>
-        <input type="file" id="uploadImageInput" accept="image/*" style="display:none;">
-        <button id="addRectangleBtn">Add Rectangle</button>
-        <button id="addCircleBtn">Add Circle</button>
-        <button id="addLineBtn">Add Line</button>
-        <button id="addTriangleBtn">Add Triangle</button>
-        <button id="addPolygonBtn">Add Polygon</button>
+
+<div class="toolbar">
+    <div class="toolbar-group">
+        <button id="addTextBtn" title="Add Text">T+</button>
+        <label for="uploadImageInput" title="Upload Image" style="margin-bottom:0;">🖼️</label>
+        <input type="file" id="uploadImageInput" accept="image/*">
+    </div>
+    <div class="toolbar-group">
+        <button id="addRectangleBtn" title="Rectangle">▭</button>
+        <button id="addCircleBtn" title="Circle">◯</button>
+        <button id="addLineBtn" title="Line">／</button>
+        <button id="addTriangleBtn" title="Triangle">△</button>
+        <button id="addPolygonBtn" title="Polygon">⬟</button>
+    </div>
+    <div class="toolbar-group">
+        <label for="fontFaceSelect">Font</label>
+        <select id="fontFaceSelect">
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Impact">Impact</option>
+        </select>
+    </div>
+    <div class="toolbar-group">
+        <label for="fontColorInput">Color</label>
+        <input type="color" id="fontColorInput" value="#222222">
+    </div>
+    <div class="toolbar-group">
+        <label for="textStyleSelect">Style</label>
         <select id="textStyleSelect">
-            <option value="">Select Text Style</option>
+            <option value="">Normal</option>
             <option value="bold">Bold</option>
             <option value="italic">Italic</option>
             <option value="underline">Underline</option>
-            <option value="red-text">Red Text</option>
-            <option value="large-text">Large Text</option>
-            <option value="medium-text">Medium Text</option>
-            <option value="small-text">Small Text</option>
+            <option value="red-text">Red</option>
+            <option value="large-text">Large</option>
+            <option value="medium-text">Medium</option>
+            <option value="small-text">Small</option>
         </select>
-        <button id="addTextStyleBtn">Add Text Style</button>
     </div>
 </div>
+
 
 <script>
     const canvas = new fabric.Canvas('fabricCanvas');
@@ -221,6 +263,63 @@
         });
         canvas.add(polygon).setActiveObject(polygon);
     });
+    // Font color change for selected text
+    document.getElementById('fontColorInput').addEventListener('input', function() {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'i-text') {
+            activeObject.set('fill', this.value);
+            canvas.requestRenderAll();
+        }
+    });
+
+    // Font face change for selected text
+    document.getElementById('fontFaceSelect').addEventListener('change', function() {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'i-text') {
+            activeObject.set('fontFamily', this.value);
+            canvas.requestRenderAll();
+        }
+    });
+
+    // Text style change for selected text
+    document.getElementById('textStyleSelect').addEventListener('change', function() {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'i-text') {
+            switch (this.value) {
+                case 'bold':
+                    activeObject.set('fontWeight', 'bold');
+                    break;
+                case 'italic':
+                    activeObject.set('fontStyle', 'italic');
+                    break;
+                case 'underline':
+                    activeObject.set('underline', true);
+                    break;
+                case 'red-text':
+                    activeObject.set('fill', '#ff0000');
+                    break;
+                case 'large-text':
+                    activeObject.set('fontSize', 36);
+                    break;
+                case 'medium-text':
+                    activeObject.set('fontSize', 24);
+                    break;
+                case 'small-text':
+                    activeObject.set('fontSize', 12);
+                    break;
+                default:
+                    activeObject.set({
+                        fontWeight: 'normal',
+                        fontStyle: 'normal',
+                        underline: false,
+                        fill: '#222',
+                        fontSize: 24
+                    });
+            }
+            canvas.requestRenderAll();
+        }
+    });
+
     // style font size
     canvas.on('object:selected', function(e) {
         const activeObject = e.target;
