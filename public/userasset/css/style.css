@@ -652,7 +652,7 @@ h6 {
 }
 
 .bg-brand-2 {
-  background-color: #FD9636 !important;
+  background-color: #E2B808 !important;
 }
 
 .bg-color-success {
@@ -746,7 +746,7 @@ h6 {
   color: #8C9EC5;
 }
 .box-count.box-count-square .deals-countdown .countdown-amount {
-  background-color: #FD9636;
+  background-color: #E2B808;
   border-radius: 4px;
   color: #ffffff;
   padding: 10px 0px;
@@ -815,7 +815,7 @@ h6 {
   overflow: visible;
 }
 .box-progress .progress-bar .progress-bar-inner {
-  background-color: #FD9636;
+  background-color: #E2B808;
   border-radius: 24px;
   width: 50%;
   height: 9px;
@@ -825,7 +825,7 @@ h6 {
   content: "";
   height: 15px;
   border-radius: 50%;
-  background-color: #FD9636;
+  background-color: #E2B808;
   width: 15px;
   position: absolute;
   top: -3px;
@@ -942,7 +942,7 @@ h6 {
 }
 
 .color-brand-2 {
-  color: #FD9636 !important;
+  color: #E2B808 !important;
 }
 
 .color-brand-3 {
@@ -1162,7 +1162,7 @@ a.text-brand-3:hover {
   background: url(../imgs/template/icons/arrow.svg) no-repeat right 0px top 20px;
 }
 .btn.btn-brand-2 {
-  background-color: #FD9636;
+  background-color: #E2B808;
   color: #ffffff;
   font-weight: bold;
 }
@@ -1175,7 +1175,7 @@ a.text-brand-3:hover {
   font-weight: bold;
 }
 .btn.btn-brand-3:hover {
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 .btn.btn-info {
   background-color: #27B3D2;
@@ -1183,8 +1183,8 @@ a.text-brand-3:hover {
   font-weight: bold;
 }
 .btn.btn-info:hover {
-  background-color: #FD9636;
-  border-color: #FD9636;
+  background-color: #E2B808;
+  border-color: #E2B808;
 }
 .btn.btn-arrow-right {
   background-image: url(../imgs/template/icons/arrow-white.svg);
@@ -1198,10 +1198,10 @@ a.text-brand-3:hover {
   line-height: 18px;
 }
 .btn.btn-link:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-link-brand-2 {
-  color: #FD9636;
+  color: #E2B808;
   font-size: 12px;
   line-height: 32px;
   font-weight: bold;
@@ -1229,7 +1229,7 @@ a.text-brand-3:hover {
   padding: 0px 40px 0px 0px;
   font-size: 17px;
   line-height: 19px;
-  color: #FD9636;
+  color: #E2B808;
   font-weight: bold;
 }
 .btn.btn-arrow-2:hover {
@@ -1242,7 +1242,7 @@ a.text-brand-3:hover {
 }
 .btn.btn-arrow-2-reverse:hover {
   background-image: url(../imgs/template/icons/arrow-2.svg);
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-arrow-small {
   background-size: 5px;
@@ -1355,7 +1355,7 @@ a.text-brand-3:hover {
   padding: 4px 10px;
 }
 .btn.btn-gray-abs:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-gray {
   background-color: #D5DFE4;
@@ -1367,7 +1367,7 @@ a.text-brand-3:hover {
   padding: 2px 10px;
 }
 .btn.btn-gray:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-out-stock {
   background-color: #FFF3EA;
@@ -1379,7 +1379,7 @@ a.text-brand-3:hover {
   padding: 2px 10px;
 }
 .btn.btn-out-stock:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-open {
   height: 112px;
@@ -1399,14 +1399,14 @@ a.text-brand-3:hover {
   font-weight: bold;
 }
 .btn.btn-view-all:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-link-orange {
   text-decoration: underline;
-  color: #FD9636;
+  color: #E2B808;
 }
 .btn.btn-category {
-  background-color: #FD9636;
+  background-color: #E2B808;
   background-image: url(../imgs/page/homepage4/open-close.svg);
   background-repeat: no-repeat;
   background-position: 17px 9px;
@@ -1665,7 +1665,7 @@ a.text-brand-3:hover {
 }
 
 .cb-container input:checked ~ .checkmark {
-  border: 2px solid #FD9636;
+  border: 2px solid #E2B808;
 }
 
 .cb-container .text-small {
@@ -1695,7 +1695,7 @@ a.text-brand-3:hover {
   top: -1px;
   width: 16px;
   height: 16px;
-  background: #FD9636 url(../imgs/page/shop/tick.svg) no-repeat center;
+  background: #E2B808 url(../imgs/page/shop/tick.svg) no-repeat center;
 }
 
 .cb-container-2 {
@@ -1861,12 +1861,12 @@ a.text-brand-3:hover {
   height: 10px;
   display: inline-block;
   border-radius: 50%;
-  background: #FD9636;
+  background: #E2B808;
   opacity: 0.2;
 }
 .swiper-pagination .swiper-pagination-bullet-active {
   opacity: 1;
-  background: #FD9636;
+  background: #E2B808;
   width: 12px;
   height: 12px;
 }
@@ -2047,7 +2047,7 @@ a.text-brand-3:hover {
 /* Disabled state;
  */
 [disabled].noUi-connect, [disabled] .noUi-connect {
-  background: #FD9636;
+  background: #E2B808;
 }
 
 [disabled].noUi-origin, [disabled] .noUi-handle {
@@ -2079,15 +2079,15 @@ a.text-brand-3:hover {
 }
 
 .noUi-connect {
-  background: #FD9636;
+  background: #E2B808;
   transition: background 450ms;
   height: 6px;
   margin-top: 0px;
 }
 
 .noUi-horizontal .noUi-handle {
-  background-color: #FD9636;
-  border: 1px solid #FD9636;
+  background-color: #E2B808;
+  border: 1px solid #E2B808;
   box-shadow: 0px 47px 65px rgba(21, 28, 38, 0.1);
   left: -6px;
   top: -6px;
@@ -2795,10 +2795,10 @@ a.text-brand-3:hover {
   border-radius: 50%;
 }
 .swiper-pagination .swiper-pagination-customs:hover {
-  background: #FD9636;
+  background: #E2B808;
 }
 .swiper-pagination .swiper-pagination-customs-active {
-  background: #FD9636;
+  background: #E2B808;
 }
 .swiper-pagination.swiper-pagination-2 {
   top: auto;
@@ -3147,7 +3147,7 @@ a.text-brand-3:hover {
   background-color: #ffffff;
 }
 .banner-homepage3 .swiper-pagination .swiper-pagination-customs-active, .banner-homepage3 .swiper-pagination .swiper-pagination-customs:hover {
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 
 .header {
@@ -3274,7 +3274,7 @@ a.text-brand-3:hover {
   background-position: 0px 2px;
 }
 .header .main-header .header-left .header-shop .number-item {
-  background-color: #FD9636;
+  background-color: #E2B808;
   border-radius: 50%;
   position: absolute;
   top: -8px;
@@ -3347,7 +3347,7 @@ a.text-brand-3:hover {
   position: relative;
 }
 .header .main-menu li a:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .header .main-menu li a:hover i {
   opacity: 1;
@@ -4166,7 +4166,7 @@ a.text-brand-3:hover {
 }
 
 .top-brand-2 {
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 .top-brand-2 .nav-small li a {
   color: #ffffff;
@@ -4216,7 +4216,7 @@ a.text-brand-3:hover {
   color: #425A8B;
 }
 .nav-small li a:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .nav-small li a::before {
   content: "";
@@ -5441,7 +5441,7 @@ a.text-brand-3:hover {
 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0;
@@ -6718,7 +6718,7 @@ a.text-brand-3:hover {
   margin-bottom: 30px;
 }
 .box-sidebar .head {
-  background-color: #FD9636;
+  background-color: #E2B808;
   padding: 15px 20px;
   margin-bottom: 10px;
 }
@@ -6788,7 +6788,7 @@ a.text-brand-3:hover {
 }
 
 .box-promotions {
-  border: 3px solid #FD9636;
+  border: 3px solid #E2B808;
   padding: 10px;
   height: 501px;
   overflow: hidden;
@@ -6859,7 +6859,7 @@ a.text-brand-3:hover {
   border-left: 0px;
 }
 .dropdown .sidebar-left .menu-texts li .sub-menu li a:hover {
-  color: #FD9636;
+  color: #E2B808;
   font-weight: bold;
 }
 
@@ -6915,14 +6915,14 @@ a.text-brand-3:hover {
 }
 
 .list-style-brand-2 .btn-cart:hover {
-  background-color: #FD9636;
-  border-color: #FD9636;
+  background-color: #E2B808;
+  border-color: #E2B808;
 }
 .list-style-brand-2 .card-grid-style-3:hover .card-grid-inner {
-  border-color: #FD9636;
+  border-color: #E2B808;
 }
 .list-style-brand-2 .card-grid-style-3:hover a.color-gray-500, .list-style-brand-2 .card-grid-style-3:hover .rating span {
-  color: #FD9636;
+  color: #E2B808;
 }
 
 .card-hide-cart .box-btn-cart {
@@ -6962,7 +6962,7 @@ a.text-brand-3:hover {
   margin-bottom: 0px;
 }
 .sidebar-border .content-slider {
-  border: 1px solid #FD9636;
+  border: 1px solid #E2B808;
   border-top: 0px;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -7063,7 +7063,7 @@ a.text-brand-3:hover {
 }
 
 .sale-tag {
-  background-color: #FD9636;
+  background-color: #E2B808;
   padding: 4px;
   color: #ffffff;
   display: inline-block;
@@ -7177,7 +7177,7 @@ a.text-brand-3:hover {
 .header-brand-2 .box-header-bottom {
   display: flex;
   width: 100%;
-  background-color: #FD9636;
+  background-color: #E2B808;
   border-radius: 4px;
   border-bottom: 2px solid #D36B0B;
   padding: 10px 20px 10px 0px;
@@ -7250,15 +7250,15 @@ a.text-brand-3:hover {
   background-color: #425A8B;
 }
 .swiper-group-9 .swiper-pagination-3.swiper-pagination .swiper-pagination-customs.swiper-pagination-customs-active {
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 
 .list-brand-2 .box-count .deals-countdown {
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 .list-brand-2 .card-grid-style-3 .card-grid-inner .info-right a.btn-cart:hover {
-  background-color: #FD9636;
-  border-color: #FD9636;
+  background-color: #E2B808;
+  border-color: #E2B808;
 }
 
 .box-menu-category {
@@ -7472,7 +7472,7 @@ a.text-brand-3:hover {
   color: #ffffff;
   font-size: 12px;
   line-height: 12px;
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 
 .pick-by-ecom .top-deals .card-grid-inner .image-box .swiper-container {
@@ -7493,7 +7493,7 @@ a.text-brand-3:hover {
   background-color: #ffffff;
 }
 .swiper-pagination-3.swiper-pagination .swiper-pagination-customs-active {
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 
 .swiper-button-next-ecom {
@@ -7551,7 +7551,7 @@ a.text-brand-3:hover {
 }
 
 .box-notify {
-  background-color: #FD9636;
+  background-color: #E2B808;
   padding: 10px 0px;
   position: relative;
   z-index: 1003;
@@ -8163,7 +8163,7 @@ a:hover span {
   cursor: pointer;
 }
 .list-colors li:hover, .list-colors li.active {
-  border-color: #FD9636;
+  border-color: #E2B808;
 }
 .list-colors li img {
   display: block;
@@ -8189,10 +8189,10 @@ a:hover span {
   margin-bottom: 8px;
 }
 .list-styles li.active, .list-styles li:hover {
-  color: #FD9636;
+  color: #E2B808;
   font-weight: bold;
   background-color: #F0F3F8;
-  border-color: #FD9636;
+  border-color: #E2B808;
 }
 .list-styles li.disabled {
   border-style: dashed;
@@ -8222,10 +8222,10 @@ a:hover span {
   margin-bottom: 8px;
 }
 .list-sizes li.active, .list-sizes li:hover {
-  color: #FD9636;
+  color: #E2B808;
   font-weight: bold;
   background-color: #F0F3F8;
-  border-color: #FD9636;
+  border-color: #E2B808;
 }
 .list-sizes li.disabled {
   border-style: dashed;
@@ -8249,7 +8249,7 @@ a:hover span {
   color: #ffffff;
   font-size: 12px;
   line-height: 12px;
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 
 .galleries {
@@ -8281,7 +8281,7 @@ a:hover span {
   cursor: pointer;
 }
 .slider-nav-thumbnails .slick-slide .item-thumb.slick-current, .slider-nav-thumbnails .slick-slide .item-thumb:hover, .slider-nav-thumbnails-2 .slick-slide .item-thumb.slick-current, .slider-nav-thumbnails-2 .slick-slide .item-thumb:hover {
-  border-color: #FD9636;
+  border-color: #E2B808;
 }
 
 .slider-nav-thumbnails .slick-slide .item-thumb img, .slider-nav-thumbnails-2 .slick-slide .item-thumb img {
@@ -8471,7 +8471,7 @@ a:hover span {
 }
 
 .comments-area .comment-list .single-comment .reply:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 
 .product-description .tab-content .contact-infor {
@@ -9159,7 +9159,7 @@ a:hover span {
   color: #ffffff;
   font-size: 13px;
   line-height: 12px;
-  background-color: #FD9636;
+  background-color: #E2B808;
 }
 
 .label-delivered {
@@ -9371,7 +9371,7 @@ a:hover span {
   transition-duration: 0.2s;
 }
 .list-nav-arrow li:hover .number {
-  background-color: #FD9636;
+  background-color: #E2B808;
   color: #fff;
   transition-duration: 0.2s;
 }
@@ -9384,7 +9384,7 @@ a:hover span {
   background: url(../imgs/page/shop/arrow-menu.svg) no-repeat 0px 6px;
 }
 .list-nav-arrow li a:hover {
-  color: #FD9636;
+  color: #E2B808;
 }
 .list-nav-arrow li a .number {
   background-color: #F0F3F8;
@@ -9585,7 +9585,7 @@ a:hover span {
 
 .link-see-more {
   background: url(../imgs/page/shop/arrow-brand-2.svg) no-repeat top 6px right 0px;
-  color: #FD9636;
+  color: #E2B808;
   display: inline-block;
   padding: 0px 15px 0px 0px;
   font-size: 12px;
@@ -9600,7 +9600,7 @@ a:hover span {
   content: "";
   height: 3px;
   width: 68px;
-  background-color: #FD9636;
+  background-color: #E2B808;
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -9620,8 +9620,8 @@ a:hover span {
   text-align: center;
 }
 .pagination li a:hover, .pagination li a.active {
-  background-color: #FD9636;
-  border-color: #FD9636;
+  background-color: #E2B808;
+  border-color: #E2B808;
   color: #ffffff;
 }
 
@@ -9703,7 +9703,7 @@ a:hover span {
   margin-left: 1px;
 }
 .slider-shop-2 .card-grid-style-2:hover {
-  border: 1px solid #FD9636;
+  border: 1px solid #E2B808;
 }
 .slider-shop-2 .swiper-button-next {
   right: -50px;

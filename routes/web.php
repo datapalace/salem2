@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 // Authentication routes
 
-<<<<<<< HEAD
 Route::get('/products', function () {
     return view('products');
 });
@@ -67,8 +66,6 @@ Route::get('/register', function () {
 
 Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 // login user
-=======
->>>>>>> baf6bf6be915aab85186558a5c33aa32a7e3f012
 Route::get('/login', function () {
     $shopByCatMenus = Product::select('type')->groupBy('type')->get();
     return view('user.login', compact('shopByCatMenus'));
@@ -94,7 +91,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/admin/dashboard', function () {
             return view('welcome');
         })->name('welcome'); // admin dashboard
-        
+
         // Route::get('/design', function () {
         //     return view('products');
         // });
