@@ -182,7 +182,7 @@ input,
 select,
 button,
 textarea {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px;
 }
 
@@ -359,115 +359,115 @@ a:hover {
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
 }
 
 .font-xs-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 13px;
   line-height: 18px;
   font-weight: bold;
 }
 
 .font-sm-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px !important;
   line-height: 20px !important;
   font-weight: bold !important;
 }
 
 .font-md-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 16px !important;
   line-height: 24px !important;
   font-weight: bold !important;
 }
 
 .font-lg-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 20px;
   line-height: 28px;
   font-weight: bold;
 }
 
 .font-xs {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 12px !important;
   line-height: 18px !important;
   font-weight: 400;
 }
 
 .font-sm {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px !important;
   line-height: 20px !important;
   font-weight: 400;
 }
 
 .font-sm-lh32 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px;
   line-height: 32px;
   font-weight: 400;
 }
 
 .font-md {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .font-lg {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 20px;
   line-height: 28px;
   font-weight: 400;
 }
 
 .font-xl {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 28px;
   line-height: 32px;
 }
 
 .font-xxl {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 24px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .font-2xl {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 24px;
   line-height: 32px;
   font-weight: 400;
 }
 
 .font-3xl {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 30px;
   line-height: 36px;
   font-weight: 400;
 }
 
 .font-base {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .font-base-2 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 18px;
   line-height: 23px;
   font-weight: 400;
 }
 
 .font-desc {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 19px;
   line-height: 27px;
   font-weight: 400;
@@ -602,42 +602,42 @@ body {
 }
 
 h1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 64px;
   line-height: 83px;
   font-weight: bold;
 }
 
 h2 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 45px;
   line-height: 58px;
   font-weight: bold;
 }
 
 h3 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 32px;
   line-height: 41px;
   font-weight: bold;
 }
 
 h4 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 24px;
   line-height: 31px;
   font-weight: bold;
 }
 
 h5 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 20px;
   line-height: 26px;
   font-weight: bold;
 }
 
 h6 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 16px;
   line-height: 18px;
   font-weight: bold;
@@ -1105,7 +1105,7 @@ h4 {
 /*TYPOGRAPHY*/
 body {
   color: #425A8B;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px;
   line-height: 18px;
   font-style: normal;
@@ -1118,7 +1118,7 @@ body {
 .display-2,
 .heading-lg,
 .heading-sm-1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   color: #425A8B;
   font-weight: 700;
   line-height: 1.2;
@@ -1144,7 +1144,7 @@ a.text-brand-3:hover {
 .btn {
   border-radius: 4px;
   padding: 10px 22px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -3335,7 +3335,7 @@ a.text-brand-3:hover {
   margin: 5px 0;
 }
 .header .main-menu li a {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -3403,7 +3403,7 @@ a.text-brand-3:hover {
   width: 100%;
 }
 .header .text-link-bd-btom {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -3502,7 +3502,7 @@ a.text-brand-3:hover {
   padding: 10px 0px;
 }
 .header-top span {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 16px;
   line-height: 24px;
   font-weight: bold;
@@ -3862,7 +3862,7 @@ a.text-brand-3:hover {
 }
 .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-menu-wrap nav .mobile-menu li a {
   font-size: 16px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   line-height: 1;
   text-transform: capitalize;
   font-weight: 500;
@@ -9307,7 +9307,7 @@ a:hover span {
   margin: 0px -10px 0px -10px;
 }
 .list-services li {
-  font-family: "DM Sans", sans-serif;
+  font-family: "Quicksand", sarabun;
   font-size: 14px !important;
   line-height: 22px !important;
   font-weight: bold !important;

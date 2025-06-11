@@ -41,7 +41,7 @@ Route::get('/shop/category/{category}', [ProductController::class, 'shopByCatego
 
 // view a product
 
-Route::get('/product/customize/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
+Route::get('/product/customise/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
 
 
 // about us

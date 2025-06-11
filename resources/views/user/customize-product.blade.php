@@ -115,7 +115,7 @@
                                     <input class="font-xl color-brand-3" type="text" value="1"><span
                                         class="minus-cart"></span><span class="plus-cart"></span>
                                 </div>
-                                <div class="button-buy"><a class="btn btn-cart" href="#" data-bs-toggle="modal" data-bs-target="#customizeModal">Customize</a><a
+                                <div class="button-buy"><a class="btn btn-cart" href="/customise-product/{{  $product->id }}" >Customize</a><a
                                         class="btn btn-buy" href="shop-checkout.html">Proceed to Check Out</a></div>
                             </div>
 
