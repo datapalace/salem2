@@ -76,14 +76,7 @@ $trendingProducts = Product::with([
     }
 ])->where('type', 'Jacket')->latest()->inRandomOrder()->skip(1000)->take(8)->get();
 
-//top sellings
-$topSellings = Product::with([
-    'galleries',
-    'price',
-    'attributes' => function ($query) {
-        $query->limit(2);
-    }
-])->where('type', 'Bag')->latest()->inRandomOrder()->skip(1000)->take(8)->get();
+
 
 
 // headwears
@@ -127,7 +120,7 @@ $brands = Product::select('brand')->groupBy('brand')->get();
 
 
         // Return the view with the products
-return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies', 'kids', 'secondKids', 'bannerProducts', 'trendingProducts', 'headwears', 'topRates', 'shopByCatMenus', 'brands', 'footwears', 'topSellings', 'bannerSides'));
+return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies', 'kids', 'secondKids', 'bannerProducts', 'trendingProducts', 'headwears', 'topRates', 'shopByCatMenus', 'brands', 'footwears', 'bannerSides'));
     }
 
 

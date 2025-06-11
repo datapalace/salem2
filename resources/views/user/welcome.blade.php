@@ -67,37 +67,37 @@
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-12 col-md-12">
-                       <div class="row d-none d-sm-flex">
-    <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
-        <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%; height: auto;">
-        <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" style="width: 100%;">
-    </div>
-    <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
-        <div class="box-promotions">
-            <!-- Swiper-->
-            <div class="swiper swiper-vertical-1">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
-                        <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        <div class="row d-none d-sm-flex">
+                            <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
+                                <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%; height: auto;">
+                                <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" style="width: 100%;">
+                            </div>
+                            <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
+                                <div class="box-promotions">
+                                    <!-- Swiper-->
+                                    <div class="swiper swiper-vertical-1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
+                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -598,142 +598,10 @@
                                     src="{{ asset('userasset/imgs/page/homepage4/cloth_banner.jpg') }}"
                                     alt="Salem Apparel"></a></div>
                     </div>
-                    <div class="box-content mt-45">
-                        <div class="head-main bd-gray-200">
-                            {{-- <div class="row">
-                                <div class="col-xl-7 col-lg-6">
-                                    <h4 class="mb-5">Top Rate Products</h4>
-                                </div>
-                                <div class="col-xl-5 col-lg-6">
-                                    <!-- Button slider-->
-                                    <div class="box-button-slider-normal">
-                                        <div class="button-slider-nav" id="tab-2-all-nav">
-                                            <div class="swiper-button-prev swiper-button-prev-tab-5"></div>
-                                            <div class="swiper-button-next swiper-button-next-tab-5"></div>
-                                        </div>
-                                    </div>
-                                    <!-- End Button slider-->
-                                </div>
-                            </div> --}}
-                        </div>
-                        <div class="box-swiper">
-                            {{-- <div class="swiper-container swiper-tab-5">
-                                <div class="swiper-wrapper pt-5">
-                                    <div class="swiper-slide">
-                                        <div class="row">
-                                            @foreach ($topRates as $product)
-                                            <div class="col-xl-3 col-lg-6 col-md-6">
-                                                <div class="card-grid-style-3">
-                                                    <div class="card-grid-inner">
-                                                        <div class="tools"><a class="btn btn-trend btn-tooltip mb-10"
-                                                                href="#" aria-label="Trend"
-                                                                data-bs-placement="left"></a><a
-                                                                class="btn btn-wishlist btn-tooltip mb-10"
-                                                                href="#"
-                                                                aria-label="Add To Wishlist"></a><a
-                                                                class="btn btn-compare btn-tooltip mb-10"
-                                                                href="#" aria-label="Compare"></a><a
-                                                                class="btn btn-quickview btn-tooltip"
-                                                                aria-label="Quick view" href="#ModalQuickview"
-                                                                data-bs-toggle="modal"></a></div>
-                                                        <div class="image-box"><span
-                                                                class="label bg-brand-2">-17%</span><a
-                                                                href="/product/customize/{{  $product->id }}"><img
-                                                                    src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
-                                                                    alt="Salem Apparel"></a></div>
-                                                        <div class="info-right"><a class="font-xs color-gray-500"
-                                                                href="#">{{ $product->brand }}</a><br><a
-                                                                class="color-brand-3 font-sm-bold"
-                                                                href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
-                                                            <div class="rating"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><span
-                                                                    class="font-xs color-gray-500">(65)</span></div>
-                                                            <div class="price-info"><strong
-                                                                    class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
-                                                                {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
-                                                            </div>
-                                                            <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="/product/customize/{{  $product->id }}">Customize</a></div>
-                                                            <ul class="list-features">
-                                                                @foreach ($product->attributes as $attribute)
-                                                                <li>{{ $attribute->attribute }}</li>
-                                                                @endforeach
 
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                        </div>
-                    </div>
                 </div>
-                {{-- <div class="col-xl-3 col-lg-4">
-                    <div class="box-slider-item box-sidebar">
-                        <div class="head">
-                            <h4 class="d-inline-block">Best seller</h4>
-                            <div class="box-button-control">
-                                <div
-                                    class="swiper-button-prev swiper-button-prev-style-2 swiper-button-prev-bestseller">
-                                </div>
-                                <div
-                                    class="swiper-button-next swiper-button-next-style-2 swiper-button-next-bestseller">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-slider pl-10 pr-10">
-                            <div class="box-swiper">
-                                <div class="swiper-container swiper-best-seller">
-                                    <div class="swiper-wrapper pt-5">
-                                        <div class="swiper-slide">
-                                            @foreach ($headwears as $product)
-                                            <div class="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                                                <div class="image-box"><span class="label bg-brand-2">-17%</span><a
-                                                        href="/product/customize/{{  $product->id }}"><img
-                                                            src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"></a>
-                                                </div>
-                                                <div class="info-right"><a class="color-brand-3 font-xs-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{$product->title}} </a>
-                                                    <div class="rating"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><span class="font-xs color-gray-500">
-                                                            (65)</span></div>
-                                                    <div class="price-info"><strong
-                                                            class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3}}</strong>
-                                                        {{-- <span class="color-gray-500 font-sm price-line">$3225.6</span> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
+                <div class="col-xl-3 col-lg-4">
 
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     @foreach ($bannerSides as $bannerSide)
                     <div class="d-none d-sm-flex" style="
                             height: 500px;
@@ -813,77 +681,11 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
-    {{-- <section class="section-box pt-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-3 col-lg-5 col-md-5 col-sm-12 mb-30">
-                    <div class="bg-5 block-iphone"><span class="color-brand-3 font-sm-lh32">Starting from
-                            $899</span>
-                        <h3 class="font-xl mb-10">iPhone 12 Pro 128Gb</h3>
-                        <p class="font-base color-brand-3 mb-10">Special Sale</p><a class="btn btn-arrow"
-                            href="shop-grid.html">learn more</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-7 col-md-7 col-sm-12 mb-30">
-                    <div class="bg-4 block-samsung"><span class="color-brand-3 font-sm-lh32">New Arrivals</span>
-                        <h3 class="font-xl mb-10">Samsung 2022 Led TV</h3>
-                        <p class="font-base color-brand-3 mb-20">Special Sale</p><a
-                            class="btn btn-brand-2 btn-arrow-right" href="shop-grid.html">learn more</a>
-                    </div>
-                </div>
-                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12">
-                    <div class="bg-6 block-drone">
-                        <h3 class="font-33 mb-20">Drone Quadcopter UAV - DJI Air 2S</h3>
-                        <div class="mb-30"><strong class="font-18">Gimbal Camera, 5.4K Video</strong></div><a
-                            class="btn btn-brand-2 btn-arrow-right" href="shop-grid.html">learn more</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    {{-- <section class="section-box mt-50">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="head-main">
-                        <h3 class="mb-5">Top Selling Products</h3>
-                        <p class="font-base color-gray-500">Special products in this month.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($topSellings as $product)
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card-grid-style-2">
-                        <div class="image-box"><a href="#"><img
-                                    src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"></a></div>
-                        <div class="info-right"><span class="font-xs color-gray-500">{{ $product->type }}</span><br><a
-                                class="color-brand-3 font-sm-bold" href="/product/customize/{{  $product->id }}">{{ $product->title. ' ' .$product->sku }}</a>
-                            <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Salem Apparel"><img
-                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Salem Apparel"><img
-                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Salem Apparel"><img
-                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Salem Apparel"><img
-                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span></div>
-                            <div class="price-info"><strong
-                                    class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3}}</strong></div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
 
-
-            </div>
-        </div>
-    </section> --}}
 
     <section class="section-box mt-90 mb-50">
         <div class="container">
@@ -942,211 +744,25 @@
         </div>
     </section>
     <section class="section-box box-newsletter" style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7 col-sm-12" >
-                        <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
-                        <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
-                                class="font-lg-bold">special offers.</span></p>
-                    </div>
-                    <div class="col-lg-4 col-md-5 col-sm-12">
-                        <div class="box-form-newsletter mt-15">
-                            <form class="form-newsletter">
-                                <input class="input-newsletter font-xs" value="" placeholder="Your email Address">
-                                <button class="btn btn-brand-2">Sign Up</button>
-                            </form>
-                        </div>
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-7 col-sm-12">
+                    <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
+                    <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
+                            class="font-lg-bold">special offers.</span></p>
                 </div>
-            </div>
-        </section>
-
-    <div class="modal fade" id="ModalQuickview" tabindex="-1" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content apply-job-form">
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body p-30">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="gallery-image">
-                                <div class="galleries-2">
-                                    <div class="detail-gallery">
-                                        <div class="product-image-slider-2">
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-1.jpg') }}"
-                                                    alt="product image"></figure>
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-2.jpg') }}"
-                                                    alt="product image"></figure>
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-3.jpg') }}"
-                                                    alt="product image"></figure>
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-4.jpg') }}"
-                                                    alt="product image"></figure>
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-5.jpg') }}"
-                                                    alt="product image"></figure>
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-6.jpg') }}"
-                                                    alt="product image"></figure>
-                                            <figure class="border-radius-10"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-7.jpg') }}"
-                                                    alt="product image"></figure>
-                                        </div>
-                                    </div>
-                                    <div class="slider-nav-thumbnails-2">
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-1.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-2.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-3.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-4.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-5.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-6.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                        <div>
-                                            <div class="item-thumb"><img
-                                                    src="{{ asset('userasset/imgs/page/product/img-gallery-7.jpg') }}"
-                                                    alt="product image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-tags">
-                                <div class="d-inline-block mr-25"><span
-                                        class="font-sm font-medium color-gray-900">Category:</span><a class="link"
-                                        href="#">Smartphones</a></div>
-                                <div class="d-inline-block"><span
-                                        class="font-sm font-medium color-gray-900">Tags:</span><a class="link"
-                                        href="#">Blue</a>,<a class="link" href="#">Smartphone</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="product-info">
-                                <h5 class="mb-15">SAMSUNG Galaxy S22 Ultra, 8K Camera & Video, Brightest Display
-                                    Screen, S Pen Pro</h5>
-                                <div class="info-by"><span
-                                        class="bytext color-gray-500 font-xs font-medium">by</span><a
-                                        class="byAUthor color-gray-900 font-xs font-medium"
-                                        href="#"> Ecom Tech</a>
-                                    <div class="rating d-inline-block"><img
-                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Salem Apparel"><img
-                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Salem Apparel"><img
-                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Salem Apparel"><img
-                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Salem Apparel"><img
-                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                            alt="Salem Apparel"><span class="font-xs color-gray-500 font-medium"> (65
-                                            reviews)</span></div>
-                                </div>
-                                <div class="border-bottom pt-10 mb-20"></div>
-                                <div class="box-product-price">
-                                    <h3 class="color-brand-3 price-main d-inline-block mr-10">$2856.3</h3><span
-                                        class="color-gray-500 price-line font-xl line-througt">$3225.6</span>
-                                </div>
-                                <div class="product-description mt-10 color-gray-900">
-                                    <ul class="list-dot">
-                                        <li>8k super steady video</li>
-                                        <li>Nightography plus portait mode</li>
-                                        <li>50mp photo resolution plus bright display</li>
-                                        <li>Adaptive color contrast</li>
-                                        <li>premium design & craftmanship</li>
-                                        <li>Long lasting battery plus fast charging</li>
-                                    </ul>
-                                </div>
-                                <div class="box-product-color mt-10">
-                                    <p class="font-sm color-gray-900">Color:<span
-                                            class="color-brand-2 nameColor">Pink Gold</span></p>
-                                    <ul class="list-colors">
-                                        <li class="disabled"><img
-                                                src="{{ asset('userasset/imgs/page/product/img-gallery-1.jpg') }}"
-                                                alt="Salem Apparel" title="Pink"></li>
-                                        <li><img src="{{ asset('userasset/imgs/page/product/img-gallery-2.jpg') }}"
-                                                alt="Salem Apparel" title="Gold"></li>
-                                        <li><img src="{{ asset('userasset/imgs/page/product/img-gallery-3.jpg') }}"
-                                                alt="Salem Apparel" title="Pink Gold"></li>
-                                        <li><img src="{{ asset('userasset/imgs/page/product/img-gallery-4.jpg') }}"
-                                                alt="Salem Apparel" title="Silver"></li>
-                                        <li class="active"><img
-                                                src="{{ asset('userasset/imgs/page/product/img-gallery-5.jpg') }}"
-                                                alt="Salem Apparel" title="Pink Gold"></li>
-                                        <li class="disabled"><img
-                                                src="{{ asset('userasset/imgs/page/product/img-gallery-6.jpg') }}"
-                                                alt="Salem Apparel" title="Black"></li>
-                                        <li class="disabled"><img
-                                                src="{{ asset('userasset/imgs/page/product/img-gallery-7.jpg') }}"
-                                                alt="Salem Apparel" title="Red"></li>
-                                    </ul>
-                                </div>
-                                <div class="box-product-style-size mt-10">
-                                    <div class="row">
-                                        <div class="col-lg-12 mb-10">
-                                            <p class="font-sm color-gray-900">Style:<span
-                                                    class="color-brand-2 nameStyle">S22</span></p>
-                                            <ul class="list-styles">
-                                                <li class="disabled" title="S22 Ultra">S22 Ultra</li>
-                                                <li class="active" title="S22">S22</li>
-                                                <li title="S22 + Standing Cover">S22 + Standing Cover</li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-12 mb-10">
-                                            <p class="font-sm color-gray-900">Size:<span
-                                                    class="color-brand-2 nameSize">512GB</span></p>
-                                            <ul class="list-sizes">
-                                                <li class="disabled" title="1GB">1GB</li>
-                                                <li class="active" title="512 GB">512 GB</li>
-                                                <li title="256 GB">256 GB</li>
-                                                <li title="128 GB">128 GB</li>
-                                                <li class="disabled" title="64GB">64GB</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="buy-product mt-5">
-                                    <p class="font-sm mb-10">Quantity</p>
-                                    <div class="box-quantity">
-                                        <div class="input-quantity">
-                                            <input class="font-xl color-brand-3" type="text"
-                                                value="1"><span class="minus-cart"></span><span
-                                                class="plus-cart"></span>
-                                        </div>
-                                        <div class="button-buy"><a class="btn btn-cart" href="#">Add
-                                                to cart</a><a class="btn btn-buy" href="#">Buy
-                                                now</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-4 col-md-5 col-sm-12">
+                    <div class="box-form-newsletter mt-15">
+                        <form class="form-newsletter">
+                            <input class="input-newsletter font-xs" value="" placeholder="Your email Address">
+                            <button class="btn btn-brand-2">Sign Up</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+
 </main>
 @endsection
