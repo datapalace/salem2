@@ -1262,9 +1262,9 @@ a.text-brand-3:hover {
   transition: all 0.3s ease 0s;
 }
 .btn.btn-cart:hover {
-  border: 1px solid #425A8B;
-  background-color: #425A8B;
-  color: #ffffff;
+  border: 1px solid #E2B808;
+  background-color: #E2B808;
+  color: #000000;
 }
 .btn.btn-buy {
   font-size: 14px;

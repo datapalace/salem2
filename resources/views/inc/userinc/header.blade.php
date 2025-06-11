@@ -117,12 +117,12 @@
                 <li class=""><a href="/shop">Shop</a>
 
                 </li>
-                <li class="dropdown">
-                    <a href="/about-us" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                <li class="dropdown position-static">
+                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/about-us">About Us</a></li>
-                        <li><a class="dropdown-item" href="/privacy-policy">Privacy Policy</a></li>
-                        <li><a class="dropdown-item" href="/contact-us">Contact Us</a></li>
+                        <li><a class="" href="/about-us">About Us</a></li>
+                        <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a class="" href="/contact-us">Contact Us</a></li>
                     </ul>
                 </li>
 
