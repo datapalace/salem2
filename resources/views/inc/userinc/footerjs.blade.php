@@ -223,6 +223,32 @@ document.addEventListener('DOMContentLoaded', function () {
         link.click();
     }
 </script>
+<script>
+    var swiper = new Swiper('.swiper-horizontal-logos', {
+        loop: true,
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
+        speed: 3000, // Control how fast it scrolls
+        spaceBetween: 30,
+        freeMode: true,
+        freeModeMomentum: false,
+        grabCursor: true,
+        slidesPerView: 1, // Default for small screens
+        breakpoints: {
+            768: {
+                slidesPerView: 3,
+            },
+            992: {
+                slidesPerView: 4,
+            },
+            1200: {
+                slidesPerView: 6,
+            }
+        }
+    });
+</script>
 
   </body>
 </html>

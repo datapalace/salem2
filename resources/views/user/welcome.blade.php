@@ -588,44 +588,13 @@
                                 <div class="banner-big banner-big-3 bg-22"
                                     style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
                                     <img src="{{ asset('userasset/imgs/slider/logo/16.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
                                     <img src="{{ asset('userasset/imgs/slider/logo/17.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
                                     <img src="{{ asset('userasset/imgs/slider/logo/18.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
                                     <img src="{{ asset('userasset/imgs/slider/logo/12.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
                                     <img src="{{ asset('userasset/imgs/slider/logo/13.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/23.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/24.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
-                            </div>
+
                         </div>
                         <!-- Optional navigation buttons -->
                         <div class="swiper-button-next swiper-horizontal-logos-next"></div>
