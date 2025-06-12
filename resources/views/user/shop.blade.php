@@ -150,10 +150,10 @@
             </div>
             <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="/shop">Jacket</a><a class="btn btn-border mr-5" href="/shop">Skirt</a></div>
           </div>
-          <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
+          {{-- <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
             <h5 class="font-23 mt-20">Fast Delivery<br class="d-none d-lg-block">is our priority</h5>
             <p class="text-desc font-16 mt-15">We deliver in no time</p><a href="/shop">Get Started</a>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
