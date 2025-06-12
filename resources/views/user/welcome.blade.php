@@ -560,7 +560,7 @@
                                                                 href="#">{{ $product->brand }}</a><br><a
                                                                 class="color-brand-3 font-sm-bold"
                                                                 href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
-                                                            
+
                                                             <div class="price-info"><strong
                                                                     class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
@@ -616,7 +616,7 @@
                                                 </div>
                                                 <div class="info-right"><a class="color-brand-3 font-xs-bold"
                                                         href="/product/customize/{{  $product->id }}">{{$product->title}} </a>
-                                                   
+
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
                                                         {{-- <span class="color-gray-500 font-sm price-line">$3225.6</span> --}}
