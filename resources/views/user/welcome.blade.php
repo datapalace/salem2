@@ -18,14 +18,14 @@
                                 <div class="swiper-wrapper h-100">
                                     <!-- Static Slide -->
                                     <div class="swiper-slide h-100">
-                                        <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/slider/logo/10.png') }}'); background-size: cover; background-position: center; height: 100%;">
+                                        <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/slider/logo/10.png') }}'); background-size: cover; background-position: center; height: 350px;">
                                             <!-- Optional content -->
                                         </div>
                                     </div>
 
                                     <!-- Dynamic Slides -->
                                     @foreach ($bannerProducts as $bp)
-                                    <div class="swiper-slide h-100">
+                                    <div class="swiper-slide h-100 d-none d-sm-flex">
                                         <div class="banner-big banner-big-3 bg-22"
                                             style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%); position: relative; height: 100%;">
                                             <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
