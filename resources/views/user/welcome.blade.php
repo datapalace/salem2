@@ -54,7 +54,7 @@
                                                 </div>
                                             </div>
                                             <div class="mt-30">
-                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customize</a>
+                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customise</a>
 
                                             </div>
                                         </div>
@@ -157,7 +157,7 @@
                     <div class="card-grid-style-2 card-grid-style-2-small">
                         <div class="image-box"><a href="#"><img
                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$bp->title}}"></a>
-                            <div class="mt-10 text-center"><a class="btn btn-gray" href="/product/customize/{{  $product->id }}">customize</a></div>
+                            <div class="mt-10 text-center"><a class="btn btn-gray" href="/product/customize/{{  $product->id }}">Customise</a></div>
                         </div>
                         <div class="info-right"><a class="color-brand-3 font-sm-bold" href="#">
                                 <h6>{{$product->type}}</h6>
@@ -252,7 +252,7 @@
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ $attribute->attribute }}</li>
@@ -297,7 +297,7 @@
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ $attribute->attribute }}</li>
@@ -348,7 +348,7 @@
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ $attribute->attribute }}</li>
@@ -393,7 +393,7 @@
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ $attribute->attribute }}</li>
@@ -444,7 +444,7 @@
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ $attribute->attribute }}</li>
@@ -489,7 +489,7 @@
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ $attribute->attribute }}</li>
@@ -552,7 +552,7 @@
                                                                 aria-label="Quick view" href="#ModalQuickview"
                                                                 data-bs-toggle="modal"></a></div>
                                                         <div class="image-box"><span
-                                                                class="label bg-brand-2">-17%</span><a
+                                                                class="label bg-brand-2"></span><a
                                                                 href="/product/customize/{{  $product->id }}"><img
                                                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                                     alt="Salem Apparel"></a></div>
@@ -560,24 +560,13 @@
                                                                 href="#">{{ $product->brand }}</a><br><a
                                                                 class="color-brand-3 font-sm-bold"
                                                                 href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
-                                                            <div class="rating"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><img
-                                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                                    alt="Salem Apparel"><span
-                                                                    class="font-xs color-gray-500">(65)</span></div>
+                                                            
                                                             <div class="price-info"><strong
                                                                     class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="/product/customize/{{  $product->id }}">Customize</a></div>
+                                                                    href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                 <li>{{ $attribute->attribute }}</li>
@@ -602,33 +591,6 @@
                 </div>
                 <div class="col-xl-3 col-lg-4">
 
-                    @foreach ($bannerSides as $bannerSide)
-                    <div class="d-none d-sm-flex" style="
-                            height: 500px;
-                            padding: 40px 20px;
-                            background: linear-gradient(to bottom, #c8e6f9 0%,rgb(255, 255, 255) 100%);
-                            position: relative;
-                            text-align: center;
-                            overflow: hidden;
-                        ">
-                        <span style="font-size: 11px; color: #007BFF; background: #E6F4FF; padding: 2px 8px; border-radius: 10px; display: inline-block;">No.9</span>
-
-                        <h5 style="font-size: 23px; margin-top: 20px; color: #2c3e50;">
-                            {{ $bannerSide->title }}
-                        </h5>
-
-                        @foreach ($bannerSide->attributes as $attribute)
-                        <p style="font-size: 16px; margin-top: 15px; color: #34495e;">
-                            {{ $attribute->attribute }}
-                        </p>
-                        @endforeach
-
-                        {{-- Arm image --}}
-                        <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}" alt="{{ $bannerSide->title }}"
-                            style="position: absolute; bottom: 0; left: 0; height: 350px; object-fit: cover; z-index: 0;">
-                    </div>
-                    @endforeach
-
                     <div class="box-slider-item box-sidebar">
                         <div class="head">
                             <h4 class="d-inline-block">New Products</h4>
@@ -648,24 +610,13 @@
                                         <div class="swiper-slide">
                                             @foreach ($footwears as $product)
                                             <div class="card-grid-style-2 card-grid-none-border border-bottom mb-10">
-                                                <div class="image-box"><span class="label bg-brand-2">-17%</span><a
+                                                <div class="image-box"><span class="label bg-brand-2"></span><a
                                                         href="/product/customize/{{  $product->id }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"></a>
                                                 </div>
                                                 <div class="info-right"><a class="color-brand-3 font-xs-bold"
                                                         href="/product/customize/{{  $product->id }}">{{$product->title}} </a>
-                                                    <div class="rating"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><img
-                                                            src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                            alt="Salem Apparel"><span class="font-xs color-gray-500">
-                                                            (65)</span></div>
+                                                   
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
                                                         {{-- <span class="color-gray-500 font-sm price-line">$3225.6</span> --}}
