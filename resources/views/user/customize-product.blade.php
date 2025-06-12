@@ -214,7 +214,7 @@
                                                 href="shop-vendor-single.html">{{ $relatedProduct->type }}</a><br><a
                                                 class="color-brand-3 font-sm-bold"
                                                 href="/product/customize/{{ $relatedProduct->id }}">{{ $relatedProduct->title . ' ' . $relatedProduct->sku }}</a>
-                                            <div class="rating"><img
+                                            {{-- <div class="rating"><img
                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                                     alt="Ecom"><img
                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
@@ -224,7 +224,7 @@
                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                                     alt="Ecom"><img
                                                     src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                                    alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div>
+                                                    alt="Ecom"><span class="font-xs color-gray-500">(65)</span></div> --}}
                                             <div class="price-info"><strong
                                                     class="font-lg-bold color-brand-3 price-main">£{{ $relatedProduct->price->single_list_price + 3 }}</strong>
                                                 <!-- <span class="color-gray-500 price-line">$3225.6</span> -->

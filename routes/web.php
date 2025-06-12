@@ -9,6 +9,7 @@ use App\Http\Controllers\TermsAndConditionController;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CustomizeProductController;
+use App\Http\Controllers\CanvasController;
 use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,7 +40,7 @@ Route::middleware('auth:admin')->group(function () {
         return view('welcome');
     })->name('welcome'); // admin dashboard
 
-    
+
 });
 
 
@@ -91,6 +92,9 @@ Route::get('/register', function () {
 })->name('register'); // register page
 
 Route::post('/process-register', [AuthController::class, 'register'])->name('register'); // process register user
+
+//route customise-product
+Route::get('/customise-product/{id}', [App\Http\Controllers\CanvasController::class, 'show'])->name('customise.show');
 
 
 Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
