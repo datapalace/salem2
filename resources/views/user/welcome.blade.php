@@ -40,7 +40,7 @@
 
                                             <ul class="list-disc">
                                                 @foreach ($bp->attributes as $attribute)
-                                                <li class="font-lg color-brand-3">{{ $attribute->attribute }}</li>
+                                                <li class="font-lg color-brand-3">{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                 @endforeach
                                             </ul>
 
@@ -59,8 +59,8 @@
                     <!-- Right: Small Image Column -->
                     <div class="col-lg-4 col-md-12 mb-30">
                         <div class="d-flex flex-column justify-content-between h-100">
-                            <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; height: auto; margin-bottom: 10px;">
-                            <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%;">
+                            <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; max-width: 180px; height: auto; margin-bottom: 10px; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
+                            <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%; max-width: 180px; height: auto; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@
                             </a>
                             <ul class="list-links-disc">
                                 @foreach ($product->attributes as $attribute)
-                                <li><a class="font-sm" href="#">{{ $attribute->attribute }}</li></a>
+                                <li><a class="font-sm" href="#">{{ Str::replace(':', ': ', $attribute->attribute) }}</li></a>
                                 @endforeach
 
 
@@ -198,7 +198,7 @@
                                                             href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
-                                                        <li>{{ $attribute->attribute }}</li>
+                                                        <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                         @endforeach
 
                                                     </ul>
@@ -243,7 +243,7 @@
                                                             href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
-                                                        <li>{{ $attribute->attribute }}</li>
+                                                        <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                         @endforeach
 
                                                     </ul>
@@ -294,7 +294,7 @@
                                                             href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
-                                                        <li>{{ $attribute->attribute }}</li>
+                                                        <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                         @endforeach
 
                                                     </ul>
@@ -339,7 +339,7 @@
                                                             href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
-                                                        <li>{{ $attribute->attribute }}</li>
+                                                        <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                         @endforeach
 
                                                     </ul>
@@ -390,7 +390,7 @@
                                                             href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
-                                                        <li>{{ $attribute->attribute }}</li>
+                                                        <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                         @endforeach
 
                                                     </ul>
@@ -435,7 +435,7 @@
                                                             href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
-                                                        <li>{{ $attribute->attribute }}</li>
+                                                        <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                         @endforeach
 
                                                     </ul>
@@ -511,7 +511,7 @@
                                                                     href="/product/customize/{{  $product->id }}">Customise</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
-                                                                <li>{{ $attribute->attribute }}</li>
+                                                                <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
                                                                 @endforeach
 
                                                             </ul>
@@ -580,21 +580,62 @@
     <div class="container">
         <div class="row">
             <!-- Each column takes 4 of 12 columns -->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
-                <div class="banner-big banner-big-3 bg-22"
-                     style="background-image: url('{{ asset('userasset/imgs/slider/logo/16.png') }}'); background-size: cover; background-position: center; height: 250px;">
+            <div class="col-12">
+                <div class="box-swiper">
+                    <div class="swiper-container swiper-horizontal-logos">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/16.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/17.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/18.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/12.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/13.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/23.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="banner-big banner-big-3 bg-22"
+                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="{{ asset('userasset/imgs/slider/logo/24.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Optional navigation buttons -->
+                        <div class="swiper-button-next swiper-horizontal-logos-next"></div>
+                        <div class="swiper-button-prev swiper-horizontal-logos-prev"></div>
+                        <div class="swiper-pagination swiper-horizontal-logos-pagination"></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
-                <div class="banner-big banner-big-3 bg-22"
-                     style="background-image: url('{{ asset('userasset/imgs/slider/logo/17.png') }}'); background-size: cover; background-position: center; height: 250px;">
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
-                <div class="banner-big banner-big-3 bg-22"
-                     style="background-image: url('{{ asset('userasset/imgs/slider/logo/18.png') }}'); background-size: cover; background-position: center; height: 250px;">
-                </div>
-            </div>
+
+
         </div>
     </div>
 </section>

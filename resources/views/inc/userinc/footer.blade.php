@@ -7,7 +7,7 @@
               {{-- <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Address:</strong> 502 New Design Str, Melbourne, San Francisco, CA 94110, United States</div> --}}
               <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Phone:</strong> +447487384030
 </div>
-              <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">E-mail:</strong>enquiry@salemapparel.co.uk</div>
+              <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">E-mail:</strong> enquiry@salemapparel.co.uk</div>
               <div class="font-md mb-20 color-gray-900"><strong class="font-md-bold">Hours:</strong> 9:00 - 20:00, Mon - Sat</div>
               <div class="mt-30"><a class="icon-socials icon-facebook" href="https://www.facebook.com/share/1Fu7DAVtQH/?mibextid=wwXIfr"></a><a class="icon-socials icon-instagram" href="https://www.instagram.com/salemappareluk?igsh=MXA0czB5Y25ueWN1eQ%3D%3D&utm_source=qr"></a><a class="icon-socials icon-twitter" href="https://x.com/salemappareluk?s=21"></a><a class="icon-socials icon-tiktok" href="https://www.tiktok.com/@salemappareluk?_t=ZN-8vjDBbUEBaY&_r=1"></a></div>
             </div>
@@ -42,14 +42,14 @@
               <p>
                 <div class="mt-30"><a class="icon-socials icon-facebook" href="https://www.facebook.com/share/1Fu7DAVtQH/?mibextid=wwXIfr"></a><a class="icon-socials icon-instagram" href="https://www.instagram.com/salemappareluk?igsh=MXA0czB5Y25ueWN1eQ%3D%3D&utm_source=qr"></a><a class="icon-socials icon-twitter" href="https://x.com/salemappareluk?s=21"></a><a class="icon-socials icon-tiktok" href="https://www.tiktok.com/@salemappareluk?_t=ZN-8vjDBbUEBaY&_r=1"></a></div>
               </p>
-              <ul class="menu-footer">
+              {{-- <ul class="menu-footer">
                 <li><a href="#">FAQs</a></li>
                 <li><a href="#">Editor Help</a></li>
                 <li><a href="#">Community</a></li>
                 <li><a href="#">Live Chatting</a></li>
                 <li><a href="page-contact.html">Contact Us</a></li>
                 <li><a href="#">Support Center</a></li>
-              </ul>
+              </ul> --}}
             </div>
             {{-- <div class="col-lg-3 width-23">
               <h4 class="mb-30 color-gray-1000">App &amp; Payment</h4>
