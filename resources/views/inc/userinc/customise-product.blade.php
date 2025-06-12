@@ -9,42 +9,51 @@
     <style>
         .toolbar {
             display: flex;
-            flex-direction: row;
-            align-items: center;
+            flex-direction: column;
+            align-items: stretch;
             background: #f8f8f8;
             border-radius: 6px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            padding: 4px 8px;
-            margin: 0 0 16px 0;
-            min-width: 0;
-            max-width: none;
-            font-size: 13px;
-            gap: 8px;
-            flex-wrap: wrap;
+            padding: 4px 2px;
+            margin: 0 0 0 0;
+            min-width: 44px;
+            max-width: 56px;
+            font-size: 11px;
+            gap: 4px;
+            width: 100%;
         }
         .toolbar-group {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
             margin: 0;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            width: 100%;
         }
         .toolbar button, .toolbar label, .toolbar select, .toolbar input[type="color"] {
             background: #fff;
             color: #222;
             border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 3px 6px;
-            font-size: 13px;
+            border-radius: 2px;
+            padding: 0;
+            font-size: 11px;
             cursor: pointer;
             transition: background 0.2s, color 0.2s, border 0.2s;
-            width: auto;
-            min-width: 28px;
+            width: 32px;
             height: 28px;
+            min-width: 28px;
+            min-height: 24px;
+            max-width: 36px;
+            max-height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 1px;
+            line-height: 1;
+        }
+        .toolbar button, .toolbar label {
+            padding: 0;
         }
         .toolbar button:hover, .toolbar label:hover, .toolbar select:hover {
             background: #E2B808;
@@ -54,19 +63,21 @@
         .toolbar input[type="color"] {
             padding: 0;
             width: 28px;
-            height: 28px;
-            border-radius: 3px;
+            height: 24px;
+            border-radius: 2px;
             border: 1px solid #ccc;
             background: #fff;
         }
         .toolbar select {
-            min-width: 70px;
-            max-width: 120px;
-            height: 28px;
+            min-width: 28px;
+            max-width: 48px;
+            height: 24px;
+            font-size: 11px;
+            padding: 0 2px;
         }
         .toolbar label {
             margin-bottom: 0;
-            padding: 0 6px;
+            padding: 0;
             background: none;
             border: none;
             cursor: pointer;
@@ -76,17 +87,18 @@
         }
         .slider-nav-thumbnails {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 6px;
+            margin-top: 10px;
             flex-wrap: wrap;
             justify-content: center;
         }
         .item-thumb img {
-            width: 80px;
-            height: 80px;
+            width: 40px;    /* Increased from 28px */
+            height: 40px;   /* Increased from 28px */
             object-fit: cover;
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 1px solid transparent;
+            border-radius: 3px;
         }
         .item-thumb img:hover {
             border-color: #333;
@@ -96,13 +108,19 @@
             .galleries {
                 flex-direction: column !important;
                 align-items: stretch !important;
-                gap: 16px !important;
+                gap: 10px !important;
             }
             .toolbar {
-                justify-content: flex-start;
+                flex-direction: row;
+                align-items: center;
+                min-width: 0;
+                max-width: none;
+                width: 100%;
             }
-            .slider-nav-thumbnails {
-                justify-content: flex-start;
+            .toolbar-group {
+                flex-direction: row;
+                align-items: center;
+                width: auto;
             }
         }
         @media (max-width: 575.98px) {
@@ -113,66 +131,80 @@
                 min-width: 0;
             }
             .item-thumb img {
-                width: 60px;
-                height: 60px;
+                width: 32px;   /* Increased from 24px */
+                height: 32px;  /* Increased from 24px */
             }
         }
     </style>
 </head>
 <body>
-<div class="container-fluid py-3">
-    <div class="row galleries d-flex flex-row align-items-start justify-content-center gap-4">
-        <div class="col-lg-6 col-md-12 mb-3 d-flex flex-column align-items-center">
-            <canvas id="fabricCanvas" width="350" height="500" style="max-width:100%;height:auto;"></canvas>
-        </div>
-        <div class="col-lg-6 col-md-12">
-            <div class="toolbar mb-2">
-                <div class="toolbar-group">
-                    <button id="addTextBtn" title="Add Text">T+</button>
-                    <label for="uploadImageInput" title="Upload Image">🖼️</label>
-                    <input type="file" id="uploadImageInput" accept="image/*">
-                    <button id="addRectangleBtn" title="Rectangle">▭</button>
-                    <button id="addCircleBtn" title="Circle">◯</button>
-                    <button id="addLineBtn" title="Line">／</button>
-                    <button id="addTriangleBtn" title="Triangle">△</button>
-                    <button id="addPolygonBtn" title="Polygon">⬟</button>
-                    <button id="deleteObjectBtn" title="Delete">🗑️</button>
-                    <button id="bringForwardBtn" title="Bring Forward">⬆️</button>
-                    <button id="sendBackwardBtn" title="Send Backward">⬇️</button>
-                    <button id="bringToFrontBtn" title="Bring to Front">⏫</button>
-                    <button id="sendToBackBtn" title="Send to Back">⏬</button>
+<div class="container-fluid py-3" >
+    <div  class="row galleries d-flex flex-row align-items-start justify-content-center gap-2">
+        <div style="background-color: #E2B808;" class="pt-5 pb-5 col-lg-6 col-md-12 mb-2 d-flex flex-column align-items-center position-relative">
+            <div class="d-flex flex-row align-items-start justify-content-center w-100" style="gap:8px;">
+                <div style="box-shadow: 0 4px 24px rgba(0,0,0,0.18); border: 3px solid #E2B808; border-radius: 12px; padding: 8px; background: #fff;">
+                    <canvas id="fabricCanvas" width="350" height="500" style="max-width:100%;height:auto; display:block; border-radius:8px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); border: 1.5px solid #ccc;"></canvas>
                 </div>
-                <div class="toolbar-group">
-                    <select id="fontFaceSelect" title="Font">
-                        <option value="Arial">Arial</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Courier New">Courier New</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="Tahoma">Tahoma</option>
-                        <option value="Impact">Impact</option>
-                    </select>
-                    <input type="color" id="fontColorInput" value="#222222" title="Font Color">
-                    <input type="color" id="shapeColorInput" value="#ff0000" title="Shape Color">
-                    <select id="textStyleSelect" title="Style">
-                        <option value="">Normal</option>
-                        <option value="bold">Bold</option>
-                        <option value="italic">Italic</option>
-                        <option value="underline">Underline</option>
-                        <option value="red-text">Red</option>
-                        <option value="large-text">Large</option>
-                        <option value="medium-text">Medium</option>
-                        <option value="small-text">Small</option>
-                    </select>
+                <div class="toolbar mb-0 ms-1 flex-column align-items-stretch" style="min-width:44px;max-width:56px;">
+                    <div class="toolbar-group flex-column align-items-center">
+                        <button id="addTextBtn" title="Add Text">T+</button>
+                        <div class="toolbar-group flex-column align-items-center mt-2">
+                        <select id="fontFaceSelect" title="Font" class="mb-1">
+                            <option value="Arial">Arial</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Impact">Impact</option>
+                        </select>
+                        <input type="color" id="fontColorInput" value="#222222" title="Font Color" class="mb-1">
+                        <select id="textStyleSelect" title="Style">
+                            <option value="">Normal</option>
+                            <option value="bold">Bold</option>
+                            <option value="italic">Italic</option>
+                            <option value="underline">Underline</option>
+                            <option value="red-text">Red</option>
+                            <option value="large-text">Large</option>
+                            <option value="medium-text">Medium</option>
+                            <option value="small-text">Small</option>
+                        </select>
+
+                    </div>
+                        <label for="uploadImageInput" title="Upload Image">🖼️</label>
+                        <input type="file" id="uploadImageInput" accept="image/*">
+                        <button id="addRectangleBtn" title="Rectangle">▭</button>
+                        <button id="addCircleBtn" title="Circle">◯</button>
+                        <button id="addLineBtn" title="Line">／</button>
+                        <button id="addTriangleBtn" title="Triangle">△</button>
+                        <button id="addPolygonBtn" title="Polygon">⬟</button>
+                        <input type="color" id="shapeColorInput" value="#ff0000" title="Shape Color" class="mb-1">
+
+                        <button id="deleteObjectBtn" title="Delete">🗑️</button>
+                        <button id="bringForwardBtn" title="Bring Forward">⬆️</button>
+                        <button id="sendBackwardBtn" title="Send Backward">⬇️</button>
+                        <button id="bringToFrontBtn" title="Bring to Front">⏫</button>
+                        <button id="sendToBackBtn" title="Send to Back">⏬</button>
+                    </div>
+
+
                 </div>
             </div>
-            <div class="slider-nav-thumbnails">
+            <div class="slider-nav-thumbnails w-100 justify-content-center mt-2">
                 @foreach ($images as $img)
                     <div class="item-thumb">
                         <img src="{{ $img->image_url }}" alt="Product Image" data-url="{{ $img->image_url }}">
                     </div>
                 @endforeach
             </div>
+        </div>
+        <div class="preset-assets w-100 mb-2 d-flex flex-wrap justify-content-center" style="gap:8px;">
+            <!-- Example logos (replace src with your logo URLs or SVGs) -->
+            <img src="/userasset/logos/logo1.png" class="preset-logo" alt="Logo 1" style="width:36px; height:36px; cursor:pointer;">
+            <img src="/userasset/logos/logo2.png" class="preset-logo" alt="Logo 2" style="width:36px; height:36px; cursor:pointer;">
+            <!-- Example text templates -->
+            <button class="preset-text btn btn-light btn-sm" data-text="Best Seller">Best Seller</button>
+            <button class="preset-text btn btn-light btn-sm" data-text="Limited Edition">Limited Edition</button>
         </div>
     </div>
 </div>
@@ -570,6 +602,29 @@
             canvas.sendToBack(activeObject);
             canvas.requestRenderAll();
         }
+    });
+
+    // Add logo to canvas when clicked
+    document.querySelectorAll('.preset-logo').forEach(function(img) {
+        img.addEventListener('click', function() {
+            fabric.Image.fromURL(this.src, function(obj) {
+                obj.set({ left: 80, top: 80, scaleX: 0.3, scaleY: 0.3 });
+                canvas.add(obj).setActiveObject(obj);
+            });
+        });
+    });
+
+    // Add text template to canvas when clicked
+    document.querySelectorAll('.preset-text').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const text = new fabric.IText(this.dataset.text, {
+                left: 100,
+                top: 100,
+                fill: '#222',
+                fontSize: 24
+            });
+            canvas.add(text).setActiveObject(text);
+        });
     });
 
     // Optional: Allow delete with keyboard 'Delete' or 'Backspace'

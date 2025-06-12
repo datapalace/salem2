@@ -25,7 +25,7 @@ class PrivacyPolicyController extends Controller
         //     return Product::select('brand')->groupBy('brand')->get();
         // });
         // Page title
-        $pageTitle = 'Salem Apparels - Privacy Policy';
+        $pageTitle = 'Salem Apparel - Privacy Policy';
         // You can pass the page title to the view if needed
         // Return the view with the necessary data
         return view('user.privacypolicy', compact('shopByCatMenus', 'brands', 'pageTitle'));

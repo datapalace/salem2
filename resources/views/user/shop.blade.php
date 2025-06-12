@@ -1,6 +1,6 @@
 @extends('layout.usermaster')
 @section('usercontent')
-<title>Home - Salem Apparels</title>
+<title>Shop - Salem Apparel</title>
 <meta name="description" content="Terms and Conditions for our website.">
 <meta name="keywords" content="terms, conditions, user agreement">
 <meta name="author" content="Salem Apparels">
@@ -166,7 +166,7 @@
             <div class="icon-left"><img src="{{ asset('userasset/imgs/template/delivery.svg') }}" alt="Salem Apparel"></div>
             <div class="info-right">
               <h5 class="font-lg-bold color-gray-100">Free Delivery</h5>
-              <p class="font-sm color-gray-500">From all orders over $10</p>
+              <p class="font-sm color-gray-500">From all orders over £10</p>
             </div>
           </div>
         </li>
@@ -193,7 +193,7 @@
             <div class="icon-left"><img src="{{ asset('userasset/imgs/template/return.svg') }}" alt="Salem Apparel"></div>
             <div class="info-right">
               <h5 class="font-lg-bold color-gray-100">Return &amp; Refund</h5>
-              <p class="font-sm color-gray-500">Free return over $200</p>
+              <p class="font-sm color-gray-500">Free return over £200</p>
             </div>
           </div>
         </li>
