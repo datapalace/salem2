@@ -28,7 +28,7 @@
                             <div class="galleries">
                                 <div class="detail-gallery">
 
-                                    <label class="label">-17%</label>
+                                   
                                     <div class="product-image-slider">
                                         @foreach ($product->galleries as $gallery)
                                             <figure class="border-radius-10"><img src="{{ $gallery->image_url }}"
@@ -206,7 +206,7 @@
                                                 aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip"
                                                 aria-label="Quick view" href="#ModalQuickview"
                                                 data-bs-toggle="modal"></a></div>
-                                        <div class="image-box"><span class="label bg-brand-2">-17%</span><a
+                                        <div class="image-box"><a
                                                 href="/product/customize/{{ $relatedProduct->id }}"><img
                                                     src="{{ $relatedProduct->galleries[0]->image_url }}"
                                                     alt="Ecom"></a></div>
