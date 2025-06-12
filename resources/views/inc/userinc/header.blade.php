@@ -156,7 +156,7 @@
             <!--</div>-->
             <div class="mobile-account">
               <div class="mobile-header-top">
-                <div class="user-account"><a href="page-account.html"><img src="assets/imgs/template/ava_1.png" alt="Salem Apparels Logo"></a>
+                <div class="user-account">
                   <div class="content">
                     <h6 class="user-name">Hello<span class="text-brand"> Steven !</span></h6>
                     <p class="font-xs text-muted">You have 3 new messages</p>

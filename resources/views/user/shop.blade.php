@@ -53,111 +53,180 @@
           <div class="row mt-20">
             @foreach($products as $product)
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="card-grid-style-3"  >
+              <div class="card-grid-style-3">
                 <div class="card-grid-inner" style="border: 1px, solid, #E2B808;">
-                  <div class="tools" ><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="/product/customise/{{  $product->id }}" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="/shop" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
+                  <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="/product/customise/{{  $product->id }}" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="/shop" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                   <div class="image-box">
                     {{-- <span class="label bg-brand-2">-17%</span> --}}
                     <a href="/product/customise/{{  $product->id }}">
                       <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="Salem Apparel">
-                    </a></div>
-                  <div class="info-right"><a class="font-xs color-gray-500" href="/shop">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customise/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
-                    {{-- <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span></div> --}}
-                    <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
-                    <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->id }}">View</a></div>
-                    <ul class="list-features">
-                      @foreach ($product->attributes as $attribute)
-                      <li> {{ Str::replace(':', ': ', $attribute->attribute) }}</li>
-
-                      @endforeach
-                    </ul>
+                    </a>
                   </div>
+                  <div class="info-right"><a class="font-xs color-gray-500" href="/shop">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customise/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                    {{-- <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span>
+                  </div> --}}
+                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
+                  <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->id }}">View</a></div>
+                  <ul class="list-features">
+                    @foreach ($product->attributes as $attribute)
+                    <li> {{ Str::replace(':', ': ', $attribute->attribute) }}</li>
+
+                    @endforeach
+                  </ul>
                 </div>
               </div>
             </div>
-            @endforeach
           </div>
-          @php
-          $currentPage = $products->currentPage();
-          $lastPage = $products->lastPage();
-          @endphp
-
-          @if ($lastPage > 1)
-          <nav>
-            <ul class="pagination">
-              {{-- Previous Page Link --}}
-              <li class="page-item {{ $currentPage == 1 ? 'disabled' : '' }}">
-                <a class="page-link page-prev" href="{{ $products->previousPageUrl() }}" rel="prev" aria-label="Previous"></a>
-              </li>
-
-              {{-- Show first page --}}
-              <li class="page-item {{ $currentPage == 1 ? 'active' : '' }}">
-                <a class="page-link" href="{{ $products->url(1) }}">1</a>
-              </li>
-
-              {{-- Ellipsis after first page --}}
-              @if ($currentPage > 4)
-              <li class="page-item disabled"><span class="page-link">...</span></li>
-              @endif
-
-              {{-- Pages around current page --}}
-              @for ($i = max(2, $currentPage - 1); $i <= min($lastPage - 1, $currentPage + 1); $i++)
-                <li class="page-item {{ $currentPage == $i ? 'active' : '' }}">
-                <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
-                </li>
-                @endfor
-
-                {{-- Ellipsis before last page --}}
-                @if ($currentPage < $lastPage - 3)
-                  <li class="page-item disabled"><span class="page-link">...</span></li>
-                  @endif
-
-                  {{-- Last page --}}
-                  @if ($lastPage > 1)
-                  <li class="page-item {{ $currentPage == $lastPage ? 'active' : '' }}">
-                    <a class="page-link" href="{{ $products->url($lastPage) }}">{{ $lastPage }}</a>
-                  </li>
-                  @endif
-
-                  {{-- Next Page Link --}}
-                  <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
-                    <a class="page-link page-next" href="{{ $products->nextPageUrl() }}" rel="next" aria-label="Next"></a>
-                  </li>
-            </ul>
-          </nav>
-          @endif
-
+          @endforeach
         </div>
-        <div class="col-lg-3 order-last order-lg-first">
-          <div class="sidebar-border mb-0">
-            <div class="sidebar-head">
-              <h6 class="color-gray-900">Product Categories</h6>
-            </div>
-            <div class="sidebar-content">
-              <ul class="list-nav-arrow">
-                @foreach($shopByCatMenus as $shopByCatMenu)
-                <li><a href="/shop/category/{{$shopByCatMenu->type}}">{{$shopByCatMenu->type}}<span class="number">{{$shopByCatMenu->total}}</span></a></li>
-                @endforeach
+        @php
+        $currentPage = $products->currentPage();
+        $lastPage = $products->lastPage();
+        @endphp
 
-              </ul>
+        @if ($lastPage > 1)
+        <nav>
+          <ul class="pagination">
+            {{-- Previous Page Link --}}
+            <li class="page-item {{ $currentPage == 1 ? 'disabled' : '' }}">
+              <a class="page-link page-prev" href="{{ $products->previousPageUrl() }}" rel="prev" aria-label="Previous"></a>
+            </li>
 
-            </div>
+            {{-- Show first page --}}
+            <li class="page-item {{ $currentPage == 1 ? 'active' : '' }}">
+              <a class="page-link" href="{{ $products->url(1) }}">1</a>
+            </li>
+
+            {{-- Ellipsis after first page --}}
+            @if ($currentPage > 4)
+            <li class="page-item disabled"><span class="page-link">...</span></li>
+            @endif
+
+            {{-- Pages around current page --}}
+            @for ($i = max(2, $currentPage - 1); $i <= min($lastPage - 1, $currentPage + 1); $i++)
+              <li class="page-item {{ $currentPage == $i ? 'active' : '' }}">
+              <a class="page-link" href="{{ $products->url($i) }}">{{ $i }}</a>
+              </li>
+              @endfor
+
+              {{-- Ellipsis before last page --}}
+              @if ($currentPage < $lastPage - 3)
+                <li class="page-item disabled"><span class="page-link">...</span></li>
+                @endif
+
+                {{-- Last page --}}
+                @if ($lastPage > 1)
+                <li class="page-item {{ $currentPage == $lastPage ? 'active' : '' }}">
+                  <a class="page-link" href="{{ $products->url($lastPage) }}">{{ $lastPage }}</a>
+                </li>
+                @endif
+
+                {{-- Next Page Link --}}
+                <li class="page-item {{ $products->hasMorePages() ? '' : 'disabled' }}">
+                  <a class="page-link page-next" href="{{ $products->nextPageUrl() }}" rel="next" aria-label="Next"></a>
+                </li>
+          </ul>
+        </nav>
+        @endif
+
+      </div>
+      <div class="col-lg-3 order-last order-lg-first">
+        <div class="sidebar-border mb-0">
+          <div class="sidebar-head">
+            <h6 class="color-gray-900">Product Categories</h6>
           </div>
-          <br>
-          <div class="box-slider-item">
-            <div class="head pb-15 border-brand-2">
-              <h5 class="color-gray-900">Product Tags</h5>
-            </div>
-            <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="/shop">Jacket</a><a class="btn btn-border mr-5" href="/shop">Skirt</a></div>
+          <div class="sidebar-content">
+            <ul class="list-nav-arrow">
+              @foreach($shopByCatMenus as $shopByCatMenu)
+              <li><a href="/shop/category/{{$shopByCatMenu->type}}">{{$shopByCatMenu->type}}<span class="number">{{$shopByCatMenu->total}}</span></a></li>
+              @endforeach
+
+            </ul>
+
           </div>
-          {{-- <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
-            <h5 class="font-23 mt-20">Fast Delivery<br class="d-none d-lg-block">is our priority</h5>
-            <p class="text-desc font-16 mt-15">We deliver in no time</p><a href="/shop">Get Started</a>
-          </div> --}}
+        </div>
+        <br>
+        <div class="box-slider-item">
+          <div class="head pb-15 border-brand-2">
+            <h5 class="color-gray-900">Product Tags</h5>
+          </div>
+          <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="/shop">Jacket</a><a class="btn btn-border mr-5" href="/shop">Skirt</a></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="section-box">
+    <div class="container">
+      <br><br>
+      <div class="list-brands list-none-border">
+        <div class="box-swiper">
+          <div class="swiper-container swiper-group-4">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/24.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/23.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/22.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/21.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/20.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/19.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/18.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/17.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/16.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}"
+                  style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                  alt="Salem Apparel">
+              </div>
+            </div>
+            <!-- Optional navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
   <section class="section-box mt-90 mb-50">
     <div class="container">
       <ul class="list-col-5">
@@ -210,24 +279,24 @@
     </div>
   </section>
   <section class="section-box box-newsletter" style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7 col-sm-12" >
-                        <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
-                        <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
-                                class="font-lg-bold">special offers.</span></p>
-                    </div>
-                    <div class="col-lg-4 col-md-5 col-sm-12">
-                        <div class="box-form-newsletter mt-15">
-                            <form class="form-newsletter">
-                                <input class="input-newsletter font-xs" value="" placeholder="Your email Address">
-                                <button class="btn btn-brand-2">Sign Up</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-7 col-sm-12">
+          <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
+          <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
+              class="font-lg-bold">special offers.</span></p>
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-12">
+          <div class="box-form-newsletter mt-15">
+            <form class="form-newsletter">
+              <input class="input-newsletter font-xs" value="" placeholder="Your email Address">
+              <button class="btn btn-brand-2">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 </main>

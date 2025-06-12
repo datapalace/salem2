@@ -2,7 +2,7 @@
 
 @extends('layout.usermaster')
 @section('usercontent')
-<title>Home - Salem Apparels</title>
+<title>{{ $product->title }} - Salem Apparels</title>
 <meta name="description" content="Salem Apparels - Customize your products with ease.">
 <meta name="keywords" content="Salem Apparels, Customize Products, Online Shopping, E-commerce">
 <meta name="author" content="Salem Apparels">
@@ -136,7 +136,7 @@
                                 <input class="font-xl color-brand-3" type="text" value="1"><span
                                     class="minus-cart"></span><span class="plus-cart"></span>
                             </div>
-                            <div class="button-buy"><a class="btn btn-cart" href="/customise-product/{{  $product->id }}">Customize</a><a
+                            <div class="button-buy"><a class="btn btn-cart" href="/customise-product/{{  $product->id }}">Customise</a><a
                                     class="btn btn-buy" href="shop-checkout.html">Proceed to Check Out</a></div>
                         </div>
 
@@ -235,39 +235,91 @@
                                         href="shop-vendor-single.html">{{ $relatedProduct->type }}</a><br><a
                                         class="color-brand-3 font-sm-bold"
                                         href="/product/customize/{{ $relatedProduct->id }}">{{ $relatedProduct->title . ' ' . $relatedProduct->sku }}</a>
-                                    {{-- <div class="rating"><img
-                                                    src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><img
-                                        src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                        alt="Ecom"><span class="font-xs color-gray-500">(65)</span>
-                                </div> --}}
-                                <div class="price-info"><strong
-                                        class="font-lg-bold color-brand-3 price-main">£{{ $relatedProduct->price->single_list_price + 3 }}</strong>
-                                    <!-- <span class="color-gray-500 price-line">$3225.6</span> -->
-                                </div>
-                                <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                        href="/product/customize/{{ $relatedProduct->id }}">Customize Now</a>
-                                </div>
 
+                                    <div class="price-info"><strong
+                                            class="font-lg-bold color-brand-3 price-main">£{{ $relatedProduct->price->single_list_price + 3 }}</strong>
+
+                                    </div>
+                                    <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
+                                            href="/product/customize/{{ $relatedProduct->id }}">Customise Now</a>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
 
+                </div>
             </div>
         </div>
-        </div>
     </section>
-    <div class="container mt-20">
-        <div class="text-center"><a href="#"><img
-                    src="{{ asset('userasset/imgs/page/homepage4/cloth_banner.jpg') }}" alt="Ecom"></a></div>
+    <div class="section-box">
+        <div class="container">
+            <br><br>
+            <div class="list-brands list-none-border">
+                <div class="box-swiper">
+                    <div class="swiper-container swiper-group-4">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/24.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/23.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/22.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/21.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/20.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/19.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/18.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/17.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/16.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                        </div>
+                        <!-- Optional navigation -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <section class="section-box mt-90 mb-50">
         <div class="container">
