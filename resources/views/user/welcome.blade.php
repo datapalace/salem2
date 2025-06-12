@@ -6,7 +6,7 @@
 <meta name="author" content="Salem Apparels">
 <main class="main">
     <section class="section-box">
-        <div class="banner-hero banner-1 pt-10">
+        <div class="banner-hero banner-1 pt-12">
             <div class="container">
                 <div class="row">
 
@@ -69,63 +69,18 @@
                     <div class="col-xl-5 col-lg-12 col-md-12">
                         <div class="row d-none d-sm-flex">
                             <div class="col-xl-7 col-lg-9 col-md-8 col-sm-12 mb-30">
-                                <img src="{{ asset('userasset/imgs/page/homepage4/embroidery.jpg') }}" style="width: 100%; height: auto;">
-                                <img src="{{ asset('userasset/imgs/page/homepage4/prints.jpg') }}" style="width: 100%;">
-                            </div>
-                            <div class="col-xl-5 col-lg-3 col-md-4 col-sm-12">
-                                <div class="box-promotions">
-                                    <!-- Swiper-->
-                                    <div class="swiper swiper-vertical-1">
-                                        <div class="swiper-wrapper">
-                                            <div class="swiper-slide">
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion2.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion4.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion6.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion1.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion3.png') }}" alt="Salem Apparel"></a>
-                                                <a href="#"><img src="{{ asset('userasset/imgs/page/homepage4/promotion5.png') }}" alt="Salem Apparel"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; height: auto;">
+                                <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%;">
                             </div>
                         </div>
-
+                    
                     </div>
+                     
                 </div>
             </div>
         </div>
     </section>
-    <!-- <div class="section-box">
-            <div class="container">
-                <div class="list-brands list-none-border">
-                    <div class="box-swiper">
-                        <div class="swiper-container swiper-group-10">
-                            <div class="swiper-wrapper">
-                              @foreach ($brands as $brand)
-    <div class="swiper-slide" style="font-family: 'Orbitron', sans-serif; font-sizse: 16px; color: #bcc3ce; font-weight: 600; text-transform: uppercase; margin: 0 10px;">
-        <h5 style="margin: 0;">{{ $brand->brand }}</h5>
-    </div>
-@endforeach
-
-
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+  
     <div class="section-box">
         <div class="container">
             <div class="list-brands list-none-border">
@@ -551,8 +506,7 @@
                                                                 class="btn btn-quickview btn-tooltip"
                                                                 aria-label="Quick view" href="#ModalQuickview"
                                                                 data-bs-toggle="modal"></a></div>
-                                                        <div class="image-box"><span
-                                                                class="label bg-brand-2"></span><a
+                                                        <div class="image-box"></span><a
                                                                 href="/product/customize/{{  $product->id }}"><img
                                                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                                     alt="Salem Apparel"></a></div>
@@ -619,7 +573,7 @@
                                                    
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
-                                                        {{-- <span class="color-gray-500 font-sm price-line">$3225.6</span> --}}
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
@@ -647,7 +601,7 @@
                                 alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Free Delivery</h5>
-                            <p class="font-sm color-gray-500">From all orders over $10</p>
+                            <p class="font-sm color-gray-500">From all orders over £10</p>
                         </div>
                     </div>
                 </li>
@@ -677,7 +631,7 @@
                                 alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Return &amp; Refund</h5>
-                            <p class="font-sm color-gray-500">Free return over $200</p>
+                            <p class="font-sm color-gray-500">Free return over £200</p>
                         </div>
                     </div>
                 </li>

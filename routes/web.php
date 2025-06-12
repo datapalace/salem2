@@ -13,24 +13,50 @@ use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Authentication routes
 
-Route::get('/products', function () {
-    return view('products');
+// admin routes
+Route::middleware('auth:admin')->group(function () {
+
+    Route::get('/logout', [AuthController::class, 'logout']); // logout
+
+    Route::get('/products', function () {
+        return view('products');
+    });
+
+    //add product
+    Route::get('/add-product', function () {
+        return view('add-a-product');
+    });
+    Route::post('/add-product', [ProductController::class, 'store'])->name('product.store');
+
+    // show product
+    Route::get('/products', [ProductController::class, 'show'])->name('all-products');
+
+
+
+
+    Route::get('/admin/dashboard', function () {
+        return view('welcome');
+    })->name('welcome'); // admin dashboard
+
+    
 });
 
-//add product
-Route::get('/add-product', function () {
-    return view('add-a-product');
+
+
+
+
+/// user routes
+
+Route::middleware('auth:customer')->group(function () {
+    //user Dashboard
+    Route::get('/logout', [AuthController::class, 'logout']); // logout
+
+
+
 });
-Route::post('/add-product', [ProductController::class, 'store'])->name('product.store');
-
-// show product
-Route::get('/products', [ProductController::class, 'show'])->name('all-products');
 
 
-
-//user Dashboard
 Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
 
 //shop now
@@ -41,7 +67,7 @@ Route::get('/shop/category/{category}', [ProductController::class, 'shopByCatego
 
 // view a product
 
-Route::get('/product/customise/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
+Route::get('/product/customize/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
 
 
 // about us
@@ -57,12 +83,15 @@ Route::get('/terms-and-condition', [TermsAndConditionController::class, 'index']
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
 
 
-Route::get('/customise-product/{id}', [\App\Http\Controllers\CanvasController::class, 'show']);
+Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 
 // register user
 Route::get('/register', function () {
     return view('auth.register');
-})->name('register');
+})->name('register'); // register page
+
+Route::post('/process-register', [AuthController::class, 'register'])->name('register'); // process register user
+
 
 Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 // login user
@@ -77,81 +106,3 @@ Route::get('/register', function () {
     $shopByCatMenus = Product::select('type')->groupBy('type')->get();
     return view('user.register', compact('shopByCatMenus'));
 }); // register page
-
-
-Route::post('/process-register', [AuthController::class, 'register'])->name('register'); // register user
-
-
-// admin routes
-Route::middleware('auth:admin')->group(function () {
-
-        Route::get('/logout', [AuthController::class, 'logout']); // logout
-
-
-        Route::get('/admin/dashboard', function () {
-            return view('welcome');
-        })->name('welcome'); // admin dashboard
-
-        // Route::get('/design', function () {
-        //     return view('products');
-        // });
-
-        // Route::get('/products', function () {
-        //     return view('products');
-        // });
-
-        // //add product
-        // Route::get('/add-product', function () {
-        //     return view('add-a-product');
-        // });
-        // Route::post('/add-product', [ProductController::class, 'store'])->name('product.store');
-
-        // // show product
-        // Route::get('/products', [ProductController::class, 'show'])->name('all-products');
-});
-
-
-
-
-
-/// user routes
-
-Route::middleware('auth:customer')->group(function () {
-        //user Dashboard
-        Route::get('/logout', [AuthController::class, 'logout']); // logout
-        Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
-
-        //shop now
-        Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
-
-        // shop by category
-        Route::get('/shop/category/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
-
-        // view a product
-
-        Route::get('/product/customize/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
-
-
-        // about us
-        Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
-
-        // contact us
-        Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
-
-        // terms and condition
-        Route::get('/terms-and-condition', [TermsAndConditionController::class, 'index'])->name('terms-and-condition');
-
-        // privacy policy
-        Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
-
-        // register user
-        // Route::get('/register', function () {
-        //     return view('auth.register');
-        // })->name('register');
-
-        Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
-        // login user
-        // Route::get('/login', function () {
-        //     return view('auth.login');
-        // })->name('login');
-});
