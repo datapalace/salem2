@@ -6,68 +6,68 @@
 <meta name="author" content="Salem Apparels">
 <main class="main">
 
-<section class="section-box">
-    <div class="banner-hero banner-1 pt-12">
-        <div class="container"> <!-- Now aligned with menu -->
-            <div class="row align-items-stretch">
+    <section class="section-box">
+        <div class="banner-hero banner-1 pt-12">
+            <div class="container"> <!-- Now aligned with menu -->
+                <div class="row align-items-stretch">
 
-                <!-- Left: Banner (larger section) -->
-                <div class="col-lg-8 col-md-12 mb-30">
-                    <div class="box-swiper h-100">
-                        <div class="swiper-container swiper-group-1 h-100">
-                            <div class="swiper-wrapper h-100">
-                                <!-- Static Slide -->
-                                <div class="swiper-slide h-100">
-                                    <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/slider/logo/10.png') }}'); background-size: cover; background-position: center; height: 100%;">
-                                        <!-- Optional content -->
-                                    </div>
-                                </div>
-
-                                <!-- Dynamic Slides -->
-                                @foreach ($bannerProducts as $bp)
-                                <div class="swiper-slide h-100">
-                                    <div class="banner-big banner-big-3 bg-22"
-                                        style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%); position: relative; height: 100%;">
-                                        <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
-                                            alt="{{ $bp->title }}"
-                                            style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 250px;">
-
-                                        @php $words = explode(' ', $bp->title); @endphp
-                                        <h2 class="color-gray-100 text-uppercase text-shadow">
-                                            {{ $words[0] ?? '' }} {{ $words[1] ?? '' }}<br>
-                                            {{ implode(' ', array_slice($words, 2)) }}
-                                        </h2>
-
-                                        <ul class="list-disc">
-                                            @foreach ($bp->attributes as $attribute)
-                                            <li class="font-lg color-brand-3">{{ $attribute->attribute }}</li>
-                                            @endforeach
-                                        </ul>
-
-                                        <div class="mt-30">
-                                            <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customise</a>
+                    <!-- Left: Banner (larger section) -->
+                    <div class="col-lg-8 col-md-12 mb-30">
+                        <div class="box-swiper h-100">
+                            <div class="swiper-container swiper-group-1 h-100">
+                                <div class="swiper-wrapper h-100">
+                                    <!-- Static Slide -->
+                                    <div class="swiper-slide h-100">
+                                        <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/slider/logo/10.png') }}'); background-size: cover; background-position: center; height: 100%;">
+                                            <!-- Optional content -->
                                         </div>
                                     </div>
+
+                                    <!-- Dynamic Slides -->
+                                    @foreach ($bannerProducts as $bp)
+                                    <div class="swiper-slide h-100">
+                                        <div class="banner-big banner-big-3 bg-22"
+                                            style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%); position: relative; height: 100%;">
+                                            <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
+                                                alt="{{ $bp->title }}"
+                                                style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 300px;">
+
+                                            @php $words = explode(' ', $bp->title); @endphp
+                                            <h2 class="color-gray-100 text-uppercase text-shadow">
+                                                {{ $words[0] ?? '' }} {{ $words[1] ?? '' }}<br>
+                                                {{ implode(' ', array_slice($words, 2)) }}
+                                            </h2>
+
+                                            <ul class="list-disc">
+                                                @foreach ($bp->attributes as $attribute)
+                                                <li class="font-lg color-brand-3">{{ $attribute->attribute }}</li>
+                                                @endforeach
+                                            </ul>
+
+                                            <div class="mt-30">
+                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customise</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
+                                <div class="swiper-pagination swiper-pagination-1"></div>
                             </div>
-                            <div class="swiper-pagination swiper-pagination-1"></div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Right: Small Image Column -->
-                <div class="col-lg-4 col-md-12 mb-30">
-                    <div class="d-flex flex-column justify-content-between h-100">
-                        <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; height: auto; margin-bottom: 10px;">
-                        <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%;">
+                    <!-- Right: Small Image Column -->
+                    <div class="col-lg-4 col-md-12 mb-30">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; height: auto; margin-bottom: 10px;">
+                            <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%;">
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <div class="section-box">
         <div class="container">
@@ -525,9 +525,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-20"><a href="/shop"><img
-                                    src="{{ asset('userasset/imgs/page/homepage4/cloth_banner.jpg') }}"
-                                    alt="Salem Apparel"></a></div>
                     </div>
 
                 </div>
@@ -578,6 +575,30 @@
             </div>
         </div>
     </div>
+
+   <section class="section-box pt-50">
+    <div class="container">
+        <div class="row">
+            <!-- Each column takes 4 of 12 columns -->
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
+                <div class="banner-big banner-big-3 bg-22"
+                     style="background-image: url('{{ asset('userasset/imgs/slider/logo/16.png') }}'); background-size: cover; background-position: center; height: 250px;">
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
+                <div class="banner-big banner-big-3 bg-22"
+                     style="background-image: url('{{ asset('userasset/imgs/slider/logo/17.png') }}'); background-size: cover; background-position: center; height: 250px;">
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-30">
+                <div class="banner-big banner-big-3 bg-22"
+                     style="background-image: url('{{ asset('userasset/imgs/slider/logo/18.png') }}'); background-size: cover; background-position: center; height: 250px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
     <section class="section-box mt-90 mb-50">
