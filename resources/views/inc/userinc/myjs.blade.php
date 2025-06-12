@@ -1,6 +1,6 @@
 <script>
    // Place this in your scripts section or at the bottom of your Blade file
-var swiper = new Swiper('.swiper-group-4', {
+var swiper = new Swiper('.swiper-group-3', {
     slidesPerView: 4,
     spaceBetween: 30,
     loop: true,
