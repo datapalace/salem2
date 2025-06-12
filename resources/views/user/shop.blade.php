@@ -67,7 +67,7 @@
                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->id }}">View</a></div>
                     <ul class="list-features">
                       @foreach ($product->attributes as $attribute)
-                      <li>{{ $attribute->attribute }}</li>
+                      <li> {{ Str::replace(':', ': ', $attribute->attribute) }}</li>
 
                       @endforeach
                     </ul>

@@ -561,7 +561,7 @@
 
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
-                                                       
+
                                                     </div>
                                                 </div>
                                             </div>
