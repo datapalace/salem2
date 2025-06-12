@@ -30,7 +30,7 @@
                                             style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%); position: relative; height: 100%;">
                                             <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
                                                 alt="{{ $bp->title }}"
-                                                style="position: absolute; right: 0; bottom: 0; max-width: 300px; max-height: 300px;">
+                                                style="position: absolute; right: 0; bottom: 0; max-width: 200px; max-height: 250px;">
 
                                             @php $words = explode(' ', $bp->title); @endphp
                                             <h2 class="color-gray-100 text-uppercase text-shadow">
@@ -57,7 +57,7 @@
                     </div>
 
                     <!-- Right: Small Image Column -->
-                    <div class="col-lg-4 col-md-12 mb-30">
+                    <div class="col-lg-4 col-md-12 mb-30 d-none d-sm-flex">
                         <div class="d-flex flex-column justify-content-between h-100">
                             <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; max-width: 180px; height: auto; margin-bottom: 10px; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
                             <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%; max-width: 180px; height: auto; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
@@ -576,38 +576,75 @@
         </div>
     </div>
 
-   <section class="section-box pt-50">
-    <div class="container">
-        <div class="row">
-            <!-- Each column takes 4 of 12 columns -->
-            <div class="col-12">
+    <div class="section-box">
+        <div class="container">
+            <br><br>
+            <div class="list-brands list-none-border">
                 <div class="box-swiper">
-                    <div class="swiper-container swiper-horizontal-logos">
+                    <div class="swiper-container swiper-group-4">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <div class="banner-big banner-big-3 bg-22"
-                                    style="background: none; padding: 0; height: 250px; display: flex; align-items: center; justify-content: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/16.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/17.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/18.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/12.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                    <img src="{{ asset('userasset/imgs/slider/logo/13.png') }}" alt="Banner" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                                </div>
+                                <img src="{{ asset('userasset/imgs/slider/logo/24.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
                             </div>
-
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/23.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/22.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/21.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/20.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/19.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/18.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/17.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/16.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}"
+                                    style="height: 400px; width: 100%; opacity: 0.8; object-fit: cover; border-radius: 12px; margin-right: 10px;"
+                                    alt="Salem Apparel">
+                            </div>
                         </div>
-                        <!-- Optional navigation buttons -->
-                        <div class="swiper-button-next swiper-horizontal-logos-next"></div>
-                        <div class="swiper-button-prev swiper-horizontal-logos-prev"></div>
-                        <div class="swiper-pagination swiper-horizontal-logos-pagination"></div>
+                        <!-- Optional navigation -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-</section>
+
+
 
 
 
