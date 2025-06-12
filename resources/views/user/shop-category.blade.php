@@ -162,7 +162,7 @@
       <br><br>
       <div class="list-brands list-none-border">
         <div class="box-swiper">
-          <div class="swiper-container swiper-group-4">
+          <div class="swiper-container swiper-group-3">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img src="{{ asset('userasset/imgs/slider/logo/24.png') }}"

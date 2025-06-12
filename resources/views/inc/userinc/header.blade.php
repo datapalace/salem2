@@ -138,25 +138,19 @@
         <div class="mobile-header-content-area">
           <div class="mobile-logo"><a class="d-flex" href="/"><img alt="Salem Apparels Logo" src="{{ asset('userasset/imgs/template/logo.png') }}"></a></div>
           <div class="perfect-scroll">
-            <!--<div class="mobile-menu-wrap mobile-header-border">-->
-            <!--  <nav class="mt-15">-->
-            <!--    <ul class="mobile-menu font-heading">-->
-            <!--      <li class="has-children"><a class="active" href="/">Home</a>-->
-            <!--        <ul class="sub-menu">-->
-            <!--          <li><a href="/">Home</a></li>-->
-            <!--          </li>-->
-            <!--    <li class=""><a href="shop">Shop</a>-->
-
-            <!--    </li>-->
-            <!--    <li><a href="about-us">About Us</a></li>-->
-            <!--    <li><a href="privacy-policy">Privacy Policy</a></li>-->
-            <!--    <li><a href="contact-us">Contact Us</a></li>-->
-            <!--    </ul>-->
-            <!--  </nav>-->
-            <!--</div>-->
+            <div class="mobile-menu-wrap mobile-header-border">
+              <nav class="mt-15">
+                <ul class="mobile-menu font-heading">
+                   <li><a href="/">Home</a></li>
+                  <li><a href="/about-us">About Us</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                 
+                </ul>
+              </nav>
+            </div>
             <div class="mobile-account">
               <div class="mobile-header-top">
-                <div class="user-account">
+                <div class="user-account"><a href="#"><img alt="Salem Apparels Logo" src="{{ asset('userasset/imgs/template/logo.png') }}"></a>
                   <div class="content">
                     <h6 class="user-name">Hello<span class="text-brand"> Steven !</span></h6>
                     <p class="font-xs text-muted">You have 3 new messages</p>
@@ -164,17 +158,16 @@
                 </div>
               </div>
               <ul class="mobile-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/shop">Shop</a></a></li>
-
-                <li><a href="/about-us">About Us</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">My Orders</a></li>
                 <li><a href="#">Setting</a></li>
                 <li><a href="/logout">Sign out</a></li>
               </ul>
             </div>
-
-            <div class="site-copyright color-gray-400 mt-30">Copyright 2025 &copy; Salem Apparel - Marketplace Template.<br>Designed by<a href="datapalace.ng" target="_blank">&nbsp; Datapalace</a></div>
+           
+            <div class="site-copyright color-gray-400 mt-30">Copyright 2025 &copy; Salem Apparel<br>Designed by<a href="http://datapalace.ng" target="_blank">&nbsp; Datapalace</a></div>
           </div>
         </div>
       </div>
     </div>
+   
