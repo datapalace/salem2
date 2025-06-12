@@ -64,7 +64,7 @@ class UserDashboardController extends Controller
     'galleries',
     'price',
     'attributes' => function ($query) {
-        $query->limit(2);
+        $query->limit(3);
     }
 ])->inRandomOrder()->take(3)->get();
 

@@ -26,9 +26,14 @@
             <div class="col-lg-4 width-25 mb-30">
               <h4 class="mb-30 color-gray-1000">Quick Search</h4>
               <ul class="menu-footer">
-                 @foreach($shopByCatMenus as $shopByCatMenu)
-                <li><a href="/shop/category/{{$shopByCatMenu->type}}">{{$shopByCatMenu->type}}<span class="number">{{$shopByCatMenu->total}}</span></a></li>
-                @endforeach
+                @foreach($shopByCatMenus->random(8) as $shopByCatMenu)
+    <li>
+        <a href="/shop/category/{{ $shopByCatMenu->type }}">
+            {{ $shopByCatMenu->type }}
+            <span class="number">{{ $shopByCatMenu->total }}</span>
+        </a>
+    </li>
+@endforeach
 
               </ul>
             </div>
