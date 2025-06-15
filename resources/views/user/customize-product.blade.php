@@ -3,8 +3,8 @@
 @extends('layout.usermaster')
 @section('usercontent')
 <title>{{ $product->title }} - Salem Apparels</title>
-<meta name="description" content="Salem Apparels - Customize your products with ease.">
-<meta name="keywords" content="Salem Apparels, Customize Products, Online Shopping, E-commerce">
+<meta name="description" content="Salem Apparels - customise your products with ease.">
+<meta name="keywords" content="Salem Apparels, customise Products, Online Shopping, E-commerce">
 <meta name="author" content="Salem Apparels">
 <!-- Include Fabric.js -->
 <main class="main">
@@ -31,8 +31,8 @@
 
                                 <div class="product-image-slider">
                                     @foreach ($product->galleries as $gallery)
-                                    <figure class="border-radius-10"><img src="{{ $gallery->image_url }}"
-                                            alt="product image"></figure>
+                                    <figure class="border-radius-10" data-color-id="{{ $gallery->product_id }}"><img src="{{ $gallery->image_url }}"
+                                            alt="{{$product->title}}"></figure>
                                     @endforeach
 
                                 </div>
@@ -49,11 +49,11 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <h3 class="color-brand-3 mb-25">{{ $product->title . ' ' . $product->sku }}</h3>
+                    <h3 class="color-brand-3 mb-25">{{ $product->title . ' ' . $product->style_code }}</h3>
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-4 col-sm-3 mb-mobile"><span
                                 class="bytext color-gray-500 font-xs font-medium">by</span><a
-                                class="byAUthor color-gray-900 font-xs font-medium" href="shop-vendor-single.html">
+                                class="byAUthor color-gray-900 font-xs font-medium" href="#">
                                 Salem</a>
                             <div class="rating mt-5"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                     alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
@@ -92,6 +92,21 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="box-product-color mt-20">
+                        <p class="font-sm color-gray-900">Color:<span class="color-brand-2 nameColor">Pink Gold</span></p>
+                        <ul class="list-colors">
+                            <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-1.jpg" alt="Ecom" title="Pink"></li> -->
+                            <!-- loop product color from the same product table -->
+
+                            @foreach ($relatedProducts as $colourway => $products)
+                            @php $relatedProduct = $products->first(); @endphp
+
+                            <li><img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/page/product/img-gallery-2.jpg') }}" alt="Salem Apparel" title="{{ $relatedProduct->colourway_name }}"></li>
+                            @endforeach
+                            <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-6.jpg" alt="Ecom" title="Black"></li>
+                  <li class="disabled"><img src="assets/imgs/page/product/img-gallery-7.jpg" alt="Ecom" title="Red"></li> -->
+                        </ul>
                     </div>
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -156,7 +171,7 @@
     </section>
     <section class="section-box shop-template">
         <div class="container">
-            {{-- //section to customize the product --}}
+            {{-- //section to customise the product --}}
 
             <div class="pt-30 mb-10">
                 <ul class="nav nav-tabs nav-tabs-product" role="tablist">
@@ -215,35 +230,33 @@
                     <div class="border-bottom pt-30 mb-50"></div>
                     <h4 class="color-brand-3">Related Products</h4>
                     <div class="list-products-5 mt-20">
-                        @foreach ($relatedProducts as $relatedProduct)
+                        @foreach ($relatedProducts as $colourway => $products)
+                        @php $relatedProduct = $products->first(); @endphp
                         <div class="card-grid-style-3">
                             <div class="card-grid-inner">
-                                <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#"
-                                        aria-label="Trend" data-bs-placement="left"></a><a
-                                        class="btn btn-wishlist btn-tooltip mb-10" href="shop-wishlist.html"
-                                        aria-label="Add To Wishlist"></a><a
-                                        class="btn btn-compare btn-tooltip mb-10"
-                                        href="/product/customize/{{ $relatedProduct->product_id }}"
-                                        aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip"
-                                        aria-label="Quick view" href="#ModalQuickview"
-                                        data-bs-toggle="modal"></a></div>
-                                <div class="image-box"><a
-                                        href="/product/customize/{{ $relatedProduct->id }}"><img
-                                            src="{{ $relatedProduct->galleries[0]->image_url }}"
-                                            alt="Ecom"></a></div>
-                                <div class="info-right"><a class="font-xs color-gray-500"
-                                        href="shop-vendor-single.html">{{ $relatedProduct->type }}</a><br><a
-                                        class="color-brand-3 font-sm-bold"
-                                        href="/product/customize/{{ $relatedProduct->id }}">{{ $relatedProduct->title . ' ' . $relatedProduct->sku }}</a>
-
-                                    <div class="price-info"><strong
-                                            class="font-lg-bold color-brand-3 price-main">£{{ $relatedProduct->price->single_list_price + 3 }}</strong>
-
+                                <div class="tools">
+                                    <a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a>
+                                    <a class="btn btn-wishlist btn-tooltip mb-10" href="Salem Apparel">
+                                    </a>
+                                </div>
+                                <div class="image-box">
+                                    <a href="/product/customise/{{ $relatedProduct->slug }}">
+                                        <img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{ $relatedProduct->title }}">
+                                    </a>
+                                </div>
+                                <div class="info-right">
+                                    <a class="font-xs color-gray-500" href="#">{{ $relatedProduct->type }}</a><br>
+                                    <a class="color-brand-3 font-sm-bold" href="/product/customise/{{ $relatedProduct->id }}">
+                                        {{ $relatedProduct->title . ' ' . $relatedProduct->style_code }}
+                                    </a>
+                                    <div class="price-info">
+                                        <strong class="font-lg-bold color-brand-3 price-main">
+                                            £{{ $relatedProduct->price->single_list_price + 3 }}
+                                        </strong>
                                     </div>
-                                    <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                            href="/product/customize/{{ $relatedProduct->id }}">Customise Now</a>
+                                    <div class="mt-20 box-btn-cart">
+                                        <a class="btn btn-cart" href="/product/customise/{{ $relatedProduct->id }}">Customise Now</a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -327,7 +340,7 @@
                 <li>
                     <div class="item-list">
                         <div class="icon-left"><img src="{{ asset('userasset/imgs/template/delivery.svg') }}"
-                                alt="Ecom"></div>
+                                alt="Salem Apparel"></div>
                         <div class="info-right">
                             <h5 class="font-lg-bold color-gray-100">Free Delivery</h5>
                             <p class="font-sm color-gray-500">From all orders over $10</p>
@@ -403,11 +416,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
 <!-- Modal Structure -->
-<div class="modal fade" id="customizeModal" tabindex="-1" aria-labelledby="customizeModalLabel" aria-hidden="true">
+<div class="modal fade" id="customiseModal" tabindex="-1" aria-labelledby="customiseModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="customizeModalLabel">Customize Product</h5>
+                <h5 class="modal-title" id="customiseModalLabel">customise Product</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
