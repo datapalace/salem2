@@ -31,20 +31,23 @@
 
                                 <div class="product-image-slider">
                                     @foreach ($product->galleries as $gallery)
-                                    <figure class="border-radius-10" data-color-id="{{ $gallery->product_id }}"><img src="{{ $gallery->image_url }}"
+                                    <figure class="border-radius-10"><img src="{{ $gallery->image_url }}"
                                             alt="{{$product->title}}"></figure>
                                     @endforeach
 
                                 </div>
                             </div>
-                            <div class="slider-nav-thumbnails">
+                            
+                            <div class="slider-nav-thumbnails" id="slider-nav-thumbnails">
                                 @foreach ($product->galleries as $gallery)
                                 <div>
-                                    <div class="item-thumb"><img src="{{ $gallery->image_url }}"
-                                            alt="product image"></div>
+                                    <div class="item-thumb">
+                                        <img src="{{ $gallery->image_url }}" alt="product image">
+                                    </div>
                                 </div>
                                 @endforeach
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -100,10 +103,18 @@
                             <!-- loop product color from the same product table -->
 
                             @foreach ($relatedProducts as $colourway => $products)
-                            @php $relatedProduct = $products->first(); @endphp
+                            @php
+                            $relatedProduct = $products->first();
+                            @endphp
 
-                            <li><img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/page/product/img-gallery-2.jpg') }}" alt="Salem Apparel" title="{{ $relatedProduct->colourway_name }}"></li>
+                            <li class="related-product-thumb"
+                                data-gallery='@json($relatedProduct->galleries->pluck("image_url"))'>
+                                <img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/page/product/img-gallery-2.jpg') }}"
+                                    alt="Salem Apparel"
+                                    title="{{ $relatedProduct->colourway_name }}">
+                            </li>
                             @endforeach
+
                             <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-6.jpg" alt="Ecom" title="Black"></li>
                   <li class="disabled"><img src="assets/imgs/page/product/img-gallery-7.jpg" alt="Ecom" title="Red"></li> -->
                         </ul>
@@ -448,3 +459,38 @@
     </div>
 </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   $(document).ready(function () {
+    $('.related-product-thumb').on('click', function () {
+        const galleryImages = $(this).data('gallery');
+        const $slider = $('#slider-nav-thumbnails');
+
+        // Destroy existing Slick instance
+        if ($slider.hasClass('slick-initialized')) {
+            $slider.slick('unslick');
+        }
+
+        // Clear and rebuild thumbnails
+        $slider.empty();
+        galleryImages.forEach(function (imageUrl) {
+            const thumb = `
+                <div>
+                    <div class="item-thumb">
+                        <img src="${imageUrl}" alt="product image">
+                    </div>
+                </div>`;
+            $slider.append(thumb);
+        });
+
+        // Reinitialize the slider (ensure it matches original setup)
+        $slider.slick({
+            vertical: true,
+            slidesToShow: 3,
+            arrows: false,
+            focusOnSelect: true,
+            asNavFor: '.main-slider', // if you're syncing with main image
+        });
+    });
+});
+</script>
