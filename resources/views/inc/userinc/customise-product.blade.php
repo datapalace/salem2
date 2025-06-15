@@ -209,6 +209,12 @@
     </div>
 </div>
 
+<!-- Place this where you want the color buttons to appear, e.g. above or below your main product image/canvas -->
+<div class="my-3 d-flex align-items-center gap-2">
+    <button onclick="setProductColorOverlay('{{ $product->galleries[0]->image_url }}', '#E2B808')" style="background:#E2B808;color:#222;border:1px solid #ccc;width:32px;height:32px;border-radius:50%;" title="Yellow"></button>
+    <button onclick="setProductColorOverlay('{{ $product->galleries[0]->image_url }}', '#222')" style="background:#222;color:#fff;border:1px solid #ccc;width:32px;height:32px;border-radius:50%;" title="Black"></button>
+    <button onclick="setProductColorOverlay('{{ $product->galleries[0]->image_url }}', '#fff')" style="background:#fff;color:#222;border:1px solid #ccc;width:32px;height:32px;border-radius:50%;" title="White"></button>
+</div>
 
 <script>
     const canvas = new fabric.Canvas('fabricCanvas');
@@ -636,6 +642,49 @@
             }
         }
     });
+
+    function setProductColorOverlay(imageUrl, color) {
+        fabric.Image.fromURL(imageUrl, function(img) {
+            // Remove previous background image
+            canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+
+            // Convert hex color to RGB
+            function hexToRgb(hex) {
+                hex = hex.replace('#', '');
+                if (hex.length === 3) {
+                    hex = hex.split('').map(function (hex) {
+                        return hex + hex;
+                    }).join('');
+                }
+                var num = parseInt(hex, 16);
+                return {
+                    r: (num >> 16) & 255,
+                    g: (num >> 8) & 255,
+                    b: num & 255
+                };
+            }
+            var rgb = hexToRgb(color);
+
+            // Create a tint filter
+            img.filters = [
+                new fabric.Image.filters.BlendColor({
+                    color: color,
+                    mode: 'tint',
+                    alpha: 0.7 // Adjust for effect (0 = no tint, 1 = full tint)
+                })
+            ];
+            img.applyFilters();
+
+            // Scale image to fit canvas
+            img.scaleToWidth(canvas.width);
+            img.scaleToHeight(canvas.height);
+
+            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                scaleX: canvas.width / img.width,
+                scaleY: canvas.height / img.height
+            });
+        });
+    }
 </script>
 
 </body>
