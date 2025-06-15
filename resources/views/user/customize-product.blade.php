@@ -7,10 +7,11 @@
 <meta name="keywords" content="Salem Apparels, customise Products, Online Shopping, E-commerce">
 <meta name="author" content="Salem Apparels">
 <!-- Include Fabric.js -->
- <style>.slider-nav-thumbnails {
-    max-height: 500px;
-    overflow-y: auto;
-}
+<style>
+    .slider-nav-thumbnails {
+        max-height: 500px;
+        overflow-y: auto;
+    }
 </style>
 <main class="main">
 
@@ -31,18 +32,15 @@
                 <div class="col-lg-5">
                     <div class="gallery-image">
                         <div class="galleries">
-                            <div class="detail-gallery">
 
-
-                                <div class="product-image-slider">
-                                    @foreach ($product->galleries as $gallery)
-                                    <figure class="border-radius-10"><img src="{{ $gallery->image_url }}"
-                                            alt="{{$product->title}}"></figure>
-                                    @endforeach
-
-                                </div>
+                            <div class="product-image-slider" id="product-image-slider">
+                                @foreach ($product->galleries as $gallery)
+                                <figure class="border-radius-10">
+                                    <img src="{{ $gallery->image_url }}" alt="{{ $product->title }}">
+                                </figure>
+                                @endforeach
                             </div>
-                            
+
                             <div class="slider-nav-thumbnails" id="slider-nav-thumbnails">
                                 @foreach ($product->galleries as $gallery)
                                 <div>
@@ -466,36 +464,56 @@
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-   $(document).ready(function () {
-    $('.related-product-thumb').on('click', function () {
-        const galleryImages = $(this).data('gallery');
-        const $slider = $('#slider-nav-thumbnails');
+    $(document).ready(function() {
+        $('.related-product-thumb').on('click', function() {
+            const galleryImages = $(this).data('gallery');
+            const $mainSlider = $('#product-image-slider');
+            const $thumbSlider = $('#slider-nav-thumbnails');
 
-        // Destroy existing Slick instance
-        if ($slider.hasClass('slick-initialized')) {
-            $slider.slick('unslick');
-        }
+            // Destroy if already initialized
+            if ($mainSlider.hasClass('slick-initialized')) $mainSlider.slick('unslick');
+            if ($thumbSlider.hasClass('slick-initialized')) $thumbSlider.slick('unslick');
 
-        // Clear and rebuild thumbnails
-        $slider.empty();
-        galleryImages.forEach(function (imageUrl) {
-            const thumb = `
+            // Clear content
+            $mainSlider.empty();
+            $thumbSlider.empty();
+
+            // Add new images
+            galleryImages.forEach(function(url) {
+                $mainSlider.append(`
+                <figure class="border-radius-10">
+                    <img src="${url}" alt="Product image">
+                </figure>
+            `);
+                $thumbSlider.append(`
                 <div>
                     <div class="item-thumb">
-                        <img src="${imageUrl}" alt="product image">
+                        <img src="${url}" alt="product thumbnail">
                     </div>
-                </div>`;
-            $slider.append(thumb);
-        });
+                </div>
+            `);
+            });
 
-        // Reinitialize the slider (ensure it matches original setup)
-        $slider.slick({
-            vertical: true,
-            slidesToShow: 3,
-            arrows: false,
-            focusOnSelect: true,
-            asNavFor: '.main-slider', // if you're syncing with main image
+            // Reinitialize with your preferred slider (e.g., Slick)
+            $mainSlider.slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false, // disable arrows
+                fade: false,
+                asNavFor: '#slider-nav-thumbnails'
+            });
+
+            $thumbSlider.slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                asNavFor: '#product-image-slider',
+                dots: false,
+                arrows: false, // disable arrows
+                centerMode: false,
+                focusOnSelect: true,
+                vertical: true
+            });
+
         });
     });
-});
 </script>
