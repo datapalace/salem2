@@ -32,7 +32,7 @@
                 <div class="col-lg-5">
                     <div class="gallery-image">
                         <div class="galleries">
-
+                            <div class="detail-gallery">
                             <div class="product-image-slider" id="product-image-slider">
                                 @foreach ($product->galleries as $gallery)
                                 <figure class="border-radius-10">
@@ -40,7 +40,7 @@
                                 </figure>
                                 @endforeach
                             </div>
-
+                            </div>
                             <div class="slider-nav-thumbnails" id="slider-nav-thumbnails">
                                 @foreach ($product->galleries as $gallery)
                                 <div>
