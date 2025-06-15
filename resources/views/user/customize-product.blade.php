@@ -13,7 +13,7 @@
         <div class="breadcrumbs-div">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
+                    <li><a class="font-xs color-gray-100" href="/">Home</a></li>
                     <li><a class="font-xs color-gray-500" href="/shop/category/{{$product->type}}">{{ $product->type}}</a></li>
 
                 </ul>
@@ -451,6 +451,15 @@
                         <input type="file" onchange="uploadLogo(this)" />
                         <button onclick="removeSelected()">Delete Selected</button>
                         <button onclick="saveCanvasAsImage()">Save Image</button>
+                        <select id="fontSizeSelect" style="width:80px;">
+                            <option value="12">12px</option>
+                            <option value="16">16px</option>
+                            <option value="20">20px</option>
+                            <option value="24" selected>24px</option>
+                            <option value="32">32px</option>
+                            <option value="40">40px</option>
+                            <option value="48">48px</option>
+                        </select>
                     </div>
                 </div>
 
@@ -458,6 +467,7 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -494,3 +504,29 @@
     });
 });
 </script>
+=======
+<script>
+    // ...existing canvas/fabric.js code...
+
+    document.getElementById('fontSizeSelect').addEventListener('change', function() {
+        const activeObject = canvas.getActiveObject();
+        if (activeObject && activeObject.type === 'i-text') {
+            activeObject.set('fontSize', parseInt(this.value));
+            canvas.requestRenderAll();
+        }
+    });
+
+    // Optionally, set font size when adding new text:
+    function addText() {
+        const fontSize = parseInt(document.getElementById('fontSizeSelect').value) || 24;
+        const text = new fabric.IText('Edit me', {
+            left: 100,
+            top: 100,
+            fill: '#222',
+            fontSize: fontSize
+        });
+        canvas.add(text).setActiveObject(text);
+    }
+</script>
+@endsection
+>>>>>>> 2605a50543e98629504ed801cb84f0eef2fb925e
