@@ -1,6 +1,6 @@
 @extends('layout.usermaster')
 @section('usercontent')
-<title>Home - Salem Apparels</title>
+<title>Shop Category - Salem Apparels</title>
 <meta name="description" content="Terms and Conditions for our website.">
 <meta name="keywords" content="terms, conditions, user agreement">
 <meta name="author" content="Salem Apparels">
@@ -11,6 +11,7 @@
         <ul class="breadcrumb">
           <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
           <li><a class="font-xs color-gray-500" href="/shop">Shop</a></li>
+          <li><a class="font-xs color-gray-500" href="#">Category</a></li>
 
         </ul>
       </div>
@@ -55,13 +56,13 @@
               <div class="card-grid-style-3">
                 <div class="card-grid-inner">
                   <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="/shop" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="/shop" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
-                  <div class="image-box"><span class="label bg-brand-2">-17%</span><a href="/product/customize/{{  $product->id }}">
+                  <div class="image-box"><span class="label bg-brand-2">-17%</span><a href="/product/customise/{{  $product->slug }}">
                       <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}">
                     </a></div>
-                  <div class="info-right"><a class="font-xs color-gray-500" href="/product/customize/{{$product->id}}">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                  <div class="info-right"><a class="font-xs color-gray-500" href="/product/customise/{{$product->slug}}">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
                     <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span></div>
                     <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
-                    <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customize/{{  $product->id }}">Customize</a></div>
+                    <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->slug }}">Customize</a></div>
                     <ul class="list-features">
                       @foreach ($product->attributes as $attribute)
                       <li>{{ $attribute->attribute }}</li>

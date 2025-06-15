@@ -45,7 +45,7 @@
                                             </ul>
 
                                             <div class="mt-30">
-                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customize/{{  $bp->id }}">Customise</a>
+                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customise/{{  $bp->id }}">Customise</a>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                     <div class="card-grid-style-2 card-grid-style-2-small">
                         <div class="image-box"><a href="#"><img
                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$bp->title}}"></a>
-                            <div class="mt-10 text-center"><a class="btn btn-gray" href="/product/customize/{{  $product->id }}">Customise</a></div>
+                            <div class="mt-10 text-center"><a class="btn btn-gray" href="/product/customise/{{  $product->slug }}">Customise</a></div>
                         </div>
                         <div class="info-right"><a class="color-brand-3 font-sm-bold" href="#">
                                 <h6>{{$product->type}}</h6>
@@ -182,20 +182,20 @@
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
                                                 <div class="image-box"><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                             alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
                                                         href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                        href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                            href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -227,20 +227,20 @@
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
                                                 <div class="image-box"><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                             alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
                                                         href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                        href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                            href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -278,20 +278,20 @@
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
                                                 <div class="image-box"><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                             alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
                                                         href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                        href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                            href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -323,20 +323,20 @@
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
                                                 <div class="image-box"><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                             alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
                                                         href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                        href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                            href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -374,20 +374,20 @@
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
                                                 <div class="image-box"><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                             alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
                                                         href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                        href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                            href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -419,20 +419,20 @@
                                                         aria-label="Quick view" href="#ModalQuickview"
                                                         data-bs-toggle="modal"></a></div>
                                                 <div class="image-box"><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                             alt="Salem Apparel"></a></div>
                                                 <div class="info-right"><a class="font-xs color-gray-500"
                                                         href="#">{{ $product->brand }}</a><br><a
                                                         class="color-brand-3 font-sm-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                        href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                     <div class="price-info"><strong
                                                             class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                         {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                     </div>
                                                     <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                            href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                            href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                     <ul class="list-features">
                                                         @foreach ($product->attributes as $attribute)
                                                         <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -495,20 +495,20 @@
                                                                 aria-label="Quick view" href="#ModalQuickview"
                                                                 data-bs-toggle="modal"></a></div>
                                                         <div class="image-box"></span><a
-                                                                href="/product/customize/{{  $product->id }}"><img
+                                                                href="/product/customise/{{  $product->slug }}"><img
                                                                     src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"
                                                                     alt="Salem Apparel"></a></div>
                                                         <div class="info-right"><a class="font-xs color-gray-500"
                                                                 href="#">{{ $product->brand }}</a><br><a
                                                                 class="color-brand-3 font-sm-bold"
-                                                                href="/product/customize/{{  $product->id }}">{{ $product->title . ' ' . $product->sku }}</a>
+                                                                href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
 
                                                             <div class="price-info"><strong
                                                                     class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong>
                                                                 {{-- <span class="color-gray-500 price-line">£3225.6</span> --}}
                                                             </div>
                                                             <div class="mt-20 box-btn-cart"><a class="btn btn-cart"
-                                                                    href="/product/customize/{{  $product->id }}">Customise</a></div>
+                                                                    href="/product/customise/{{  $product->slug }}">Customise</a></div>
                                                             <ul class="list-features">
                                                                 @foreach ($product->attributes as $attribute)
                                                                 <li>{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
@@ -550,11 +550,11 @@
                                             @foreach ($footwears as $product)
                                             <div class="card-grid-style-2 card-grid-none-border border-bottom mb-10">
                                                 <div class="image-box"><span class="label bg-brand-2"></span><a
-                                                        href="/product/customize/{{  $product->id }}"><img
+                                                        href="/product/customise/{{  $product->slug }}"><img
                                                             src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$product->title}}"></a>
                                                 </div>
                                                 <div class="info-right"><a class="color-brand-3 font-xs-bold"
-                                                        href="/product/customize/{{  $product->id }}">{{$product->title}} </a>
+                                                        href="/product/customise/{{  $product->slug }}">{{$product->title}} </a>
 
                                                     <div class="price-info"><strong
                                                             class="font-md-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 }}</strong>
