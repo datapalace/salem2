@@ -465,5 +465,9 @@
         });
         canvas.add(text).setActiveObject(text);
     }
+
+
+
+    // Example usage: setProductColorOverlay('IMAGE_URL', '#E2B808');
 </script>
 @endsection
