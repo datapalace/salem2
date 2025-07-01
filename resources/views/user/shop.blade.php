@@ -66,7 +66,7 @@
                     {{-- <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span>
                   </div> --}}
                   <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
-                  <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->slug }}">View</a></div>
+                  <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->id }}">Customise</a></div>
                   <ul class="list-features">
                     @foreach ($product->attributes as $attribute)
                     <li> {{ Str::replace(':', ': ', $attribute->attribute) }}</li>

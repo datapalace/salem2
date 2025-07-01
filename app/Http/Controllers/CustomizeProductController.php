@@ -22,12 +22,30 @@ class CustomizeProductController extends Controller
             }
         ])->where('id', $id)->first();
 
-        // query product colour 
+        // query product colour
         $colors = Product::select('colourway_name')->where('style_code', $product->style_code)->groupBy('colourway_name')->get();
 
-
+        // query product sizes
+        $sizes = Product::select('size')->where('title', $product->title)->groupBy('size')->get();
 
         $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+        $availableColors = Product::with([
+            'galleries',
+            'price',
+            'attributes' => function ($query) {
+                $query->limit(3);
+            }
+        ])
+            ->where('style_code', $product->style_code)
+            ->whereNotNull('colourway_name') // filter out nulls in the query
+            ->get()
+            ->groupBy('colourway_name');
+        $availableSizes = Product::with([])
+            ->where('title', $product->title)
+            ->whereNotNull('size') // filter out nulls in the query
+            ->get()
+            ->groupBy('size');
+
         $relatedProducts = Product::with([
             'galleries',
             'price',
@@ -44,6 +62,6 @@ class CustomizeProductController extends Controller
             ->get()
             ->groupBy('colourway_name');
 
-        return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts', 'colors'));
+        return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts', 'colors', 'availableColors', 'sizes'));
     }
 }
