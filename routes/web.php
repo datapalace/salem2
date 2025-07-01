@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CustomizeProductController;
 use App\Http\Controllers\CanvasController;
+use App\Http\Controllers\ProductFixController;
 use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,8 @@ Route::middleware('auth:admin')->group(function () {
         return view('add-a-product');
     });
     Route::post('/add-product', [ProductController::class, 'store'])->name('product.store');
+
+    Route::post('/add-customize-product', [ProductController::class, 'add_customize'])->name('customize.store');
 
     // show product
     Route::get('/products', [ProductController::class, 'show'])->name('all-products');
@@ -61,7 +64,11 @@ Route::middleware('auth:customer')->group(function () {
 Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
 
 //shop now
-Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
+Route::get('/shop', [ProductController::class, 'customiseShop'])->name('customize-now');
+
+
+//shop now
+Route::get('/custom-design', [ProductController::class, 'shopNow'])->name('shop-now');
 
 // shop by category
 Route::get('/shop/category/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
@@ -70,6 +77,7 @@ Route::get('/shop/category/{category}', [ProductController::class, 'shopByCatego
 
 Route::get('/product/customise/{id}', [CustomizeProductController::class, 'customize'])->name('customize');
 
+Route::get('/fix-product-slugs', [ProductFixController::class, 'fixSlugs'])->name('fix-product-slugs');
 
 // about us
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');

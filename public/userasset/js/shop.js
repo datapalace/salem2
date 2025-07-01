@@ -24,7 +24,7 @@
              $(".slider-nav-thumbnails-2").slick("setPosition");
              if ($(window).width() > 768) {
                  $(".product-image-slider-2 .slick-active img").elevateZoom({
-                     zoomType: "inner",
+                     zoomType: "innerz",
                      cursor: "crosshair",
                      zoomWindowFadeIn: 500,
                      zoomWindowFadeOut: 750
@@ -139,7 +139,7 @@
         var img = $(slick.$slides[nextSlide]).find("img");
         $(".zoomWindowContainer,.zoomContainer").remove();
         $(img).elevateZoom({
-            zoomType: "inner",
+            zoomType: "innerz",
             cursor: "crosshair",
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 750
@@ -148,7 +148,7 @@
     //Elevate Zoom
     if ($(".product-image-slider").length) {
         $(".product-image-slider .slick-active img").elevateZoom({
-            zoomType: "inner",
+            zoomType: "innerz",
             cursor: "crosshair",
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 750
@@ -191,7 +191,7 @@
             var img = $(slick.$slides[nextSlide]).find("img");
             $(".zoomWindowContainer,.zoomContainer").remove();
             $(img).elevateZoom({
-                zoomType: "inner",
+                zoomType: "innerz",
                 cursor: "crosshair",
                 zoomWindowFadeIn: 500,
                 zoomWindowFadeOut: 750
@@ -200,7 +200,7 @@
         //Elevate Zoom
         if ($(".product-image-slider-2").length) {
             $(".product-image-slider-2 .slick-active img").elevateZoom({
-                zoomType: "inner",
+                zoomType: "innerz",
                 cursor: "crosshair",
                 zoomWindowFadeIn: 500,
                 zoomWindowFadeOut: 750
@@ -279,7 +279,7 @@ function initSlickQuickview() {
         var img = $(slick.$slides[nextSlide]).find("img");
         $(".zoomWindowContainer,.zoomContainer").remove();
         $(img).elevateZoom({
-            zoomType: "inner",
+            zoomType: "innerz",
             cursor: "crosshair",
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 750
@@ -288,7 +288,7 @@ function initSlickQuickview() {
     //Elevate Zoom
     if ($(".product-image-slider-2").length) {
         $(".product-image-slider-2 .slick-active img").elevateZoom({
-            zoomType: "inner",
+            zoomType: "innerz",
             cursor: "crosshair",
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 750

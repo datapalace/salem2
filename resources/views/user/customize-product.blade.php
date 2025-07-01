@@ -12,6 +12,7 @@
         max-height: 500px;
         overflow-y: auto;
     }
+
 </style>
 <main class="main">
 
@@ -125,21 +126,6 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                             <div class="box-product-color mt-20">
-                                <select name="color" id="" class="form-select form-select-sm">
-                                    <option value="">Select Your Preffered Colour</option>
-                                    <option value="Red">Red</option>
-                                    <option value="Blue">blue</option>
-                                    <option value="White">White</option>
-                                    <option value="Black">Black</option>
-                                    <option value="Green">Green</option>
-                                    <option value="Orange">Orange</option>
-                                    <option value="Pink">Pink</option>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                            <div class="box-product-color mt-20">
                                 <select name="size" id="" class="form-select form-select-sm">
                                     <option value="">Select Your Preffered Colour</option>
                                     <option value="S">S</option>
@@ -166,7 +152,7 @@
                                     class="minus-cart"></span><span class="plus-cart"></span>
                             </div>
                             <div class="button-buy"><a class="btn btn-cart" href="/customise-product/{{  $product->id }}">Customise</a><a
-                                    class="btn btn-buy" href="shop-checkout.html">Proceed to Check Out</a></div>
+                                    class="btn btn-buy" href="#">Proceed to Check Out</a></div>
                         </div>
 
 
@@ -470,15 +456,14 @@
             const $mainSlider = $('#product-image-slider');
             const $thumbSlider = $('#slider-nav-thumbnails');
 
-            // Destroy if already initialized
             if ($mainSlider.hasClass('slick-initialized')) $mainSlider.slick('unslick');
             if ($thumbSlider.hasClass('slick-initialized')) $thumbSlider.slick('unslick');
 
-            // Clear content
+           
             $mainSlider.empty();
             $thumbSlider.empty();
 
-            // Add new images
+           
             galleryImages.forEach(function(url) {
                 $mainSlider.append(`
                 <figure class="border-radius-10">
