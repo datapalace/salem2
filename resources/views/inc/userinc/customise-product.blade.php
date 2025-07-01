@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $product->title?? 'CCustomize Product' }}</title>
+    <title>{{ $product->title?? 'Customise Product' }}</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -215,6 +215,17 @@
     <button onclick="setProductColorOverlay('{{ $product->galleries[0]->image_url }}', '#222')" style="background:#222;color:#fff;border:1px solid #ccc;width:32px;height:32px;border-radius:50%;" title="Black"></button>
     <button onclick="setProductColorOverlay('{{ $product->galleries[0]->image_url }}', '#fff')" style="background:#fff;color:#222;border:1px solid #ccc;width:32px;height:32px;border-radius:50%;" title="White"></button>
 </div>
+
+<button onclick="downloadDesign()">Download Design</button>
+<script>
+function downloadDesign() {
+    const dataURL = canvas.toDataURL({ format: 'png' });
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'custom-design.png';
+    link.click();
+}
+</script>
 
 <script>
     const canvas = new fabric.Canvas('fabricCanvas');
@@ -685,6 +696,27 @@
             });
         });
     }
+
+    // Add this after canvas initialization
+    const designArea = new fabric.Rect({
+        left: 50, top: 50, width: 250, height: 400,
+        fill: 'rgba(0,0,0,0.01)', stroke: '#E2B808', strokeDashArray: [6, 4],
+        selectable: false, evented: false
+    });
+    canvas.add(designArea);
+    canvas.sendToBack(designArea);
+
+    // Restrict objects to design area
+    canvas.on('object:moving', function(e) {
+        const obj = e.target;
+        if (obj === designArea) return;
+        if (obj.left < designArea.left) obj.left = designArea.left;
+        if (obj.top < designArea.top) obj.top = designArea.top;
+        if (obj.left + obj.width * obj.scaleX > designArea.left + designArea.width)
+            obj.left = designArea.left + designArea.width - obj.width * obj.scaleX;
+        if (obj.top + obj.height * obj.scaleY > designArea.top + designArea.height)
+            obj.top = designArea.top + designArea.height - obj.height * obj.scaleY;
+    });
 </script>
 
 </body>

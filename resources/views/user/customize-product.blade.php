@@ -6,13 +6,14 @@
 <meta name="description" content="Salem Apparels - customise your products with ease.">
 <meta name="keywords" content="Salem Apparels, customise Products, Online Shopping, E-commerce">
 <meta name="author" content="Salem Apparels">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+
 <!-- Include Fabric.js -->
 <style>
     .slider-nav-thumbnails {
         max-height: 500px;
         overflow-y: auto;
     }
-
 </style>
 <main class="main">
 
@@ -20,8 +21,9 @@
         <div class="breadcrumbs-div">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
-                    <li><a class="font-xs color-gray-500" href="/shop/category/{{$product->type}}">{{ $product->type}}</a></li>
+                    <li><a class="font-xs color-gray-100" href="/">Home</a></li>
+                    <li><a class="font-xs color-gray-500"
+                            href="/shop/category/{{ $product->type }}">{{ $product->type }}</a></li>
 
                 </ul>
             </div>
@@ -34,13 +36,15 @@
                     <div class="gallery-image">
                         <div class="galleries">
                             <div class="detail-gallery">
-                            <div class="product-image-slider" id="product-image-slider">
-                                @foreach ($product->galleries as $gallery)
-                                <figure class="border-radius-10">
-                                    <img src="{{ $gallery->image_url }}" alt="{{ $product->title }}">
-                                </figure>
-                                @endforeach
-                            </div>
+                                <div class="product-image-slider" id="product-image-slider">
+                                    @foreach ($product->galleries as $gallery)
+                                    <figure class="border-radius-10">
+
+
+                                    </figure>
+                                    @endforeach
+
+                                </div>
                             </div>
                             <div class="slider-nav-thumbnails" id="slider-nav-thumbnails">
                                 @foreach ($product->galleries as $gallery)
@@ -59,87 +63,99 @@
                     <h3 class="color-brand-3 mb-25">{{ $product->title . ' ' . $product->style_code }}</h3>
                     <div class="row align-items-center">
                         <div class="col-lg-4 col-md-4 col-sm-3 mb-mobile"><span
-                                class="bytext color-gray-500 font-xs font-medium">by</span><a
-                                class="byAUthor color-gray-900 font-xs font-medium" href="#">
-                                Salem</a>
-                            <div class="rating mt-5"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
-                                    alt="Ecom"><span class="font-xs color-gray-500 font-medium"> (65 reviews)</span>
-                            </div>
-                        </div>
-
+                                class="bytext color-gray-500 font-xs font-large">{{ $product->weight }}</span>
+                            {{-- <div class="rating mt-5"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
+                            alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
+                                alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
+                                alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
+                                alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
+                                alt="Ecom"><span class="font-xs color-gray-500 font-medium"> (65 reviews)</span>
+                        </div> --}}
                     </div>
-                    <div class="border-bottom pt-10 mb-20"></div>
-                    <div class="box-product-price">
-                        <h3 class="color-brand-3 price-main d-inline-block mr-10">
-                            £{{ $product->price->single_list_price + 3 }}</h3>
-                        <!-- <span class="color-gray-500 price-line font-xl line-througt">$3225.6</span> -->
-                    </div>
-                    <div class="product-description mt-20 color-gray-900">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <ul class="list-dot">
-                                    @foreach ($product->attributes->take(3) as $attribute)
-                                    <li class="font-lg color-brand-3">
-                                        {{ Str::replace(':', ': ', $attribute->attribute) }}
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <ul class="list-dot">
-                                    @foreach ($product->attributes->skip(3)->take(3) as $attribute)
-                                    <li class="font-lg color-brand-3">
-                                        {{ Str::replace(':', ': ', $attribute->attribute) }}
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-product-color mt-20">
-                        <p class="font-sm color-gray-900">Color:<span class="color-brand-2 nameColor">Pink Gold</span></p>
-                        <ul class="list-colors">
-                            <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-1.jpg" alt="Ecom" title="Pink"></li> -->
-                            <!-- loop product color from the same product table -->
 
-                            @foreach ($relatedProducts as $colourway => $products)
-                            @php
-                            $relatedProduct = $products->first();
-                            @endphp
-
-                            <li class="related-product-thumb"
-                                data-gallery='@json($relatedProduct->galleries->pluck("image_url"))'>
-                                <img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/page/product/img-gallery-2.jpg') }}"
-                                    alt="Salem Apparel"
-                                    title="{{ $relatedProduct->colourway_name }}">
-                            </li>
-                            @endforeach
-
-                            <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-6.jpg" alt="Ecom" title="Black"></li>
-                  <li class="disabled"><img src="assets/imgs/page/product/img-gallery-7.jpg" alt="Ecom" title="Red"></li> -->
-                        </ul>
-                    </div>
+                </div>
+                <div class="border-bottom pt-10 mb-20"></div>
+                <div class="box-product-price">
+                    <h3 class="color-brand-3 price-main d-inline-block mr-10">
+                        £<span id="pPrice">{{ $product->price->single_list_price + 3 }}</span></h3>
+                    <!-- <span class="color-gray-500 price-line font-xl line-througt">$3225.6</span> -->
+                </div>
+                <div class="product-description mt-20 color-gray-900">
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                            <div class="box-product-color mt-20">
-                                <select name="size" id="" class="form-select form-select-sm">
-                                    <option value="">Select Your Preffered Colour</option>
-                                    <option value="S">S</option>
-                                    <option value="M">M</option>
-                                    <option value="L">L</option>
-                                    <option value="XL">XL</option>
-                                    <option value="XXL">XXL</option>
-                                    <option value="XXXL">XXXL</option>
-                                    <option value="Pink">Pink</option>
-
-                                </select>
-                            </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <ul class="list-dot">
+                                @foreach ($product->attributes->take(3) as $attribute)
+                                <li class="font-lg color-brand-3">
+                                    {{ Str::replace(':', ': ', $attribute->attribute) }}
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <ul class="list-dot">
+                                @foreach ($product->attributes->skip(3)->take(3) as $attribute)
+                                <li class="font-lg color-brand-3">
+                                    {{ Str::replace(':', ': ', $attribute->attribute) }}
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-product-color mt-20">
+                    <p class="font-sm color-gray-900">Color: <span class="color-brand-2 nameColor">Select your favourite color</span>
+                    </p>
+                    <ul class="list-colors">
+                        <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-1.jpg" alt="Ecom" title="Pink"></li> -->
+                        <!-- loop product color from the same product table -->
 
+                        @foreach ($availableColors as $colourway => $products)
+                        @php
+                        $availableColor = $products->first();
+                        @endphp
+
+                        <li class="related-product-thumb" data-gallery='@json($availableColor->galleries->pluck(' image_url'))'>
+                            <span class="d-inline-block rounded-circle border color-swatch"
+                                style="width:32px;height:32px;background:{{ $availableColor->rgb ?? '#eee' }};border:2px solid #ccc; cursor:pointer;"
+                                title="{{ $availableColor->colourway_name }}"
+                                onclick="document.querySelector('.nameColor').textContent = '{{ $availableColor->colourway_name }}';"></span>
+                        </li>
+                        @endforeach
+
+                        <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-6.jpg" alt="Ecom" title="Black"></li>
+                  <li class="disabled"><img src="assets/imgs/page/product/img-gallery-7.jpg" alt="Ecom" title="Red"></li> -->
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="box-product-color mt-20">
+                            <select name="color" id="" class="form-select form-select-sm">
+                                <option value="">Select Your Preffered Colour</option>
+                                <option value="Red">Red</option>
+                                <option value="Blue">blue</option>
+                                <option value="White">White</option>
+                                <option value="Black">Black</option>
+                                <option value="Green">Green</option>
+                                <option value="Orange">Orange</option>
+                                <option value="Pink">Pink</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="box-product-color mt-20">
+                            <select name="size" id="" class="form-select form-select-sm">
+                                <option value="">Select Your Preffered Colour</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                                <option value="XXXL">XXXL</option>
+                                <option value="Pink">Pink</option>
+
+                            </select>
+                        </div>
                     </div>
 
 
@@ -152,7 +168,7 @@
                                     class="minus-cart"></span><span class="plus-cart"></span>
                             </div>
                             <div class="button-buy"><a class="btn btn-cart" href="/customise-product/{{  $product->id }}">Customise</a><a
-                                    class="btn btn-buy" href="#">Proceed to Check Out</a></div>
+                                    class="btn btn-buy" href="shop-checkout.html">Proceed to Check Out</a></div>
                         </div>
 
 
@@ -182,7 +198,7 @@
                     <li><a href="#tab-additional" data-bs-toggle="tab" role="tab" aria-controls="tab-additional"
                             aria-selected="true">Additional information</a></li>
                     <!-- <li><a href="#tab-reviews" data-bs-toggle="tab" role="tab" aria-controls="tab-reviews" aria-selected="true">Reviews (2)</a></li>
-                      <li><a href="#tab-vendor" data-bs-toggle="tab" role="tab" aria-controls="tab-vendor" aria-selected="true">Vendor</a></li> -->
+                                      <li><a href="#tab-vendor" data-bs-toggle="tab" role="tab" aria-controls="tab-vendor" aria-selected="true">Vendor</a></li> -->
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade active show" id="tab-description" role="tabpanel"
@@ -235,18 +251,22 @@
                         <div class="card-grid-style-3">
                             <div class="card-grid-inner">
                                 <div class="tools">
-                                    <a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a>
+                                    <a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend"
+                                        data-bs-placement="left"></a>
                                     <a class="btn btn-wishlist btn-tooltip mb-10" href="Salem Apparel">
                                     </a>
                                 </div>
                                 <div class="image-box">
                                     <a href="/product/customise/{{ $relatedProduct->slug }}">
-                                        <img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{ $relatedProduct->title }}">
+                                        <img src="{{ $relatedProduct->galleries[0]->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
+                                            alt="{{ $relatedProduct->title }}">
                                     </a>
                                 </div>
                                 <div class="info-right">
-                                    <a class="font-xs color-gray-500" href="#">{{ $relatedProduct->type }}</a><br>
-                                    <a class="color-brand-3 font-sm-bold" href="/product/customise/{{ $relatedProduct->id }}">
+                                    <a class="font-xs color-gray-500"
+                                        href="#">{{ $relatedProduct->type }}</a><br>
+                                    <a class="color-brand-3 font-sm-bold"
+                                        href="/product/customise/{{ $relatedProduct->id }}">
                                         {{ $relatedProduct->title . ' ' . $relatedProduct->style_code }}
                                     </a>
                                     <div class="price-info">
@@ -255,7 +275,8 @@
                                         </strong>
                                     </div>
                                     <div class="mt-20 box-btn-cart">
-                                        <a class="btn btn-cart" href="/product/customise/{{ $relatedProduct->id }}">Customise Now</a>
+                                        <a class="btn btn-cart"
+                                            href="/product/customise/{{ $relatedProduct->id }}">Customise Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -390,7 +411,8 @@
             </ul>
         </div>
     </section>
-    <section class="section-box box-newsletter" style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
+    <section class="section-box box-newsletter"
+        style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-7 col-sm-12">
@@ -416,7 +438,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
 <!-- Modal Structure -->
-<div class="modal fade" id="customiseModal" tabindex="-1" aria-labelledby="customiseModalLabel" aria-hidden="true">
+<div class="modal fade" id="customiseModal" tabindex="-1" aria-labelledby="customiseModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -427,12 +450,18 @@
 
 
                 <div class="galleries text-center">
-                    <canvas id="fabricCanvas" width="400" height="600" style="border:1px solid #ccc;"></canvas>
+
 
                     <div class="slider-nav-thumbnails mt-3">
-                        <img src="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20BLK%20MODEL%203.jpg" data-url="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20BLK%20MODEL%203.jpg" class="img-thumbnail thumb">
-                        <img src="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20ORA%20MODEL%203.jpg" data-url="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20ORA%20MODEL%203.jpg" class="img-thumbnail thumb">
-                        <img src="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20CNB%20MODEL%203.jpg" data-url="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20CNB%20MODEL%203.jpg" class="img-thumbnail thumb">
+                        <img src="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20BLK%20MODEL%203.jpg"
+                            data-url="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20BLK%20MODEL%203.jpg"
+                            class="img-thumbnail thumb">
+                        <img src="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20ORA%20MODEL%203.jpg"
+                            data-url="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20ORA%20MODEL%203.jpg"
+                            class="img-thumbnail thumb">
+                        <img src="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20CNB%20MODEL%203.jpg"
+                            data-url="https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20CNB%20MODEL%203.jpg"
+                            class="img-thumbnail thumb">
                     </div>
 
                     <div class="mt-3">
@@ -459,11 +488,11 @@
             if ($mainSlider.hasClass('slick-initialized')) $mainSlider.slick('unslick');
             if ($thumbSlider.hasClass('slick-initialized')) $thumbSlider.slick('unslick');
 
-           
+
             $mainSlider.empty();
             $thumbSlider.empty();
 
-           
+
             galleryImages.forEach(function(url) {
                 $mainSlider.append(`
                 <figure class="border-radius-10">
@@ -500,5 +529,29 @@
             });
 
         });
+    });
+</script>
+<!-- Toolbar for customCanvas -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputs = document.querySelectorAll('.size-input');
+        const price = parseFloat(document.getElementById('pPrice').innerText);
+        const totalSpan = document.getElementById('pTotal');
+
+        function calculateTotal() {
+            let total = 0;
+            inputs.forEach(input => {
+                const qty = parseInt(input.value) || 0;
+                total += qty * price;
+            });
+            totalSpan.textContent = total.toLocaleString();
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+
+        // initial call
+        calculateTotal();
     });
 </script>

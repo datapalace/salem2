@@ -1,19 +1,3 @@
- <div class="topbar top-gray-1000">
-      <div class="container-topbar">
-        <div class="menu-topbar-left d-none d-xl-block">
-          <ul class="nav-small">
-            <li><a class="font-xs" href="about-us">About Us</a></li>
-            <li><a class="font-xs" href="#">Careers</a></li>
-            {{-- <li><a class="font-xs" href="page-register.html">Open a shop</a></li> --}}
-          </ul>
-        </div>
-        <div class="info-topbar text-center d-none d-xl-block"><span class="font-xs color-brand-3">Free shipping for all orders over</span><span class="font-sm-bold color-success">  $75.00</span></div>
-        <div class="menu-topbar-right"><span class="font-xs color-brand-3">Need help? Call Us:</span><span class="font-sm-bold color-success"> +44 7487 384030</span>
-
-
-        </div>
-      </div>
-    </div>
     <header class="header header-container sticky-bar">
       <div class="container">
         <div class="main-header">
@@ -111,20 +95,18 @@
           <div class="header-nav d-inline-block">
             <nav class="nav-main-menu d-none d-xl-block">
               <ul class="main-menu">
-                <li class=""><a class="active" href="/">Home</a>
-
-                </li>
-                <li class=""><a href="/shop">Shop</a>
-
-                </li>
-                <li class="dropdown position-static">
-                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="" href="/about-us">About Us</a></li>
+                <li class=""><a  class="has-children active" href="/">Home</a>
+                    <ul class="sub-menu two-col">
+                         <li><a class="" href="/about-us">About Us</a></li>
                         <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
                         <li><a class="" href="/contact-us">Contact Us</a></li>
                     </ul>
                 </li>
+                <li class=""><a href="/shop">Shop</a>
+                <li class=""><a href="/custom-design">Custom</a>
+
+                </li>
+
 
               </ul>
             </nav>
@@ -144,7 +126,7 @@
                    <li><a href="/">Home</a></li>
                   <li><a href="/about-us">About Us</a></li>
                   <li><a href="/contact">Contact</a></li>
-                 
+
                 </ul>
               </nav>
             </div>
@@ -164,10 +146,10 @@
                 <li><a href="/logout">Sign out</a></li>
               </ul>
             </div>
-           
+
             <div class="site-copyright color-gray-400 mt-30">Copyright 2025 &copy; Salem Apparel<br>Designed by<a href="http://datapalace.ng" target="_blank">&nbsp; Datapalace</a></div>
           </div>
         </div>
       </div>
     </div>
-   
+

@@ -67,6 +67,8 @@
                   </div> --}}
                   <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ optional($product->price)->single_list_price + 3 ?? 'N/A' }}</strong></div>
                   <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->slug }}">View</a></div>
+                  <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ $product->price->single_list_price + 3 ?? 'N/A' }}</strong></div>
+                  <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->id }}">Customise</a></div>
                   <ul class="list-features">
                     @foreach ($product->attributes as $attribute)
                     <li> {{ Str::replace(':', ': ', $attribute->attribute) }}</li>
