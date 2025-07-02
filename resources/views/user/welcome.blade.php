@@ -32,10 +32,26 @@
                                                 alt="{{ $bp->title }}"
                                                 style="position: absolute; right: 0; bottom: 0; max-width: 200px; max-height: 250px;">
 
-                                            @php $words = explode(' ', $bp->title); @endphp
-                                            <h2 class="color-gray-100 text-uppercase text-shadow">
-                                                {{ $words[0] ?? '' }} {{ $words[1] ?? '' }}<br>
-                                                {{ implode(' ', array_slice($words, 2)) }}
+                                            @php
+                                                $words = explode(' ', $bp->title);
+                                            @endphp
+                                            <h2 class="text-uppercase">
+                                                @php
+                                                    $title = $bp->title;
+                                                    if (strlen($title) > 25) {
+                                                        $mainWords = Str::limit($title, 25, '');
+                                                        $rest = trim(Str::replaceFirst($mainWords, '', $title));
+                                                    } else {
+                                                        $mainWords = $title;
+                                                        $rest = '';
+                                                    }
+                                                @endphp
+                                                {{ $mainWords }}
+                                                @if($rest)
+                                                    <br>
+                                                    {{ $rest }}
+                                                @endif
+                                                @endif
                                             </h2>
 
                                             <ul class="list-disc">
@@ -45,7 +61,7 @@
                                             </ul>
 
                                             <div class="mt-30">
-                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customise/{{  $bp->id }}">Customise</a>
+                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customise/{{  $bp->slug }}">Customise</a>
                                             </div>
                                         </div>
                                     </div>

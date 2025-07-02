@@ -20,7 +20,7 @@ class CustomizeProductController extends Controller
             'attributes' => function ($query) {
                 $query->limit(10);
             }
-        ])->where('id', $id)->first();
+        ])->where('slug', $id)->first();
 
         // query product colour
         $colors = Product::select('colourway_name')->where('style_code', $product->style_code)->groupBy('colourway_name')->get();

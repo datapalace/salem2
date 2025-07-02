@@ -168,12 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
     let canvas;
 
-    document.getElementById('customizeModal').addEventListener('shown.bs.modal', function () {
-        if (!canvas) {
-            canvas = new fabric.Canvas('fabricCanvas');
-            setCanvasBackground('https://www.fullcollection.com/storage/phoenix/2025/Phoenix%20All%20Images/Gildan/Model%20Images/ProductCarouselMain/GD57B%20BLK%20MODEL%203.jpg'); // default
-        }
-    });
+
 
     function setCanvasBackground(imageURL) {
         fabric.Image.fromURL(imageURL, function(img) {
@@ -248,6 +243,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
+</script>
+<script>
+    // click .colo-watch on page load
+
 </script>
 
   </body>

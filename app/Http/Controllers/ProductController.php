@@ -122,11 +122,11 @@ class ProductController extends Controller
                 $query->limit(2);
             }
 
-        ])->latest()->inRandomOrder()->paginate(9);
+        ])->where('customize', '')->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')->inRandomOrder()->limit(10)
+            ->groupBy('type')
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
@@ -148,7 +148,6 @@ class ProductController extends Controller
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')->inRandomOrder()->limit(10)
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
@@ -169,7 +168,7 @@ class ProductController extends Controller
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')->inRandomOrder()->limit(10)
+            ->groupBy('type')
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
@@ -182,6 +181,7 @@ class ProductController extends Controller
         $query = $request->get('q');
 
         $products = \App\Models\Product::with('galleries')
+            ->groupBy('title')
             ->where('title', 'like', "%{$query}%")
             ->inRandomOrder()
             ->take(8)

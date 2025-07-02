@@ -80,30 +80,35 @@
       </div>
       <div class="header-bottom">
         <div class="container">
-          <div class="dropdown d-inline-block">
+          <div class="dropdown d-inline-block" >
             <button class="btn dropdown-toggle btn-category" id="dropdownCategory" type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-display="static"><span class="dropdown-right font-sm-bold color-white">Shop By Categories</span></button>
-            <div class="sidebar-left dropdown-menu dropdown-menu-light" aria-labelledby="dropdownCategory" data-bs-popper="static">
-              <ul class="menu-texts menu-close">
-
-                @foreach ($shopByCatMenus as $shopByCatMenu)
-                     <li><a href="/shop/category/{{$shopByCatMenu->type}}"><span class="img-link"><img src="{{ asset('userasset/imgs/template/game.svg') }}" alt="Salem Apparels Logo"></span><span class="text-link">{{ $shopByCatMenu->type }}</span></a></li>
-                @endforeach
-
-              </ul>
-            </div>
-          </div>
+            <div class="sidebar-left dropdown-menu dropdown-menu-light" aria-labelledby="dropdownCategory" data-bs-popper="static" style="max-height: 350px; overflow-y: auto;">
+                <ul class="menu-texts menu-close">
+                    @foreach ($shopByCatMenus as $shopByCatMenu)
+                        <li>
+                            <a href="/shop/category/{{$shopByCatMenu->type}}">
+                                <span class="img-link">
+                                    <img src="{{ asset('userasset/imgs/template/game.svg') }}" alt="Salem Apparels Logo">
+                                </span>
+                                <span class="text-link">{{ $shopByCatMenu->type }}</span>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>    </div>
           <div class="header-nav d-inline-block">
             <nav class="nav-main-menu d-none d-xl-block">
               <ul class="main-menu">
-                <li class=""><a  class="has-children active" href="/">Home</a>
+                <li class="has-children"><a  class="active" href="#">Home</a>
                     <ul class="sub-menu two-col">
+                        <li><a class="" href="/">Home</a></li>
                          <li><a class="" href="/about-us">About Us</a></li>
                         <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
                         <li><a class="" href="/contact-us">Contact Us</a></li>
                     </ul>
                 </li>
                 <li class=""><a href="/shop">Shop</a>
-                <li class=""><a href="/custom-design">Custom</a>
+                <li class=""><a href="/custom-design">Custom Design</a>
 
                 </li>
 
@@ -123,9 +128,18 @@
             <div class="mobile-menu-wrap mobile-header-border">
               <nav class="mt-15">
                 <ul class="mobile-menu font-heading">
-                   <li><a href="/">Home</a></li>
-                  <li><a href="/about-us">About Us</a></li>
-                  <li><a href="/contact">Contact</a></li>
+                  <li class="has-children"><a  class=" active" href="#">Home</a>
+                    <ul class="sub-menu two-col">
+                        <li><a class="" href="/">Home</a></li>
+                         <li><a class="" href="/about-us">About Us</a></li>
+                        <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a class="" href="/contact-us">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="/shop">Shop</a>
+                <li class=""><a href="/custom-design">Custom Design</a>
+
+                </li>
 
                 </ul>
               </nav>
