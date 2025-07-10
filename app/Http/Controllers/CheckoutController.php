@@ -77,7 +77,22 @@ class CheckoutController extends Controller
 
 
 
-    public function payment(Request $request)
+    public function checkout(Request $request)
+    {
+        $checkoutData = session('checkout_data');
+        $user = Auth::guard('customer')->user(); // Use the user guard 
+
+        if (!$checkoutData) {
+
+            return redirect()->route('welcome')->with('error', 'No checkout data found.');
+        }
+        // Only fetch what you need for the About Us page
+        $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+        $brands = Product::select('brand')->groupBy('brand')->get();
+        return view('user.checkout', compact('checkoutData', 'shopByCatMenus', 'brands', 'user'));
+    }
+
+    public function makePaymentNow(Request $request)
     {
         $checkoutData = session('checkout_data');
         $user = Auth::guard('customer')->user(); // Use the user guard 

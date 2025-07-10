@@ -121,4 +121,5 @@ Route::get('/register', function () {
 }); // register page
 
 Route::post('/checkout/custom', [CheckoutController::class, 'custom'])->name('checkout.custom');
-Route::get('/design/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+Route::get('/design/checkout', [CheckoutController::class, 'checkout'])->name('checkout.payment');
+Route::post('/checkout/make-payment', [CheckoutController::class, 'makePaymentNow'])->name('checkout.make-payment');
