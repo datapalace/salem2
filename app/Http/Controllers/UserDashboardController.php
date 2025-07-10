@@ -17,7 +17,7 @@ class UserDashboardController extends Controller
             'attributes' => function ($query) {
                 $query->limit(3);
             }
-        ])->where('gender', 'Mens')->latest()->take(5)->get();
+        ])->where('type', 'T-shirt')->latest()->take(5)->get();
 
         $secondMen = Product::with([
             'galleries',
@@ -25,7 +25,7 @@ class UserDashboardController extends Controller
             'attributes' => function ($query) {
                 $query->limit(3);
             }
-        ])->where('gender', 'Mens')->latest()->skip(5)->take(5)->get();
+        ])->where('type', 'Polo')->latest()->skip(5)->take(5)->get();
 
         $ladies = Product::with([
             'galleries',
@@ -33,14 +33,14 @@ class UserDashboardController extends Controller
             'attributes' => function ($query) {
                 $query->limit(3);
             }
-        ])->where('gender', 'Ladies')->latest()->skip(5)->take(5)->get();
+        ])->where('type', 'hood')->latest()->skip(5)->take(5)->get();
         $secondLadies = Product::with([
             'galleries',
             'price',
             'attributes' => function ($query) {
                 $query->limit(3);
             }
-        ])->where('gender', 'Ladies')->latest()->take(5)->get();
+        ])->where('type', 'Jacket')->latest()->take(5)->get();
 
         $kids = Product::with([
             'galleries',
@@ -48,7 +48,7 @@ class UserDashboardController extends Controller
             'attributes' => function ($query) {
                 $query->limit(3);
             }
-        ])->where('gender', 'Kids')->latest()->take(5)->get();
+        ])->where('type', 'Headwear')->latest()->take(5)->get();
 
         // product 6
         $secondKids = Product::with([

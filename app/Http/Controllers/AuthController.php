@@ -35,16 +35,21 @@ class AuthController extends Controller
             // Redirect based on the user's role
             if ($role == 'admin') {
                 return redirect()->route('welcome');
-            }else{
+            } else {
+                $checkoutData = session('checkout_data');
+
+                if ($checkoutData) {
+
+                    return redirect()->back()->with('success', 'Your checkout is ready.');
+                }
+
                 return redirect()->route('shop-now')->with('success', 'Login successful!');
             }
-          
         }
         // If the password does not match, redirect back with an error message
         else {
             return redirect()->back()->with('error', 'Invalid credentials');
         }
-
     }
 
 
@@ -83,13 +88,12 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-       
+
         //  Auth::guard('web')->logout();
         Auth::guard('admin')->logout();
-         Auth::guard('customer')->logout();
+        Auth::guard('customer')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
-        
     }
 }

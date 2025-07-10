@@ -33,25 +33,25 @@
                                                 style="position: absolute; right: 0; bottom: 0; max-width: 200px; max-height: 250px;">
 
                                             @php
-                                                $words = explode(' ', $bp->title);
+                                            $words = explode(' ', $bp->title);
                                             @endphp
                                             <h2 class="text-uppercase">
                                                 @php
-                                                    $title = $bp->title;
-                                                    if (strlen($title) > 25) {
-                                                        $mainWords = Str::limit($title, 25, '');
-                                                        $rest = trim(Str::replaceFirst($mainWords, '', $title));
-                                                    } else {
-                                                        $mainWords = $title;
-                                                        $rest = '';
-                                                    }
+                                                $title = $bp->title;
+                                                if (strlen($title) > 25) {
+                                                $mainWords = Str::limit($title, 25, '');
+                                                $rest = trim(Str::replaceFirst($mainWords, '', $title));
+                                                } else {
+                                                $mainWords = $title;
+                                                $rest = '';
+                                                }
                                                 @endphp
                                                 {{ $mainWords }}
                                                 @if($rest)
-                                                    <br>
-                                                    {{ $rest }}
+                                                <br>
+                                                {{ $rest }}
                                                 @endif
-                                                @endif
+
                                             </h2>
 
                                             <ul class="list-disc">
@@ -85,6 +85,7 @@
         </div>
     </section>
 
+    <!-- Brands Section -->
     <div class="section-box">
         <div class="container">
             <div class="list-brands list-none-border">
@@ -104,6 +105,10 @@
             </div>
         </div>
     </div>
+    <!-- End Brands Section -->
+
+
+    <!-- Headwear Section -->
     <div class="section-box d-none d-sm-flex">
         <div class="container">
             <div class="row mt-60">
@@ -123,7 +128,7 @@
                             </a>
                             <ul class="list-links-disc">
                                 @foreach ($product->attributes as $attribute)
-                                <li><a class="font-sm" href="#">{{ Str::replace(':', ': ', $attribute->attribute) }}</li></a>
+                                <li><a class="font-sm color-brand-3" href="#">{{ Str::replace(':', ': ', $attribute->attribute) }}</li></a>
                                 @endforeach
 
 
@@ -136,6 +141,8 @@
             </div>
         </div>
     </div>
+    <!-- End Headwear Section -->
+
     <section class="section-box mt-30">
         <div class="container">
             <div class="head-main bd-gray-200">
@@ -663,83 +670,4 @@
 
 
 
-
-    <section class="section-box mt-90 mb-50">
-        <div class="container">
-            <ul class="list-col-5">
-                <li>
-                    <div class="item-list">
-                        <div class="icon-left"><img src="{{ asset('userasset/imgs/template/delivery.svg') }}"
-                                alt="Salem Apparel"></div>
-                        <div class="info-right">
-                            <h5 class="font-lg-bold color-gray-100">Free Delivery</h5>
-                            <p class="font-sm color-gray-500">From all orders over £10</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-list">
-                        <div class="icon-left"><img src="{{ asset('userasset/imgs/template/support.svg') }}"
-                                alt="Salem Apparel"></div>
-                        <div class="info-right">
-                            <h5 class="font-lg-bold color-gray-100">Support 24/7</h5>
-                            <p class="font-sm color-gray-500">Shop with an expert</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-list">
-                        <div class="icon-left"><img src="{{ asset('userasset/imgs/template/voucher.svg') }}"
-                                alt="Salem Apparel"></div>
-                        <div class="info-right">
-                            <h5 class="font-lg-bold color-gray-100">Gift voucher</h5>
-                            <p class="font-sm color-gray-500">Refer a friend</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-list">
-                        <div class="icon-left"><img src="{{ asset('userasset/imgs/template/return.svg') }}"
-                                alt="Salem Apparel"></div>
-                        <div class="info-right">
-                            <h5 class="font-lg-bold color-gray-100">Return &amp; Refund</h5>
-                            <p class="font-sm color-gray-500">Free return over £200</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-list">
-                        <div class="icon-left"><img src="{{ asset('userasset/imgs/template/secure.svg') }}"
-                                alt="Salem Apparel"></div>
-                        <div class="info-right">
-                            <h5 class="font-lg-bold color-gray-100">Secure payment</h5>
-                            <p class="font-sm color-gray-500">100% Protected</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="section-box box-newsletter" style="background-image: url('{{ asset('userasset/imgs/page/about/asus.svgs') }}');">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-7 col-sm-12">
-                    <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
-                    <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
-                            class="font-lg-bold">special offers.</span></p>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-12">
-                    <div class="box-form-newsletter mt-15">
-                        <form class="form-newsletter">
-                            <input class="input-newsletter font-xs" value="" placeholder="Your email Address">
-                            <button class="btn btn-brand-2">Sign Up</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-</main>
-@endsection
+    @endsection

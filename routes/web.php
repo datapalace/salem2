@@ -65,7 +65,7 @@ Route::middleware('auth:customer')->group(function () {
 Route::get('/', [UserDashboardController::class, 'index'])->name('product.index');
 
 //shop now
-Route::get('/shop', [ProductController::class, 'customiseShop'])->name('customize-now');
+Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
 
 
 //shop now
@@ -122,4 +122,3 @@ Route::get('/register', function () {
 
 Route::post('/checkout/custom', [CheckoutController::class, 'custom'])->name('checkout.custom');
 Route::get('/design/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
-

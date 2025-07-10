@@ -16,10 +16,18 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        if (Auth::check() && Auth::user()->role === $role) {
+        // Check specific guard based on role
+        $guard = match ($role) {
+            'admin' => 'admin',
+            'customer' => 'customer',
+            'subscriber' => 'subscriber',
+            default => 'web'
+        };
+
+        if (Auth::guard($guard)->check() && Auth::guard($guard)->user()->role === $role) {
             return $next($request);
         }
 
-        abort(403, 'Unauthorized'); // or redirect('/no-access')
+        abort(403, 'Unauthorized');
     }
 }

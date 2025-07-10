@@ -11,28 +11,28 @@
         <div class="col-lg-1"></div>
         <div class="col-lg-5">
           <h3>Create an account</h3>
-          <p class="font-md color-gray-500">Access to all features. No credit card required.</p>
+          <p class="font-md color-dark-500">Access to all features. No credit card required.</p>
           <form action="{{ route('register') }}" method="post">
             @csrf
             <div class="form-register mt-30 mb-30">
               <div class="form-group">
-                <label class="mb-5 font-sm color-gray-700">Full Name *</label>
+                <label class="mb-5 font-sm color-dark-700">Full Name *</label>
                 <input class="form-control" type="text" name="name" placeholder="Steven job">
               </div>
               <div class="form-group">
-                <label class="mb-5 font-sm color-gray-700">Email *</label>
+                <label class="mb-5 font-sm color-dark-700">Email *</label>
                 <input class="form-control" type="text" name="email" placeholder="stevenjob@gmail.com">
               </div>
               <div class="form-group">
-                <label class="mb-5 font-sm color-gray-700">Username *</label>
+                <label class="mb-5 font-sm color-dark-700">Username *</label>
                 <input class="form-control" name="username" type="text" placeholder="stevenjob">
               </div>
               <div class="form-group">
-                <label class="mb-5 font-sm color-gray-700">Password *</label>
+                <label class="mb-5 font-sm color-dark-700">Password *</label>
                 <input class="form-control" id="password" type="password" name="password" placeholder="******************">
               </div>
               <div class="form-group">
-                <label class="mb-5 font-sm color-gray-700">Confirm Password *</label>
+                <label class="mb-5 font-sm color-dark-700">Confirm Password *</label>
                 <input class="form-control" id="repassword" type="password" placeholder="******************">
                 <small id="passwordHelp" class="text-danger" style="display:none;">Passwords do not match.</small>
               </div>
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <button class="font-md-bold btn btn-buy" id="signupBtn" type="submit" disabled>Sign Up</button>
               </div>
-              <div class="mt-20"><span class="font-xs color-gray-500 font-medium">Already have an account?</span><a class="font-xs color-brand-3 font-medium" href="page-login.html"> Sign In</a></div>
+              <div class="mt-20"><span class="font-xs color-dark-500 font-medium">Already have an account?</span><a class="font-xs color-brand-3 font-medium" href="page-login.html"> Sign In</a></div>
             </div>
           </form>
         </div>
@@ -78,35 +78,35 @@
       </div>
     </div>
   </section>
-</main>
-@endsection
 
-<script>
-  window.onload = function() {
+  @endsection
+
+  <script>
+    window.onload = function() {
 
 
-    const password = document.getElementById('password');
-    const repassword = document.getElementById('repassword');
-    const checkagree = document.getElementById('checkagree');
-    const signupBtn = document.getElementById('signupBtn');
-    const passwordHelp = document.getElementById('passwordHelp');
-    const agreementHelp = document.getElementById('agreementHelp');
+      const password = document.getElementById('password');
+      const repassword = document.getElementById('repassword');
+      const checkagree = document.getElementById('checkagree');
+      const signupBtn = document.getElementById('signupBtn');
+      const passwordHelp = document.getElementById('passwordHelp');
+      const agreementHelp = document.getElementById('agreementHelp');
 
-    function validateForm() {
-      const passMatch = password.value && repassword.value && password.value === repassword.value;
-      passwordHelp.style.display = passMatch || (!password.value && !repassword.value) ? 'none' : 'block';
+      function validateForm() {
+        const passMatch = password.value && repassword.value && password.value === repassword.value;
+        passwordHelp.style.display = passMatch || (!password.value && !repassword.value) ? 'none' : 'block';
 
-      if (!checkagree.checked) {
-        agreementHelp.style.display = 'block';
-      } else {
-        agreementHelp.style.display = 'none';
+        if (!checkagree.checked) {
+          agreementHelp.style.display = 'block';
+        } else {
+          agreementHelp.style.display = 'none';
+        }
+
+        signupBtn.disabled = !(passMatch && checkagree.checked);
       }
 
-      signupBtn.disabled = !(passMatch && checkagree.checked);
-    }
-
-    password.addEventListener('input', validateForm);
-    repassword.addEventListener('input', validateForm);
-    checkagree.addEventListener('change', validateForm);
-  };
-</script>
+      password.addEventListener('input', validateForm);
+      repassword.addEventListener('input', validateForm);
+      checkagree.addEventListener('change', validateForm);
+    };
+  </script>
