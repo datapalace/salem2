@@ -78,5 +78,23 @@
       border-color: #333;
     }
   </style>
+  <script>
+    // 1. Add the modal HTML to your page (once, outside any loop)
+    $('body').append(`
+
+    `);
+
+    // 2. Add a button to open the modal in your customizer toolbar (add this to your toolbar HTML)
+    $('#customCanvasToolbar').append(`
+      <button type="button" id="openServerImageModals" class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
+    `);
+
+    // 3. Show the modal when the button is clicked
+    $(document).on('click', '#openServerImageModal', function() {
+        $('#serverImageModal').modal('show');
+    });
+
+
+</script>
   </head>
 <body>

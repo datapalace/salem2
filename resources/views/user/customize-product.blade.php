@@ -6,6 +6,13 @@
     <meta name="description" content="Salem Apparels - customise your products with ease.">
     <meta name="keywords" content="Salem Apparels, customise Products, Online Shopping, E-commerce">
     <meta name="author" content="Salem Apparels">
+    {{-- crawl product details with image  --}}
+    <meta property="og:title" content="{{ $product->title }}">
+    <meta property="og:description" content="{{ $product->description }}">
+    <meta property="og:image" content="{{ $product->galleries->first()->image_url ?? asset('userasset/imgs/template/logo.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="product">
+    <meta property="og:site_name" content="Salem Apparels">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
     <!-- Include Fabric.js -->
@@ -114,12 +121,16 @@
                                         $availableColor = $products->first();
                                     @endphp
 
-                                    <li class="related-product-thumb" data-gallery='@json($availableColor->galleries->pluck('image_url'))'>
+                                   <li class="related-product-thumb" data-gallery='@json($availableColor->galleries->pluck('image_url'))'>
                                         <span class="d-inline-block rounded-circle border color-swatch"
                                             style="width:32px;height:32px;background:{{ $availableColor->rgb ?? '#eee' }};border:2px solid #ccc; cursor:pointer;"
+                                            data-rgb="{{ $availableColor->rgb }}"
+                                            data-color="{{ $availableColor->colourway_name }}"
                                             title="{{ $availableColor->colourway_name }}"
-                                            onclick="document.querySelector('.nameColor').textContent = '{{ $availableColor->colourway_name }}';"></span>
+                                            onclick="selectColor(this)">
+                                        </span>
                                     </li>
+
                                 @endforeach
 
                                 <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-6.jpg" alt="Ecom" title="Black"></li>
@@ -160,7 +171,7 @@
                                 <div class="button-buy">
                                     <button id="loadCustom" class="btn btn-cart" type="button">Add
                                         Customisation</button>
-                                    <a class="btn btn-buy" href="shop-checkout.html">Proceed to Check Out</a>
+                                    <a class="btn btn-buy" id="proceedCheckoutBtn">Proceed to Check Out</a>
                                 </div>
                                 <script>
                                     // Side options
@@ -198,6 +209,8 @@
                                         }
                                     ];
 
+                                    let customCanvas; // Declare in a higher scope so it's accessible globally
+
                                     $('#loadCustom').on('click', function(e) {
                                         e.preventDefault();
                                         let sideOptions = sides.map(s => `<option value="${s.value}">${s.label}</option>`).join('');
@@ -215,7 +228,7 @@
                                                     <div id="customCanvasToolbar" class="mb-2 d-flex flex-column" style="gap: 8px; min-width:180px;">
                                                         <button type="button" id="addTextBtn" class="btn btn-outline-secondary btn-sm mb-1">Add Text</button>
                                                         <input type="file" id="uploadImageInput" accept="image/*" class="mb-1" style="width:auto;">
-                                                        <label>Font Color:</label>
+                                                        <button type="button" id="openServerImageModal" class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
                                                         <input type="color" id="fontColorInput" value="#222222" title="Text Color" class="mb-1" style="width:auto; height: 40px; border-radius:5px; padding:5px;">
 
                                                         <select id="fontFaceSelect" class="form-select form-select-sm mb-1" style="width:auto;">
@@ -257,6 +270,7 @@
 
                                                                 <input type="radio" class="btn-check" name="decorationType" id="embroideryOption" autocomplete="off">
                                                                 <label class="btn btn-outline-warning" for="embroideryOption" style="min-width:120px;">Embroidery</label>
+                                                                <span id="embroInfo"></span>
                                                             </div>
                                                         </div>
                                                         <canvas id="customCanvas" width="350" height="350" style="max-width:100%;height:auto;display:block;"></canvas>
@@ -266,7 +280,7 @@
                                         `);
 
                                         // Fabric.js setup for custom canvas
-                                        const customCanvas = new fabric.Canvas('customCanvas');
+                                        customCanvas = new fabric.Canvas('customCanvas');
 
     // Add Text Button
     document.getElementById('addTextBtn').addEventListener('click', function() {
@@ -278,7 +292,19 @@
         });
         customCanvas.add(text).setActiveObject(text);
     });
+    // 4. Add the selected image to the Fabric.js canvas when clicked
+    $(document).on('click', '.server-gallery-img', function() {
+        const imgSrc = $(this).attr('src');
+        // Use the correct canvas variable name (customCanvas if inside modal, or your main canvas)
+        if (typeof customCanvas !== 'undefined') {
 
+            fabric.Image.fromURL(imgSrc, function(obj) {
+                obj.set({ left: 80, top: 80, scaleX: 0.4, scaleY: 0.4 });
+                customCanvas.add(obj).setActiveObject(obj);
+            });
+        }
+        $('#serverImageModal').modal('hide');
+    });
     // Upload Image Input
     document.getElementById('uploadImageInput').addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -543,7 +569,49 @@
                                         });
                                     });
                                 </script>
+<script>
+    document.getElementById('proceedCheckoutBtn').addEventListener('click', function() {
+        //alert("checked");
+    // 1. Get selected color
+    const color = document.querySelector('.list-colors .color-swatch.selected')?.title || '';
 
+    // 2. Get decoration type
+    const decoration = document.getElementById('embroideryOption')?.checked ? 'embroidery' : 'print';
+
+    // 3. Get sizes as JSON
+    let sizes = {};
+    document.querySelectorAll('.size-input').forEach(input => {
+        sizes[input.name] = input.value;
+    });
+
+    // 4. Get custom design as image (PNG dataURL)
+    let customDesign = '';
+    if (window.customCanvas) {
+        customDesign = customCanvas.toDataURL({ format: 'png' });
+    }
+
+    // 5. Fill form fields
+    document.getElementById('checkoutColor').value = color;
+    document.getElementById('checkoutDecoration').value = decoration;
+    document.getElementById('checkoutSizes').value = JSON.stringify(sizes);
+    document.getElementById('checkoutDesign').value = customDesign;
+    // work on customCheckoutForm form on the page new field added
+
+    //document.getElementById('checkoutProductPrice').value = document.getElementById('pPrice').innerText;
+    document.getElementById('checkoutTotalPrice').value = document.getElementById('pTotal').innerText;
+    // 5.1 Set the selected side
+    const selectedSide = document.getElementById('customSide').value;
+    document.getElementById('checkoutSelectedSide').value = selectedSide;
+
+    // inlclude one of the image gallery to the form
+    const selectedImage = document.querySelector('.slider-nav-thumbnails .item-thumb img')?.src || '';
+    document.getElementById('checkoutSelectedImage').value = selectedImage;
+
+
+    // 6. Submit the form
+    document.getElementById('customCheckoutForm').submit();
+});
+</script>
 
                                 <div>
 
@@ -808,6 +876,18 @@
 
     </main>
     <!-- Fabric.js -->
+    <script>
+        function selectColor(el) {
+    const colorName = el.getAttribute('data-color');
+    const rgb = el.getAttribute('data-rgb');
+
+    // Set color name display
+    document.querySelector('.nameColor').textContent = colorName;
+
+    // Set hidden RGB input value
+    document.getElementById('checkoutColorRgb').value = rgb;
+}
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
 @endsection
@@ -869,27 +949,91 @@
 <!-- Toolbar for customCanvas -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const inputs = document.querySelectorAll('.size-input');
-        const price = parseFloat(document.getElementById('pPrice').innerText);
-        const totalSpan = document.getElementById('pTotal');
+    const inputs = document.querySelectorAll('.size-input');
+    const price = parseFloat(document.getElementById('pPrice').innerText);
+    const totalSpan = document.getElementById('pTotal');
 
-        function calculateTotal() {
-            let total = 0;
-            inputs.forEach(input => {
-                const qty = parseInt(input.value) || 0;
-                total += qty * price;
-            });
-            totalSpan.textContent = total.toLocaleString();
-        }
+    // Helper to check if embroidery is selected
+    function isEmbroiderySelected() {
+        const embroideryRadio = document.getElementById('embroideryOption');
+        return embroideryRadio && embroideryRadio.checked;
+    }
 
+    function calculateTotal() {
+        let total = 0;
         inputs.forEach(input => {
-            input.addEventListener('input', calculateTotal);
+            const qty = parseInt(input.value) || 0;
+            let unitPrice = price;
+            if (isEmbroiderySelected()) {
+                unitPrice += 1.5; // Add 2 if embroidery is selected
+            }
+            total += qty * unitPrice;
         });
+        totalSpan.textContent = total.toLocaleString();
+    }
 
-        // initial call
-        calculateTotal();
+    inputs.forEach(input => {
+        input.addEventListener('input', calculateTotal);
     });
 
+    // Listen for embroidery/print option change
+    document.addEventListener('change', function(e) {
+        if (e.target && (e.target.id === 'embroideryOption' || e.target.id === 'printOption')) {
+            // Recalculate total when embroidery or print option changes
+            calculateTotal();
+        }
+    });
+
+    // initial call
+    calculateTotal();
+});
+
+
+</script>
+
+
+<div class="modal fade" id="serverImageModal" tabindex="-1" aria-labelledby="serverImageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="serverImageModalLabel">Pick an Image from Gallery</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="serverImageGallery" style="display:flex;gap:12px;flex-wrap:wrap;">
+
+              {{-- load images imageUrl --}}
+                @foreach($imageUrls as $imageUrl)
+                    <img src="{{ asset($imageUrl) }}" alt="Gallery Image" class="img-thumbnail server-gallery-img" style="width:80px;height:80px;object-fit:cover;cursor:pointer;">
+                @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<form id="customCheckoutForm" action="{{ route('checkout.custom') }}" method="POST" enctype="multipart/form-data" style="display:none;">
+    @csrf
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
+    <input type="hidden" name="colors" id="checkoutColor">
+    <input type="hidden" name="color" id="checkoutColorRgb">
+    <input type="hidden" name="decoration_type" id="checkoutDecoration">
+    <input type="hidden" name="sizes" id="checkoutSizes">
+    <input type="hidden" name="custom_design" id="checkoutDesign">
+    {{-- include price breakdown(product title unit price, total unit odered, embroidery price(if selected) and total) in the form to process --}}
+    <input type="hidden" name="product_title" value="{{ $product->title }}">
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
+    <input type="hidden" name="unit_price" value="{{ $product->price->single_list_price * 1.2 + 0.90 }}">
+    <input type="hidden" name="embroidery_price" value="1.5"> {{-- This is a fixed value, adjust if dynamic --}}
+    <input type="hidden" name="total_price" id="checkoutTotalPrice">
+    <input type="hidden" name="decoration_price" id="checkoutDecorationPrice">
+    {{-- checkoutSelectedImage --}}
+    <input type="hidden" name="custom_image" id="checkoutSelectedImage">
+    {{-- checkoutSelectedSide --}}
+    <input type="hidden" name="custom_side" id="checkoutSelectedSide">
+
+</form>
+<script>
 
 </script>
 

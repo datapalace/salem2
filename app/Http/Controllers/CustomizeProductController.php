@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CustomizeProductController extends Controller
 {
@@ -61,7 +62,25 @@ class CustomizeProductController extends Controller
             ->take(10)
             ->get()
             ->groupBy('colourway_name');
+        // Fetch all images from the 'custom_gallery' folder in public storage
+    $images = [];
+    $directory = public_path('assets/img/brand');
+    if (is_dir($directory)) {
+        $files = scandir($directory);
+        foreach ($files as $file) {
+            if ($file !== '.' && $file !== '..' && is_file($directory . DIRECTORY_SEPARATOR . $file)) {
+                $images[] = 'assets/img/brand/' . $file;
+            }
+        }
+    }
 
-        return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts', 'colors', 'availableColors', 'sizes'));
+    // Map the images to their URLs (remove 'storage/' prefix)
+    $imageUrls = array_map(function ($image) {
+        return asset($image);
+    }, $images);
+
+
+
+        return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts', 'colors', 'availableColors', 'sizes', 'imageUrls'));
     }
 }

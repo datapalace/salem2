@@ -123,10 +123,11 @@ class ProductController extends Controller
             }
 
         ])->latest()->inRandomOrder()->paginate(9);
+])->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')
+            ->groupBy('type')->inRandomOrder()->limit(10)
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
@@ -141,16 +142,13 @@ class ProductController extends Controller
     {
         $products = Product::with([
             'galleries',
-            'price' => function ($query) {
-                $query->where('single_list_price', '=', null);
-            },
+            'price',
 
 
         ])->where('customize', 1)->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
@@ -171,7 +169,7 @@ class ProductController extends Controller
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')
+            ->groupBy('type')->inRandomOrder()->limit(10)
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
@@ -184,7 +182,6 @@ class ProductController extends Controller
         $query = $request->get('q');
 
         $products = \App\Models\Product::with('galleries')
-            ->groupBy('title')
             ->where('title', 'like', "%{$query}%")
             ->inRandomOrder()
             ->take(8)
@@ -196,112 +193,5 @@ class ProductController extends Controller
             });
 
         return response()->json($products);
-    }
-
-
-
-    public function add_customize(Request $request)
-    {
-        try {
-            // Validate main product fields
-            $request->validate([
-                'product_name' => 'required|string|max:255',
-                'description' => 'nullable|string',
-                'price' => 'required|numeric',
-                'product_categories' => 'required|string',
-                'product_galleries.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-                'product_colors' => 'nullable',
-                'product_sizes' => 'nullable|array',
-            ]);
-
-            // Handle slug uniqueness
-            $slug = Str::slug($request->product_name);
-
-
-            $originalSlug = $slug;
-            $counter = 1;
-            while (Product::where('slug', $slug)->exists()) {
-                $slug = $originalSlug . '-' . $counter;
-                $counter++;
-            }
-            // Handle product image upload
-            // $imagePath = null;
-            // if ($request->hasFile('product_image')) {
-            //     $imagePath = $request->file('product_image')->store('products', 'public');
-            // }
-            $sizes = is_array($request->product_sizes) ? implode(',', $request->product_sizes) : $request->product_sizes;
-            // Create product
-            $product = Product::create([
-                'title' => $request->product_name,
-                'slug' => $slug,
-                'body' => $request->description,
-                'single_list_price' => $request->price,
-                'type' => $request->product_categories,
-                'colourway_name' => $request->product_colors,
-                'customize' => 1,
-                'brand' => 'Salem Apparel',
-                'size' => $sizes,
-            ]);
-
-
-            // Save Price (assuming one-to-one relationship)
-            $product->price()->create([
-                'single_list_price' => $request->price,
-
-            ]);
-
-
-            // Save colors
-            // if ($request->product_colors) {
-            //     foreach ($request->product_colors as $color) {
-            //         ProductColor::create([
-            //             'product_id' => $product->id,
-            //             'color' => $color,
-            //         ]);
-            //     }
-            // }
-
-
-
-            // Save galleries
-            if ($request->hasFile('product_galleries')) {
-                foreach ($request->file('product_galleries') as $galleryImage) {
-                    $galleryPath = $galleryImage->store('product_galleries', 'public');
-                    ProductGallery::create([
-                        'product_id' => $product->id,
-                        'image_url' => $galleryPath,
-                    ]);
-                }
-            }
-            return redirect()->back()->with('success', 'Product and gallery images saved!');
-        } catch (Exception $e) {
-            Log::error('Product creation failed: ' . $e->getMessage(), [
-                'stack' => $e->getTraceAsString(),
-                'request' => $request->all()
-            ]);
-            return redirect()->back()->with('error', 'An error occurred while saving the product.');
-        }
-    }
-    public function updateSlug(Product $product)
-    {
-        // If slug is empty, generate from title
-        if (empty($product->slug)) {
-            $baseSlug = Str::slug($product->title);
-
-            // Check if slug already exists (excluding current product)
-            $slug = $baseSlug;
-            $exists = Product::where('slug', $slug)
-                ->where('id', '!=', $product->id)
-                ->exists();
-
-            // If exists, append ID to make it unique
-            if ($exists) {
-                $slug = $baseSlug . '-' . $product->id;
-            }
-
-            // Update slug
-            $product->slug = $slug;
-            $product->save();
-        }
     }
 }

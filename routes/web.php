@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CustomizeProductController;
 use App\Http\Controllers\CanvasController;
 use App\Http\Controllers\ProductFixController;
+use App\Http\Controllers\CheckoutController;
 use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
@@ -118,3 +119,7 @@ Route::get('/register', function () {
     $shopByCatMenus = Product::select('type')->groupBy('type')->get();
     return view('user.register', compact('shopByCatMenus'));
 }); // register page
+
+Route::post('/checkout/custom', [CheckoutController::class, 'custom'])->name('checkout.custom');
+Route::get('/design/payment', [CheckoutController::class, 'payment'])->name('checkout.payment');
+
