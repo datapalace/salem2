@@ -65,6 +65,7 @@
                   <div class="info-right"><a class="font-xs color-gray-500" href="/shop">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
                     {{-- <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.  svg') }}" alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span>
                   </div> --}}
+
                   <div class="price-info"><strong class="font-lg-bold color-brand-3 price-main">£{{ optional($product->price)->single_list_price * 1.2 + 0.90 ?? 'N/A' }}</strong></div>
                   <div class="mt-20 box-btn-cart"><a class="btn btn-cart" href="/product/customise/{{  $product->slug }}">View</a></div>
 

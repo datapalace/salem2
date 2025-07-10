@@ -122,7 +122,7 @@ class ProductController extends Controller
                 $query->limit(2);
             }
 
-        ])->where('customize', '')->latest()->inRandomOrder()->paginate(9);
+        ])->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
@@ -141,13 +141,16 @@ class ProductController extends Controller
     {
         $products = Product::with([
             'galleries',
-            'price',
+            'price' => function ($query) {
+                $query->where('single_list_price', '=', null);
+            },
 
 
         ])->where('customize', 1)->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
+            ->groupBy('type')
             ->get();
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 

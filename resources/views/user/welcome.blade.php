@@ -33,23 +33,23 @@
                                                 style="position: absolute; right: 0; bottom: 0; max-width: 200px; max-height: 250px;">
 
                                             @php
-                                                $words = explode(' ', $bp->title);
+                                            $words = explode(' ', $bp->title);
                                             @endphp
                                             <h2 class="text-uppercase">
                                                 @php
-                                                    $title = $bp->title;
-                                                    if (strlen($title) > 25) {
-                                                        $mainWords = Str::limit($title, 25, '');
-                                                        $rest = trim(Str::replaceFirst($mainWords, '', $title));
-                                                    } else {
-                                                        $mainWords = $title;
-                                                        $rest = '';
-                                                    }
+                                                $title = $bp->title;
+                                                if (strlen($title) > 25) {
+                                                $mainWords = Str::limit($title, 25, '');
+                                                $rest = trim(Str::replaceFirst($mainWords, '', $title));
+                                                } else {
+                                                $mainWords = $title;
+                                                $rest = '';
+                                                }
                                                 @endphp
                                                 {{ $mainWords }}
                                                 @if($rest)
-                                                    <br>
-                                                    {{ $rest }}
+                                                <br>
+                                                {{ $rest }}
                                                 @endif
                                                 @endif
                                             </h2>
