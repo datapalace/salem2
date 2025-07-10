@@ -11,7 +11,6 @@ class ProductFixController extends Controller
     {
         $products = Product::whereNull('slug')
             ->orWhere('slug', '')
-            ->limit(20)
             ->get();
 
         foreach ($products as $product) {
