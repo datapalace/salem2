@@ -123,7 +123,6 @@ class ProductController extends Controller
             }
 
         ])->latest()->inRandomOrder()->paginate(9);
-])->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
@@ -133,27 +132,6 @@ class ProductController extends Controller
 
 
         return view('user.shop', compact('products', 'shopByCatMenus', 'brands',));
-    }
-
-    // customize shop now
-
-
-    public function customiseShop()
-    {
-        $products = Product::with([
-            'galleries',
-            'price',
-
-
-        ])->where('customize', 1)->latest()->inRandomOrder()->paginate(9);
-
-        $shopByCatMenus = Product::select('type')
-            ->selectRaw('COUNT(*) as total')
-            ->get();
-        $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
-
-
-        return view('user.customize-shop', compact('products', 'shopByCatMenus', 'brands',));
     }
 
     //shop by category

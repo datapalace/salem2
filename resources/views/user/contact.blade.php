@@ -1,63 +1,65 @@
 @extends('layout.usermaster')
 @section('usercontent')
-    <main class="main">
-        <div class="section-box">
+<main class="main">
+    <div class="section-box">
         <div class="breadcrumbs-div mb-0">
-          <div class="container">
-            <ul class="breadcrumb">
-              <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
-              {{-- <li><a class="font-xs color-gray-500" href="index.html">Page</a></li> --}}
-              <li><a class="font-xs color-gray-500" href="contact-us">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-        <section class="section-box shop-template mt-0">
             <div class="container">
+                <ul class="breadcrumb">
+                    <li><a class="font-xs color-gray-1000" href="/">Home</a></li>
+                    {{-- <li><a class="font-xs color-gray-500" href="index.html">Page</a></li> --}}
+                    <li><a class="font-xs color-gray-500" href="contact-us">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="section-box shop-template mt-0">
+        <div class="container">
             <div class="box-contact">
                 <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-form">
-                    <h3 class="color-brand-3 mt-60">Contact Us</h3>
-                    <p class="font-sm color-gray-700 mb-30">Our team would love to hear from you!</p>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="First name">
-                        </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                        <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Last name">
-                        </div>
-                        </div>
-                        <div class="col-lg-12">
-                        <div class="form-group">
-                            <input class="form-control" type="email" placeholder="Email">
-                        </div>
-                        </div>
-                        <div class="col-lg-12">
-                        <div class="form-group">
-                            <input class="form-control" type="tel" placeholder="Phone number">
-                        </div>
-                        </div>
-                        <div class="col-lg-12">
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Message" rows="5"></textarea>
-                        </div>
-                        </div>
-                        <div class="col-lg-12">
-                        <div class="form-group">
-                            <input class="btn btn-buy w-auto" type="submit" value="Send message">
-                        </div>
+                    <div class="col-lg-6">
+                        <div class="contact-form">
+                            <h3 class="color-brand-3 mt-60">Contact Us</h3>
+                            <p class="font-sm color-gray-700 mb-30">Our team would love to hear from you!</p>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="First name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control" type="email" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control" type="tel" placeholder="Phone number">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="btn btn-buy w-auto" type="submit" value="Send message">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="map" style="position: relative;"><div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Northampton&output=embed"></iframe></div><a href="https://wordpress.org/plugins/super-simple-map-embeds/" rel="noopener" target="_blank" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;">google map wordpress</a></div>
+                    <div class="col-lg-6">
+                        <div class="map" style="position: relative;">
+                            <div style="position: relative; padding-bottom: 75%; height: 0; overflow: hidden;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Northampton&output=embed"></iframe></div><a href="https://wordpress.org/plugins/super-simple-map-embeds/" rel="noopener" target="_blank" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;">google map wordpress</a>
+                        </div>
 
-                </div>
+                    </div>
                 </div>
             </div>
             <div class="box-contact-address pt-80 pb-50">
@@ -190,8 +192,8 @@
 
                 </div>
             </div>
-            </div>
+        </div>
 
-        </section>
-    </main>
-@endsection
+    </section>
+
+    @endsection
