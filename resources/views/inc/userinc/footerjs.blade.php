@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         resultsBox.innerHTML = '<div class="p-2 text-muted">No products found.</div>';
                     } else {
                         resultsBox.innerHTML = data.map(product => `
-                            <a href="/product/${product.id}" class="d-flex align-items-center p-2 border-bottom text-decoration-none text-dark search-result-item" style="transition: background 0.2s;">
+                            <a href="/product/customise/${product.slug}" class="d-flex align-items-center p-2 border-bottom text-decoration-none text-dark search-result-item" style="transition: background 0.2s;">
                                 <img src="${product.image_url ? product.image_url : '/userasset/imgs/template/logo.png'}" alt="${product.title}" style="width:48px;height:48px;object-fit:cover;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.07);margin-right:14px;">
                                 <div class="flex-grow-1">
                                     <div style="font-weight:600;font-size:15px;">${product.title}</div>
