@@ -168,8 +168,7 @@ class ProductController extends Controller
         $product->image_url = optional($product->galleries[0])->image_url;
         unset($product->images); // Optional
         return $product;
-    })
-    ->groupBy('title'); // Grouping by title here (collection-level)
+    }); // Grouping by title here (collection-level)
 
 
         return response()->json($products);
