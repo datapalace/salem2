@@ -160,15 +160,16 @@ class ProductController extends Controller
         $query = $request->get('q');
 
         $products = \App\Models\Product::with('galleries')
-            ->where('title', 'like', "%{$query}%")
-            ->inRandomOrder()
-            ->take(8)
-            ->get(['id', 'title', 'sku'])
-            ->map(function ($product) {
-                $product->image_url = optional($product->galleries[0])->image_url;
-                unset($product->images); // Optional
-                return $product;
-            });
+    ->where('title', 'like', "%{$query}%")
+    ->inRandomOrder()
+    ->take(8)
+    ->get(['id', 'title', 'sku'])
+    ->map(function ($product) {
+        $product->image_url = optional($product->galleries[0])->image_url;
+        unset($product->images); // Optional
+        return $product;
+    }); // Grouping by title here (collection-level)
+
 
         return response()->json($products);
     }
