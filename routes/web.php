@@ -122,7 +122,13 @@ Route::get('/register', function () {
 
 Route::post('/checkout/custom', [CheckoutController::class, 'custom'])->name('checkout.custom');
 Route::get('/design/checkout', [CheckoutController::class, 'checkout'])->name('checkout.payment');
-Route::post('/checkout/make-order', [CheckoutController::class, 'makeOrder'])->name('checkout.place-order');
+
+
+Route::middleware('auth:customer')->group(function () {
+    Route::get('/order-details/{id}', [CheckoutController::class, 'orderDetails'])->name('order.details');
+
+    Route::post('/checkout/make-order', [CheckoutController::class, 'makeOrder'])->name('checkout.place-order');
+});
 
 // Route to handle 404 errors
 Route::fallback(function () {
