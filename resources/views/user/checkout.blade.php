@@ -82,23 +82,23 @@
                                         <div class="form-register mt-30 mb-30">
                                             <div class="form-group">
 
-                                                <input class="form-control font-sm" type="text" name="name" placeholder="Full name">
+                                                <input class="form-control font-sm" type="text" name="name" placeholder="Full name" required>
                                             </div>
                                             <div class="form-group">
 
-                                                <input class="form-control font-sm" type="text" name="email" placeholder="Email">
+                                                <input class="form-control font-sm" type="text" name="email" placeholder="Email" required>
                                             </div>
                                             <div class="form-group">
 
-                                                <input class="form-control font-sm" name="username" type="text" placeholder="username">
+                                                <input class="form-control font-sm" name="username" type="text" placeholder="username" required>
                                             </div>
                                             <div class="form-group">
 
-                                                <input class="form-control font-sm" id="password" type="password" name="password" placeholder="Password">
+                                                <input class="form-control font-sm" id="password" type="password" name="password" required placeholder="Password">
                                             </div>
                                             <div class="form-group">
 
-                                                <input class="form-control font-sm" id="repassword" type="password" placeholder="Comfirm Password">
+                                                <input class="form-control font-sm" required id="repassword" type="password" placeholder="Comfirm Password">
                                                 <small id="passwordHelp" class="text-danger" style="display:none;">Passwords do not match.</small>
                                             </div>
                                             <div class="form-group">
@@ -109,7 +109,7 @@
                                                 <small id="agreementHelp" class="text-danger" style="display:none;">You must agree to the terms and policy.</small>
                                             </div>
                                             <div class="form-group">
-                                                <button class="font-md-bold btn btn-buy" id="signupBtn" type="submit" disabled>Sign Up</button>
+                                                <button class="font-md-bold btn btn-buy" id="signupBtn" type="submit">Sign Up</button>
                                             </div>
 
                                         </div>
@@ -120,77 +120,120 @@
                             <!-- End login and register Content -->
                             <!-- End login and register -->
                             @endif
+
                             <div class="col-lg-12">
                                 <h5 class="font-md-bold color-brand-3 mt-15 mb-20">Shipping address</h5>
                             </div>
-                            @php
-                            $user = Auth::guard('customer')->user();
-                            $userID = $user ? $user->id : '';
-                            $firstName = $user ? (explode(' ', $user->name)[0] ?? '') : '';
-                            $lastName = $user ? (implode(' ', array_slice(explode(' ', $user->name), 1)) ?? '') : '';
-                            @endphp
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="hidden" value="{{ $userID }}">
-                                    <input class="form-control font-sm" type="text" value="{{ $firstName }}" placeholder="First name*">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" value="{{ $lastName }}" placeholder="Last name*">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" placeholder="Address 1*">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" placeholder="Address 2*">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <select class="form-control font-sm select-style1 color-gray-700">
-                                        <option value="">Select an option...</option>
-                                        <option value="1">Option 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" placeholder="City*">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" placeholder="PostCode / ZIP*">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" placeholder="Company name">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input class="form-control font-sm" type="text" placeholder="Phone*">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group mb-0">
-                                    <textarea class="form-control font-sm" placeholder="Additional Information" rows="5"></textarea>
-                                </div>
-                            </div>
                         </div>
+                        <form action="{{ route('checkout.place-order') }}" method="post">
+                            @csrf
+                            <div class="row">
+
+                                @php
+                                $user = Auth::guard('customer')->user();
+                                $userID = $user ? $user->id : '';
+                                $firstName = $user ? (explode(' ', $user->name)[0] ?? '') : '';
+                                $lastName = $user ? (implode(' ', array_slice(explode(' ', $user->name), 1)) ?? '') : '';
+                                @endphp
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" type="text" value="{{ $firstName }}" placeholder="First name*">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" required type="text" value="{{ $lastName }}" placeholder="Last name*">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" required type="text" placeholder="Address 1*" name="address">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" name="address2" type="text" placeholder="Address 2">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select name="country" class="form-control font-sm select-style1  color-gray-700">
+                                            <option value="">Select a country...</option>
+                                            <option selected value="United Kingdom">United Kingdom</option>
+                                            <option value="United States">United States</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Germany">Germany</option>
+                                            <option value="France">France</option>
+                                            <option value="Spain">Spain</option>
+                                            <option value="Italy">Italy</option>
+                                            <option value="Netherlands">Netherlands</option>
+                                            <option value="Sweden">Sweden</option>
+                                            <option value="India">India</option>
+                                            <option value="Japan">Japan</option>
+                                            <option value="China">China</option>
+                                            <option value="Brazil">Brazil</option>
+                                            <option value="Mexico">Mexico</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="Russia">Russia</option>
+                                            <option value="South Korea">South Korea</option>
+                                            <option value="Turkey">Turkey</option>
+                                            <option value="Saudi Arabia">Saudi Arabia</option>
+                                            <option value="Argentina">Argentina</option>
+                                            <option value="Poland">Poland</option>
+                                            <option value="Belgium">Belgium</option>
+                                            <option value="Switzerland">Switzerland</option>
+                                            <option value="Norway">Norway</option>
+                                            <option value="Denmark">Denmark</option>
+                                            <option value="Finland">Finland</option>
+                                            <option value="Ireland">Ireland</option>
+                                            <option value="Portugal">Portugal</option>
+                                            <option value="Greece">Greece</option>
+                                            <option value="Czech Republic">Czech Republic</option>
+                                            <option value="Hungary">Hungary</option>
+                                            <option value="Austria">Austria</option>
+                                            <option value="New Zealand">New Zealand</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" name="city" type="text" placeholder="City*">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" name="zip_code" type="text" placeholder="PostCode / ZIP*">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" required name="phone" type="tel" placeholder="Phone *">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" type="text" name="company_name" placeholder="Company name">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group mb-0">
+                                        <textarea class="form-control font-sm" name="additional_information" placeholder="Additional Information" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
 
                     </div>
                     <div class="row mt-20">
                         <div class="col-lg-6 col-5 mb-20"><a class="btn font-sm-bold color-brand-1 arrow-back-1"
                                 href="{{ url()->previous() }}">Return to Design</a></div>
                         <div class="col-lg-6 col-7 mb-20 text-end float-right"><button class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Place an Order</button></div>
+                        </form>
                     </div>
+
                 </div>
                 @php
                 $c = session('checkout_data');
@@ -326,3 +369,32 @@
     </section>
 
     @endsection
+    <script>
+        window.onload = function() {
+
+
+            const password = document.getElementById('password');
+            const repassword = document.getElementById('repassword');
+            const checkagree = document.getElementById('checkagree');
+            const signupBtn = document.getElementById('signupBtn');
+            const passwordHelp = document.getElementById('passwordHelp');
+            const agreementHelp = document.getElementById('agreementHelp');
+
+            function validateForm() {
+                const passMatch = password.value && repassword.value && password.value === repassword.value;
+                passwordHelp.style.display = passMatch || (!password.value && !repassword.value) ? 'none' : 'block';
+
+                if (!checkagree.checked) {
+                    agreementHelp.style.display = 'block';
+                } else {
+                    agreementHelp.style.display = 'none';
+                }
+
+                signupBtn.disabled = !(passMatch && checkagree.checked);
+            }
+
+            password.addEventListener('input', validateForm);
+            repassword.addEventListener('input', validateForm);
+            checkagree.addEventListener('change', validateForm);
+        };
+    </script>

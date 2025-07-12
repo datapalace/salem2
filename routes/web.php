@@ -122,4 +122,10 @@ Route::get('/register', function () {
 
 Route::post('/checkout/custom', [CheckoutController::class, 'custom'])->name('checkout.custom');
 Route::get('/design/checkout', [CheckoutController::class, 'checkout'])->name('checkout.payment');
-Route::post('/checkout/make-payment', [CheckoutController::class, 'makePaymentNow'])->name('checkout.make-payment');
+Route::post('/checkout/make-order', [CheckoutController::class, 'makeOrder'])->name('checkout.place-order');
+
+// Route to handle 404 errors
+Route::fallback(function () {
+    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+    return response()->view('errors.404', ['shopByCatMenus' => $shopByCatMenus], 404);
+});
