@@ -15,7 +15,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PaymentController;
 
 // admin routes
 Route::middleware('auth:admin')->group(function () {
