@@ -32,11 +32,13 @@ class AuthController extends Controller
             $role = $user->role; // 'admin', 'customer', or 'subscriber'
             Auth::guard($role)->login($user);
 
+            // checkout session variable
+            $checkoutData = session('checkout_data');
             // Redirect based on the user's role
-            if ($role == 'admin') {
+            if ($role == 'admin' && !$checkoutData) {
                 return redirect()->route('welcome');
             } else {
-                $checkoutData = session('checkout_data');
+
 
                 if ($checkoutData) {
 
@@ -74,7 +76,11 @@ class AuthController extends Controller
             ]);
 
             $guard = $user->role; // 'admin', 'customer', or 'subscriber'
+            $checkoutData = session('checkout_data'); //checkout session variable
             Auth::guard($guard)->login($user);
+            if ($checkoutData) {
+                return redirect()->back()->with('success', 'Your checkout is ready.');
+            }
             return redirect()->route('shop-now')->with('success', 'Registration successful!');
         } catch (Exception $e) {
             Log::error('error in connnection: ' . $e->getMessage(), [

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\Shipping;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -92,18 +94,66 @@ class CheckoutController extends Controller
         return view('user.checkout', compact('checkoutData', 'shopByCatMenus', 'brands', 'user'));
     }
 
-    public function makePaymentNow(Request $request)
+    public function makeOrder(Request $request)
     {
+
         $checkoutData = session('checkout_data');
         $user = Auth::guard('customer')->user(); // Use the user guard
+        $me = $user->id ?? null;
 
-        if (!$checkoutData) {
+        // validate the shipping information
+        $request->validate([
 
-            return redirect()->route('welcome')->with('error', 'No checkout data found.');
-        }
+            'address' => 'required|string',
+            'address2' => 'nullable|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+            'zip_code' => 'required|string',
+            'phone' => 'required|string',
+            'company_name' => 'nullable|string',
+
+        ]);
+
+        // store the order in the database
+        $order = Order::create([
+            'user_id' => $me,
+            'product_id' => $checkoutData['product_id'],
+            'sizes' => $checkoutData['sizes'],
+            'custom_design' => $checkoutData['custom_design'],
+            'product_title' => $checkoutData['product_title'],
+            'unit_price' => $checkoutData['unit_price'],
+            'embroidery_price' => $checkoutData['embroidery_price'],
+            'total_price' => $checkoutData['total_price'],
+            'decoration_price' => $checkoutData['decoration_price'],
+            'custom_image' => $checkoutData['custom_image'],
+            'custom_side' => $checkoutData['custom_side'],
+        ]);
+
+        // store the shipping information only
+        $shipping = Shipping::create([
+            'order_id' => $order->id,
+            'user_id' => $me,
+            'address' => $request->input('address'),
+            'address2' => $request->input('address2'),
+            'city' => $request->input('city'),
+            'country' => $request->input('country'),
+            'zip_code' => $request->input('zip_code'),
+            'phone' => $request->input('phone'),
+            'company_name' => $request->input('company_name'),
+        ]);
+
+        // clear the checkout data from the session
+        session()->forget('checkout_data');
+        dd($order->id . ' ' . $shipping->id);
         // Only fetch what you need for the About Us page
         $shopByCatMenus = Product::select('type')->groupBy('type')->get();
         $brands = Product::select('brand')->groupBy('brand')->get();
         return view('user.payment', compact('checkoutData', 'shopByCatMenus', 'brands', 'user'));
+    }
+
+    public function orderDetails($id)
+    {
+        $order = Order::with(['user', 'shipping'])->findOrFail($id);
+        return view('user.order-details', compact('order'));
     }
 }

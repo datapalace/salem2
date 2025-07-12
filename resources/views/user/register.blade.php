@@ -17,23 +17,23 @@
             <div class="form-register mt-30 mb-30">
               <div class="form-group">
                 <label class="mb-5 font-sm color-dark-700">Full Name *</label>
-                <input class="form-control" type="text" name="name" placeholder="Steven job">
+                <input class="form-control" type="text" name="name" required placeholder="Steven job">
               </div>
               <div class="form-group">
                 <label class="mb-5 font-sm color-dark-700">Email *</label>
-                <input class="form-control" type="text" name="email" placeholder="stevenjob@gmail.com">
+                <input class="form-control" type="text" name="email" required placeholder="stevenjob@gmail.com">
               </div>
               <div class="form-group">
                 <label class="mb-5 font-sm color-dark-700">Username *</label>
-                <input class="form-control" name="username" type="text" placeholder="stevenjob">
+                <input class="form-control" name="username" required type="text" placeholder="stevenjob">
               </div>
               <div class="form-group">
                 <label class="mb-5 font-sm color-dark-700">Password *</label>
-                <input class="form-control" id="password" type="password" name="password" placeholder="******************">
+                <input class="form-control" id="password" required type="password" name="password" placeholder="******************">
               </div>
               <div class="form-group">
                 <label class="mb-5 font-sm color-dark-700">Confirm Password *</label>
-                <input class="form-control" id="repassword" type="password" placeholder="******************">
+                <input class="form-control" id="repassword" required type="password" placeholder="******************">
                 <small id="passwordHelp" class="text-danger" style="display:none;">Passwords do not match.</small>
               </div>
               <div class="form-group">
@@ -46,7 +46,7 @@
               <div class="form-group">
                 <button class="font-md-bold btn btn-buy" id="signupBtn" type="submit" disabled>Sign Up</button>
               </div>
-              <div class="mt-20"><span class="font-xs color-dark-500 font-medium">Already have an account?</span><a class="font-xs color-brand-3 font-medium" href="page-login.html"> Sign In</a></div>
+              <div class="mt-20"><span class="font-xs color-dark-500 font-medium">Already have an account?</span><a class="font-xs color-brand-3 font-medium" href="#"> Sign In</a></div>
             </div>
           </form>
         </div>
