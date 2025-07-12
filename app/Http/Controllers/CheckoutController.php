@@ -144,16 +144,15 @@ class CheckoutController extends Controller
 
         // clear the checkout data from the session
         session()->forget('checkout_data');
-        dd($order->id . ' ' . $shipping->id);
+        // dd($order->id . ' ' . $shipping->id);
         // Only fetch what you need for the About Us page
-        $shopByCatMenus = Product::select('type')->groupBy('type')->get();
-        $brands = Product::select('brand')->groupBy('brand')->get();
-        return view('user.payment', compact('checkoutData', 'shopByCatMenus', 'brands', 'user'));
+        return redirect("/order-details/{$order->id}");
     }
 
     public function orderDetails($id)
     {
+        $shopByCatMenus = Product::select('type')->groupBy('type')->get();
         $order = Order::with(['user', 'shipping'])->findOrFail($id);
-        return view('user.order-details', compact('order'));
+        return view('user.order-details', compact('order', 'shopByCatMenus'));
     }
 }

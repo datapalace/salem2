@@ -20,4 +20,14 @@ class Order extends Model
         'custom_image',
         'custom_side',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function shipping()
+    {
+        return $this->hasOne(Shipping::class);
+    }
 }
