@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
 
 class CheckoutController extends Controller
 {
@@ -155,4 +157,31 @@ class CheckoutController extends Controller
         $order = Order::with(['user', 'shipping'])->findOrFail($id);
         return view('user.order-details', compact('order', 'shopByCatMenus'));
     }
+
+    
+
+public function createStripeIntent(Request $request)
+{
+    $checkoutData = session('checkout_data');
+    if (!$checkoutData) {
+        return response()->json(['error' => 'No checkout data found.'], 400);
+    }
+    $amount = intval($checkoutData['total_price'] * 100); // in cents
+    Stripe::setApiKey(config('services.stripe.secret'));
+    $intent = PaymentIntent::create([
+        'amount' => $amount,
+        'currency' => 'gbp', // or your currency
+        'metadata' => [
+            'order_product' => $checkoutData['product_title'] ?? '',
+        ],
+    ]);
+    return response()->json(['clientSecret' => $intent->client_secret]);
+}
+
+public function stripePay(Request $request)
+{
+    // You can verify payment here if needed, then call makeOrder()
+    return $this->makeOrder($request);
+}
+
 }

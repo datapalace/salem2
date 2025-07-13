@@ -32,20 +32,61 @@
                         </div>
                         <hr>
                         <div class="mb-3">
+                             @php
+                                    $sizes = json_decode($order->sizes, true);
+                                @endphp
                             <strong>Product:</strong> {{ $order->product_title }}<br>
-                            <strong>Size(s):</strong> {{ $order->sizes }}<br>
-                            <strong>Custom Design:</strong> {{ $order->custom_design ?? '-' }}<br>
+                            <strong>Size(s):</strong> @if(is_array($sizes))
+
+                                            @foreach($sizes as $size => $qty)
+                                            @php
+                                            // Clean the key to extract size only (e.g., "L" from "sizes[L]")
+                                            $cleanSize = Str::between($size, '[', ']');
+                                            @endphp
+                                            @if($qty > 0)
+                                            {{ strtoupper($cleanSize) }}- {{ $qty }},
+                                            @endif
+                                            @endforeach
+
+                                            @endif<br>
+
                             <strong>Custom Side:</strong> {{ $order->custom_side ?? '-' }}<br>
                             @if($order->custom_image)
-                            <strong>Custom Image:</strong><br>
-                            <img src="{{ asset('storage/' . $order->custom_image) }}" alt="Custom Image" style="max-width:150px;">
+                            <table class="table table-bordered mt-3">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Custom Design</th>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        @if($order->custom_image)
+                                        <img src="{{ asset($order->custom_image) }}" alt="Custom Image" style="max-width:100px;">
+                                        @else
+                                        No custom image provided.
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($order->custom_image)
+                                        <img src="{{ asset($order->custom_design) }}" alt="Custom Image" style="max-width:100px;">
+                                        @else
+                                        No custom image provided.
+                                        @endif
+                                    </td>
+                                </tr>
+
+                            </table>
+
                             @endif
                         </div>
                         <hr>
                         <div class="mb-3">
                             <strong>Unit Price:</strong> £{{ number_format($order->unit_price, 2) }}<br>
+                            <strong>Print Type:</strong> £{{ $order->decoration_type }}<br>
+                             @if ($order['decoration_type'] === 'embroidery')
                             <strong>Embroidery Price:</strong> £{{ number_format($order->embroidery_price, 2) }}<br>
-                            <strong>Decoration Price:</strong> £{{ number_format($order->decoration_price, 2) }}<br>
+                            <strong>Digitisation Price:</strong> £{{ number_format(15, 2) }}<br>
+                            @endif
                             <strong>Total Price:</strong> <span class="text-success font-lg-bold">£{{ number_format($order->total_price, 2) }}</span>
                         </div>
                     </div>

@@ -889,7 +889,25 @@
 }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
-
+<script>
+    $(document).on('click', '#openServerImageModal', function() {
+    $('#serverImageModal').modal('show');
+    var $gallery = $('#serverImageGallery');
+    var $loading = $('#galleryLoading');
+    if ($gallery.children().length === 0) { // Only load if not already loaded
+        $loading.show();
+        $.get('{{ route('custom.gallery.images') }}', function(data) {
+            $gallery.empty();
+            data.images.forEach(function(url) {
+                $gallery.append(
+                    `<img src="${url}" alt="Gallery Image" class="img-thumbnail server-gallery-img" style="width:80px;height:80px;object-fit:cover;cursor:pointer;">`
+                );
+            });
+            $loading.hide();
+        });
+    }
+});
+</script>
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -1000,14 +1018,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div id="serverImageGallery" style="display:flex;gap:12px;flex-wrap:wrap;">
-
-              {{-- load images imageUrl --}}
-                @foreach($imageUrls as $imageUrl)
-                    <img src="{{ asset($imageUrl) }}" alt="Gallery Image" class="img-thumbnail server-gallery-img" style="width:80px;height:80px;object-fit:cover;cursor:pointer;">
-                @endforeach
-            </div>
-          </div>
+    <div id="serverImageGallery" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <!-- Images will be loaded here via AJAX -->
+    </div>
+    <div id="galleryLoading" style="display:none;text-align:center;padding:20px;">
+        <span>Loading images...</span>
+    </div>
+</div>
         </div>
       </div>
     </div>

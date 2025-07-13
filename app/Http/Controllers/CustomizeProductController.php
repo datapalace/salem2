@@ -62,14 +62,39 @@ class CustomizeProductController extends Controller
             ->take(10)
             ->get()
             ->groupBy('colourway_name');
-        // Fetch all images from the 'custom_gallery' folder in public storage
+        // Fetch all images from the 'custom_gallery' folder and the subfolders in public storage
     $images = [];
-    $directory = public_path('assets/img/brand');
+    $directory = public_path('assets/img/custom_gallery');
+
+    // Recursive function to get all image files from directory and subdirectories
+    function getAllImages($dir) {
+        $images = [];
+        $items = scandir($dir);
+        foreach ($items as $item) {
+            if ($item === '.' || $item === '..') {
+                continue;
+            }
+            $path = $dir . DIRECTORY_SEPARATOR . $item;
+            if (is_dir($path)) {
+                $images = array_merge($images, getAllImages($path));
+            } elseif (is_file($path)) {
+                // Store relative path from 'public' directory
+                $relativePath = str_replace(public_path() . DIRECTORY_SEPARATOR, '', $path);
+                $images[] = $relativePath;
+            }
+        }
+        return $images;
+    }
+
+    $images = [];
+    if (is_dir($directory)) {
+        $images = getAllImages($directory);
+    }
     if (is_dir($directory)) {
         $files = scandir($directory);
         foreach ($files as $file) {
             if ($file !== '.' && $file !== '..' && is_file($directory . DIRECTORY_SEPARATOR . $file)) {
-                $images[] = 'assets/img/brand/' . $file;
+                $images[] = 'assets/img/custom_gallery/' . $file;
             }
         }
     }
@@ -79,8 +104,37 @@ class CustomizeProductController extends Controller
         return asset($image);
     }, $images);
 
+    
 
-
-        return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts', 'colors', 'availableColors', 'sizes', 'imageUrls'));
+        return view('user.customize-product', compact('product', 'shopByCatMenus', 'relatedProducts', 'colors', 'availableColors', 'sizes'));
     }
+    public function customGalleryImages(Request $request)
+{
+    $directory = public_path('assets/img/custom_gallery');
+
+    // Use your existing recursive function
+    function getAllImages2($dir) {
+        $images = [];
+        $items = scandir($dir);
+        foreach ($items as $item) {
+            if ($item === '.' || $item === '..') continue;
+            $path = $dir . DIRECTORY_SEPARATOR . $item;
+            if (is_dir($path)) {
+                $images = array_merge($images, getAllImages2($path));
+            } elseif (is_file($path)) {
+                $relativePath = str_replace(public_path() . DIRECTORY_SEPARATOR, '', $path);
+                $images[] = asset($relativePath);
+            }
+        }
+        return $images;
+    }
+
+    $images = [];
+    if (is_dir($directory)) {
+        $images = getAllImages2($directory);
+    }
+
+    return response()->json(['images' => $images]);
+}
+
 }

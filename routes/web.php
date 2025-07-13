@@ -130,6 +130,13 @@ Route::middleware('auth:customer')->group(function () {
     Route::post('/checkout/make-order', [CheckoutController::class, 'makeOrder'])->name('checkout.place-order');
 });
 
+
+
+Route::get('/custom-gallery-images', [\App\Http\Controllers\CustomizeProductController::class, 'customGalleryImages'])->name('custom.gallery.images');
+
+Route::post('/checkout/stripe-intent', [CheckoutController::class, 'createStripeIntent'])->name('checkout.stripe.intent');
+Route::post('/checkout/stripe-pay', [CheckoutController::class, 'stripePay'])->name('checkout.stripe.pay');
+
 // Route to handle 404 errors
 Route::fallback(function () {
     $shopByCatMenus = Product::select('type')->groupBy('type')->get();

@@ -1,6 +1,5 @@
 {{-- Debug --}}
 
-
 @extends('layout.usermaster')
 @section('usercontent')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -129,7 +128,7 @@
                                 <h5 class="font-md-bold color-brand-3 mt-15 mb-20">Shipping address</h5>
                             </div>
                         </div>
-                        <form action="{{ route('checkout.place-order') }}" method="post">
+                        <form id="stripePaymentForm" method="POST" action="{{ route('checkout.stripe.pay') }}">
                             @csrf
                             <div class="row">
 
@@ -234,7 +233,12 @@
                     <div class="row mt-20">
                         <div class="col-lg-6 col-5 mb-20"><a class="btn font-sm-bold color-brand-1 arrow-back-1"
                                 href="{{ url()->previous() }}">Return to Design</a></div>
-                        <div class="col-lg-6 col-7 mb-20 text-end float-right"><button class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Place an Order</button></div>
+                        <div class="col-lg-6 col-7 mb-20 text-end float-right"><button class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Place an Order</button>
+                        <div id="card-element"></div>
+    <div id="card-errors" class="text-danger mt-2"></div>
+    <button id="payBtn" class="btn btn-primary mt-3" >Pay Now</button>
+
+                        </div>
                         </form>
                     </div>
 
@@ -399,3 +403,4 @@
             checkagree.addEventListener('change', validateForm);
         };
     </script>
+  

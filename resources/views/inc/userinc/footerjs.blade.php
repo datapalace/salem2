@@ -244,9 +244,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 </script>
-<script>
-    // click .colo-watch on page load
+<script src="https://js.stripe.com/v3/"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', async function () {
+    const stripe = Stripe('{{ config('services.stripe.key') }}');
+    const elements = stripe.elements();
+    const card = elements.create('card');
+    card.mount('#card-element');
 
+    // Fetch client secret from backend
+    let clientSecret = '';
+    await fetch('{{ route('checkout.stripe.intent') }}', {method: 'POST', headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}})
+        .then(res => res.json())
+        .then(data => { clientSecret = data.clientSecret; });
+
+    // Handle form submission
+    const form = document.getElementById('stripePaymentForm');
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        alert("clicked");
+        //document.getElementById('payBtn').disabled = true;
+
+        const {paymentIntent, error} = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: { card: card }
+        });
+
+        if (error) {
+            document.getElementById('card-errors').textContent = error.message;
+            document.getElementById('payBtn').disabled = false;
+        } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+            // Submit the form to finalize order
+            form.submit();
+        }
+    });
+});
 </script>
 
   </body>
