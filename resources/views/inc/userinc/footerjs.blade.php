@@ -244,8 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 </script>
-<script src="https://js.stripe.com/v3/"></script>
-  <script>
+<script>
 document.addEventListener('DOMContentLoaded', async function () {
     const stripe = Stripe('{{ config('services.stripe.key') }}');
     const elements = stripe.elements();
@@ -260,11 +259,16 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Handle form submission
     const form = document.getElementById('stripePaymentForm');
+    const checkoutform = document.getElementById('checkOutForm');
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        alert("clicked");
-        //document.getElementById('payBtn').disabled = true;
-
+        // Validate checkout form before payment
+        if (checkoutform && !checkoutform.checkValidity()) {
+            checkoutform.reportValidity();
+            return;
+        }
+        document.getElementById('payBtn').disabled = true;
+        //alert("button clicke");
         const {paymentIntent, error} = await stripe.confirmCardPayment(clientSecret, {
             payment_method: { card: card }
         });
@@ -274,11 +278,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             document.getElementById('payBtn').disabled = false;
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Submit the form to finalize order
-            form.submit();
+            checkoutform.submit();
         }
     });
 });
 </script>
-
   </body>
 </html>

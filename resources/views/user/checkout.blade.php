@@ -1,8 +1,13 @@
 {{-- Debug --}}
-
 @extends('layout.usermaster')
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
+</head>
 @section('usercontent')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
 <main>
     @php
                 $c = session('checkout_data');
@@ -128,7 +133,7 @@
                                 <h5 class="font-md-bold color-brand-3 mt-15 mb-20">Shipping address</h5>
                             </div>
                         </div>
-                        <form id="stripePaymentForm" method="POST" action="{{ route('checkout.stripe.pay') }}">
+                        <form id="checkOutForm" method="POST" action="{{ route('checkout.stripe.pay') }}">
                             @csrf
                             <div class="row">
 
@@ -230,16 +235,47 @@
                             </div>
 
                     </div>
-                    <div class="row mt-20">
+                    
+                        
+                        </form>
+                
+                          <form id="stripePaymentForm" method="POST" action="{{ route('checkout.stripe.pay') }}">
+    @csrf
+    <hr>
+     <h5 class="font-md-bold mb-20">Provide Card Details</h5>
+     {{-- style the striple input element --}}
+    <style>
+        #card-element {
+            background: #fff;
+            padding: 14px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: #495057;
+            box-shadow: none;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            min-height: 44px;
+        }
+        #card-element.StripeElement--focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+        #card-element.StripeElement--invalid {
+            border-color: #dc3545;
+        }
+        #card-element.StripeElement--complete {
+            border-color: #28a745;
+        }
+    </style>
+    <div id="card-element"></div>
+    <div id="card-errors" class="text-danger mt-2"></div>
+    <div class="row mt-20">
                         <div class="col-lg-6 col-5 mb-20"><a class="btn font-sm-bold color-brand-1 arrow-back-1"
                                 href="{{ url()->previous() }}">Return to Design</a></div>
-                        <div class="col-lg-6 col-7 mb-20 text-end float-right"><button class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Place an Order</button>
-                        <div id="card-element"></div>
-    <div id="card-errors" class="text-danger mt-2"></div>
-    <button id="payBtn" class="btn btn-primary mt-3" >Pay Now</button>
+    <div class="col-lg-6 col-7 mb-20 text-end float-right"><button id="payBtn" class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Pay Now</button>
 
                         </div>
-                        </form>
+</form>
                     </div>
 
                 </div>
@@ -290,23 +326,19 @@
                     </div>
 
                     <div class="form-group mb-0">
-                        <div class="row mb-10">
-                            <div class="col-lg-6 col-6">
-                                <p>
-                                    @php
-                                    $sizes = json_decode($c['sizes'], true);
-                                    @endphp
-                                </p>
 
-                                <span class="font-md-bold color-brand-3">Unit Price</span>
-                            </div>
-                            <div class="col-lg-6 col-6 text-end"><span><small style="font-size: 10px;">{{ number_format($c['unit_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }}</small></span> <span
-                                    class="font-lg-bold color-brand-3">£{{ number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span></div>
+                        <div class="row mb-10">
+                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Unit Price</span></div>
+                            <div class="col-lg-6 col-6 text-end"><span
+                                    class="font-lg-bold color-brand-3">£{{ number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
+                                <span><small style="font-size: 10px;">{{ number_format($c['unit_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }}</small></span></div>
+
                         </div>
                         @if ($c['decoration_type'] === 'embroidery')
                         <div class="row mb-10">
                             <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Embroidery Price</span></div>
-                            <div class="col-lg-6 col-6 text-end"><span><small style="font-size: 10px;">({{ number_format($c['embroidery_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }})</small></span> <span class="font-lg-bold color-brand-3">£{{ number_format($c['embroidery_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span></div>
+                            <div class="col-lg-6 col-6 text-end"><span> <span class="font-lg-bold color-brand-3">£{{ number_format($c['embroidery_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
+                            <small style="font-size: 10px;">({{ number_format($c['embroidery_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }})</small></span></div>
 
                         </div>
                         <div class="row mb-10">
@@ -318,7 +350,8 @@
                         <div class="border-bottom mb-10 pb-5">
                             <div class="row">
                                 <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Quantity</span></div>
-                                <div class="col-lg-6 col-6 text-end"><span>
+                                <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">{{collect(json_decode($c['sizes'], true))->sum()}}</span><br>
+                                <span>
                                         <small style="font-size: 10px;">
                                             @php
                                             use Illuminate\Support\Str;
@@ -339,7 +372,7 @@
 
                                             @endif
 
-                                        </small></span><span class="font-lg-bold color-brand-3">{{collect(json_decode($c['sizes'], true))->sum()}}</span></div>
+                                        </small></span></div>
                             </div>
                         </div>
 
@@ -403,4 +436,5 @@
             checkagree.addEventListener('change', validateForm);
         };
     </script>
-  
+
+

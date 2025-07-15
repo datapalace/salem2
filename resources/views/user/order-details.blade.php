@@ -68,7 +68,8 @@
                                     </td>
                                     <td>
                                         @if($order->custom_image)
-                                        <img src="{{ asset($order->custom_design) }}" alt="Custom Image" style="max-width:100px;">
+                                        <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100px;">
+
                                         @else
                                         No custom image provided.
                                         @endif

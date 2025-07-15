@@ -121,7 +121,7 @@ class CheckoutController extends Controller
             'user_id' => $me,
             'product_id' => $checkoutData['product_id'],
             'sizes' => $checkoutData['sizes'],
-            'custom_design' => $checkoutData['custom_design'],
+            'custom_design' => $checkoutData['custom_design_raw'],
             'product_title' => $checkoutData['product_title'],
             'unit_price' => $checkoutData['unit_price'],
             'embroidery_price' => $checkoutData['embroidery_price'],
@@ -158,7 +158,7 @@ class CheckoutController extends Controller
         return view('user.order-details', compact('order', 'shopByCatMenus'));
     }
 
-    
+
 
 public function createStripeIntent(Request $request)
 {

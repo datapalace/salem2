@@ -14,7 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Fabric.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
-    <style>
+   <script src="https://js.stripe.com/v3/"></script>
+   <style>
         .search-results-dropdown a:hover {
     background: #f8f9fa;
 }
@@ -96,5 +97,7 @@
 
 
 </script>
+
+
   </head>
 <body>

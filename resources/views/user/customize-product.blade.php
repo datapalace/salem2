@@ -1,8 +1,6 @@
 @php use Illuminate\Support\Str; @endphp
-
-@extends('layout.usermaster')
-@section('usercontent')
-    <title>{{ $product->title }} - Salem Apparels</title>
+<head>
+    <title>{{ $product->title }} - Salem Apparel</title>
     <meta name="description" content="Salem Apparels - customise your products with ease.">
     <meta name="keywords" content="Salem Apparels, customise Products, Online Shopping, E-commerce">
     <meta name="author" content="Salem Apparels">
@@ -13,6 +11,12 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="product">
     <meta property="og:site_name" content="Salem Apparels">
+    {{-- use the product image for the favicon --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $product->galleries->first()->image_url ?? asset('userasset/imgs/template/logo.png') }}">
+</head>
+@extends('layout.usermaster')
+@section('usercontent')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
     <!-- Include Fabric.js -->

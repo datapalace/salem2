@@ -27,9 +27,15 @@
             <div class="header-nav text-start">
               <nav class="nav-main-menu d-none d-xl-block">
                 <ul class="main-menu">
-                  <li><a class="active" href="#">Flash Deals</a></li>
-                  <li><a href="#">Special</a></li>
-                  <li><a href="#">Top Sellers</a></li>
+                    @php
+                        $cutomCat = $shopByCatMenus->where('type', 'T-Shirt')->first();
+                        print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                        $cutomCat = $shopByCatMenus->where('type', 'Jacket')->first();
+                        print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                        $cutomCat = $shopByCatMenus->where('type', 'Headwear')->first();
+                        print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                    @endphp
+                  
                 </ul>
               </nav>
               <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
