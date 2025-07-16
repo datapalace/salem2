@@ -46,7 +46,7 @@
                   <ul>
                     <li><a href="/my-account">My Account</a></li>
 
-                    <li><a href="/my-account">My Orders</a></li>
+                    <li><a href="/my-orders">My Orders</a></li>
 
                     <li><a href="#">Setting</a></li>
                     <li><a href="/logout">Sign out</a></li>
