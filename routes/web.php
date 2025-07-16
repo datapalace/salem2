@@ -137,6 +137,11 @@ Route::get('/custom-gallery-images', [\App\Http\Controllers\CustomizeProductCont
 Route::post('/checkout/stripe-intent', [CheckoutController::class, 'createStripeIntent'])->name('checkout.stripe.intent');
 Route::post('/checkout/stripe-pay', [CheckoutController::class, 'stripePay'])->name('checkout.stripe.pay');
 
+//my orders- show all orders made by a user
+Route::middleware('auth:customer')->group(function () {
+    Route::get('/my-orders', [CheckoutController::class, 'myOrders'])->name('my.orders');
+});
+
 // Route to handle 404 errors
 Route::fallback(function () {
     $shopByCatMenus = Product::select('type')->groupBy('type')->get();

@@ -173,9 +173,8 @@
                             <div class="box-quantity">
 
                                 <div class="button-buy">
-                                    <button id="loadCustom" class="btn btn-cart" type="button">Add
-                                        Customisation</button>
-                                    <a class="btn btn-buy" id="proceedCheckoutBtn">Proceed to Check Out</a>
+                                    <button id="loadCustom" class="btn btn-cart" type="button">Add Customisation</button>
+                                    <a class="btn btn-buy d-none" id="proceedCheckoutBtn">Proceed to Check Out</a>
                                 </div>
                                 <script>
                                     // Side options
@@ -217,6 +216,11 @@
 
                                     $('#loadCustom').on('click', function(e) {
                                         e.preventDefault();
+                                        // display proceedCheckoutBtn
+                                        $('#proceedCheckoutBtn').removeClass('d-none');
+                                        // hide loadCustom
+                                        $('#loadCustom').addClass('d-none');
+                                       
                                         let sideOptions = sides.map(s => `<option value="${s.value}">${s.label}</option>`).join('');
                                         $('#customiseDiv').html(`
                                             <div class="card p-3 mb-3">
@@ -575,7 +579,35 @@
                                 </script>
 <script>
     document.getElementById('proceedCheckoutBtn').addEventListener('click', function() {
-        //alert("checked");
+        // validate if nameColor is selected
+                                        const nameColor = document.querySelector('.nameColor');
+                                        if (nameColor && nameColor.textContent === 'Select your favourite color') {
+                                            alert('Please select a color before proceeding.');
+                                            return;
+                                        }
+                
+                                        // validate sizes are selected
+                                        const sizeInputs = document.querySelectorAll('.size-input');
+                                        let sizesSelected = false;
+                                        sizeInputs.forEach(input => {
+                                            if (input.value && parseInt(input.value) > 0) {
+                                                sizesSelected = true;
+                                            }
+                                        });
+                                        if (!sizesSelected) {
+                                            alert('Please select at least one size with quantity greater than 0.');
+                                            return;
+                                        }
+
+
+                
+          // vlidate total is not 0 or null
+                                        const total = parseFloat($('#pTotal').text());
+                                        if (isNaN(total) || total <= 0) {
+                                            alert('Please select a size and quantity before proceeding.');
+                                            return;
+                                        }
+                
     // 1. Get selected color
     const color = document.querySelector('.list-colors .color-swatch.selected')?.title || '';
 
@@ -1052,7 +1084,7 @@
     <input type="hidden" name="custom_image" id="checkoutSelectedImage">
     {{-- checkoutSelectedSide --}}
     <input type="hidden" name="custom_side" id="checkoutSelectedSide">
-
+    {{-- payment --}}
 </form>
 <script>
 

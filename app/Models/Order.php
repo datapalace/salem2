@@ -19,6 +19,9 @@ class Order extends Model
         'decoration_price',
         'custom_image',
         'custom_side',
+        'ref',
+        'track_id',
+        'decoration_type'
     ];
 
     public function user()

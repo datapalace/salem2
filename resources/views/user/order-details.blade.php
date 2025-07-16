@@ -17,7 +17,9 @@
                         <hr>
                         <div class="mb-3">
                             <strong>Order ID:</strong> #{{ $order->id }}<br>
-                            <strong>Order Date:</strong> {{ $order->created_at->format('d M Y, H:i') }}
+                            <strong>Order Date:</strong> {{ $order->created_at->format('d M Y, H:i') }}<br>
+                            <strong>Payment Ref:</strong> {{ $order->ref ?? '-' }}<br>
+                            <strong>Track ID:</strong> {{ $order->track_id ?? '-' }}
                         </div>
                         <div class="mb-3">
                             <strong>Customer:</strong> {{ $order->user->name ?? 'Guest' }}<br>
@@ -67,7 +69,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if($order->custom_image)
+                                        @if($order->custom_design)
                                         <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100px;">
 
                                         @else
@@ -83,7 +85,7 @@
                         <hr>
                         <div class="mb-3">
                             <strong>Unit Price:</strong> £{{ number_format($order->unit_price, 2) }}<br>
-                            <strong>Print Type:</strong> £{{ $order->decoration_type }}<br>
+                            <strong>Print Type:</strong> {{ $order->decoration_type }}<br>
                              @if ($order['decoration_type'] === 'embroidery')
                             <strong>Embroidery Price:</strong> £{{ number_format($order->embroidery_price, 2) }}<br>
                             <strong>Digitisation Price:</strong> £{{ number_format(15, 2) }}<br>

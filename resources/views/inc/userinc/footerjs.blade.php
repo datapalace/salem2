@@ -267,6 +267,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             checkoutform.reportValidity();
             return;
         }
+       
         document.getElementById('payBtn').disabled = true;
         //alert("button clicke");
         const {paymentIntent, error} = await stripe.confirmCardPayment(clientSecret, {
@@ -278,6 +279,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             document.getElementById('payBtn').disabled = false;
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Submit the form to finalize order
+            document.getElementById('stripePaymentRef').value = paymentIntent.id; // Save payment reference
             checkoutform.submit();
         }
     });

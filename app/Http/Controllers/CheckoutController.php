@@ -115,8 +115,9 @@ class CheckoutController extends Controller
             'company_name' => 'nullable|string',
 
         ]);
-
-        // store the order in the database
+        $ref = $_POST['stripe_payment_ref'];
+        //dd($ref);
+                // store the order in the database
         $order = Order::create([
             'user_id' => $me,
             'product_id' => $checkoutData['product_id'],
@@ -129,6 +130,11 @@ class CheckoutController extends Controller
             'decoration_price' => $checkoutData['decoration_price'],
             'custom_image' => $checkoutData['custom_image'],
             'custom_side' => $checkoutData['custom_side'],
+            // submit payment ref from stripe
+            'ref' => $ref,
+            // generate a unique 13 digit number, number only, not alpanumeric
+            'track_id' => str_pad(rand(0, 9999999999999), 13, '0', STR_PAD_LEFT),
+            'decoration_type' => $checkoutData['decoration_type'] ?? 'print', // default to 'print' if not set
         ]);
 
         // store the shipping information only
@@ -182,6 +188,14 @@ public function stripePay(Request $request)
 {
     // You can verify payment here if needed, then call makeOrder()
     return $this->makeOrder($request);
+}
+//all my odrers
+public function myOrders()
+{
+    $user = Auth::guard('customer')->user(); // Use the user guard
+    $orders = Order::where('user_id', $user->id)->with(['shipping'])->get();
+    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+    return view('user.my-orders', compact('orders', 'shopByCatMenus'));
 }
 
 }

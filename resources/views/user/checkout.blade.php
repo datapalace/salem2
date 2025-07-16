@@ -229,6 +229,9 @@
 
                                 <div class="col-lg-12">
                                     <div class="form-group mb-0">
+                                        {{-- submit payment ref from stripe --}}
+                                        <input type="hidden" name="stripe_payment_ref" id="stripePaymentRef" value="">
+                                        {{-- additional information --}}
                                         <textarea class="form-control font-sm" name="additional_information" placeholder="Additional Information" rows="5"></textarea>
                                     </div>
                                 </div>

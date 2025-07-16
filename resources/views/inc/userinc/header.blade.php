@@ -28,12 +28,12 @@
               <nav class="nav-main-menu d-none d-xl-block">
                 <ul class="main-menu">
                     @php
-                        $cutomCat = $shopByCatMenus->where('type', 'T-Shirt')->first();
-                        print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
-                        $cutomCat = $shopByCatMenus->where('type', 'Jacket')->first();
-                        print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
-                        $cutomCat = $shopByCatMenus->where('type', 'Headwear')->first();
-                        print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                        // $cutomCat = $shopByCatMenus->where('type', 'T-Shirt')->first();
+                        // print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                        // $cutomCat = $shopByCatMenus->where('type', 'Jacket')->first();
+                        // print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                        // $cutomCat = $shopByCatMenus->where('type', 'Headwear')->first();
+                        // print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
                     @endphp
                   
                 </ul>
@@ -46,14 +46,14 @@
                   <ul>
                     <li><a href="#">My Account</a></li>
 
-                    <li><a href="#">My Orders</a></li>
+                    <li><a href="/my-orders">My Orders</a></li>
 
                     <li><a href="#">Setting</a></li>
                     <li><a href="/logout">Sign out</a></li>
                   </ul>
                 </div>
               </div>
-              <div class="d-inline-block box-dropdown-cart"><span class="font-lg icon-list icon-cart"><span>Cart</span><span class="number-item font-xs">2</span></span>
+              {{-- <div class="d-inline-block box-dropdown-cart"><span class="font-lg icon-list icon-cart"><span>Cart</span><span class="number-item font-xs">2</span></span>
                 <!-- <div class="dropdown-cart">
                   <div class="item-cart mb-20">
                     <div class="cart-image"><img src="assets/imgs/page/homepage1/imgsp5.png" alt="Salem Apparels Logo"></div>
@@ -79,7 +79,7 @@
                     </div>
                   </div>
                 </div> -->
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@
               </div>
               <ul class="mobile-menu">
                 <li><a href="#">My Account</a></li>
-                <li><a href="#">My Orders</a></li>
+                <li><a href="/my-orders">My Orders</a></li>
                 <li><a href="#">Setting</a></li>
                 <li><a href="/logout">Sign out</a></li>
               </ul>
