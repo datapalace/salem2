@@ -10,7 +10,8 @@
                                 $userID = $user ? $user->id : '';
                                 $firstName = $user ? (explode(' ', $user->name)[0] ?? '') : '';
                                 $lastName = $user ? (implode(' ', array_slice(explode(' ', $user->name), 1)) ?? '') : '';
-                                @endphp,</h3>
+                                @endphp
+                                {{$firstName .' ' . $lastName}},</h3>
           <p class="font-md color-gray-500">From your account dashboard. you can easily check & view your recent orders,<br class="d-none d-lg-block">manage your shipping and billing addresses and edit your password and account details.</p>
           <div class="box-tabs mb-100">
             <ul class="nav nav-tabs nav-tabs-account" role="tablist">
@@ -234,7 +235,9 @@
                 <div class="box-orders">
                   <div class="head-orders">
                     <div class="head-left">
-                      <h5 class="mr-20">Order ID: #{{$order->track_id}}</h5><span class="font-md color-brand-3 mr-20">Date: {{$order->created_at}}</span><span class="label-delivery">Delivery in progress</span>
+                      <h5 class="mr-20">Order ID: #{{$order->track_id}}</h5><span class="font-md color-brand-3 mr-20">Date: {{$order->created_at}}</span><span class="label-delivery">
+                        {{$order->status ? $order->status : 'Pending'}}
+                    </span>
                     </div>
                     <div class="head-right"><a class="btn btn-buy font-sm-bold w-auto">View Order</a></div>
                   </div>
