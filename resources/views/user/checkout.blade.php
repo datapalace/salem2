@@ -1,8 +1,9 @@
 {{-- Debug --}}
 @extends('layout.usermaster')
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
 
 </head>
 @section('usercontent')
@@ -10,8 +11,8 @@
 
 <main>
     @php
-                $c = session('checkout_data');
-                @endphp
+    $c = session('checkout_data');
+    @endphp
 
     <section class="section-box shop-template">
         <div class="container">
@@ -235,170 +236,175 @@
                             </div>
 
                     </div>
-                    
-                        
-                        </form>
-                
-                          <form id="stripePaymentForm" method="POST" action="{{ route('checkout.stripe.pay') }}">
-    @csrf
-    <hr>
-     <h5 class="font-md-bold mb-20">Provide Card Details</h5>
-     {{-- style the striple input element --}}
-    <style>
-        #card-element {
-            background: #fff;
-            padding: 14px 12px;
-            border: 1px solid #ced4da;
-            border-radius: 6px;
-            font-size: 1rem;
-            color: #495057;
-            box-shadow: none;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            min-height: 44px;
-        }
-        #card-element.StripeElement--focus {
-            border-color: #80bdff;
-            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-        }
-        #card-element.StripeElement--invalid {
-            border-color: #dc3545;
-        }
-        #card-element.StripeElement--complete {
-            border-color: #28a745;
-        }
-    </style>
-    <div id="card-element"></div>
-    <div id="card-errors" class="text-danger mt-2"></div>
-    <div class="row mt-20">
-                        <div class="col-lg-6 col-5 mb-20"><a class="btn font-sm-bold color-brand-1 arrow-back-1"
-                                href="{{ url()->previous() }}">Return to Design</a></div>
-    <div class="col-lg-6 col-7 mb-20 text-end float-right"><button id="payBtn" class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Pay Now</button>
 
-                        </div>
-</form>
-                    </div>
 
+                    </form>
+
+                    <form id="stripePaymentForm" method="POST" action="{{ route('checkout.stripe.pay') }}">
+                        @csrf
+                        <hr>
+                        <h5 class="font-md-bold mb-20">Provide Card Details</h5>
+                        {{-- style the striple input element --}}
+                        <style>
+                            #card-element {
+                                background: #fff;
+                                padding: 14px 12px;
+                                border: 1px solid #ced4da;
+                                border-radius: 6px;
+                                font-size: 1rem;
+                                color: #495057;
+                                box-shadow: none;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                                min-height: 44px;
+                            }
+
+                            #card-element.StripeElement--focus {
+                                border-color: #80bdff;
+                                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+                            }
+
+                            #card-element.StripeElement--invalid {
+                                border-color: #dc3545;
+                            }
+
+                            #card-element.StripeElement--complete {
+                                border-color: #28a745;
+                            }
+                        </style>
+                        <div id="card-element"></div>
+                        <div id="card-errors" class="text-danger mt-2"></div>
+                        <div class="row mt-20">
+                            <div class="col-lg-6 col-5 mb-20"><a class="btn font-sm-bold color-brand-1 arrow-back-1"
+                                    href="{{ url()->previous() }}">Return to Design</a></div>
+                            <div class="col-lg-6 col-7 mb-20 text-end float-right"><button id="payBtn" class="btn btn-buy w-auto arrow-next" {{ !Auth::guard('customer')->user() ? 'disabled' : '' }}>Pay Now</button>
+
+                            </div>
+                    </form>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="box-border">
-                        <h5 class="font-md-bold mb-20">Your Order</h5>
-                        <div class="listCheckout">
-                            <div class="item-wishlist">
-                                <div class="wishlist-product">
-                                    <div class="product-wishlist">
-                                        <div class="product-image">
-                                            <a href="#">
-                                                <img
-                                                    src="{{ $c['custom_image'] ?? asset('userasset/imgs/page/product/img-sub.png') }}"
-                                                    alt="Product"
-                                                    class="img-fluid mb-2">
-                                            </a>
-                                            {{-- @if (!empty($c['custom_design_raw']))
+            </div>
+
+            <div class="col-lg-6">
+                <div class="box-border">
+                    <h5 class="font-md-bold mb-20">Your Order</h5>
+                    <div class="listCheckout">
+                        <div class="item-wishlist">
+                            <div class="wishlist-product">
+                                <div class="product-wishlist">
+                                    <div class="product-image">
+                                        <a href="#">
+                                            <img
+                                                src="{{ $c['custom_image'] ?? asset('userasset/imgs/page/product/img-sub.png') }}"
+                                                alt="Product"
+                                                class="img-fluid mb-2">
+                                        </a>
+                                        {{-- @if (!empty($c['custom_design_raw']))
                                 <div class="mt-2">
                                     <strong>Custom Design:</strong><br>
                                     <img src="data:image/png;base64,{{ $c['custom_design_raw'] }}" alt="Custom Design" style="max-width: 100px; border: 1px solid #ccc; padding: 4px;">
-                                        </div>
-                                        @endif --}}
                                     </div>
-                                    <div class="product-info">
-                                        <h6 class="color-brand-3">{{ $c['product_title'] ?? 'Product Title' }}</h6>
-                                        <p class="text-muted mb-1">Decoration: {{ ucfirst($c['decoration_type']) ?? '-' }}</p>
-                                        <p class="text-muted mb-1">Side: {{ ucfirst($c['custom_side']) ?? '-' }}</p>
-                                        <p class="text-muted mb-1">
-                                            Color:
-                                            <span class="d-inline-block align-middle" style="width: 16px; height: 16px; background-color: {{ $c['color'] ?? '#000' }}; border-radius: 4px; border: 1px solid #ccc;"></span>
-                                            <span class="align-middle ms-1">{{ $c['color'] ?? 'N/A' }}</span>
+                                    @endif --}}
+                                </div>
+                                <div class="product-info">
+                                    <h6 class="color-brand-3">{{ $c['product_title'] ?? 'Product Title' }}</h6>
+                                    <p class="text-muted mb-1">Decoration: {{ ucfirst($c['decoration_type']) ?? '-' }}</p>
+                                    <p class="text-muted mb-1">Side: {{ ucfirst($c['custom_side']) ?? '-' }}</p>
+                                    <p class="text-muted mb-1">
+                                        Color:
+                                        <span class="d-inline-block align-middle" style="width: 16px; height: 16px; background-color: {{ $c['color'] ?? '#000' }}; border-radius: 4px; border: 1px solid #ccc;"></span>
+                                        <span class="align-middle ms-1">{{ $c['color'] ?? 'N/A' }}</span>
 
-                                        </p>
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
-
-                            <div class="wishlist-status">
-                                <small class="color-gray-500">Total Qty:
-                                    {{ collect(json_decode($c['sizes'], true))->sum() }}
-                                </small>
-                            </div>
-
                         </div>
-                        <p> <small>Please note the the colour of the design may change based on the colour of the material but it will be confirmed before production</small></p>
+
+                        <div class="wishlist-status">
+                            <small class="color-gray-500">Total Qty:
+                                {{ collect(json_decode($c['sizes'], true))->sum() }}
+                            </small>
+                        </div>
+
                     </div>
+                    <p> <small>Please note the the colour of the design may change based on the colour of the material but it will be confirmed before production</small></p>
+                </div>
 
-                    <div class="form-group mb-0">
+                <div class="form-group mb-0">
 
-                        <div class="row mb-10">
-                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Unit Price</span></div>
-                            <div class="col-lg-6 col-6 text-end"><span
-                                    class="font-lg-bold color-brand-3">£{{ number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
-                                <span><small style="font-size: 10px;">{{ number_format($c['unit_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }}</small></span></div>
-
-                        </div>
-                        @if ($c['decoration_type'] === 'embroidery')
-                        <div class="row mb-10">
-                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Embroidery Price</span></div>
-                            <div class="col-lg-6 col-6 text-end"><span> <span class="font-lg-bold color-brand-3">£{{ number_format($c['embroidery_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
-                            <small style="font-size: 10px;">({{ number_format($c['embroidery_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }})</small></span></div>
-
-                        </div>
-                        <div class="row mb-10">
-                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Digitisation Setup</span></div>
-                            <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">£{{ number_format(15, 2) }}</span></div>
-
-                        </div>
-                        @endif
-                        <div class="border-bottom mb-10 pb-5">
-                            <div class="row">
-                                <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Quantity</span></div>
-                                <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">{{collect(json_decode($c['sizes'], true))->sum()}}</span><br>
-                                <span>
-                                        <small style="font-size: 10px;">
-                                            @php
-                                            use Illuminate\Support\Str;
-                                            $sizes = json_decode($c['sizes'], true);
-                                            @endphp
-
-                                            @if(is_array($sizes))
-
-                                            @foreach($sizes as $size => $qty)
-                                            @php
-                                            // Clean the key to extract size only (e.g., "L" from "sizes[L]")
-                                            $cleanSize = Str::between($size, '[', ']');
-                                            @endphp
-                                            @if($qty > 0)
-                                            {{ strtoupper($cleanSize) }}-{{ $qty }},
-                                            @endif
-                                            @endforeach
-
-                                            @endif
-
-                                        </small></span></div>
-                            </div>
+                    <div class="row mb-10">
+                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Unit Price</span></div>
+                        <div class="col-lg-6 col-6 text-end"><span
+                                class="font-lg-bold color-brand-3">£{{ number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
+                            <span><small style="font-size: 10px;">{{ number_format($c['unit_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }}</small></span>
                         </div>
 
-                        <div class="border-bottom mb-10 pb-5">
-                            <div class="row">
-                                <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Shipping</span></div>
-                                <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">-</span></div>
-                            </div>
-                        </div>
+                    </div>
+                    @if ($c['decoration_type'] === 'embroidery')
+                    <div class="row mb-10">
+                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Embroidery Price</span></div>
+                        <div class="col-lg-6 col-6 text-end"><span> <span class="font-lg-bold color-brand-3">£{{ number_format($c['embroidery_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
+                                <small style="font-size: 10px;">({{ number_format($c['embroidery_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }})</small></span></div>
+
+                    </div>
+                    <div class="row mb-10">
+                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Digitisation Setup</span></div>
+                        <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">£{{ number_format(15, 2) }}</span></div>
+
+                    </div>
+                    @endif
+                    <div class="border-bottom mb-10 pb-5">
                         <div class="row">
-                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Total</span></div>
-                            <div class="col-lg-6 col-6 text-end"><span
-                                    class="font-lg-bold color-brand-3">£ @if ($c['decoration_type'] === 'embroidery')
-                                    {{ number_format($c['total_price'], 2) + 15 }}
-                                    @else
-                                    {{ number_format($c['total_price'], 2) }}
+                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Quantity</span></div>
+                            <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">{{collect(json_decode($c['sizes'], true))->sum()}}</span><br>
+                                <span>
+                                    <small style="font-size: 10px;">
+                                        @php
+                                        use Illuminate\Support\Str;
+                                        $sizes = json_decode($c['sizes'], true);
+                                        @endphp
 
-                                    @endif</span></div>
+                                        @if(is_array($sizes))
+
+                                        @foreach($sizes as $size => $qty)
+                                        @php
+                                        // Clean the key to extract size only (e.g., "L" from "sizes[L]")
+                                        $cleanSize = Str::between($size, '[', ']');
+                                        @endphp
+                                        @if($qty > 0)
+                                        {{ strtoupper($cleanSize) }}-{{ $qty }},
+                                        @endif
+                                        @endforeach
+
+                                        @endif
+
+                                    </small></span>
+                            </div>
                         </div>
-
-
-
-
                     </div>
+
+                    <div class="border-bottom mb-10 pb-5">
+                        <div class="row">
+                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Shipping</span></div>
+                            <div class="col-lg-6 col-6 text-end"><span class="font-lg-bold color-brand-3">-</span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Total</span></div>
+                        <div class="col-lg-6 col-6 text-end"><span
+                                class="font-lg-bold color-brand-3">£ @if ($c['decoration_type'] === 'embroidery')
+                                {{ number_format($c['total_price'], 2) + 15 }}
+                                @else
+                                {{ number_format($c['total_price'], 2) }}
+
+                                @endif</span></div>
+                    </div>
+
+
+
+
                 </div>
             </div>
+        </div>
 
 
 
@@ -436,5 +442,3 @@
             checkagree.addEventListener('change', validateForm);
         };
     </script>
-
-

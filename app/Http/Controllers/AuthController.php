@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminNewUserNotification;
+use App\Mail\registrationEmail;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -35,7 +38,7 @@ class AuthController extends Controller
             // checkout session variable
             $checkoutData = session('checkout_data');
             // Redirect based on the user's role
-            if ($role == 'admin' && !$checkoutData) {
+            if ($role == 'admin') {
                 return redirect()->route('welcome');
             } else {
 
@@ -75,13 +78,17 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
+            Mail::to($request->email)->send(new registrationEmail($user));
+            Mail::to('lawalsherifoyetola@gmail.com')->send(new AdminNewUserNotification($user));
+
             $guard = $user->role; // 'admin', 'customer', or 'subscriber'
             $checkoutData = session('checkout_data'); //checkout session variable
             Auth::guard($guard)->login($user);
             if ($checkoutData) {
                 return redirect()->back()->with('success', 'Your checkout is ready.');
+            } else {
+                return redirect()->route('shop-now')->with('success', 'Registration successful!');
             }
-            return redirect()->route('shop-now')->with('success', 'Registration successful!');
         } catch (Exception $e) {
             Log::error('error in connnection: ' . $e->getMessage(), [
                 'stack' => $e->getTraceAsString(),

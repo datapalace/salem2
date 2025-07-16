@@ -12,6 +12,18 @@
         <div class="col-lg-5">
           <h3>Member Login</h3>
           <p class="font-md color-gray-500">Welcome back!</p>
+          <!-- Display any session messages -->
+          @if (session('success'))
+          <div class="alert alert-success">
+            {{ session('success') }}
+          </div>
+          @endif
+          @if (session('error'))
+          <div class="alert alert-danger">
+            {{ session('error') }}
+          </div>
+          @endif
+          <!-- Login Form -->
           <form action="{{ route('process.login') }}" method="post">
             @csrf
             <div class="form-register mt-30 mb-30">

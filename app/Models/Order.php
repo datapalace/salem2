@@ -30,4 +30,10 @@ class Order extends Model
     {
         return $this->hasOne(Shipping::class);
     }
+
+    // product
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
