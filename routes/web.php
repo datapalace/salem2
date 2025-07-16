@@ -12,6 +12,7 @@ use App\Http\Controllers\CustomizeProductController;
 use App\Http\Controllers\CanvasController;
 use App\Http\Controllers\ProductFixController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,21 +23,27 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout']); // logout
 
-    Route::get('/products', function () {
+    Route::get('/admin/products', function () {
         return view('products');
     });
 
     //add product
-    Route::get('/add-product', function () {
+    Route::get('/admin/add-product', function () {
         return view('add-a-product');
     });
-    Route::post('/add-product', [ProductController::class, 'store'])->name('product.store');
+    Route::post('/admin/add-product', [ProductController::class, 'store'])->name('product.store');
 
-    Route::post('/add-customize-product', [ProductController::class, 'add_customize'])->name('customize.store');
+    Route::post('/admin/add-customize-product', [ProductController::class, 'add_customize'])->name('customize.store');
 
     // show product
-    Route::get('/products', [ProductController::class, 'show'])->name('all-products');
+    Route::get('/admin/products', [ProductController::class, 'show'])->name('all-products');
 
+    // orders
+    Route::get('/admin/orders', [OrderController::class, 'show'])->name('order.list'); // order list
+
+    Route::get('/admin/order/{id}', [OrderController::class, 'orderDetails'])->name('order.details'); // show order details
+
+    Route::post('/admin/order/status', [OrderController::class, 'updateStatus'])->name('order.updateStatus'); // update order status
 
 
 
@@ -57,6 +64,10 @@ Route::middleware('auth:customer')->group(function () {
     //user Dashboard
     Route::get('/logout', [AuthController::class, 'logout']); // logout
 
+
+    //my account
+    Route::get('/my-account', [UserDashboardController::class, 'myAccount'])->name('my-account'); // my account
+    Route::get('/my-account/orders', [UserDashboardController::class, 'orders'])->name('my-account.orders'); // my orders
 
 
 });

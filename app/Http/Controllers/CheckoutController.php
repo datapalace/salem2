@@ -166,36 +166,27 @@ class CheckoutController extends Controller
 
 
 
-public function createStripeIntent(Request $request)
-{
-    $checkoutData = session('checkout_data');
-    if (!$checkoutData) {
-        return response()->json(['error' => 'No checkout data found.'], 400);
+    public function createStripeIntent(Request $request)
+    {
+        $checkoutData = session('checkout_data');
+        if (!$checkoutData) {
+            return response()->json(['error' => 'No checkout data found.'], 400);
+        }
+        $amount = intval($checkoutData['total_price'] * 100); // in cents
+        Stripe::setApiKey(config('services.stripe.secret'));
+        $intent = PaymentIntent::create([
+            'amount' => $amount,
+            'currency' => 'gbp', // or your currency
+            'metadata' => [
+                'order_product' => $checkoutData['product_title'] ?? '',
+            ],
+        ]);
+        return response()->json(['clientSecret' => $intent->client_secret]);
     }
-    $amount = intval($checkoutData['total_price'] * 100); // in cents
-    Stripe::setApiKey(config('services.stripe.secret'));
-    $intent = PaymentIntent::create([
-        'amount' => $amount,
-        'currency' => 'gbp', // or your currency
-        'metadata' => [
-            'order_product' => $checkoutData['product_title'] ?? '',
-        ],
-    ]);
-    return response()->json(['clientSecret' => $intent->client_secret]);
-}
 
-public function stripePay(Request $request)
-{
-    // You can verify payment here if needed, then call makeOrder()
-    return $this->makeOrder($request);
-}
-//all my odrers
-public function myOrders()
-{
-    $user = Auth::guard('customer')->user(); // Use the user guard
-    $orders = Order::where('user_id', $user->id)->with(['shipping'])->get();
-    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
-    return view('user.my-orders', compact('orders', 'shopByCatMenus'));
-}
-
+    public function stripePay(Request $request)
+    {
+        // You can verify payment here if needed, then call makeOrder()
+        return $this->makeOrder($request);
+    }
 }

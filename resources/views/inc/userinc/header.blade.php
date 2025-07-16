@@ -11,15 +11,15 @@
                       <option>All categories</option>
                       @foreach ($shopByCatMenus as $shopByCatMenu)
 
-                    <option value="{{ $shopByCatMenu->type }}">{{ $shopByCatMenu->type }}</option>
+                      <option value="{{ $shopByCatMenu->type }}">{{ $shopByCatMenu->type }}</option>
 
-                @endforeach
+                      @endforeach
                     </select>
                   </div>
                   <div class="box-keysearch">
                     {{-- filepath: c:\xampp\htdocs\salem2\resources\views\inc\userinc\header.blade.php --}}
-<input id="live-search" class="form-control font-xs" type="text" value="" placeholder="Search for items" autocomplete="off">
-<div id="search-results" class="search-results-dropdown" style="display:none; position:absolute; z-index:1000; background:#fff; width:100%; max-height:300px; overflow-y:auto; border:1px solid #eee;"></div>
+                    <input id="live-search" class="form-control font-xs" type="text" value="" placeholder="Search for items" autocomplete="off">
+                    <div id="search-results" class="search-results-dropdown" style="display:none; position:absolute; z-index:1000; background:#fff; width:100%; max-height:300px; overflow-y:auto; border:1px solid #eee;"></div>
                   </div>
                 </form>
               </div>
@@ -27,15 +27,15 @@
             <div class="header-nav text-start">
               <nav class="nav-main-menu d-none d-xl-block">
                 <ul class="main-menu">
-                    @php
-                        // $cutomCat = $shopByCatMenus->where('type', 'T-Shirt')->first();
-                        // print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
-                        // $cutomCat = $shopByCatMenus->where('type', 'Jacket')->first();
-                        // print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
-                        // $cutomCat = $shopByCatMenus->where('type', 'Headwear')->first();
-                        // print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
-                    @endphp
-                  
+                  @php
+                  $cutomCat = DB::table('products')->where('type', 'T-Shirt')->first();
+                  print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                  $cutomCat = DB::table('products')->where('type', 'Jacket')->first();
+                  print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                  $cutomCat = DB::table('products')->where('type', 'Headwear')->first();
+                  print '<li class=""><a href="/shop/category/'.$cutomCat->type.'">'.$cutomCat->type.'</a></li>';
+                  @endphp
+
                 </ul>
               </nav>
               <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
@@ -44,9 +44,9 @@
               <div class="d-inline-block box-dropdown-cart"><span class="font-lg icon-list icon-account"><span>Account</span></span>
                 <div class="dropdown-account">
                   <ul>
-                    <li><a href="#">My Account</a></li>
+                    <li><a href="/my-account">My Account</a></li>
 
-                    <li><a href="/my-orders">My Orders</a></li>
+                    <li><a href="/my-account">My Orders</a></li>
 
                     <li><a href="#">Setting</a></li>
                     <li><a href="/logout">Sign out</a></li>
@@ -86,32 +86,33 @@
       </div>
       <div class="header-bottom">
         <div class="container">
-          <div class="dropdown d-inline-block" >
+          <div class="dropdown d-inline-block">
             <button class="btn dropdown-toggle btn-category" id="dropdownCategory" type="button" data-bs-toggle="dropdown" aria-expanded="true" data-bs-display="static"><span class="dropdown-right font-sm-bold color-white">Shop By Categories</span></button>
             <div class="sidebar-left dropdown-menu dropdown-menu-light" aria-labelledby="dropdownCategory" data-bs-popper="static" style="max-height: 350px; overflow-y: auto;">
-                <ul class="menu-texts menu-close">
-                    @foreach ($shopByCatMenus as $shopByCatMenu)
-                        <li>
-                            <a href="/shop/category/{{$shopByCatMenu->type}}">
-                                <span class="img-link">
-                                    <img src="{{ asset('userasset/imgs/template/game.svg') }}" alt="Salem Apparels Logo">
-                                </span>
-                                <span class="text-link">{{ $shopByCatMenu->type }}</span>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>    </div>
+              <ul class="menu-texts menu-close">
+                @foreach ($shopByCatMenus as $shopByCatMenu)
+                <li>
+                  <a href="/shop/category/{{$shopByCatMenu->type}}">
+                    <span class="img-link">
+                      <img src="{{ asset('userasset/imgs/template/game.svg') }}" alt="Salem Apparels Logo">
+                    </span>
+                    <span class="text-link">{{ $shopByCatMenu->type }}</span>
+                  </a>
+                </li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
           <div class="header-nav d-inline-block">
             <nav class="nav-main-menu d-none d-xl-block">
               <ul class="main-menu">
-                <li class="has-children"><a  class="active" href="#">Home</a>
-                    <ul class="sub-menu two-col">
-                        <li><a class="" href="/">Home</a></li>
-                         <li><a class="" href="/about-us">About Us</a></li>
-                        <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
-                        <li><a class="" href="/contact-us">Contact Us</a></li>
-                    </ul>
+                <li class="has-children"><a class="active" href="#">Home</a>
+                  <ul class="sub-menu two-col">
+                    <li><a class="" href="/">Home</a></li>
+                    <li><a class="" href="/about-us">About Us</a></li>
+                    <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a class="" href="/contact-us">Contact Us</a></li>
+                  </ul>
                 </li>
                 <li class=""><a href="/shop">Shop</a>
                 <li class=""><a href="/custom-design">Custom Design</a>
@@ -134,18 +135,18 @@
             <div class="mobile-menu-wrap mobile-header-border">
               <nav class="mt-15">
                 <ul class="mobile-menu font-heading">
-                  <li class="has-children"><a  class=" active" href="#">Home</a>
+                  <li class="has-children"><a class=" active" href="#">Home</a>
                     <ul class="sub-menu two-col">
-                        <li><a class="" href="/">Home</a></li>
-                         <li><a class="" href="/about-us">About Us</a></li>
-                        <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
-                        <li><a class="" href="/contact-us">Contact Us</a></li>
+                      <li><a class="" href="/">Home</a></li>
+                      <li><a class="" href="/about-us">About Us</a></li>
+                      <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
+                      <li><a class="" href="/contact-us">Contact Us</a></li>
                     </ul>
-                </li>
-                <li class=""><a href="/shop">Shop</a>
-                <li class=""><a href="/custom-design">Custom Design</a>
+                  </li>
+                  <li class=""><a href="/shop">Shop</a>
+                  <li class=""><a href="/custom-design">Custom Design</a>
 
-                </li>
+                  </li>
 
                 </ul>
               </nav>
@@ -172,4 +173,3 @@
         </div>
       </div>
     </div>
-
