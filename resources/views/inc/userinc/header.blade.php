@@ -123,7 +123,7 @@
               </ul>
             </nav>
           </div>
-          <div class="discount font-16 font-bold">SPECIAL OFFER</div>
+          {{-- <div class="discount font-16 font-bold">SPECIAL OFFER</div> --}}
         </div>
       </div>
     </header>
@@ -144,9 +144,7 @@
                     </ul>
                   </li>
                   <li class=""><a href="/shop">Shop</a>
-                  <li class=""><a href="/custom-design">Custom Design</a>
 
-                  </li>
 
                 </ul>
               </nav>

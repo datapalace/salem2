@@ -220,7 +220,7 @@
                         </div>
                       </div>
                       <div class="wishlist-price">
-                        <h4 class="color-brand-3">$1.51</h4>
+                        <h4 class="color-brand-3">£1.51</h4>
                       </div>
                       <div class="wishlist-status"><span class="btn btn-gray font-md-bold color-brand-3">In Stock</span></div>
                       <div class="wishlist-action"><a class="btn btn-cart font-sm-bold" href="shop-cart.html">Add to Cart</a></div>
@@ -243,7 +243,7 @@
                   </div>
                   <div class="body-orders">
                     <div class="list-orders">
-                      
+
                       <div class="item-orders">
                         <div class="image-orders"><img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom design"></div>
                         <div class="info-orders">
@@ -280,7 +280,7 @@
                   </div>
                 </div>
                 @endforeach
-                
+
                 <nav>
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link page-prev" href="#"></a></li>
