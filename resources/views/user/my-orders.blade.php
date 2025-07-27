@@ -1,63 +1,43 @@
-{{-- filepath: resources/views/user/order-details.blade.php --}}
+{{-- filepath: resources/views/user/my-orders.blade.php --}}
 @extends('layout.usermaster')
 
 @section('usercontent')
 <main class="main">
-    <section class="section-box shop-template mt-30">
-        <div class="container box-account-template">
-          <h3>Hello @php
-                                $user = Auth::guard('customer')->user();
-                                $userID = $user ? $user->id : '';
-                                $firstName = $user ? (explode(' ', $user->name)[0] ?? '') : '';
-                                $lastName = $user ? (implode(' ', array_slice(explode(' ', $user->name), 1)) ?? '') : '';
-                                @endphp
-                                {{$firstName .' ' . $lastName}},</h3>
-          <p class="font-md color-gray-500">From your account dashboard. you can easily check & view your recent orders,<br class="d-none d-lg-block">manage your shipping and billing addresses and edit your password and account details.</p>
-          <div class="box-tabs mb-100">
-            <ul class="nav nav-tabs nav-tabs-account" role="tablist">
-              {{-- <li><a href="#tab-notification" data-bs-toggle="tab" role="tab" aria-controls="tab-notification" aria-selected="true">Notification</a></li>
-              <li><a href="#tab-wishlist" data-bs-toggle="tab" role="tab" aria-controls="tab-wishlist" aria-selected="true">Wishlist</a></li> --}}
-              <li><a class="active" href="#tab-orders" data-bs-toggle="tab" role="tab" aria-controls="tab-orders" aria-selected="true">Orders</a></li>
-              {{-- <li><a href="#tab-order-tracking" data-bs-toggle="tab" role="tab" aria-controls="tab-order-tracking" aria-selected="true">Order Tracking</a></li>
-              <li><a href="#tab-setting" data-bs-toggle="tab" role="tab" aria-controls="tab-setting" aria-selected="true">Setting</a></li> --}}
-            </ul>
-            <div class="border-bottom mt-20 mb-40"></div>
-            <div class="tab-content mt-30">
-              <div class="tab-pane fade " id="tab-notification" role="tabpanel" aria-labelledby="tab-notification">
-                <div class="list-notifications">
-                  <div class="item-notification">
-                    <div class="image-notification"><img src="assets/imgs/page/account/img-1.png" alt="Ecom"></div>
-                    <div class="info-notification">
-                      <h5 class="mb-5">COD payment confirmed</h5>
-                      <p class="font-md color-brand-3">Order<span class="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div class="button-notification"><a class="btn btn-buy w-auto">View Details</a></div>
-                  </div>
-                  <div class="item-notification">
-                    <div class="image-notification"><img src="assets/imgs/page/account/img-2.png" alt="Ecom"></div>
-                    <div class="info-notification">
-                      <h5 class="mb-5">COD payment confirmed</h5>
-                      <p class="font-md color-brand-3">Order<span class="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div class="button-notification"><a class="btn btn-buy w-auto">View Details</a></div>
-                  </div>
-                  <div class="item-notification">
-                    <div class="image-notification"><img src="assets/imgs/page/account/img-3.png" alt="Ecom"></div>
-                    <div class="info-notification">
-                      <h5 class="mb-5">COD payment confirmed</h5>
-                      <p class="font-md color-brand-3">Order<span class="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div class="button-notification"><a class="btn btn-buy w-auto">View Details</a></div>
-                  </div>
-                  <div class="item-notification">
-                    <div class="image-notification"><img src="assets/imgs/page/account/img-4.png" alt="Ecom"></div>
-                    <div class="info-notification">
-                      <h5>COD payment confirmed</h5>
-                      <p class="font-md color-brand-3">Order<span class="font-md-bold"> 220914QR92BXNH</span> has been confirmed. Please check the estimated delivery time in the order details section!</p>
-                    </div>
-                    <div class="button-notification"><a class="btn btn-buy w-auto">View Details</a></div>
-                  </div>
+  <section class="section-box shop-template mt-30">
+    <div class="container box-account-template">
+      <h3>
+        Hello
+        @php
+        $user = Auth::guard('customer')->user();
+        $userID = $user ? $user->id : '';
+        $firstName = $user ? (explode(' ', $user->name)[0] ?? '') : '';
+        $lastName = $user ? (implode(' ', array_slice(explode(' ', $user->name), 1)) ?? '') : '';
+        @endphp
+        {{$firstName .' ' . $lastName}},
+      </h3>
+      <p class="font-md color-gray-500">
+        From your account dashboard, you can easily check & view your recent orders,<br class="d-none d-lg-block">
+        manage your shipping and billing addresses and edit your password and account details.
+      </p>
+      <div class="box-tabs mb-100">
+        <ul class="nav nav-tabs nav-tabs-account" role="tablist">
+          <li>
+            <a class="active" href="#tab-orders" data-bs-toggle="tab" role="tab" aria-controls="tab-orders" aria-selected="true">Orders</a>
+          </li>
+        </ul>
+        <div class="border-bottom mt-20 mb-40"></div>
+        <div class="tab-content mt-30">
+          <div class="tab-pane active show" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders">
+            {{-- Call user orders --}}
+            @foreach ($orders as $order)
+            <div class="box-orders mb-4">
+              <div class="head-orders d-flex justify-content-between align-items-center">
+                <div class="head-left">
+                  <h5 class="mr-20">Order ID: #{{$order->track_id}}</h5>
+                  <span class="font-md color-brand-3 mr-20">Date: {{$order->created_at}}</span>
+                  <span class="label-delivery">{{ $order->status ?? 'Pending' }}</span>
                 </div>
+<<<<<<< HEAD
                 <nav>
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link page-prev" href="#"></a></li>
@@ -227,18 +207,19 @@
                       <div class="wishlist-remove"><a class="btn btn-delete" href="#"></a></div>
                     </div>
                   </div>
+=======
+                <div class="head-right">
+                  <a class="btn btn-buy font-sm-bold w-auto" href="{{ route('order.details', $order->id) }}">View Order</a>
+>>>>>>> b4aebb91e6eb2edb8a9ae8c1307ee2106637376a
                 </div>
               </div>
-              <div class="tab-pane  active show" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders">
-                {{-- Call user orders --}}
-                @foreach ($orders as $order)
-                <div class="box-orders">
-                  <div class="head-orders">
-                    <div class="head-left">
-                      <h5 class="mr-20">Order ID: #{{$order->track_id}}</h5><span class="font-md color-brand-3 mr-20">Date: {{$order->created_at}}</span><span class="label-delivery">
-                        {{$order->status ? $order->status : 'Pending'}}
-                    </span>
+              <div class="body-orders">
+                <div class="list-orders">
+                  <div class="item-orders d-flex align-items-center">
+                    <div class="image-orders me-3">
+                      <img src="{{ asset($order->custom_image) }}" alt="Custom Image" style="max-width:100px;">
                     </div>
+<<<<<<< HEAD
                     <div class="head-right"><a class="btn btn-buy font-sm-bold w-auto">View Order</a></div>
                   </div>
                   <div class="body-orders">
@@ -495,13 +476,39 @@
                         <p class="font-sm color-brand-3 font-medium">Phone Number:</p><span class="font-sm color-gray-500 font-medium">(+01) 234 567 89 - (+01) 688 866 99</span>
                       </div>
                       <div class="mb-10 mt-15"><a class="btn btn-cart w-auto">Set as Default</a></div>
+=======
+                    <div class="info-orders me-3">
+                      <h5>{{ $order->product_title }}</h5>
+                      <p>
+                        @php $sizes = json_decode($order->sizes, true); @endphp
+                        <strong>Size(s):</strong>
+                        @if(is_array($sizes))
+                        @foreach($sizes as $size => $qty)
+                        @php $cleanSize = \Illuminate\Support\Str::between($size, '[', ']'); @endphp
+                        @if($qty > 0)
+                        {{ strtoupper($cleanSize) }}-{{ $qty }},
+                        @endif
+                        @endforeach
+                        @endif
+                        <br>
+                        <strong>Custom Side:</strong> {{ $order->custom_side ?? '-' }}<br>
+                        <strong>Print Type:</strong> {{ $order->decoration_type }}<br>
+                      </p>
+                    </div>
+                    <div class="price-orders">
+                      <h3>£{{ number_format($order->total_price, 2) }}</h3>
+>>>>>>> b4aebb91e6eb2edb8a9ae8c1307ee2106637376a
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            @endforeach
+            {{-- Pagination here if needed --}}
           </div>
         </div>
-      </section>
-</main>
-@endsection
+      </div>
+    </div>
+  </section>
+
+  @endsection

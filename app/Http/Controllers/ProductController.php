@@ -135,24 +135,37 @@ class ProductController extends Controller
     }
 
     //shop by category
-    public function shopByCategory($category)
+    public function shopByCategory($type, $column = null, $value = null)
     {
-        $products = Product::with([
+        $query = Product::with([
             'galleries',
             'price',
             'attributes' => function ($query) {
                 $query->limit(2);
             }
-        ])->where('type', $category)->latest()->inRandomOrder()->paginate(9);
+        ])->where('type', $type); // type is always required
+
+        if ($column && $value) {
+            $query->where($column, $value); // additional filter
+        }
+
+        $products = $query->latest()->inRandomOrder()->paginate(9);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
             ->groupBy('type')->inRandomOrder()->limit(10)
             ->get();
+
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
         return view('user.shop-category', compact('products', 'shopByCatMenus', 'brands'));
     }
+
+
+
+
+
+
 
     // search products
     public function search(Request $request)
@@ -160,15 +173,15 @@ class ProductController extends Controller
         $query = $request->get('q');
 
         $products = \App\Models\Product::with('galleries')
-    ->where('title', 'like', "%{$query}%")
-    ->inRandomOrder()
-    ->take(8)
-    ->get(['id', 'title', 'sku'])
-    ->map(function ($product) {
-        $product->image_url = optional($product->galleries[0])->image_url;
-        unset($product->images); // Optional
-        return $product;
-    }); // Grouping by title here (collection-level)
+            ->where('title', 'like', "%{$query}%")
+            ->inRandomOrder()
+            ->take(8)
+            ->get(['id', 'title', 'sku'])
+            ->map(function ($product) {
+                $product->image_url = optional($product->galleries[0])->image_url;
+                unset($product->images); // Optional
+                return $product;
+            }); // Grouping by title here (collection-level)
 
 
         return response()->json($products);
