@@ -1,90 +1,37 @@
 @extends('layout.usermaster')
 @section('usercontent')
-<title>Home - Salem Apparels</title>
+<title>Home - Salem Apparel</title>
 <meta name="description" content="Terms and Conditions for our website.">
 <meta name="keywords" content="terms, conditions, user agreement">
 <meta name="author" content="Salem Apparels">
 <main class="main">
 
-    <section class="section-box">
-        <div class="banner-hero banner-1 pt-12">
-            <div class="container"> <!-- Now aligned with menu -->
-                <div class="row align-items-stretch">
-
-                    <!-- Left: Banner (larger section) -->
-                    <div class="col-lg-8 col-md-12 mb-30">
-                        <div class="box-swiper h-100">
-                            <div class="swiper-container swiper-group-1 h-100">
-                                <div class="swiper-wrapper h-100">
+    <section class="section-box p-0 m-0" style="width:100vw; height:100vh; overflow:hidden;">
+        <div class="banner-hero banner-1 p-0 m-0" style="width:100vw; height:100vh;">
+            <div class="container-fluid p-0 m-0" style="width:100vw; height:100vh;">
+                <div class="row align-items-stretch p-0 m-0" style="width:100vw; height:100vh;">
+                    <div class="col-12 p-0 m-0" style="width:100vw; height:100vh;">
+                        <div class="box-swiper h-100" style="width:100vw; height:100vh;">
+                            <div class="swiper-container swiper-group-1 h-100" style="width:100vw; height:100vh;">
+                                <div class="swiper-wrapper h-100" style="width:100vw; height:100vh;">
                                     <!-- Static Slide -->
-                                    <div class="swiper-slide h-100">
-                                        <div class="banner-big banner-big-3 bg-22" style="background-image: url('{{ asset('userasset/imgs/slider/logo/10.png') }}'); background-size: cover; background-position: center; height: 350px;">
-                                            <!-- Optional content -->
-                                        </div>
+                                    <div class="swiper-slide h-100" style="width:100vw; height:100vh;">
+                                        <img src="{{ asset('userasset/imgs/slider/swiper/1.png') }}" width="100%" alt="">
+                                    </div>
+                                    <div class="swiper-slide h-100" style="width:100vw; height:100vh;">
+                                        <img src="{{ asset('userasset/imgs/slider/swiper/12.png') }}" width="100%" alt="">
                                     </div>
 
-                                    <!-- Dynamic Slides -->
-                                    @foreach ($bannerProducts as $bp)
-                                    <div class="swiper-slide h-100 d-none d-sm-flex">
-                                        <div class="banner-big banner-big-3 bg-22"
-                                            style="background: radial-gradient(circle at top left, #c8e6f9 0%, #ffffff 60%); position: relative; height: 100%;">
-                                            <img src="{{ $bp->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
-                                                alt="{{ $bp->title }}"
-                                                style="position: absolute; right: 0; bottom: 0; max-width: 200px; max-height: 250px;">
-
-                                            @php
-                                            $words = explode(' ', $bp->title);
-                                            @endphp
-                                            <h2 class="text-uppercase">
-                                                @php
-                                                $title = $bp->title;
-                                                if (strlen($title) > 25) {
-                                                $mainWords = Str::limit($title, 25, '');
-                                                $rest = trim(Str::replaceFirst($mainWords, '', $title));
-                                                } else {
-                                                $mainWords = $title;
-                                                $rest = '';
-                                                }
-                                                @endphp
-                                                {{ $mainWords }}
-                                                @if($rest)
-                                                <br>
-                                                {{ $rest }}
-                                                @endif
-
-                                            </h2>
-
-                                            <ul class="list-disc">
-                                                @foreach ($bp->attributes as $attribute)
-                                                <li class="font-lg color-brand-3">{{ Str::replace(':', ': ', $attribute->attribute) }}</li>
-                                                @endforeach
-                                            </ul>
-
-                                            <div class="mt-30">
-                                                <a class="btn btn-brand-2 btn-gray-1000" href="/product/customise/{{  $bp->slug }}">Customise</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
                                 </div>
                                 <div class="swiper-pagination swiper-pagination-1"></div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Right: Small Image Column -->
-                    <div class="col-lg-4 col-md-12 mb-30 d-none d-sm-flex">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                            <img src="{{ asset('userasset/imgs/slider/logo/15.png') }}" style="width: 100%; max-width: 180px; height: auto; margin-bottom: 10px; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
-                            <img src="{{ asset('userasset/imgs/slider/logo/14.png') }}" style="width: 100%; max-width: 180px; height: auto; object-fit: contain; display: block; margin-left: auto; margin-right: auto;">
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
-
+    <br><br><br><br><br>
     <!-- Brands Section -->
     <div class="section-box">
         <div class="container">
@@ -108,40 +55,85 @@
     <!-- End Brands Section -->
 
 
-    <!-- Headwear Section -->
-    <div class="section-box d-none d-sm-flex">
+    <!-- Popular Categories Section -->
+    <div class="section-box py-5 bg-gray-50">
         <div class="container">
-            <div class="row mt-60">
-                @php
-                $headwearz = $headwears->take(4);
-                @endphp
-
-                @foreach($headwearz as $product)
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="card-grid-style-2 card-grid-style-2-small">
-                        <div class="image-box"><a href="#"><img
-                                    src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="{{$bp->title}}"></a>
-                            <div class="mt-10 text-center"><a class="btn btn-gray" href="/product/customise/{{  $product->slug }}">Customise</a></div>
-                        </div>
-                        <div class="info-right"><a class="color-brand-3 font-sm-bold" href="#">
-                                <h6>{{$product->type}}</h6>
-                            </a>
-                            <ul class="list-links-disc">
-                                @foreach ($product->attributes as $attribute)
-                                <li><a class="font-sm color-brand-3" href="#">{{ Str::replace(':', ': ', $attribute->attribute) }}</li></a>
-                                @endforeach
-
-
-                            </ul>
-                        </div>
+            <div class="row align-items-center mb-4">
+                <div class="col">
+                    <h4 class="mb-0">Popular Categories</h4>
+                </div>
+            </div>
+            <div class="row justify-content-center g-4">
+                @foreach($popularCategories as $index => $category)
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 d-flex">
+                    <div class="card border-0 shadow-sm h-100 w-100 text-center category-card transition-3d-hover bg-white">
+                        <a href="/shop/category/{{ $category->type }}" class="d-block p-3">
+                            <div class="category-icon mb-3 mx-auto rounded-circle d-flex align-items-center justify-content-center">
+                                <img src="{{ $category->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
+                                    alt="{{ $category->title }}"
+                                    class="img-fluid object-fit-cover w-100 h-100" style="max-width:70px; max-height:70px;">
+                            </div>
+                            <div class="fw-bold text-uppercase small color-brand-3">
+                                {{ $category->type }}
+                            </div>
+                        </a>
                     </div>
                 </div>
                 @endforeach
-
             </div>
         </div>
     </div>
-    <!-- End Headwear Section -->
+    <style>
+        .category-card {
+            border-radius: 18px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            background: #fff;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .category-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+            transform: translateY(-6px) scale(1.04);
+            border-color: #c8e6f9;
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff 100%);
+            border: 2px solid #c8e6f9;
+            box-shadow: 0 2px 8px rgba(200, 230, 249, 0.15);
+            overflow: hidden;
+        }
+
+        @media (max-width: 991.98px) {
+            .col-xl-2 {
+                flex: 0 0 auto;
+                width: 33.333333%;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+
+            .col-xl-2,
+            .col-lg-3,
+            .col-md-4,
+            .col-sm-6,
+            .col-6 {
+                flex: 0 0 auto;
+                width: 50%;
+            }
+
+            .category-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+    <!-- End Popular Categories Section -->
 
     <section class="section-box mt-30">
         <div class="container">

@@ -68,7 +68,7 @@ class UserDashboardController extends Controller
             'attributes' => function ($query) {
                 $query->limit(2);
             }
-        ])->inRandomOrder()->take(3)->get();
+        ])->where('type', 'T-Shirt')->inRandomOrder()->take(3)->get();
 
         $trendingProducts = Product::with([
             'galleries',
@@ -81,15 +81,17 @@ class UserDashboardController extends Controller
 
 
 
-        // headwears
-        $headwears = Product::with([
-            'galleries',
-            'price',
-            'attributes' => function ($query) {
-                $query->limit(2);
-            }
-        ])->where('type', 'Headwear')->latest()->inRandomOrder()->skip(300)->take(6)->get();
-
+        $popularCategories = Product::with(['galleries'])
+            ->whereIn('type', ['Headwear', 'Jacket', 'Shirt', 'Sweatshirt', 'Hood', 'Bag', 'Polo'])
+            ->whereIn('id', function ($query) {
+                $query->selectRaw('MAX(id)') // Gets the newest product per type
+                    ->from('products')
+                    ->whereIn('type', ['Headwear', 'Jacket', 'Shirt', 'Sweatshirt', 'Hood', 'Bag', 'Polo'])
+                    ->groupBy('type');
+            })
+            ->inRandomOrder()
+            ->take(6)
+            ->get();
         $footwears = Product::with([
             'galleries',
             'price',
@@ -122,6 +124,6 @@ class UserDashboardController extends Controller
 
 
         // Return the view with the products
-        return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies', 'kids', 'secondKids', 'bannerProducts', 'trendingProducts', 'headwears', 'topRates', 'shopByCatMenus', 'brands', 'footwears', 'bannerSides'));
+        return view('user.welcome', compact('men', 'secondMen', 'ladies', 'secondLadies', 'kids', 'secondKids', 'bannerProducts', 'trendingProducts', 'popularCategories', 'topRates', 'shopByCatMenus', 'brands', 'footwears', 'bannerSides'));
     }
 }

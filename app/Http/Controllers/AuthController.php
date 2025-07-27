@@ -30,6 +30,7 @@ class AuthController extends Controller
         }
 
 
+
         // Check if the password matches
         if (Hash::check($request->password, $user->password)) {
             $role = $user->role; // 'admin', 'customer', or 'subscriber'

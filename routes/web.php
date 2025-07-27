@@ -83,7 +83,7 @@ Route::get('/shop', [ProductController::class, 'shopNow'])->name('shop-now');
 Route::get('/custom-design', [ProductController::class, 'shopNow'])->name('shop-now');
 
 // shop by category
-Route::get('/shop/category/{category}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
+Route::get('/shop/category/{type}/{column?}/{value?}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
 
 // view a product
 
@@ -143,7 +143,7 @@ Route::middleware('auth:customer')->group(function () {
 
 
 
-Route::get('/custom-gallery-images', [\App\Http\Controllers\CustomizeProductController::class, 'customGalleryImages'])->name('custom.gallery.images');
+Route::get('/custom-gallery-images', [CustomizeProductController::class, 'customGalleryImages'])->name('custom.gallery.images');
 
 Route::post('/checkout/stripe-intent', [CheckoutController::class, 'createStripeIntent'])->name('checkout.stripe.intent');
 Route::post('/checkout/stripe-pay', [CheckoutController::class, 'stripePay'])->name('checkout.stripe.pay');
