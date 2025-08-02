@@ -176,7 +176,7 @@ class ProductController extends Controller
             ->where('title', 'like', "%{$query}%")
             ->inRandomOrder()
             ->take(8)
-            ->get(['id', 'title', 'sku'])
+            ->get(['id', 'title', 'sku', 'slug'])
             ->map(function ($product) {
                 $product->image_url = optional($product->galleries[0])->image_url;
                 unset($product->images); // Optional

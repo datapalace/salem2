@@ -75,7 +75,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input class="font-md-bold btn btn-buy" type="submit" value="Sign Up">
+                                                <input class="font-md-bold btn btn-buy" type="submit" value="Login">
                                             </div>
 
                                         </div>
