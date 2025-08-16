@@ -146,7 +146,7 @@
 								</a>
 							</li>
 							<li class="">
-								<a class="sidenav-item-link" href="order-history.html">
+								<a class="sidenav-item-link" href="/admin/orders">
 									<span class="nav-text">/admin/orders</span>
 								</a>
 							</li>
