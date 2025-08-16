@@ -20,6 +20,7 @@ class Order extends Model
         'custom_image',
         'custom_side',
         'ref',
+        'status',
         'track_id',
         'decoration_type'
     ];

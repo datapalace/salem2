@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             checkoutform.reportValidity();
             return;
         }
-       
+
         document.getElementById('payBtn').disabled = true;
         //alert("button clicke");
         const {paymentIntent, error} = await stripe.confirmCardPayment(clientSecret, {

@@ -2,6 +2,7 @@
 @extends('layout.usermaster')
 
 @section('usercontent')
+<title>Salem Apparel - My Orders</title>
 <main class="main">
   <section class="section-box shop-template mt-30">
     <div class="container box-account-template">

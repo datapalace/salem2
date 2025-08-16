@@ -67,13 +67,20 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
       </div>
     </div>
   </div>
+  <style>
+    .custom-style {
+      font-size: 20px !important;
+      font-weight: bolder !important;
+      color: #ffffff !important;
+    }
+  </style>
   <div class="header-bottom" style="background-color: #E2B808;">
     <div class="container">
       <nav class="nav-main-menu">
         <ul class="main-menu">
           <!-- All product categories -->
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Shop By Categories</a>
+            <a href="#" class="text-light custom-style">Shop By Categories</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row">
@@ -128,7 +135,7 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
           @endphp
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Shirts</a>
+            <a href="#" class="text-light custom-style">Shirts</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row row">
@@ -183,7 +190,7 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
           @endphp
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Hood</a>
+            <a href="#" class="text-light custom-style">Hood</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row row">
@@ -237,7 +244,7 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
           @endphp
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Polo</a>
+            <a href="#" class="text-light custom-style">Polo</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row row">
@@ -292,7 +299,7 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
           @endphp
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Sweatshirt</a>
+            <a href="#" class="text-light custom-style">Sweatshirt</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row row">
@@ -346,7 +353,7 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
           @endphp
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Jacket</a>
+            <a href="#" class="text-light custom-style">Jacket</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row row">
@@ -400,7 +407,7 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
           @endphp
           <li class="mega-dropdown">
-            <a href="#" class="text-light">Bag</a>
+            <a href="#" class="text-light custom-style">Bag</a>
             <div class="mega-dropdown-menu">
               <div class="mega-container">
                 <div class="mega-row row">
@@ -560,15 +567,18 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
 
     .link-row a {
       display: block;
-      padding: 8px 0;
+      padding: 12px 0; /* Increased from 8px to 12px */
       color: #666;
       text-decoration: none;
       transition: all 0.2s ease;
+      font-size: 16px; /* Added larger font size */
+      font-weight: 600; /* Added bold font weight */
     }
 
     .link-row a:hover {
       color: #000;
       padding-left: 5px;
+      font-weight: 700; /* Even bolder on hover */
     }
 
     /* Show dropdown on hover */
@@ -576,10 +586,6 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
       display: block;
     }
   </style>
-
-
-
-
 </header>
 <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
   <div class="mobile-header-wrapper-inner">
