@@ -6,7 +6,7 @@
     <meta name="author" content="Salem Apparels">
     <main class="main">
 
-        <section class="section-box p-0 m-0" style="width:100vw; height:100vh; overflow:hidden;">
+        <section class="section-box p-0 m-0" style="width:100vw; height:400px; overflow:hidden;">
             <div class="banner-hero banner-1 p-0 m-0" style="width:100vw; height:100vh;">
                 <div class="container-fluid p-0 m-0" style="width:100vw; height:100vh;">
                     <div class="row align-items-stretch p-0 m-0" style="width:100vw; height:100vh;">
@@ -48,9 +48,9 @@
                     </div>
                 </div>
         </section>
-        <br><br><br><br><br>
+
         <!-- Brands Section -->
-        <div class="section-box">
+        <div class="section-box" style="margin: 70px 0 70px 0;">
             <div class="container">
                 <div class="list-brands list-none-border">
                     <div class="box-swiper">
@@ -102,15 +102,15 @@
                     @foreach ($popularCategories as $index => $category)
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 d-flex">
                             <div
-                                class="card border-0 shadow-sm h-100 w-100 text-center category-card transition-3d-hover bg-white">
+                                class="card border-0 shadow-sm h-100 w-100 text-center category-card transition-3d-hover bg-white" style="">
                                 <a href="/shop/category/{{ $category->type }}" class="d-block p-3">
                                     <div
-                                        class="category-icon mb-3 mx-auto rounded-circle d-flex align-items-center justify-content-center">
+                                        class="category-icon mb-3 mx-auto rounded-circle d-flex align-items-center justify-content-center" style="border: solid 4px #ffc107">
                                         <img src="{{ $category->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}"
                                             alt="{{ $category->title }}" class="img-fluid object-fit-cover w-100 h-100"
                                             style="max-width:70px; max-height:70px;">
                                     </div>
-                                    <div class="fw-bold text-uppercase small color-brand-3">
+                                    <div class="fw-bold text-uppercase small color-brand-3 text-white">
                                         {{ $category->type }}
                                     </div>
                                 </a>

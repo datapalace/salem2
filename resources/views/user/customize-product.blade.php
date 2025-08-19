@@ -160,7 +160,7 @@
                                         <div class="col-2 col-sm-2 col-md-1 text-center mb-2">
                                             <label class="fw-bold d-block mb-1">{{ $size }}</label>
                                             <input type="text" style="width: 50px;" name="sizes[{{ $size }}]"
-                                                value="0" min="0" class="form-control text-center size-input">
+                                                value="" placeholder="0" min="0" class="form-control text-center size-input">
                                         </div>
                                     @endforeach
                                     <h3>Total £<span id="pTotal"></span></h3>
