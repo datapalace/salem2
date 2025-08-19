@@ -51,17 +51,17 @@ use Illuminate\Support\Str;
                                 <address class="info-grid">
                                     <div class="info-title"><strong>Product Image:</strong></div><br>
                                     <div class="info-content">
-                                        <img class="product-img tbl-img" src="{{ $order->custom_image ?? 'No Image' }}">
+                                        <img src="{{ $order->custom_image ?? 'No Image' }}" style="max-width:100%;">
 
                                     </div>
                                 </address>
                             </div>
                             <div class="col-xl-3 col-lg-6">
                                 <address class="info-grid">
-                                    <div class="info-title"><strong>Order Date:</strong></div><br>
+                                    <div class="info-title"><strong>Custom Design</strong></div><br>
                                     <div class="info-content">
-                                        {{$order->created_at->format('h:i A, M d, Y')}}
-                                    </div>
+                                         <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100%;">
+                                </div>
                                 </address>
                             </div>
                         </div>

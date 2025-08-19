@@ -46,7 +46,9 @@
 
                                         <!--clean the sizes and quantity-->
 
-                                        @php
+
+                                        <td>
+                                                @php
 
                                         $sizes = json_decode($order['sizes'], true);
                                         @endphp
@@ -63,7 +65,8 @@
                                         @endforeach
 
                                         @endif
-                                        <td>{{ collect(json_decode($order['sizes'], true))->sum() }}</td>
+                                            Total:
+                                            {{ collect(json_decode($order['sizes'], true))->sum() }}</td>
                                         <td>{{ $order->total_price }}</td>
                                         <td>PAID</td>
                                         <td>

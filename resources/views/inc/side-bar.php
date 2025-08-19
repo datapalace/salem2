@@ -145,11 +145,7 @@
 									<span class="nav-text">Orders</span>
 								</a>
 							</li>
-							<li class="">
-								<a class="sidenav-item-link" href="/admin/orders">
-									<span class="nav-text">/admin/orders</span>
-								</a>
-							</li>
+
 							<!-- <li class="">
 								<a class="sidenav-item-link" href="order-detail.html">
 									<span class="nav-text">Order Detail</span>

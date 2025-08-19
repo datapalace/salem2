@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="Salem Apparel - Admin Dashboard eCommerce HTML Template.">
 
-	<title>Salaem Apparels - Admin Dashboard eCommerce HTML Template.</title>
+	<title>Salaem Apparels - Admin Dashboard </title>
 
 	<!-- GOOGLE FONTS -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">

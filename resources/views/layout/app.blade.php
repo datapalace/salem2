@@ -26,5 +26,5 @@
             <!-- Global Response -->
             @include('inc.globalresponse')
         </div>
-        // End Page Wrapper -->
+
     </div>
