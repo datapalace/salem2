@@ -59,7 +59,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-7 col-sm-12">
-        <h3 class="color-white">Subscrible &amp; Get <span class="color-warning">10%</span> Discount</h3>
+        <h3 class="color-white">Subscribe &amp; Get <span class="color-warning">10%</span> Discount</h3>
         <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
             class="font-lg-bold">special offers.</span></p>
       </div>
