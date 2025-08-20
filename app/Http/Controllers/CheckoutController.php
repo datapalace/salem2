@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminNewOrderStatus;
+use App\Mail\NewOrderStatus;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -9,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 
@@ -117,7 +120,7 @@ class CheckoutController extends Controller
         ]);
         $ref = $_POST['stripe_payment_ref'];
         //dd($ref);
-                // store the order in the database
+        // store the order in the database
         $order = Order::create([
             'user_id' => $me,
             'product_id' => $checkoutData['product_id'],
@@ -154,6 +157,10 @@ class CheckoutController extends Controller
         session()->forget('checkout_data');
         // dd($order->id . ' ' . $shipping->id);
         // Only fetch what you need for the About Us page
+        Mail::to($request->email)->send(new NewOrderStatus($order));
+        Mail::to('lawalsherifoyetola2019@gmail.com')->send(new AdminNewOrderStatus($order));
+
+
         return redirect("/order-details/{$order->id}");
     }
 
@@ -166,36 +173,35 @@ class CheckoutController extends Controller
 
 
 
-public function createStripeIntent(Request $request)
-{
-    $checkoutData = session('checkout_data');
-    if (!$checkoutData) {
-        return response()->json(['error' => 'No checkout data found.'], 400);
+    public function createStripeIntent(Request $request)
+    {
+        $checkoutData = session('checkout_data');
+        if (!$checkoutData) {
+            return response()->json(['error' => 'No checkout data found.'], 400);
+        }
+        $amount = intval($checkoutData['total_price'] * 100); // in cents
+        Stripe::setApiKey(config('services.stripe.secret'));
+        $intent = PaymentIntent::create([
+            'amount' => $amount,
+            'currency' => 'gbp', // or your currency
+            'metadata' => [
+                'order_product' => $checkoutData['product_title'] ?? '',
+            ],
+        ]);
+        return response()->json(['clientSecret' => $intent->client_secret]);
     }
-    $amount = intval($checkoutData['total_price'] * 100); // in cents
-    Stripe::setApiKey(config('services.stripe.secret'));
-    $intent = PaymentIntent::create([
-        'amount' => $amount,
-        'currency' => 'gbp', // or your currency
-        'metadata' => [
-            'order_product' => $checkoutData['product_title'] ?? '',
-        ],
-    ]);
-    return response()->json(['clientSecret' => $intent->client_secret]);
-}
 
-public function stripePay(Request $request)
-{
-    // You can verify payment here if needed, then call makeOrder()
-    return $this->makeOrder($request);
-}
-//all my odrers
-public function myOrders()
-{
-    $user = Auth::guard('customer')->user(); // Use the user guard
-    $orders = Order::where('user_id', $user->id)->with(['shipping'])->get();
-    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
-    return view('user.my-orders', compact('orders', 'shopByCatMenus'));
-}
-
+    public function stripePay(Request $request)
+    {
+        // You can verify payment here if needed, then call makeOrder()
+        return $this->makeOrder($request);
+    }
+    //all my odrers
+    public function myOrders()
+    {
+        $user = Auth::guard('customer')->user(); // Use the user guard
+        $orders = Order::where('user_id', $user->id)->with(['shipping'])->get();
+        $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+        return view('user.my-orders', compact('orders', 'shopByCatMenus'));
+    }
 }

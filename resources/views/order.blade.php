@@ -48,25 +48,26 @@
 
 
                                         <td>
-                                                @php
+                                            @php
 
-                                        $sizes = json_decode($order['sizes'], true);
-                                        @endphp
-                                        @if(is_array($sizes))
+                                            $sizes = json_decode($order['sizes'], true);
+                                            @endphp
+                                            @if(is_array($sizes))
 
-                                        @foreach($sizes as $size => $qty)
-                                        @php
-                                        // Clean the key to extract size only (e.g., "L" from "sizes[L]")
-                                        $cleanSize = Str::between($size, '[', ']');
-                                        @endphp
-                                        @if($qty > 0)
-                                        {{ strtoupper($cleanSize) }}-{{ $qty }},
-                                        @endif
-                                        @endforeach
+                                            @foreach($sizes as $size => $qty)
+                                            @php
+                                            // Clean the key to extract size only (e.g., "L" from "sizes[L]")
+                                            $cleanSize = Str::between($size, '[', ']');
+                                            @endphp
+                                            @if($qty > 0)
+                                            {{ strtoupper($cleanSize) }}-{{ $qty }},
+                                            @endif
+                                            @endforeach
 
-                                        @endif
+                                            @endif
                                             Total:
-                                            {{ collect(json_decode($order['sizes'], true))->sum() }}</td>
+                                            {{ collect(json_decode($order['sizes'], true))->sum() }}
+                                        </td>
                                         <td>{{ $order->total_price }}</td>
                                         <td>PAID</td>
                                         <td>
@@ -85,8 +86,8 @@
                                         <td>{{$order->created_at}}</td>
                                         <td>
                                             <div class="btn-group mb-1">
-                                                <button type="button"
-                                                    class="btn btn-outline-success">Info</button>
+                                                <a href="/admin/order/{{ $order->id }}" type="button"
+                                                    class="btn btn-outline-success">Info</a>
                                                 <button type="button"
                                                     class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                                     data-bs-toggle="dropdown" aria-haspopup="true"
@@ -119,11 +120,16 @@
 
 <script>
     document.querySelectorAll('.change-status').forEach(function(el) {
-
         el.addEventListener('click', function(e) {
             e.preventDefault();
+
             var orderId = this.getAttribute('data-id');
             var status = this.getAttribute('data-status');
+            const badge = this.closest('tr').querySelector('.badge');
+
+            // Show loading spinner in badge
+            badge.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
             fetch("{{ route('order.updateStatus') }}", {
                     method: "POST",
                     headers: {
@@ -139,7 +145,6 @@
                 .then(data => {
                     if (data.success) {
                         // Update the badge text
-                        const badge = this.closest('tr').querySelector('.badge');
                         badge.textContent = data.status;
 
                         // Remove old badge classes

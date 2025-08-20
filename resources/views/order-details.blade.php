@@ -60,8 +60,8 @@ use Illuminate\Support\Str;
                                 <address class="info-grid">
                                     <div class="info-title"><strong>Custom Design</strong></div><br>
                                     <div class="info-content">
-                                         <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100%;">
-                                </div>
+                                        <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100%;">
+                                    </div>
                                 </address>
                             </div>
                         </div>
@@ -78,6 +78,7 @@ use Illuminate\Support\Str;
                                                 <td class="text-center"><strong>PRICE/UNIT</strong></td>
                                                 <td class="text-right"><strong>QUANTITY</strong></td>
                                                 <td class="text-right"><strong>SUBTOTAL</strong></td>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -105,6 +106,7 @@ use Illuminate\Support\Str;
                                                 @endif
                                                 <td class="text-right">{{ collect(json_decode($order['sizes'], true))->sum() }}</td>
                                                 <td class="text-right"><strong>{{ $order->total_price }}</strong></td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -117,7 +119,41 @@ use Illuminate\Support\Str;
                 <div class="card mt-4 trk-order">
                     <div class="p-4 text-center text-white text-lg bg-dark rounded-top">
                         <span class="text-uppercase">Tracking Order No - </span>
-                        <span class="text-medium">34VB5540K83</span>
+                        <span class="text-medium">{{$order->track_id}}</span>
+                    </div>
+                    <div class="p-4 text-center text-white text-lg bg-dark rounded-top" style="float: inline-end;">
+                        <div class="btn-group mb-1">
+                            <button type="button"
+                                class="btn btn-outline-success">Info</button>
+                            <button type="button"
+                                class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+                                data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" data-display="static">
+                                <span class="sr-only">Info</span>
+                            </button>
+
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/admin/order/{{ $order->id }}">View Order Detail</a>
+                                <form method="POST" action="{{ route('order.updateStatus') }}" style="display:inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $order->id }}">
+                                    <input type="hidden" name="status" value="Completed">
+                                    <button type="submit" class="dropdown-item" style="border:none;background:none;padding:0;">Completed</button>
+                                </form>
+                                <form method="POST" action="{{ route('order.updateStatus') }}" style="display:inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $order->id }}">
+                                    <input type="hidden" name="status" value="Pending">
+                                    <button type="submit" class="dropdown-item" style="border:none;background:none;padding:0;">Pending</button>
+                                </form>
+                                <form method="POST" action="{{ route('order.updateStatus') }}" style="display:inline;">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $order->id }}">
+                                    <input type="hidden" name="status" value="Cancelled">
+                                    <button type="submit" class="dropdown-item" style="border:none;background:none;padding:0;">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div
                         class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
@@ -143,24 +179,13 @@ use Illuminate\Support\Str;
                                 </div>
                                 <h4 class="step-title">Processing Order</h4>
                             </div>
-                            <div class="step completed">
+                            <div class="step  {{ $order->status === 'Completed' ? 'completed' : '' }}">
                                 <div class="step-icon-wrap">
                                     <div class="step-icon"><i class="mdi mdi-gift"></i></div>
                                 </div>
-                                <h4 class="step-title">Product Dispatched</h4>
-                            </div>
-                            <div class="step">
-                                <div class="step-icon-wrap">
-                                    <div class="step-icon"><i class="mdi mdi-truck-delivery"></i></div>
-                                </div>
-                                <h4 class="step-title">On Delivery</h4>
-                            </div>
-                            <div class="step">
-                                <div class="step-icon-wrap">
-                                    <div class="step-icon"><i class="mdi mdi-hail"></i></div>
-                                </div>
                                 <h4 class="step-title">Product Delivered</h4>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -171,3 +196,51 @@ use Illuminate\Support\Str;
 
 
 @endsection
+
+<script>
+    document.querySelectorAll('.change-status').forEach(function(el) {
+
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            var orderId = this.getAttribute('data-id');
+            var status = this.getAttribute('data-status');
+            fetch("{{ route('order.updateStatus') }}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                    },
+                    body: JSON.stringify({
+                        id: orderId,
+                        status: status
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update the badge text
+                        const badge = this.closest('tr').querySelector('.badge');
+                        badge.textContent = data.status;
+
+                        // Remove old badge classes
+                        badge.classList.remove('badge-success', 'badge-warning', 'badge-danger', 'badge-secondary');
+
+                        // Add new badge class based on status
+                        if (data.status === 'Completed') {
+                            badge.classList.add('badge-success');
+                        } else if (data.status === 'Pending') {
+                            badge.classList.add('badge-warning');
+                        } else if (data.status === 'Cancelled' || data.status === 'Cancel') {
+                            badge.classList.add('badge-danger');
+                        } else {
+                            badge.classList.add('badge-secondary');
+                        }
+                        setTimeout(function() {
+                            location.reload();
+                        }, 500); // short delay for user feedback
+
+                    }
+                });
+        });
+    });
+</script>
