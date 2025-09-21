@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\AdminNewUserNotification;
+use App\Mail\NewUserRegistration;
 use App\Mail\registrationEmail;
 use App\Models\User;
 use Exception;
@@ -79,7 +80,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
 
-            Mail::to($request->email)->send(new registrationEmail($user));
+            Mail::to($request->email)->send(new NewUserRegistration($user));
             Mail::to('lawalsherifoyetola@gmail.com')->send(new AdminNewUserNotification($user));
 
             $guard = $user->role; // 'admin', 'customer', or 'subscriber'
