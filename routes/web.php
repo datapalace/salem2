@@ -184,9 +184,15 @@ Route::get('/saved-designs-json', function(){
     return response()->json(['designs' => session('custom_designs', [])]);
 });
 
+// Update your route in web.php to handle 'all' index
 Route::post('/remove-design', function(\Illuminate\Http\Request $request) {
     $designs = session('custom_designs', []);
-    $index = intval($request->input('index'));
+    $index = $request->input('index');
+    if ($index === 'all') {
+        session(['custom_designs' => []]);
+        return response()->json(['success' => true]);
+    }
+    $index = intval($index);
     if (isset($designs[$index])) {
         array_splice($designs, $index, 1);
         session(['custom_designs' => $designs]);

@@ -41,8 +41,8 @@
                             </div>
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
-                                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Register</button>
+                                    <button class="nav-link active text-dark" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
+                                    <button class="nav-link text-warning" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Register</button>
 
                                 </div>
                             </nav>
@@ -54,6 +54,8 @@
                                     <form action="{{ route('process.login') }}" method="post">
                                         @csrf
                                         <div class="form-register mt-30 mb-30">
+                                            {{--  --}}
+                                            <p>Login to Continue</p>
                                             <div class="form-group">
 
                                                 <input class="form-control font-sm" type="text" name="username" placeholder="Email">
@@ -307,7 +309,7 @@
                                 <div class="product-info">
                                     <h6 class="color-brand-3">{{ $c['product_title'] ?? 'Product Title' }}</h6>
                                     <p class="text-muted mb-1">Decoration: {{ ucfirst($c['decoration_type']) ?? '-' }}</p>
-                                    <p class="text-muted mb-1">Side: {{ ucfirst($c['custom_side']) ?? '-' }}</p>
+
                                     <p class="text-muted mb-1">
                                         Color:
                                         <span class="d-inline-block align-middle" style="width: 16px; height: 16px; background-color: {{ $c['color'] ?? '#000' }}; border-radius: 4px; border: 1px solid #ccc;"></span>
@@ -331,13 +333,57 @@
                 <div class="form-group mb-0">
 
                     <div class="row mb-10">
-                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Unit Price</span></div>
-                        <div class="col-lg-6 col-6 text-end"><span
-                                class="font-lg-bold color-brand-3">£{{ number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</span><br>
-                            <span><small style="font-size: 10px;">{{ number_format($c['unit_price'], 2) }} x {{ collect(json_decode($c['sizes'], true))->sum() }}</small></span>
-                        </div>
+                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Cost Breakdown</span></div>
+                        {{-- show printing options in the saved design in session --}}
+
+                                                @if(isset($c['custom_designs']) && count($c['custom_designs']))
+                            <div class="box-border mt-4">
+
+                                @php
+                                    $totalDesignCost = 0;
+                                @endphp
+                                @foreach($c['custom_designs'] as $i => $design)
+                                    @php
+                                        // Calculate cost based on decoration type
+                                        if (isset($design['decoration']) && strtolower($design['decoration']) === 'print') {
+                                            $totalDesignCost += 13 * collect(json_decode($c['sizes'], true))->sum();
+                                        } elseif (isset($design['decoration']) && strtolower($design['decoration']) === 'embroidery') {
+                                            $totalDesignCost += 15 * collect(json_decode($c['sizes'], true))->sum();
+                                        }
+                                    @endphp
+                                    <div class="mb-3 p-2 border rounded">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                @if(!empty($design['image']))
+                                                    <img src="{{ $design['image'] }}" alt="Design Image" style="width:120px;height:120px;border:1px solid #ccc;">
+                                                @else
+                                                    <span class="text-muted">No image</span>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-8">
+                                                <strong>Name:</strong> Design #{{ $i + 1 }}<br>
+                                                <strong>Print Type:</strong> {{ ucfirst($design['decoration'] ?? '') }}<br>
+                                                <strong>Print Position:</strong> {{ ucfirst($design['side'] ?? '') }}<br>
+
+                                                <strong>Cost:</strong>
+                                                @if(isset($design['decoration']) && strtolower($design['decoration']) === 'print')
+                                                    £13 <span class="text-muted"> x {{ collect(json_decode($c['sizes'], true))->sum() }} ({{13 * collect(json_decode($c['sizes'], true))->sum() }})</span>
+                                                @elseif(isset($design['decoration']) && strtolower($design['decoration']) === 'embroidery')
+                                                    £15 <span class="text-muted"> x {{ collect(json_decode($c['sizes'], true))->sum() }} ({{15 * collect(json_decode($c['sizes'], true))->sum() }})</span>
+                                                @else
+                                                    -
+                                                @endif
+                                                <br>
+                                                </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <small>Total Design Cost: £{{ number_format($totalDesignCost, 2) + number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</small>
+                            </div>
+                        @endif
 
                     </div>
+
                     @if ($c['decoration_type'] === 'embroidery')
                     <div class="row mb-10">
                         <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Embroidery Price</span></div>
@@ -388,14 +434,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Total</span></div>
+                        <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Product Cost</span></div>
                         <div class="col-lg-6 col-6 text-end"><span
-                                class="font-lg-bold color-brand-3">£ @if ($c['decoration_type'] === 'embroidery')
-                                {{ number_format($c['total_price'], 2) + 15 }}
-                                @else
+                                class="font-lg-bold color-brand-3">£
                                 {{ number_format($c['total_price'], 2) }}
 
-                                @endif</span></div>
+                            </span></div>
+                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Design Cost</span></div>
+                        <div class="col-lg-6 col-6 text-end"><span
+                                class="font-lg-bold color-brand-3">£
+                                {{ number_format($totalDesignCost, 2) }}
+
+                            </span></div>
+                            <div class="col-lg-6 col-6"><span class="font-md-bold color-brand-3">Total Cost</span></div>
+                        <div class="col-lg-6 col-6 text-end"><span
+                                class="font-lg-bold color-brand-3">£
+                                {{ number_format($totalDesignCost, 2) + number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}
+
+                            </span></div>
                     </div>
 
 

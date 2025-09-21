@@ -88,11 +88,12 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <h3 class="color-brand-3 mb-25">{{ $product->title}}</h3>
+                        <h3 class="color-brand-3 mb-25">{{ $product->title }}</h3>
 
                         <div class="row align-items-center">
                             <div class="col-lg-4 col-md-4 col-sm-3 mb-mobile"><span
-                                    class="bytext color-gray-500 font-xs font-large">Weight: {{ $product->weight }} | Style Code: {{ $product->style_code }}</span>
+                                    class="bytext color-gray-500 font-xs font-large">Weight: {{ $product->weight }} | Style
+                                    Code: {{ $product->style_code }}</span>
                                 {{-- <div class="rating mt-5"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                     alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
                                     alt="Ecom"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}"
@@ -155,7 +156,7 @@
                                 @endforeach
 
                                 <!-- <li class="disabled"><img src="assets/imgs/page/product/img-gallery-6.jpg" alt="Ecom" title="Black"></li>
-                                      <li class="disabled"><img src="assets/imgs/page/product/img-gallery-7.jpg" alt="Ecom" title="Red"></li> -->
+                                          <li class="disabled"><img src="assets/imgs/page/product/img-gallery-7.jpg" alt="Ecom" title="Red"></li> -->
                             </ul>
                         </div>
                         <div class="row mt-5">
@@ -167,7 +168,8 @@
                                         <div class="col-1 col-sm-1 col-md-1 text-center mb-2">
                                             <label class="fw-bold d-block mb-1">{{ $size }}</label>
                                             <input type="number" style="width: 50px;" name="sizes[{{ $size }}]"
-                                                value="" placeholder="0" min="0" class="form-control text-center size-input">
+                                                value="" placeholder="0" min="0"
+                                                class="form-control text-center size-input">
                                         </div>
                                     @endforeach
                                     <h3>Total £<span id="pTotal"></span></h3>
@@ -185,27 +187,28 @@
                                     <div class="mb-2">
                                         <label class="form-label d-block mb-2">Decoration Type:</label>
                                         <div class="btn-group" role="group" aria-label="Decoration Type">
-                                            <input type="radio" class="btn-check" name="decorationType" id="printOption"
-                                                autocomplete="off">
+                                            <input type="radio" class="btn-check" name="decorationType"
+                                                id="printOption" autocomplete="off">
                                             <label class="btn btn-outline-warning btn-sm" for="printOption">Print</label>
 
-                                            <input type="radio" class="btn-check" name="decorationType" id="embroideryOption"
-                                                autocomplete="off">
-                                            <label class="btn btn-outline-warning btn-sm" for="embroideryOption">Embroidery</label>
+                                            <input type="radio" class="btn-check" name="decorationType"
+                                                id="embroideryOption" autocomplete="off">
+                                            <label class="btn btn-outline-warning btn-sm"
+                                                for="embroideryOption">Embroidery</label>
                                         </div>
                                     </div>
 
 
 
-                                     <!-- Mode selector: hidden until decoration type is picked -->
+                                    <!-- Mode selector: hidden until decoration type is picked -->
                                     <div class="mb-2" id="designModeGroup" style="display:none;">
                                         <div class="btn-group" role="group" aria-label="Design Mode">
-                                            <button type="button" class="btn btn-outline-warning btn-sm mode-btn" data-mode="text"
-                                                id="modeText">Add Text</button>
-                                            <button type="button" class="btn btn-outline-warning btn-sm mode-btn" data-mode="upload"
-                                                id="modeUpload">Upload Image</button>
-                                            <button type="button" class="btn btn-outline-warning btn-sm mode-btn" data-mode="gallery"
-                                                id="modeGallery">Add from Gallery</button>
+                                            <button type="button" class="btn btn-outline-warning btn-sm mode-btn"
+                                                data-mode="text" id="modeText">Add Text</button>
+                                            <button type="button" class="btn btn-outline-warning btn-sm mode-btn"
+                                                data-mode="upload" id="modeUpload">Upload Image</button>
+                                            <button type="button" class="btn btn-outline-warning btn-sm mode-btn"
+                                                data-mode="gallery" id="modeGallery">Add from Gallery</button>
                                         </div>
                                     </div>
 
@@ -213,44 +216,66 @@
                                     <div class="mb-2" id="positionOptions">
                                         <label class="form-label d-block mb-2">Print Position:</label>
                                         <div class="btn-group btn-group-sm" role="group" aria-label="Positions">
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_top" value="front_top">
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_top"
+                                                value="front_top">
                                             <label class="btn btn-outline-warning" for="pos_front_top">Front Top</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_middle" value="front_middle">
-                                            <label class="btn btn-outline-warning" for="pos_front_middle">Front Middle</label>
+                                            <input type="radio" class="btn-check" name="printPos"
+                                                id="pos_front_middle" value="front_middle">
+                                            <label class="btn btn-outline-warning" for="pos_front_middle">Front
+                                                Middle</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_bottom" value="front_bottom">
-                                            <label class="btn btn-outline-warning" for="pos_front_bottom">Front Bottom</label>
+                                            <input type="radio" class="btn-check" name="printPos"
+                                                id="pos_front_bottom" value="front_bottom">
+                                            <label class="btn btn-outline-warning" for="pos_front_bottom">Front
+                                                Bottom</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_top" value="back_top">
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_top"
+                                                value="back_top">
                                             <label class="btn btn-outline-warning" for="pos_back_top">Back Top</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_middle" value="back_middle">
-                                            <label class="btn btn-outline-warning" for="pos_back_middle">Back Middle</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_middle"
+                                                value="back_middle">
+                                            <label class="btn btn-outline-warning" for="pos_back_middle">Back
+                                                Middle</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_bottom" value="back_bottom">
-                                            <label class="btn btn-outline-warning" for="pos_back_bottom">Back Bottom</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_bottom"
+                                                value="back_bottom">
+                                            <label class="btn btn-outline-warning" for="pos_back_bottom">Back
+                                                Bottom</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_left_sleeve" value="left_sleeve">
-                                            <label class="btn btn-outline-warning" for="pos_left_sleeve">Left Sleeve</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_left_sleeve"
+                                                value="left_sleeve">
+                                            <label class="btn btn-outline-warning" for="pos_left_sleeve">Left
+                                                Sleeve</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_right_sleeve" value="right_sleeve">
-                                            <label class="btn btn-outline-warning" for="pos_right_sleeve">Right Sleeve</label>
+                                            <input type="radio" class="btn-check" name="printPos"
+                                                id="pos_right_sleeve" value="right_sleeve">
+                                            <label class="btn btn-outline-warning" for="pos_right_sleeve">Right
+                                                Sleeve</label>
                                         </div>
                                     </div>
 
                                     <!-- Toolbar -->
                                     <div class="d-flex flex-row align-items-start gap-3">
                                         <!-- Toolbar (left) -->
-                                        <div id="customCanvasToolbar" class="mb-2 d-flex flex-column" style="gap: 8px; min-width:180px;">
+                                        <div id="customCanvasToolbar" class="mb-2 d-flex flex-column"
+                                            style="gap: 8px; min-width:180px;">
                                             <!-- formatting group visible only in Text mode -->
                                             <div id="textFormatting" style="display:none;">
-                                                <button type="button" id="addTextBtn" class="btn btn-outline-dark btn-sm mb-1">Add Text</button><span class="ms-2" style="display:inline-block; vertical-align:middle;">
-                                                        <i class="fas fa-arrow-left" id="arrowAnim" style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
-                                                    </span><br>
-                                                <button type="button" id="fontColorInputBtn" class="btn btn-outline-dark btn-sm mb-1" title="Text Color">
-                                                    <span style="display:inline-block;width:18px;height:18px;background:#222222;border-radius:3px;vertical-align:middle;" id="fontColorPreview"></span>
-                                                    <input type="color" id="fontColorInput" value="#222222" style="opacity:0;width:0;height:0;position:absolute;">
+                                                <button type="button" id="addTextBtn"
+                                                    class="btn btn-outline-dark btn-sm mb-1">Add Text</button><span
+                                                    class="ms-2" style="display:inline-block; vertical-align:middle;">
+                                                    <i class="fas fa-arrow-left" id="arrowAnim"
+                                                        style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
+                                                </span><br>
+                                                <button type="button" id="fontColorInputBtn"
+                                                    class="btn btn-outline-dark btn-sm mb-1" title="Text Color">
+                                                    <span
+                                                        style="display:inline-block;width:18px;height:18px;background:#222222;border-radius:3px;vertical-align:middle;"
+                                                        id="fontColorPreview"></span>
+                                                    <input type="color" id="fontColorInput" value="#222222"
+                                                        style="opacity:0;width:0;height:0;position:absolute;">
                                                     <span class="ms-1">Text Color</span>
                                                 </button>
                                                 <script>
@@ -267,59 +292,98 @@
                                                         });
                                                     });
                                                 </script>
-                                                <select id="fontFaceSelect" class="form-select form-select-sm mb-1" style="width:auto;">
+                                                <select id="fontFaceSelect" class="form-select form-select-sm mb-1"
+                                                    style="width:auto;">
                                                     <option value="Arial">Arial</option>
                                                     <option value="Times New Roman">Times New Roman</option>
                                                     <option value="Courier New">Courier New</option>
                                                     <option value="Verdana">Verdana</option>
                                                     <option value="Georgia">Georgia</option>
                                                 </select>
-                                                <select id="fontSizeSelect" class="form-select form-select-sm mb-1" style="width:auto;">
-                                                    <option value="12">12</option><option value="16">16</option><option value="20">20</option><option value="24" selected>24</option><option value="32">32</option><option value="40">40</option><option value="48">48</option>
+                                                <select id="fontSizeSelect" class="form-select form-select-sm mb-1"
+                                                    style="width:auto;">
+                                                    <option value="12">12</option>
+                                                    <option value="16">16</option>
+                                                    <option value="20">20</option>
+                                                    <option value="24" selected>24</option>
+                                                    <option value="32">32</option>
+                                                    <option value="40">40</option>
+                                                    <option value="48">48</option>
                                                 </select>
                                                 <div class="btn-group mb-1">
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="boldTextBtn" title="Bold"><strong>B</strong></button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="italicTextBtn" title="Italic"><em>I</em></button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="underlineTextBtn" title="Underline"><u>U</u></button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                        id="boldTextBtn" title="Bold"><strong>B</strong></button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                        id="italicTextBtn" title="Italic"><em>I</em></button>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                                        id="underlineTextBtn" title="Underline"><u>U</u></button>
                                                 </div>
                                             </div>
 
                                             <!-- upload/gallery controls (visible in upload/gallery modes) -->
                                             <div id="imageControls" style="display:none;">
-                                                <button type="button" id="uploadImageBtn" class="btn btn-dark btn-sm mb-1">
-                                                    <i class="fas fa-upload" style="font-size:12px; margin-right:5px;"></i>Upload Image
+                                                <button type="button" id="uploadImageBtn"
+                                                    class="btn btn-dark btn-sm mb-1">
+                                                    <i class="fas fa-upload"
+                                                        style="font-size:12px; margin-right:5px;"></i>Upload Image
 
                                                 </button>
-                                                <input type="file" id="uploadImageInput" accept="image/*" style="display:none;">
-                                                <button type="button" id="openServerImageModal" class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
+                                                <input type="file" id="uploadImageInput" accept="image/*"
+                                                    style="display:none;">
+                                                <button type="button" id="openServerImageModal"
+                                                    class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
                                                 <span class="ms-2" style="display:inline-block; vertical-align:middle;">
-                                                        <i class="fas fa-arrow-left" id="arrowAnim" style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
-                                                    </span>
+                                                    <i class="fas fa-arrow-left" id="arrowAnim"
+                                                        style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
+                                                </span>
                                                 <style>
-                                                @keyframes arrowBounce {
-                                                    0%   { transform: translateX(0); }
-                                                    50%  { transform: translateX(-8px); }
-                                                    100% { transform: translateX(0); }
-                                                }
+                                                    @keyframes arrowBounce {
+                                                        0% {
+                                                            transform: translateX(0);
+                                                        }
+
+                                                        50% {
+                                                            transform: translateX(-8px);
+                                                        }
+
+                                                        100% {
+                                                            transform: translateX(0);
+                                                        }
+                                                    }
                                                 </style>
                                             </div>
 
                                             <div class="mt-2">
-                                                <button type="button" id="saveDesignBtn" class="btn btn-dark btn-sm">Save Design</button>
-                                                <small class="d-block text-muted mt-1">You can save multiple designs; each saved design stored in session.</small>
+                                                <button type="button" id="saveDesignBtn"
+                                                    class="btn btn-dark btn-sm">Save Design</button>
+                                                <small class="d-block text-muted mt-1">You can save multiple designs; each
+                                                    saved design stored in session.</small>
                                             </div>
 
 
                                             <div id="savedDesignsList" class="mt-2"></div>
                                         </div>
                                         <!-- Canvas (right, beside toolbar) -->
-                                        <div id="customCanvasWrapper" class="border rounded p-2 bg-light" style="display:none;">
-                                            <canvas id="customCanvas" width="350" height="350" style="max-width:100%;height:auto;display:block;"></canvas>
+                                        <div id="customCanvasWrapper" class="border rounded p-2 bg-light"
+                                            style="display:none;">
+                                            <canvas id="customCanvas" width="350" height="350"
+                                                style="max-width:100%;height:auto;display:block;"></canvas>
                                         </div>
                                     </div>
-                                    <div id="customCanvasWrapper" class="border rounded p-2 bg-light" style="display:none;">
-    <canvas id="customCanvas" width="350" height="350" style="max-width:100%;height:auto;display:block;"></canvas>
-</div>
+                                    <div id="customCanvasWrapper" class="border rounded p-2 bg-light"
+                                        style="display:none;">
+                                        <canvas id="customCanvas" width="350" height="350"
+                                            style="max-width:100%;height:auto;display:block;"></canvas>
+                                    </div>
+                                </div>
+                                <div id="customiseLoaderOverlay"
+                                    style="display:none;position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:50;background:rgba(255,255,255,0.7);align-items:center;justify-content:center;">
+                                    <div
+                                        style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);text-align:center;">
+                                        <div class="spinner-border text-warning" style="width:3rem;height:3rem;"
+                                            role="status"></div>
+                                        <div class="mt-2"><strong>Loading...</strong></div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -602,92 +666,92 @@
                                     </script>
                                     <script>
                                         document.getElementById('proceedCheckoutBtn').addEventListener('click', function() {
-    // validate if nameColor is selected
-    const nameColor = document.querySelector('.nameColor');
-    if (nameColor && nameColor.textContent === 'Select your favourite color') {
-        alert('Please select a color before proceeding.');
-        return;
-    }
+                                            // validate if nameColor is selected
+                                            const nameColor = document.querySelector('.nameColor');
+                                            if (nameColor && nameColor.textContent === 'Select your favourite color') {
+                                                alert('Please select a color before proceeding.');
+                                                return;
+                                            }
 
-    // validate sizes are selected
-    const sizeInputs = document.querySelectorAll('.size-input');
-    let sizesSelected = false;
-    sizeInputs.forEach(input => {
-        if (input.value && parseInt(input.value) > 0) {
-            sizesSelected = true;
-        }
-    });
-    if (!sizesSelected) {
-        alert('Please select at least one size with quantity greater than 0.');
-        return;
-    }
+                                            // validate sizes are selected
+                                            const sizeInputs = document.querySelectorAll('.size-input');
+                                            let sizesSelected = false;
+                                            sizeInputs.forEach(input => {
+                                                if (input.value && parseInt(input.value) > 0) {
+                                                    sizesSelected = true;
+                                                }
+                                            });
+                                            if (!sizesSelected) {
+                                                alert('Please select at least one size with quantity greater than 0.');
+                                                return;
+                                            }
 
-    // validate total is not 0 or null
-    const total = parseFloat($('#pTotal').text());
-    if (isNaN(total) || total <= 0) {
-        alert('Please select a size and quantity before proceeding.');
-        return;
-    }
+                                            // validate total is not 0 or null
+                                            const total = parseFloat($('#pTotal').text());
+                                            if (isNaN(total) || total <= 0) {
+                                                alert('Please select a size and quantity before proceeding.');
+                                                return;
+                                            }
 
-    // 1. Get selected color
-    const colorElement = document.querySelector('.list-colors .color-swatch.selected');
-    const color = colorElement ? colorElement.title : '';
-    const colorRgb = colorElement ? colorElement.getAttribute('data-rgb') : '';
+                                            // 1. Get selected color
+                                            const colorElement = document.querySelector('.list-colors .color-swatch.selected');
+                                            const color = colorElement ? colorElement.title : '';
+                                            const colorRgb = colorElement ? colorElement.getAttribute('data-rgb') : '';
 
-    // 2. Get decoration type
-    const decoration = document.getElementById('embroideryOption')?.checked ? 'embroidery' : 'print';
+                                            // 2. Get decoration type
+                                            const decoration = document.getElementById('embroideryOption')?.checked ? 'embroidery' : 'print';
 
-    // 3. Get sizes as JSON
-    let sizes = {};
-    document.querySelectorAll('.size-input').forEach(input => {
-        if (input.value && parseInt(input.value) > 0) {
-            sizes[input.name] = input.value;
-        }
-    });
+                                            // 3. Get sizes as JSON
+                                            let sizes = {};
+                                            document.querySelectorAll('.size-input').forEach(input => {
+                                                if (input.value && parseInt(input.value) > 0) {
+                                                    sizes[input.name] = input.value;
+                                                }
+                                            });
 
-    // 4. Get custom design as image (PNG dataURL)
-    let customDesign = '';
-    if (window.customCanvas) {
-        customDesign = customCanvas.toDataURL({
-            format: 'png'
-        });
-    }
+                                            // 4. Get custom design as image (PNG dataURL)
+                                            let customDesign = '';
+                                            if (window.customCanvas) {
+                                                customDesign = customCanvas.toDataURL({
+                                                    format: 'png'
+                                                });
+                                            }
 
-    // 5. Get decoration price (embroidery adds 1.5)
-    const decorationPrice = decoration === 'embroidery' ? 1.5 : 0;
+                                            // 5. Get decoration price (embroidery adds 1.5)
+                                            const decorationPrice = decoration === 'embroidery' ? 1.5 : 0;
 
-    // 6. Get selected side
-    const selectedSide = document.getElementById('customSide').value;
+                                            // 6. Get selected side
+                                            // const selectedSide = document.getElementById('customSide').value;
 
-    // 7. Get selected image
-    const selectedImage = document.querySelector('.slider-nav-thumbnails .item-thumb img')?.src || '';
+                                            // 7. Get selected image
+                                            const selectedImage = document.querySelector('.slider-nav-thumbnails .item-thumb img')?.src || '';
 
-    // 8. Fill ALL form fields
-    document.getElementById('checkoutColor').value = color;
-    document.getElementById('checkoutColorRgb').value = colorRgb;
-    document.getElementById('checkoutDecoration').value = decoration;
-    document.getElementById('checkoutSizes').value = JSON.stringify(sizes);
-    document.getElementById('checkoutDesign').value = customDesign;
-    document.getElementById('checkoutTotalPrice').value = total;
-    document.getElementById('checkoutDecorationPrice').value = decorationPrice;
-    document.getElementById('checkoutSelectedImage').value = selectedImage;
-    document.getElementById('checkoutSelectedSide').value = selectedSide;
+                                            // 8. Fill ALL form fields
+                                            document.getElementById('checkoutColor').value = color;
+                                            document.getElementById('checkoutColorRgb').value = colorRgb;
+                                            document.getElementById('checkoutDecoration').value = decoration;
+                                            document.getElementById('checkoutSizes').value = JSON.stringify(sizes);
+                                            // document.getElementById('checkoutDesign').value = customDesign;
+                                            document.getElementById('checkoutTotalPrice').value = total;
+                                            document.getElementById('checkoutDecorationPrice').value = decorationPrice;
+                                            document.getElementById('checkoutSelectedImage').value = selectedImage;
+                                            // document.getElementById('checkoutSelectedSide').value = selectedSide;
 
-    console.log('Form data being submitted:', {
-        color: color,
-        colorRgb: colorRgb,
-        decoration: decoration,
-        sizes: sizes,
-        total: total,
-        decorationPrice: decorationPrice,
-        selectedSide: selectedSide,
-        selectedImage: selectedImage,
-        customDesign: customDesign ? 'Canvas data present' : 'No canvas data'
-    });
+                                            console.log('Form data being submitted:', {
+                                                color: color,
+                                                colorRgb: colorRgb,
+                                                decoration: decoration,
+                                                sizes: sizes,
+                                                total: total,
+                                                decorationPrice: decorationPrice,
+                                                // selectedSide: selectedSide,
+                                                selectedImage: selectedImage,
+                                                customDesign: customDesign ? 'Canvas data present' : 'No canvas data'
+                                            });
 
-    // 9. Submit the form
-    document.getElementById('customCheckoutForm').submit();
-});
+                                            // 9. Submit the form
+                                            document.getElementById('customCheckoutForm').submit();
+                                        });
                                     </script>
 
                                     <div>
@@ -716,7 +780,7 @@
                         <li><a href="#tab-additional" data-bs-toggle="tab" role="tab" aria-controls="tab-additional"
                                 aria-selected="true">Additional information</a></li>
                         <!-- <li><a href="#tab-reviews" data-bs-toggle="tab" role="tab" aria-controls="tab-reviews" aria-selected="true">Reviews (2)</a></li>
-                                          <li><a href="#tab-vendor" data-bs-toggle="tab" role="tab" aria-controls="tab-vendor" aria-selected="true">Vendor</a></li> -->
+                                              <li><a href="#tab-vendor" data-bs-toggle="tab" role="tab" aria-controls="tab-vendor" aria-selected="true">Vendor</a></li> -->
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane fade active show" id="tab-description" role="tabpanel"
@@ -1096,12 +1160,13 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="serverImageModalLabel" style="display:none;">Pick an Image from Gallery</h5>
+                <h5 class="modal-title" id="serverImageModalLabel" style="display:none;">Pick an Image from Gallery
+                </h5>
                 <script>
-                    $('#serverImageModal').on('show.bs.modal', function () {
+                    $('#serverImageModal').on('show.bs.modal', function() {
                         $('#serverImageModalLabel').show();
                     });
-                    $('#serverImageModal').on('hide.bs.modal', function () {
+                    $('#serverImageModal').on('hide.bs.modal', function() {
                         $('#serverImageModalLabel').hide();
                     });
                 </script>
@@ -1127,7 +1192,7 @@
     <input type="hidden" name="color" id="checkoutColorRgb">
     <input type="hidden" name="decoration_type" id="checkoutDecoration">
     <input type="hidden" name="sizes" id="checkoutSizes">
-    <input type="hidden" name="custom_design" id="checkoutDesign">
+    {{-- <input type="hidden" name="custom_design" id="checkoutDesign"> --}}
     {{-- include price breakdown(product title unit price, embroidery price(if selected) and total) in the form to process --}}
     <input type="hidden" name="product_title" value="{{ $product->title }}">
     <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -1138,111 +1203,116 @@
     {{-- checkoutSelectedImage --}}
     <input type="hidden" name="custom_image" id="checkoutSelectedImage">
     {{-- checkoutSelectedSide --}}
-    <input type="hidden" name="custom_side" id="checkoutSelectedSide">
+    {{-- <input type="hidden" name="custom_side" id="checkoutSelectedSide"> --}}
     {{-- payment --}}
 </form>
 
 <script>
-$(document).ready(function() {
-    // Hide all customisation controls initially
-    $('#customiseDivs').hide();
-    $('#textFormatting').hide();
-    $('#imageControls').hide();
-    $('#positionOptions').hide();
-    $('[name="decorationType"]').closest('.mb-2').hide();
-    $('#saveDesignBtn').hide();
-    $('#customCanvasWrapper').hide(); // Hide canvas initially
-
-    // Show options when Add Customisation is clicked
-    $('#loadCustom').on('click', function(e) {
-        e.preventDefault();
-        $('#customiseDivs').show();
-        $('[name="decorationType"]').closest('.mb-2').show(); // <-- Show decoration type
-        $('#designModeGroup').hide(); // Hide mode until decoration picked
-        $('#saveDesignBtn').hide();
-        $('#proceedCheckoutBtn').removeClass('d-none');
-        $(this).addClass('d-none');
+    $(document).ready(function() {
+        // Hide all customisation controls initially
+        $('#customiseDivs').hide();
         $('#textFormatting').hide();
         $('#imageControls').hide();
-        $('#customCanvasWrapper').hide();
         $('#positionOptions').hide();
-    });
-
-    // Hide mode buttons initially
-    $('#designModeGroup').hide();
-
-    // When decoration type is selected, show mode buttons
-    $('[name="decorationType"]').on('change', function() {
-        $('#designModeGroup').show();
-        $('.mode-btn').show().removeClass('active');
-        $('#textFormatting').hide();
-        $('#imageControls').hide();
-        $('#customCanvasWrapper').hide();
-        $('#positionOptions').hide();
+        $('[name="decorationType"]').closest('.mb-2').hide();
         $('#saveDesignBtn').hide();
-    });
+        $('#customCanvasWrapper').hide(); // Hide canvas initially
 
-    // Mode selection logic
-    $('.mode-btn').on('click', function() {
-        $('.mode-btn').not(this).hide();
-        $(this).addClass('active');
-        let mode = $(this).data('mode');
-        $('#customCanvasWrapper').show(); // Show canvas
-        $('#positionOptions').show();
-        $('#saveDesignBtn').show();
-        if (mode === 'text') {
-            $('#textFormatting').show();
+        // Show options when Add Customisation is clicked
+        $('#loadCustom').on('click', function(e) {
+            e.preventDefault();
+            $('#customiseDivs').show();
+            $('[name="decorationType"]').closest('.mb-2').show(); // <-- Show decoration type
+            $('#designModeGroup').hide(); // Hide mode until decoration picked
+            $('#saveDesignBtn').hide();
+            $('#proceedCheckoutBtn').removeClass('d-none');
+            $(this).addClass('d-none');
+            $('#textFormatting').hide();
             $('#imageControls').hide();
-        } else if (mode === 'upload') {
+            $('#customCanvasWrapper').hide();
+            $('#positionOptions').hide();
+        });
+
+        // Hide mode buttons initially
+        $('#designModeGroup').hide();
+
+        // When decoration type is selected, show mode buttons
+        $('[name="decorationType"]').on('change', function() {
+            $('#designModeGroup').show();
+            $('.mode-btn').show().removeClass('active');
             $('#textFormatting').hide();
-            $('#imageControls').show();
-            $('#uploadImageBtn').show();
-            $('#openServerImageModal').hide();
-        } else if (mode === 'gallery') {
-            $('#textFormatting').hide();
-            $('#imageControls').show();
-            $('#uploadImageBtn').hide();
-            $('#openServerImageModal').show();
-        }
-    });
+            $('#imageControls').hide();
+            $('#customCanvasWrapper').hide();
+            $('#positionOptions').hide();
+            $('#saveDesignBtn').hide();
+        });
 
-    // Allow user to add another design (show all customisation options again and hide canvas/print/decoration)
-    $('#saveDesignBtn').on('click', function() {
-    // Ensure a decoration type is selected before saving
-    if (!$('[name="decorationType"]:checked').length) {
-        alert('Please select a decoration type (Print or Embroidery) before saving your design.');
-        return;
-    }
-    // Ensure a print position is selected before saving
-    if (!$('input[name="printPos"]:checked').length) {
-        alert('Please select a print position before saving your design.');
-        return;
-    }
+        // Mode selection logic
+        $('.mode-btn').on('click', function() {
+            $('.mode-btn').not(this).hide();
+            $(this).addClass('active');
+            let mode = $(this).data('mode');
+            $('#customCanvasWrapper').show(); // Show canvas
+            $('#positionOptions').show();
+            $('#saveDesignBtn').show();
+            if (mode === 'text') {
+                $('#textFormatting').show();
+                $('#imageControls').hide();
+            } else if (mode === 'upload') {
+                $('#textFormatting').hide();
+                $('#imageControls').show();
+                $('#uploadImageBtn').show();
+                $('#openServerImageModal').hide();
+            } else if (mode === 'gallery') {
+                $('#textFormatting').hide();
+                $('#imageControls').show();
+                $('#uploadImageBtn').hide();
+                $('#openServerImageModal').show();
+            }
+        });
 
-    $.get('{{ url('/saved-designs-json') }}', function(resp) {
-        let currentCount = resp && resp.designs ? resp.designs.length : 0;
-        if (currentCount >= 3) {
-            alert('You have reached the maximum of 3 designs. Please remove one before adding a new design.');
-            return;
-        }
-        if (window.customCanvas && customCanvas.getObjects().length > 0) {
-            const designData = JSON.stringify(customCanvas.toJSON());
-            const imageData = customCanvas.toDataURL({format:'png'});
-            const printPosition = $('input[name="printPos"]:checked').val();
-            const decorationType = $('[name="decorationType"]:checked').attr('id') === 'embroideryOption' ? 'embroidery' : 'print';
+        // Allow user to add another design (show all customisation options again and hide canvas/print/decoration)
+        $('#saveDesignBtn').on('click', function() {
+            // Ensure a decoration type is selected before saving
+            if (!$('[name="decorationType"]:checked').length) {
+                alert(
+                    'Please select a decoration type (Print or Embroidery) before saving your design.');
+                return;
+            }
+            // Ensure a print position is selected before saving
+            if (!$('input[name="printPos"]:checked').length) {
+                alert('Please select a print position before saving your design.');
+                return;
+            }
 
-            $.post('{{ route('save.design') }}', {
-                _token: '{{ csrf_token() }}',
-                design: designData,
-                image: imageData,
-                side: printPosition,
-                decoration: decorationType
-            }, function(res) {
-                // Update the preview section immediately after save
-                let html = '';
-                if (res && res.designs && res.designs.length > 0) {
-                    res.designs.forEach(function(design, i) {
-                        html += `
+            $.get('{{ url('/saved-designs-json') }}', function(resp) {
+                let currentCount = resp && resp.designs ? resp.designs.length : 0;
+                if (currentCount >= 3) {
+                    alert(
+                        'You have reached the maximum of 3 designs. Please remove one before adding a new design.');
+                    return;
+                }
+                if (window.customCanvas && customCanvas.getObjects().length > 0) {
+                    const designData = JSON.stringify(customCanvas.toJSON());
+                    const imageData = customCanvas.toDataURL({
+                        format: 'png'
+                    });
+                    const printPosition = $('input[name="printPos"]:checked').val();
+                    const decorationType = $('[name="decorationType"]:checked').attr('id') ===
+                        'embroideryOption' ? 'embroidery' : 'print';
+
+                    $.post('{{ route('save.design') }}', {
+                        _token: '{{ csrf_token() }}',
+                        design: designData,
+                        image: imageData,
+                        side: printPosition,
+                        decoration: decorationType
+                    }, function(res) {
+                        // Update the preview section immediately after save
+                        let html = '';
+                        if (res && res.designs && res.designs.length > 0) {
+                            res.designs.forEach(function(design, i) {
+                                html += `
                             <div class="mb-3 p-2 border rounded" id="designPreview${i}">
                                 <div class="row">
                                     <div class="col-md-4 text-center">
@@ -1258,41 +1328,42 @@ $(document).ready(function() {
                                 </div>
                             </div>
                         `;
-                    });
-                } else {
-                    html = '<p class="text-center text-muted">No designs saved yet.</p>';
+                            });
+                        } else {
+                            html =
+                                '<p class="text-center text-muted">No designs saved yet.</p>';
+                        }
+                        $('#designPreviewContainer').html(html);
+                    }, 'json');
                 }
-                $('#designPreviewContainer').html(html);
+                if (window.customCanvas) {
+                    customCanvas.clear();
+                }
+                $('#pos_front_top').prop('checked', false); // Uncheck after save
+                $('#designModeGroup').show();
+                $('.mode-btn').show().removeClass('active');
+                $('#textFormatting').hide();
+                $('#imageControls').hide();
+                $('#customCanvasWrapper').hide();
+                $('#positionOptions').hide();
+                $('#designModeGroup').hide();
+                $('[name="decorationType"]').prop('checked', false);
             }, 'json');
-        }
-        if (window.customCanvas) {
-            customCanvas.clear();
-        }
-        $('#pos_front_top').prop('checked', false); // Uncheck after save
-        $('#designModeGroup').show();
-        $('.mode-btn').show().removeClass('active');
-        $('#textFormatting').hide();
-        $('#imageControls').hide();
-        $('#customCanvasWrapper').hide();
-        $('#positionOptions').hide();
-        $('#designModeGroup').hide();
-        $('[name="decorationType"]').prop('checked', false);
-    }, 'json');
-});
-    // Remove design from session and update preview section
-    $(document).on('click', '.remove-design-btn', function() {
-        const index = $(this).data('index');
-        $.post('{{ url("/remove-design") }}', {
-            _token: '{{ csrf_token() }}',
-            index: index
-        }, function(res) {
-            if (res.success) {
-                // Reload the preview section after removal
-                $.get('{{ url('/saved-designs-json') }}', function(resp) {
-                    let html = '';
-                    if (resp && resp.designs && resp.designs.length > 0) {
-                        resp.designs.forEach(function(design, i) {
-                            html += `
+        });
+        // Remove design from session and update preview section
+        $(document).on('click', '.remove-design-btn', function() {
+            const index = $(this).data('index');
+            $.post('{{ url('/remove-design') }}', {
+                _token: '{{ csrf_token() }}',
+                index: index
+            }, function(res) {
+                if (res.success) {
+                    // Reload the preview section after removal
+                    $.get('{{ url('/saved-designs-json') }}', function(resp) {
+                        let html = '';
+                        if (resp && resp.designs && resp.designs.length > 0) {
+                            resp.designs.forEach(function(design, i) {
+                                html += `
                                 <div class="mb-3 p-2 border rounded" id="designPreview${i}">
                 <div class="row">
                     <div class="col-md-4 text-center">
@@ -1308,23 +1379,24 @@ $(document).ready(function() {
                 </div>
             </div>
                             `;
-                        });
-                    } else {
-                        html = '<p class="text-center text-muted">No designs saved yet.</p>';
-                    }
-                    $('#designPreviewContainer').html(html);
-                }, 'json');
-            }
-        }, 'json');
-    });
+                            });
+                        } else {
+                            html =
+                                '<p class="text-center text-muted">No designs saved yet.</p>';
+                        }
+                        $('#designPreviewContainer').html(html);
+                    }, 'json');
+                }
+            }, 'json');
+        });
 
-    // Show saved designs on page load
-    $.get('{{ url('/saved-designs-json') }}', function(resp) {
-        let html = '';
-       // Replace Design #${i+1} with a generated name like "Design #1", "Design #2", etc.
-if (resp && resp.designs && resp.designs.length > 0) {
-    resp.designs.forEach(function(design, i) {
-        html += `
+        // Show saved designs on page load
+        $.get('{{ url('/saved-designs-json') }}', function(resp) {
+            let html = '';
+            // Replace Design #${i+1} with a generated name like "Design #1", "Design #2", etc.
+            if (resp && resp.designs && resp.designs.length > 0) {
+                resp.designs.forEach(function(design, i) {
+                    html += `
             <div class="mb-3 p-2 border rounded" id="designPreview${i}">
                 <div class="row">
                     <div class="col-md-4 text-center">
@@ -1340,11 +1412,166 @@ if (resp && resp.designs && resp.designs.length > 0) {
                 </div>
             </div>
         `;
+                });
+            } else {
+                html = '<p class="text-center text-muted">No designs saved yet.</p>';
+            }
+            $('#designPreviewContainer').html(html);
+        }, 'json');
     });
-} else {
-    html = '<p class="text-center text-muted">No designs saved yet.</p>';
-}
-$('#designPreviewContainer').html(html);
-}, 'json');
-});
+</script>
+<script>
+    $(document).ready(function() {
+        function showCustomiseLoader(callback) {
+            $('#customiseLoaderOverlay').fadeIn(200);
+            setTimeout(function() {
+                $('#customiseLoaderOverlay').fadeOut(200);
+                if (typeof callback === 'function') callback();
+            }, 3000); // 3 seconds
+        }
+
+        // Add Customisation
+        $('#loadCustom').off('click').on('click', function(e) {
+            e.preventDefault();
+            showCustomiseLoader(() => {
+                $('#customiseDivs').show();
+                $('[name="decorationType"]').closest('.mb-2').show();
+                $('#designModeGroup').hide();
+                $('#saveDesignBtn').hide();
+                //$('#proceedCheckoutBtn').removeClass('d-none');
+                $(this).addClass('d-none');
+                $('#textFormatting').hide();
+                $('#imageControls').hide();
+                $('#customCanvasWrapper').hide();
+                $('#positionOptions').hide();
+            });
+        });
+
+        // Print option (decoration type)
+        $('[name="decorationType"]').off('change').on('change', function() {
+            showCustomiseLoader(() => {
+                $('#designModeGroup').show();
+                $('.mode-btn').show().removeClass('active');
+                $('#textFormatting').hide();
+                $('#imageControls').hide();
+                $('#customCanvasWrapper').hide();
+                $('#positionOptions').hide();
+                $('#saveDesignBtn').hide();
+            });
+        });
+
+        // Design mode
+        $('.mode-btn').off('click').on('click', function() {
+            const $btn = $(this);
+            showCustomiseLoader(function() {
+                $('.mode-btn').not($btn).hide();
+                $btn.addClass('active');
+                let mode = $btn.data('mode');
+                $('#customCanvasWrapper').show();
+                $('#positionOptions').show();
+                $('#saveDesignBtn').show();
+                if (mode === 'text') {
+                    $('#textFormatting').show();
+                    $('#imageControls').hide();
+                } else if (mode === 'upload') {
+                    $('#textFormatting').hide();
+                    $('#imageControls').show();
+                    $('#uploadImageBtn').show();
+                    $('#openServerImageModal').hide();
+                } else if (mode === 'gallery') {
+                    $('#textFormatting').hide();
+                    $('#imageControls').show();
+                    $('#uploadImageBtn').hide();
+                    $('#openServerImageModal').show();
+                }
+            });
+        });
+
+        // Save design
+        $('#saveDesignBtn').off('click').on('click', function(e) {
+            e.preventDefault();
+            showCustomiseLoader(() => {
+                // Your save logic here...
+                // (keep your existing save logic inside this callback)
+                // Ensure a decoration type is selected before saving
+                if (!$('[name="decorationType"]:checked').length) {
+                    alert(
+                        'Please select a decoration type (Print or Embroidery) before saving your design.'
+                        );
+                    return;
+                }
+                // Ensure a print position is selected before saving
+                if (!$('input[name="printPos"]:checked').length) {
+                    alert('Please select a print position before saving your design.');
+                    return;
+                }
+
+                $.get('{{ url('/saved-designs-json') }}', function(resp) {
+                    let currentCount = resp && resp.designs ? resp.designs.length : 0;
+                    if (currentCount >= 3) {
+                        alert(
+                            'You have reached the maximum of 3 designs. Please remove one before adding a new design.'
+                            );
+                        return;
+                    }
+                    if (window.customCanvas && customCanvas.getObjects().length > 0) {
+                        const designData = JSON.stringify(customCanvas.toJSON());
+                        const imageData = customCanvas.toDataURL({
+                            format: 'png'
+                        });
+                        const printPosition = $('input[name="printPos"]:checked').val();
+                        const decorationType = $('[name="decorationType"]:checked')
+                            .attr('id') === 'embroideryOption' ? 'embroidery' : 'print';
+
+                        $.post('{{ route('save.design') }}', {
+                            _token: '{{ csrf_token() }}',
+                            design: designData,
+                            image: imageData,
+                            side: printPosition,
+                            decoration: decorationType
+                        }, function(res) {
+                            // Update the preview section immediately after save
+                            let html = '';
+                            if (res && res.designs && res.designs.length > 0) {
+                                res.designs.forEach(function(design, i) {
+                                    html += `
+                                    <div class="mb-3 p-2 border rounded" id="designPreview${i}">
+                                        <div class="row">
+                                            <div class="col-md-4 text-center">
+                                                ${design.image ? `<img src="${design.image}" style="width:120px;height:120px;border:1px solid #ccc;">` : '<span class="text-muted">No image</span>'}
+                                            </div>
+                                            <div class="col-md-8">
+                                                <strong>Name:</strong> Design #${i+1}<br>
+                                                <strong>Print Type:</strong> ${design.decoration}<br>
+                                                <strong>Print Position:</strong> ${design.side}<br>
+                                                <small class="text-muted">Saved: ${design.saved_at}</small><br>
+                                                <button type="button" class="btn btn-danger btn-sm mt-2 remove-design-btn" data-index="${i}">Remove</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                                });
+                            } else {
+                                html =
+                                    '<p class="text-center text-muted">No designs saved yet.</p>';
+                            }
+                            $('#designPreviewContainer').html(html);
+                        }, 'json');
+                    }
+                    if (window.customCanvas) {
+                        customCanvas.clear();
+                    }
+                    $('#pos_front_top').prop('checked', false); // Uncheck after save
+                    $('#designModeGroup').show();
+                    $('.mode-btn').show().removeClass('active');
+                    $('#textFormatting').hide();
+                    $('#imageControls').hide();
+                    $('#customCanvasWrapper').hide();
+                    $('#positionOptions').hide();
+                    $('#designModeGroup').hide();
+                    $('[name="decorationType"]').prop('checked', false);
+                }, 'json');
+            });
+        });
+    });
 </script>
