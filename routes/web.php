@@ -17,6 +17,7 @@ use App\Models\Product;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
+use Illuminate\Http\Request;
 
 // admin routes
 Route::middleware('auth:admin')->group(function () {
@@ -157,4 +158,39 @@ Route::middleware('auth:customer')->group(function () {
 Route::fallback(function () {
     $shopByCatMenus = Product::select('type')->groupBy('type')->get();
     return response()->view('errors.404', ['shopByCatMenus' => $shopByCatMenus], 404);
+});
+
+Route::post('/save-design', function(Request $request){
+    $designs = session('custom_designs', []);
+    $imageData = null;
+    // If you send the PNG dataURL from JS, use that. Otherwise, decode from JSON.
+    if ($request->has('image')) {
+        $imageData = $request->input('image');
+    }
+    $designs[] = [
+        'name' => $request->input('name'),
+        'data' => $request->input('data'),
+        'image' => $imageData, // add this line
+        'decoration' => $request->input('decoration'),
+        'side' => $request->input('side'),
+        'mode' => $request->input('mode'),
+        'saved_at' => now()->toDateTimeString()
+    ];
+    session(['custom_designs' => $designs]);
+    return response()->json(['success' => true, 'designs' => $designs]);
+})->name('save.design');
+
+Route::get('/saved-designs-json', function(){
+    return response()->json(['designs' => session('custom_designs', [])]);
+});
+
+Route::post('/remove-design', function(\Illuminate\Http\Request $request) {
+    $designs = session('custom_designs', []);
+    $index = intval($request->input('index'));
+    if (isset($designs[$index])) {
+        array_splice($designs, $index, 1);
+        session(['custom_designs' => $designs]);
+        return response()->json(['success' => true]);
+    }
+    return response()->json(['success' => false]);
 });
