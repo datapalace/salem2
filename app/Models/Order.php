@@ -12,6 +12,7 @@ class Order extends Model
         'user_id',
         'sizes',
         'custom_design',
+        'custom_designs', // Add the new JSON field
         'product_title',
         'unit_price',
         'embroidery_price',
@@ -23,6 +24,11 @@ class Order extends Model
         'status',
         'track_id',
         'decoration_type'
+    ];
+
+    protected $casts = [
+        'custom_designs' => 'array', // Automatically cast JSON to array
+        'sizes' => 'array'
     ];
 
     public function user()

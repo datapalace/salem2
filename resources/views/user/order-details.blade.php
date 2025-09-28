@@ -69,11 +69,35 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if($order->custom_design)
-                                        <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100px;">
+                                        @php
+                                            $customDesigns = $order->custom_designs;
+                                            // Handle case where custom_designs might be a JSON string
+                                            if (is_string($customDesigns)) {
+                                                $customDesigns = json_decode($customDesigns, true) ?: [];
+                                            }
+                                            // Ensure it's an array
+                                            $customDesigns = is_array($customDesigns) ? $customDesigns : [];
+                                        @endphp
+
+                                        @if($customDesigns && count($customDesigns) > 0)
+                                            <div class="row">
+                                                @foreach($customDesigns as $index => $design)
+                                                    <div class="col-6 mb-2">
+                                                        <div class="card card-sm">
+                                                            <div class="card-body p-2">
+                                                                <h6 class="card-title mb-1" style="font-size: 12px;">{{ $design['name'] ?? 'Design ' . ($index + 1) }}</h6>
+                                                                @if(isset($design['image']) && $design['image'])
+                                                                    <img src="{{ $design['image'] }}" alt="Custom Design" class="img-fluid rounded mb-1" style="max-width: 80px; height: auto;">
+                                                                @endif
+                                                                 <small class="text-muted d-block">Print Type: {{ $design['decoration'] ?? 'Unknown' }} <br> Print Side: {{ ucfirst($design['side'] ?? 'front') }}</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
 
                                         @else
-                                        No custom image provided.
+                                            No custom designs provided.
                                         @endif
                                     </td>
                                 </tr>

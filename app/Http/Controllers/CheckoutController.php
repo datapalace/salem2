@@ -53,7 +53,45 @@ class CheckoutController extends Controller
         return redirect()->route('checkout.payment');
     }
 
+    /**
+     * View custom designs for a specific order
+     */
+    public function viewOrderDesigns($orderId)
+    {
+        $order = Order::with('product')->findOrFail($orderId);
 
+        // Check if user owns this order
+        if (auth('customer')->id() !== $order->user_id) {
+            abort(403, 'Unauthorized');
+        }
+
+        $customDesigns = $order->custom_designs ?? [];
+
+        return view('order-designs', compact('order', 'customDesigns'));
+    }
+
+    /**
+     * Get design data for re-editing (loads design back to canvas)
+     */
+    public function getDesignData($orderId, $designIndex)
+    {
+        $order = Order::findOrFail($orderId);
+
+        // Check if user owns this order
+        if (auth('customer')->id() !== $order->user_id) {
+            abort(403, 'Unauthorized');
+        }
+
+        $customDesigns = $order->custom_designs ?? [];
+
+        if (!isset($customDesigns[$designIndex])) {
+            return response()->json(['error' => 'Design not found'], 404);
+        }
+
+        return response()->json([
+            'design' => $customDesigns[$designIndex]
+        ]);
+    }
 
     public function checkout(Request $request)
     {
@@ -77,6 +115,10 @@ class CheckoutController extends Controller
         $user = Auth::guard('customer')->user(); // Use the user guard
         $me = $user->id ?? null;
 
+        if (!$checkoutData) {
+            return redirect()->route('welcome')->with('error', 'No checkout data found.');
+        }
+
         // validate the shipping information
         $request->validate([
 
@@ -96,14 +138,13 @@ class CheckoutController extends Controller
             'user_id' => $me,
             'product_id' => $checkoutData['product_id'],
             'sizes' => $checkoutData['sizes'],
-            'custom_design' => $checkoutData['custom_design_raw'],
+            'custom_designs' => json_encode($checkoutData['custom_designs'] ?? []), // Save custom designs as JSON
             'product_title' => $checkoutData['product_title'],
             'unit_price' => $checkoutData['unit_price'],
             'embroidery_price' => $checkoutData['embroidery_price'],
             'total_price' => $checkoutData['total_price'],
             'decoration_price' => $checkoutData['decoration_price'],
             'custom_image' => $checkoutData['custom_image'],
-            'custom_side' => $checkoutData['custom_side'],
             // submit payment ref from stripe
             'ref' => $ref,
             // generate a unique 13 digit number, number only, not alpanumeric
@@ -124,11 +165,15 @@ class CheckoutController extends Controller
             'company_name' => $request->input('company_name'),
         ]);
 
-        // clear the checkout data from the session
+        // clear the custom designs and checkout data from the session
+        session()->forget('custom_designs');
         session()->forget('checkout_data');
+
         // dd($order->id . ' ' . $shipping->id);
         // Only fetch what you need for the About Us page
-        Mail::to($request->email)->send(new NewOrderStatus($order));
+        if ($request->filled('email')) {
+            Mail::to($request->email)->send(new NewOrderStatus($order));
+        }
         Mail::to('lawalsherifoyetola2019@gmail.com')->send(new AdminNewOrderStatus($order));
 
 
