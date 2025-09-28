@@ -1026,7 +1026,7 @@
         var $loading = $('#galleryLoading');
         if ($gallery.children().length === 0) { // Only load if not already loaded
             $loading.show();
-            $.get('{{ route("custom.gallery.images") }}',
+            $.get('{{ route('custom.gallery.images') }}',
                 function(data) {
                     $gallery.empty();
                     data.images.forEach(function(url) {
@@ -1302,7 +1302,7 @@
                     const decorationType = $('[name="decorationType"]:checked').attr('id') ===
                         'embroideryOption' ? 'embroidery' : 'print';
 
-                    $.post('{{ route("save.design") }}', {
+                    $.post('{{ route('save.design') }}', {
                             _token: '{{ csrf_token() }}',
                             design: designData,
                             image: imageData,
@@ -1525,7 +1525,7 @@
                         const decorationType = $('[name="decorationType"]:checked')
                             .attr('id') === 'embroideryOption' ? 'embroidery' : 'print';
 
-                        $.post('{{ route("save.design") }}', {
+                        $.post('{{ route('save.design') }}', {
                                 _token: '{{ csrf_token() }}',
                                 design: designData,
                                 image: imageData,
