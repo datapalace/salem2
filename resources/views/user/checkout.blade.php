@@ -204,11 +204,17 @@
                                         <input class="form-control font-sm" required type="text" value="{{ $lastName }}" placeholder="Last name*">
                                     </div>
                                 </div>
+                                 <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" readonly type="text" placeholder="Email*" value="{{ $user ? $user->email : '' }}" name="email">
+                                    </div>
+                                </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <input class="form-control font-sm" required type="text" placeholder="Address 1*" name="address">
                                     </div>
                                 </div>
+                                
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <input class="form-control font-sm" name="address2" type="text" placeholder="Address 2">
