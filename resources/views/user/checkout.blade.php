@@ -39,6 +39,57 @@
                                 <h5 class="font-md-bold color-brand-3 text-sm-start text-center">
                                 </h5>
                             </div>
+                              <script>
+        window.onload = function() {
+
+
+            const password = document.getElementById('password');
+            const repassword = document.getElementById('repassword');
+            const checkagree = document.getElementById('checkagree');
+            const signupBtn = document.getElementById('signupBtn');
+            const passwordHelp = document.getElementById('passwordHelp');
+            const agreementHelp = document.getElementById('agreementHelp');
+
+            function validateForm() {
+                const passMatch = password.value && repassword.value && password.value === repassword.value;
+                passwordHelp.style.display = passMatch || (!password.value && !repassword.value) ? 'none' : 'block';
+
+                if (!checkagree.checked) {
+                    agreementHelp.style.display = 'block';
+                } else {
+                    agreementHelp.style.display = 'none';
+                }
+
+                signupBtn.disabled = !(passMatch && checkagree.checked);
+            }
+
+            password.addEventListener('input', validateForm);
+            repassword.addEventListener('input', validateForm);
+            checkagree.addEventListener('change', validateForm);
+        };
+    </script>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button class="nav-link active text-dark" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Login</button>
@@ -468,34 +519,6 @@
     </section>
 
     @endsection
-    <script>
-        window.onload = function() {
 
-
-            const password = document.getElementById('password');
-            const repassword = document.getElementById('repassword');
-            const checkagree = document.getElementById('checkagree');
-            const signupBtn = document.getElementById('signupBtn');
-            const passwordHelp = document.getElementById('passwordHelp');
-            const agreementHelp = document.getElementById('agreementHelp');
-
-            function validateForm() {
-                const passMatch = password.value && repassword.value && password.value === repassword.value;
-                passwordHelp.style.display = passMatch || (!password.value && !repassword.value) ? 'none' : 'block';
-
-                if (!checkagree.checked) {
-                    agreementHelp.style.display = 'block';
-                } else {
-                    agreementHelp.style.display = 'none';
-                }
-
-                signupBtn.disabled = !(passMatch && checkagree.checked);
-            }
-
-            password.addEventListener('input', validateForm);
-            repassword.addEventListener('input', validateForm);
-            checkagree.addEventListener('change', validateForm);
-        };
-    </script>
 
 
