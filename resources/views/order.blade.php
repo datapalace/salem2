@@ -48,9 +48,10 @@
 
 
                                         <td>
-                                            @php
+                                            <!-- @php
 
-                                            $sizes = json_decode($order['sizes'], true);
+                                           $sizes = is_string($order->sizes) ? json_decode($order->sizes, true) : $order->sizes;
+                        
                                             @endphp
                                             @if(is_array($sizes))
 
@@ -66,7 +67,7 @@
 
                                             @endif
                                             Total:
-                                            {{ collect(json_decode($order['sizes'], true))->sum() }}
+                                            {{ collect(json_decode($order['sizes'], true))->sum() }} -->
                                         </td>
                                         <td>{{ $order->total_price }}</td>
                                         <td>PAID</td>

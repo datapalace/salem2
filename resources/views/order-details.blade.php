@@ -61,6 +61,36 @@ use Illuminate\Support\Str;
                                     <div class="info-title"><strong>Custom Design</strong></div><br>
                                     <div class="info-content">
                                         <img src="data:image/png;base64,{{ $order->custom_design }}" alt="Custom Image" style="max-width:100%;">
+                                         @php
+                                            $customDesigns = $order->custom_designs;
+                                            // Handle case where custom_designs might be a JSON string
+                                            if (is_string($customDesigns)) {
+                                                $customDesigns = json_decode($customDesigns, true) ?: [];
+                                            }
+                                            // Ensure it's an array
+                                            $customDesigns = is_array($customDesigns) ? $customDesigns : [];
+                                        @endphp
+
+                                        @if($customDesigns && count($customDesigns) > 0)
+                                            <div class="row">
+                                                @foreach($customDesigns as $index => $design)
+                                                    <div class="col-6 mb-2">
+                                                        <div class="card card-sm">
+                                                            <div class="card-body p-2">
+                                                                <h6 class="card-title mb-1" style="font-size: 12px;">{{ $design['name'] ?? 'Design ' . ($index + 1) }}</h6>
+                                                                @if(isset($design['image']) && $design['image'])
+                                                                    <img src="{{ $design['image'] }}" alt="Custom Design" class="img-fluid rounded mb-1" style="max-width: 80px; height: auto;">
+                                                                @endif
+                                                                 <small class="text-muted d-block">Print Type: {{ $design['decoration'] ?? 'Unknown' }} <br> Print Side: {{ ucfirst($design['side'] ?? 'front') }}</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+
+                                        @else
+                                            No custom designs provided.
+                                        @endif
                                     </div>
                                 </address>
                             </div>
@@ -87,25 +117,8 @@ use Illuminate\Support\Str;
                                                 <td class="text-center"><strong><img class="product-img tbl-img" src="{{ $order->custom_image ?? 'No Image' }}"></strong></td>
                                                 <td class="text-center"><strong>{{ $order->product->title }}</strong></td>
                                                 <td class="text-center"><strong>{{ $order->unit_price }}</strong></td>
-                                                @php
-
-                                                $sizes = json_decode($order['sizes'], true);
-                                                @endphp
-                                                @if(is_array($sizes))
-
-                                                @foreach($sizes as $size => $qty)
-                                                @php
-                                                // Clean the key to extract size only (e.g., "L" from "sizes[L]")
-                                                $cleanSize = Str::between($size, '[', ']');
-                                                @endphp
-                                                @if($qty > 0)
-                                                {{ strtoupper($cleanSize) }}-{{ $qty }},
-                                                @endif
-                                                @endforeach
-
-                                                @endif
-                                                <td class="text-right">{{ collect(json_decode($order['sizes'], true))->sum() }}</td>
-                                                <td class="text-right"><strong>{{ $order->total_price }}</strong></td>
+                                                
+                                                 <td class="text-right"><strong>{{ $order->total_price }}</strong></td>
 
                                             </tr>
                                         </tbody>
