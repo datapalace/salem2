@@ -52,7 +52,6 @@
 
                                             @endif<br>
 
-                            <strong>Custom Side:</strong> {{ $order->custom_side ?? '-' }}<br>
                             @if($order->custom_image)
                             <table class="table table-bordered mt-3">
                                 <tr>
@@ -68,7 +67,7 @@
                                         No custom image provided.
                                         @endif
                                     </td>
-                                    <td>
+                                    <td style="vertical-align: top;">
                                         @php
                                             $customDesigns = $order->custom_designs;
                                             // Handle case where custom_designs might be a JSON string
@@ -89,7 +88,7 @@
                                                                 @if(isset($design['image']) && $design['image'])
                                                                     <img src="{{ $design['image'] }}" alt="Custom Design" class="img-fluid rounded mb-1" style="max-width: 80px; height: auto;">
                                                                 @endif
-                                                                 <small class="text-muted d-block">Print Type: {{ $design['decoration'] ?? 'Unknown' }} <br> Print Side: {{ ucfirst($design['side'] ?? 'front') }}</small>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -108,13 +107,55 @@
                         </div>
                         <hr>
                         <div class="mb-3">
-                            <strong>Unit Price:</strong> £{{ number_format($order->unit_price, 2) }}<br>
-                            <strong>Print Type:</strong> {{ $order->decoration_type }}<br>
-                             @if ($order['decoration_type'] === 'embroidery')
-                            <strong>Embroidery Price:</strong> £{{ number_format($order->embroidery_price, 2) }}<br>
-                            <strong>Digitisation Price:</strong> £{{ number_format(15, 2) }}<br>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span><strong>Total Quantity:</strong></span>
+                                <span>{{ collect(json_decode($order['sizes'], true))->sum() }}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span><strong>Unit Price:</strong></span>
+                                <span>£{{ number_format($order->unit_price, 2) }}</span>
+                            </div>
+                            {{-- loop through custom designs to get prices based on decoration type --}}
+                            @php
+                                $i = 1;
+                                $totalPrice = 0;
+                            @endphp
+                            @foreach($customDesigns as $design)
+                                @if(isset($design['decoration']) && $design['decoration'] === 'print')
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span><strong>{{ $design['name'] ?? 'Design' }} {{ $i }} Price:</strong></span>
+                                        <span>£{{ number_format(13 * $order->unit_price, 2) }}</span>
+                                    </div>
+                                    @php
+                                        $totalPrice += 13 * $order->unit_price;
+                                        $i++;
+                                    @endphp
+                                @elseif(isset($design['decoration']) && $design['decoration'] === 'embroidery')
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                        <span><strong>{{ $design['name'] ?? 'Design' }} {{ $i }} Price:</strong></span>
+                                        <span>£{{ number_format(15 * $order->unit_price, 2) }}</span>
+                                    </div>
+                                    @php
+                                        $totalPrice += 15 * $order->unit_price;
+                                        $i++;
+                                    @endphp
+                                @endif
+                            @endforeach
+
+                            @if ($order['decoration_type'] === 'embroidery')
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span><strong>Embroidery Price:</strong></span>
+                                    <span>£{{ number_format($order->embroidery_price, 2) }}</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span><strong>Digitisation Price:</strong></span>
+                                    <span>£{{ number_format(15, 2) }}</span>
+                                </div>
                             @endif
-                            <strong>Total Price:</strong> <span class="text-success font-lg-bold">£{{ number_format($order->total_price, 2) }}</span>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span><strong>Total Price:</strong></span>
+                                <span class="text-success font-lg-bold">£{{ number_format($totalPrice, 2) }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

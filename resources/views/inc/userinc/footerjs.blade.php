@@ -17,8 +17,62 @@
     <script src="{{ asset ('userasset/js/vendors/jquery.countdown.min.js') }}"></script>
     <!-- Count down--><script src="{{ asset ('userasset/js/vendors/jquery.elevatezoom.js') }}"></script>
 <script src="{{ asset ('userasset/js/vendors/slick.js') }}"></script>
+    <!-- TEMPORARILY DISABLED - Testing mobile menu
     <script src="{{ asset ('userasset/js/main.js?v=3.0.0') }}"></script>
     <script src="{{ asset ('userasset/js/shop.js?v=1.2.1') }}"></script>
+    -->
+
+    <!-- Ensure Bootstrap components are properly initialized -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Debug: Check if Bootstrap is loaded
+        console.log('Bootstrap loaded:', typeof bootstrap !== 'undefined');
+        console.log('jQuery loaded:', typeof $ !== 'undefined');
+
+        // Initialize Bootstrap tooltips and popovers if they exist
+        if (typeof bootstrap !== 'undefined') {
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Initialize popovers
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl);
+            });
+
+            // Debug: Check accordion functionality
+            const accordionButtons = document.querySelectorAll('#mobileMenuAccordion .accordion-button');
+            console.log('Found accordion buttons:', accordionButtons.length);
+
+            accordionButtons.forEach(function(button, index) {
+                button.addEventListener('click', function() {
+                    console.log('Accordion button clicked:', index, this.textContent.trim());
+                });
+            });
+        } else {
+            console.error('Bootstrap not loaded! Mobile menu accordions will not work.');
+        }
+    });
+    </script>
+
+    <!-- Footer Links Orange Hover Styling -->
+    <style>
+    /* Footer Links Orange Hover Effect - Simple Color Change Only */
+    .footer .menu-footer li a:hover {
+        color: #E2B808 !important;
+    }
+
+    .footer .icon-socials:hover {
+        color: #E2B808 !important;
+    }
+
+    .footer .icon-socials:hover span {
+        color: #E2B808 !important;
+    }
+    </style>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         new Swiper('.swiper-testimonial', {
@@ -91,132 +145,98 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script>
-    const canvas = new fabric.Canvas('fabricCanvas');
+// Fabric.js Canvas Scripts - Wrapped to avoid conflicts
+(function() {
+    // Only initialize canvas if the fabricCanvas element exists
+    if (document.getElementById('fabricCanvas')) {
+        const fabricCanvas = new fabric.Canvas('fabricCanvas');
 
-    // Add some basic tools
-    function addText() {
-        const text = new fabric.Textbox('Enter text here', {
-            left: 100,
-            top: 100,
-            width: 200,
-            fontSize: 20
+        // Add some basic tools
+        window.addText = function() {
+            const text = new fabric.Textbox('Enter text here', {
+                left: 100,
+                top: 100,
+                width: 200,
+                fontSize: 20
+            });
+            fabricCanvas.add(text);
+            fabricCanvas.setActiveObject(text);
+        }
+
+        window.addRectangle = function() {
+            const rect = new fabric.Rect({
+                left: 50,
+                top: 50,
+                fill: 'red',
+                width: 100,
+                height: 100
+            });
+            fabricCanvas.add(rect);
+        }
+
+        window.removeSelected = function() {
+            const activeObject = fabricCanvas.getActiveObject();
+            if (activeObject) {
+                fabricCanvas.remove(activeObject);
+            }
+        }
+
+        window.saveCanvasAsImage = function() {
+            const dataURL = fabricCanvas.toDataURL({
+                format: 'png'
+            });
+
+            // For testing: show result
+            const img = new Image();
+            img.src = dataURL;
+            document.body.appendChild(img);
+
+            // Optionally, send this image to the server with AJAX
+        }
+
+        window.setCanvasBackground = function(imageURL) {
+            fabric.Image.fromURL(imageURL, function(img) {
+                fabricCanvas.setBackgroundImage(img, fabricCanvas.renderAll.bind(fabricCanvas), {
+                    scaleX: fabricCanvas.width / img.width,
+                    scaleY: fabricCanvas.height / img.height
+                });
+            });
+        }
+
+        // Set initial background (first gallery image)
+        const firstThumb = document.querySelector('.item-thumb img');
+        if (firstThumb) {
+            window.setCanvasBackground(firstThumb.dataset.url);
+        }
+
+        // Handle thumbnail clicks
+        document.querySelectorAll('.item-thumb img').forEach(img => {
+            img.addEventListener('click', function () {
+                const imageUrl = this.dataset.url;
+                window.setCanvasBackground(imageUrl);
+            });
         });
-        canvas.add(text);
-        canvas.setActiveObject(text);
-    }
 
-    function addRectangle() {
-        const rect = new fabric.Rect({
-            left: 50,
-            top: 50,
-            fill: 'red',
-            width: 100,
-            height: 100
+        // Handle thumb clicks
+        document.querySelectorAll('.thumb').forEach(img => {
+            img.addEventListener('click', function () {
+                window.setCanvasBackground(this.dataset.url);
+            });
         });
-        canvas.add(rect);
-    }
 
-    function removeSelected() {
-        const activeObject = canvas.getActiveObject();
-        if (activeObject) {
-            canvas.remove(activeObject);
+        window.uploadLogo = function(input) {
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = function (f) {
+                fabric.Image.fromURL(f.target.result, function (img) {
+                    img.scaleToWidth(100);
+                    fabricCanvas.add(img);
+                });
+            };
+            reader.readAsDataURL(file);
         }
     }
-
-    function saveCanvasAsImage() {
-        const dataURL = canvas.toDataURL({
-            format: 'png'
-        });
-
-        // For testing: show result
-        const img = new Image();
-        img.src = dataURL;
-        document.body.appendChild(img);
-
-        // Optionally, send this image to the server with AJAX
-    }
-</script>
-<script>
-    const canvas = new fabric.Canvas('fabricCanvas');
-
-    function setCanvasBackground(imageURL) {
-        fabric.Image.fromURL(imageURL, function(img) {
-            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-                scaleX: canvas.width / img.width,
-                scaleY: canvas.height / img.height
-            });
-        });
-    }
-
-    // Set initial background (first gallery image)
-    const firstThumb = document.querySelector('.item-thumb img');
-    if (firstThumb) {
-        setCanvasBackground(firstThumb.dataset.url);
-    }
-
-    // Handle thumbnail clicks
-    document.querySelectorAll('.item-thumb img').forEach(img => {
-        img.addEventListener('click', function () {
-            alert('Image URL: ' + this.dataset.url);
-            const imageUrl = this.dataset.url;
-            setCanvasBackground(imageUrl);
-        });
-    });
-</script>
-
-
-<script>
-    let canvas;
-
-
-
-    function setCanvasBackground(imageURL) {
-        fabric.Image.fromURL(imageURL, function(img) {
-            canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-                scaleX: canvas.width / img.width,
-                scaleY: canvas.height / img.height
-            });
-        });
-    }
-
-    document.querySelectorAll('.thumb').forEach(img => {
-        img.addEventListener('click', function () {
-            setCanvasBackground(this.dataset.url);
-        });
-    });
-
-    function addText() {
-        const text = new fabric.IText('Your Text', {
-            left: 50,
-            top: 50,
-            fontSize: 20,
-            fill: '#000'
-        });
-        canvas.add(text);
-    }
-
-    function uploadLogo(input) {
-        const file = input.files[0];
-        const reader = new FileReader();
-        reader.onload = function (f) {
-            fabric.Image.fromURL(f.target.result, function (img) {
-                img.scaleToWidth(100);
-                canvas.add(img);
-            });
-        };
-        reader.readAsDataURL(file);
-    }
-
-    function removeSelected() {
-        canvas.remove(canvas.getActiveObject());
-    }
-
-    function saveCanvasAsImage() {
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL();
-        link.download = 'custom-design.png';
-        link.click();
-    }
+})();
 </script>
 <script>
     var swiper = new Swiper('.swiper-horizontal-logos', {
@@ -245,45 +265,81 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 </script>
 <script>
+// Stripe integration - only run if card element exists
 document.addEventListener('DOMContentLoaded', async function () {
-    const stripe = Stripe('{{ config('services.stripe.key') }}');
-    const elements = stripe.elements();
-    const card = elements.create('card');
-    card.mount('#card-element');
+    const cardElement = document.getElementById('card-element');
+    if (!cardElement) return; // Exit if not on checkout page
 
-    // Fetch client secret from backend
-    let clientSecret = '';
-    await fetch('{{ route('checkout.stripe.intent') }}', {method: 'POST', headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}})
-        .then(res => res.json())
-        .then(data => { clientSecret = data.clientSecret; });
+    try {
+        const stripe = Stripe('{{ config('services.stripe.key') }}');
+        const elements = stripe.elements();
+        const card = elements.create('card');
+        card.mount('#card-element');
 
-    // Handle form submission
-    const form = document.getElementById('stripePaymentForm');
-    const checkoutform = document.getElementById('checkOutForm');
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        // Validate checkout form before payment
-        if (checkoutform && !checkoutform.checkValidity()) {
-            checkoutform.reportValidity();
-            return;
+        // Fetch client secret from backend
+        let clientSecret = '';
+        await fetch('{{ route('checkout.stripe.intent') }}', {method: 'POST', headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}})
+            .then(res => res.json())
+            .then(data => { clientSecret = data.clientSecret; })
+            .catch(err => console.log('Stripe intent error:', err));
+
+        // Handle form submission
+        const form = document.getElementById('stripePaymentForm');
+        const checkoutform = document.getElementById('checkOutForm');
+
+        if (form) {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                // Validate checkout form before payment
+                if (checkoutform && !checkoutform.checkValidity()) {
+                    checkoutform.reportValidity();
+                    return;
+                }
+
+                const payBtn = document.getElementById('payBtn');
+                if (payBtn) payBtn.disabled = true;
+
+                const {paymentIntent, error} = await stripe.confirmCardPayment(clientSecret, {
+                    payment_method: { card: card }
+                });
+
+                if (error) {
+                    const errorElement = document.getElementById('card-errors');
+                    if (errorElement) errorElement.textContent = error.message;
+                    if (payBtn) payBtn.disabled = false;
+                } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+                    // Submit the form to finalize order
+                    const paymentRef = document.getElementById('stripePaymentRef');
+                    if (paymentRef) paymentRef.value = paymentIntent.id;
+                    if (checkoutform) checkoutform.submit();
+                }
+            });
         }
+    } catch (error) {
+        console.log('Stripe initialization error:', error);
+    }
+});
+</script>
 
-        document.getElementById('payBtn').disabled = true;
-        //alert("button clicke");
-        const {paymentIntent, error} = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: { card: card }
-        });
+<!-- DISABLED jQuery Modal Script - Was causing mobile menu issues
+<script>
+$(document).ready(function() {
+    // 1. Add the modal HTML to your page (once, outside any loop)
+    $('body').append(`
 
-        if (error) {
-            document.getElementById('card-errors').textContent = error.message;
-            document.getElementById('payBtn').disabled = false;
-        } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-            // Submit the form to finalize order
-            document.getElementById('stripePaymentRef').value = paymentIntent.id; // Save payment reference
-            checkoutform.submit();
-        }
+    `);
+
+    // 2. Add a button to open the modal in your customizer toolbar (add this to your toolbar HTML)
+    $('#customCanvasToolbar').append(`
+      <button type="button" id="openServerImageModals" class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
+    `);
+
+    // 3. Show the modal when the button is clicked
+    $(document).on('click', '#openServerImageModal', function() {
+        $('#serverImageModal').modal('show');
     });
 });
 </script>
+-->
   </body>
 </html>

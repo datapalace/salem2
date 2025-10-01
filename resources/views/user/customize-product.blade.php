@@ -24,6 +24,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
     <!-- Include Fabric.js -->
+    <script>
+        // Function to change main image when thumbnail is clicked
+        function changeMainImage(imageUrl, thumbnailElement) {
+            // Update main image
+            const mainImage = document.getElementById('mainProductImage');
+            mainImage.src = imageUrl;
+
+            // Remove active class from all thumbnails
+            document.querySelectorAll('.thumbnail-wrapper').forEach(wrapper => {
+                wrapper.classList.remove('active');
+            });
+
+            // Add active class to clicked thumbnail
+            thumbnailElement.classList.add('active');
+        }
+    </script>
     <style>
         .slider-nav-thumbnails {
             max-height: 500px;
@@ -35,7 +51,84 @@
             color: white;
             border-color: #cdab02;
         }
+
+        /* Thumbnail Gallery Styles */
+        .thumbnail-wrapper {
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail-wrapper:hover {
+            opacity: 0.8;
+        }
+
+        .thumbnail-wrapper.active .item-thumb {
+            border: 3px solid #E2B808;
+            border-radius: 8px;
+        }
+
+        .thumbnail-wrapper .item-thumb {
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: border 0.3s ease;
+            overflow: hidden;
+        }
+
+        .thumbnail-wrapper .item-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #mainProductImage {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Text Formatting Mobile Responsive Styles */
+        .text-formatting-controls .btn {
+            font-size: 12px;
+        }
+
+        .text-formatting-controls .form-select {
+            font-size: 12px;
+        }
+
+        @media (max-width: 576px) {
+            .text-formatting-controls .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 11px;
+            }
+
+            .text-formatting-controls .form-select {
+                font-size: 11px;
+                padding: 0.25rem 0.5rem;
+            }
+
+            #fontColorPreview {
+                width: 10px !important;
+                height: 10px !important;
+            }
+        }
     </style>
+
+    <script>
+        // Show color picker when button is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('fontColorInputBtn');
+            const colorInput = document.getElementById('fontColorInput');
+            const preview = document.getElementById('fontColorPreview');
+
+            if (btn && colorInput && preview) {
+                btn.addEventListener('click', function() {
+                    colorInput.click();
+                });
+                colorInput.addEventListener('input', function() {
+                    preview.style.background = this.value;
+                });
+            }
+        });
+    </script>
     <main class="main">
 
         <div class="section-box">
@@ -58,20 +151,16 @@
                             <div class="galleries">
                                 <div class="detail-gallery">
                                     <div class="product-image-slider" id="product-image-slider">
-                                        @foreach ($product->galleries as $gallery)
-                                            <figure class="border-radius-10">
-
-                                                <img src="{{ $gallery->image_url }}" alt="product image">
-                                            </figure>
-                                        @endforeach
-
+                                        <figure class="border-radius-10">
+                                            <img src="{{ $product->galleries->first()->image_url }}" alt="product image" id="mainProductImage">
+                                        </figure>
                                     </div>
                                 </div>
                                 <div class="slider-nav-thumbnails" id="slider-nav-thumbnails">
-                                    @foreach ($product->galleries as $gallery)
-                                        <div>
+                                    @foreach ($product->galleries as $index => $gallery)
+                                        <div class="thumbnail-wrapper {{ $index === 0 ? 'active' : '' }}" onclick="changeMainImage('{{ $gallery->image_url }}', this)">
                                             <div class="item-thumb">
-                                                <img src="{{ $gallery->image_url }}" alt="product image">
+                                                <img src="{{ $gallery->image_url }}" alt="product image" width="500">
                                             </div>
                                         </div>
                                     @endforeach
@@ -172,12 +261,12 @@
                                                 class="form-control text-center size-input">
                                         </div>
                                     @endforeach
-                                    <h3>Total £<span id="pTotal"></span></h3>
+
                                 </div>
 
 
                             </div>
-
+<span style="color: white;" id="pTotal"></span>
                             {{-- Add this directly in your HTML after the sizes section --}}
                             <div id="customiseDivs" style="display:none;">
                                 <div class="card p-3 mb-3">
@@ -185,6 +274,7 @@
 
                                     <!-- Decoration Type FIRST, no default selection -->
                                     <div class="mb-2">
+                                        <h4>Step One</h4>
                                         <label class="form-label d-block mb-2">Decoration Type:</label>
                                         <div class="btn-group" role="group" aria-label="Decoration Type">
                                             <input type="radio" class="btn-check" name="decorationType"
@@ -202,6 +292,9 @@
 
                                     <!-- Mode selector: hidden until decoration type is picked -->
                                     <div class="mb-2" id="designModeGroup" style="display:none;">
+                                        <br>
+                                        <h4>Step Two</h4>
+                                        <label class="form-label d-block mb-2">Design Content:</label>
                                         <div class="btn-group" role="group" aria-label="Design Mode">
                                             <button type="button" class="btn btn-outline-warning btn-sm mode-btn"
                                                 data-mode="text" id="modeText">Add Text</button>
@@ -214,160 +307,173 @@
 
                                     <!-- Print position (radio buttons) -->
                                     <div class="mb-2" id="positionOptions">
+                                        <br>
+                                        <h4>Step Three</h4>
                                         <label class="form-label d-block mb-2">Print Position:</label>
                                         <div class="btn-group btn-group-sm" role="group" aria-label="Positions">
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_top"
-                                                value="front_top">
-                                            <label class="btn btn-outline-warning" for="pos_front_top">Front Top</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_left_chest" value="front_left_chest">
+                                            <label class="btn btn-outline-warning" for="pos_front_left_chest">Front Left Chest</label>
 
-                                            <input type="radio" class="btn-check" name="printPos"
-                                                id="pos_front_middle" value="front_middle">
-                                            <label class="btn btn-outline-warning" for="pos_front_middle">Front
-                                                Middle</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_right_chest" value="front_right_chest">
+                                            <label class="btn btn-outline-warning" for="pos_front_right_chest">Front Right Chest</label>
 
-                                            <input type="radio" class="btn-check" name="printPos"
-                                                id="pos_front_bottom" value="front_bottom">
-                                            <label class="btn btn-outline-warning" for="pos_front_bottom">Front
-                                                Bottom</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_centre_chest" value="front_centre_chest">
+                                            <label class="btn btn-outline-warning" for="pos_front_centre_chest">Front Centre Chest</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_top"
-                                                value="back_top">
-                                            <label class="btn btn-outline-warning" for="pos_back_top">Back Top</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_left_sleeve" value="left_sleeve">
+                                            <label class="btn btn-outline-warning" for="pos_left_sleeve">Left Sleeve</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_middle"
-                                                value="back_middle">
-                                            <label class="btn btn-outline-warning" for="pos_back_middle">Back
-                                                Middle</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_right_sleeve" value="right_sleeve">
+                                            <label class="btn btn-outline-warning" for="pos_right_sleeve">Right Sleeve</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_bottom"
-                                                value="back_bottom">
-                                            <label class="btn btn-outline-warning" for="pos_back_bottom">Back
-                                                Bottom</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_top_back" value="back_top_back">
+                                            <label class="btn btn-outline-warning" for="pos_back_top_back">Back Top Back</label>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_left_sleeve"
-                                                value="left_sleeve">
-                                            <label class="btn btn-outline-warning" for="pos_left_sleeve">Left
-                                                Sleeve</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_centre" value="back_centre">
+                                            <label class="btn btn-outline-warning" for="pos_back_centre">Back Centre</label>
 
-                                            <input type="radio" class="btn-check" name="printPos"
-                                                id="pos_right_sleeve" value="right_sleeve">
-                                            <label class="btn btn-outline-warning" for="pos_right_sleeve">Right
-                                                Sleeve</label>
+                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_bottom" value="back_bottom">
+                                            <label class="btn btn-outline-warning" for="pos_back_bottom">Back Bottom</label>
                                         </div>
                                     </div>
 
                                     <!-- Toolbar -->
-                                    <div class="d-flex flex-row align-items-start gap-3">
-                                        <!-- Toolbar (left) -->
-                                        <div id="customCanvasToolbar" class="mb-2 d-flex flex-column"
-                                            style="gap: 8px; min-width:180px;">
-                                            <!-- formatting group visible only in Text mode -->
-                                            <div id="textFormatting" style="display:none;">
-                                                <button type="button" id="addTextBtn"
-                                                    class="btn btn-outline-dark btn-sm mb-1">Add Text</button><span
-                                                    class="ms-2" style="display:inline-block; vertical-align:middle;">
-                                                    <i class="fas fa-arrow-left" id="arrowAnim"
-                                                        style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
-                                                </span><br>
-                                                <button type="button" id="fontColorInputBtn"
-                                                    class="btn btn-outline-dark btn-sm mb-1" title="Text Color">
-                                                    <span
-                                                        style="display:inline-block;width:18px;height:18px;background:#222222;border-radius:3px;vertical-align:middle;"
-                                                        id="fontColorPreview"></span>
-                                                    <input type="color" id="fontColorInput" value="#222222"
-                                                        style="opacity:0;width:0;height:0;position:absolute;">
-                                                    <span class="ms-1">Text Color</span>
-                                                </button>
-                                                <script>
-                                                    // Show color picker when button is clicked
-                                                    document.addEventListener('DOMContentLoaded', function() {
-                                                        const btn = document.getElementById('fontColorInputBtn');
-                                                        const colorInput = document.getElementById('fontColorInput');
-                                                        const preview = document.getElementById('fontColorPreview');
-                                                        btn.addEventListener('click', function() {
-                                                            colorInput.click();
-                                                        });
-                                                        colorInput.addEventListener('input', function() {
-                                                            preview.style.background = this.value;
-                                                        });
-                                                    });
-                                                </script>
-                                                <select id="fontFaceSelect" class="form-select form-select-sm mb-1"
-                                                    style="width:auto;">
-                                                    <option value="Arial">Arial</option>
-                                                    <option value="Times New Roman">Times New Roman</option>
-                                                    <option value="Courier New">Courier New</option>
-                                                    <option value="Verdana">Verdana</option>
-                                                    <option value="Georgia">Georgia</option>
-                                                </select>
-                                                <select id="fontSizeSelect" class="form-select form-select-sm mb-1"
-                                                    style="width:auto;">
-                                                    <option value="12">12</option>
-                                                    <option value="16">16</option>
-                                                    <option value="20">20</option>
-                                                    <option value="24" selected>24</option>
-                                                    <option value="32">32</option>
-                                                    <option value="40">40</option>
-                                                    <option value="48">48</option>
-                                                </select>
-                                                <div class="btn-group mb-1">
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                                                        id="boldTextBtn" title="Bold"><strong>B</strong></button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                                                        id="italicTextBtn" title="Italic"><em>I</em></button>
-                                                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                                                        id="underlineTextBtn" title="Underline"><u>U</u></button>
+                                    <div class="row g-2">
+                                        <!-- Toolbar: full width on mobile, left on desktop -->
+                                        <div class="col-12 col-md-4">
+                                            <div id="customCanvasToolbar" class="mb-2 d-flex flex-column"
+                                                style="gap: 8px; min-width:180px;">
+                                                <!-- formatting group visible only in Text mode -->
+                                                <div id="textFormatting" style="display:none;">
+                                                    <h4>Step Four</h4>
+                                                    <label class="form-label d-block mb-2">Add Text to Design:</label>
+
+                                                    <!-- Add Text Button -->
+                                                    <div class="mb-2">
+                                                        <button type="button" id="addTextBtn"
+                                                            class="btn btn-outline-dark btn-sm">Add Text</button>
+                                                        <span class="ms-2" style="display:inline-block; vertical-align:middle;">
+                                                            <i class="fas fa-arrow-left" id="arrowAnim"
+                                                                style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <!-- Text Formatting Controls - Mobile Responsive -->
+                                                    <div class="text-formatting-controls">
+                                                        <!-- Row 1: Text Color and Font Family -->
+                                                        <div class="row g-2 mb-2">
+                                                            <div class="col-12 col-sm-12">
+                                                                <button type="button" id="fontColorInputBtn"
+                                                                    class="btn btn-outline-dark btn-sm w-100" title="Text Color">
+                                                                    <span
+                                                                        style="display:inline-block;width:12px;height:12px;background:#222222;border-radius:2px;vertical-align:middle;"
+                                                                        id="fontColorPreview"></span>
+                                                                    <input type="color" id="fontColorInput" value="#222222"
+                                                                        style="opacity:0;width:0;height:0;position:absolute;">
+                                                                    <span class="ms-1 d-none d-sm-inline">Color</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12">
+                                                                <select id="fontFaceSelect" class="form-select form-select-sm">
+                                                                    <option value="Arial">Arial</option>
+                                                                    <option value="Times New Roman">Times</option>
+                                                                    <option value="Courier New">Courier</option>
+                                                                    <option value="Verdana">Verdana</option>
+                                                                    <option value="Georgia">Georgia</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-12 col-sm-12">
+                                                                <select id="fontSizeSelect" class="form-select form-select-sm">
+                                                                    <option value="12">12px</option>
+                                                                    <option value="16">16px</option>
+                                                                    <option value="20">20px</option>
+                                                                    <option value="24" selected>24px</option>
+                                                                    <option value="32">32px</option>
+                                                                    <option value="40">40px</option>
+                                                                    <option value="48">48px</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Row 2: Format Buttons (Bold, Italic, Underline) -->
+                                                        <div class="row g-2 mb-2">
+                                                            <div class="col-12">
+                                                                <div class="btn-group w-100" role="group">
+                                                                    <button type="button" class="btn btn-outline-secondary btn-sm flex-fill"
+                                                                        id="boldTextBtn" title="Bold">
+                                                                        <strong>B</strong>
+                                                                        <span class="d-none d-sm-inline ms-1">Bold</span>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-outline-secondary btn-sm flex-fill"
+                                                                        id="italicTextBtn" title="Italic">
+                                                                        <em>I</em>
+                                                                        <span class="d-none d-sm-inline ms-1">Italic</span>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-outline-secondary btn-sm flex-fill"
+                                                                        id="underlineTextBtn" title="Underline">
+                                                                        <u>U</u>
+                                                                        <span class="d-none d-sm-inline ms-1">Underline</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- upload/gallery controls (visible in upload/gallery modes) -->
+                                                <div id="imageControls" style="display:none;">
+                                                    <h4>Step Four</h4>
+                                                    <label class="form-label  mb-2" id="lc1" style="display: none">Upload image/logo to Design:</label>
+                                                    <label class="form-label  mb-2" id="lc2" style="display: none">Pick from our Design Gallery:</label>
+                                                    <button type="button" id="uploadImageBtn"
+                                                        class="btn btn-dark btn-sm mb-1">
+                                                        <i class="fas fa-upload"
+                                                            style="font-size:12px; margin-right:5px;"></i>Upload Image
+
+                                                    </button>
+                                                    <input type="file" id="uploadImageInput" accept="image/*"
+                                                        style="display:none;">
+
+                                                    <button type="button" id="openServerImageModal"
+                                                        class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
+                                                    <span class="ms-2" style="display:inline-block; vertical-align:middle;">
+                                                        <i class="fas fa-arrow-left" id="arrowAnim"
+                                                            style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
+                                                    </span>
+                                                    <style>
+                                                        @keyframes arrowBounce {
+                                                            0% {
+                                                                transform: translateX(0);
+                                                            }
+
+                                                            50% {
+                                                                transform: translateX(-8px);
+                                                            }
+
+                                                            100% {
+                                                                transform: translateX(0);
+                                                            }
+                                                        }
+                                                    </style>
+                                                </div>
+
+
+
+                                                <div id="savedDesignsList" class="mt-2"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Canvas: full width on mobile, right on desktop -->
+                                        <div class="col-12 col-md-8">
+                                            <div id="customCanvasWrapper" class="border rounded p-2 bg-light"
+                                                style="display:none;">
+                                                <canvas id="customCanvas" width="350" height="350"
+                                                    style="max-width:100%;height:auto;display:block;"></canvas>
+                                                    <div class="mt-2">
+                                                    <button type="button" id="saveDesignBtn"
+                                                        class="btn btn-dark btn-sm">Save Design</button>
+                                                    <small class="d-block text-muted mt-1">You can save max. of 3 designs/sides for a product.</small>
                                                 </div>
                                             </div>
-
-                                            <!-- upload/gallery controls (visible in upload/gallery modes) -->
-                                            <div id="imageControls" style="display:none;">
-                                                <button type="button" id="uploadImageBtn"
-                                                    class="btn btn-dark btn-sm mb-1">
-                                                    <i class="fas fa-upload"
-                                                        style="font-size:12px; margin-right:5px;"></i>Upload Image
-
-                                                </button>
-                                                <input type="file" id="uploadImageInput" accept="image/*"
-                                                    style="display:none;">
-                                                <button type="button" id="openServerImageModal"
-                                                    class="btn btn-outline-secondary btn-sm mb-1">Add from Gallery</button>
-                                                <span class="ms-2" style="display:inline-block; vertical-align:middle;">
-                                                    <i class="fas fa-arrow-left" id="arrowAnim"
-                                                        style="font-size:16px; color:#cdab02; animation: arrowBounce 1s infinite;"></i>
-                                                </span>
-                                                <style>
-                                                    @keyframes arrowBounce {
-                                                        0% {
-                                                            transform: translateX(0);
-                                                        }
-
-                                                        50% {
-                                                            transform: translateX(-8px);
-                                                        }
-
-                                                        100% {
-                                                            transform: translateX(0);
-                                                        }
-                                                    }
-                                                </style>
-                                            </div>
-
-                                            <div class="mt-2">
-                                                <button type="button" id="saveDesignBtn"
-                                                    class="btn btn-dark btn-sm">Save Design</button>
-                                                <small class="d-block text-muted mt-1">You can save multiple designs; each
-                                                    saved design stored in session.</small>
-                                            </div>
-
-
-                                            <div id="savedDesignsList" class="mt-2"></div>
-                                        </div>
-                                        <!-- Canvas (right, beside toolbar) -->
-                                        <div id="customCanvasWrapper" class="border rounded p-2 bg-light"
-                                            style="display:none;">
-                                            <canvas id="customCanvas" width="350" height="350"
-                                                style="max-width:100%;height:auto;display:block;"></canvas>
                                         </div>
                                     </div>
                                     <div id="customCanvasWrapper" class="border rounded p-2 bg-light"
@@ -937,7 +1043,7 @@
                 </div>
             </div>
         </div>
-        <section class="section-box mt-90 mb-50">
+        {{-- <section class="section-box mt-90 mb-50">
             <div class="container">
                 <ul class="list-col-5">
                     <li>
@@ -992,7 +1098,7 @@
                     </li>
                 </ul>
             </div>
-        </section>
+        </section> --}}
 
 
 
@@ -1225,7 +1331,7 @@
             $('[name="decorationType"]').closest('.mb-2').show(); // <-- Show decoration type
             $('#designModeGroup').hide(); // Hide mode until decoration picked
             $('#saveDesignBtn').hide();
-            $('#proceedCheckoutBtn').removeClass('d-none');
+            // Don't show checkout button here - only when designs are saved
             $(this).addClass('d-none');
             $('#textFormatting').hide();
             $('#imageControls').hide();
@@ -1263,11 +1369,13 @@
                 $('#imageControls').show();
                 $('#uploadImageBtn').show();
                 $('#openServerImageModal').hide();
+
             } else if (mode === 'gallery') {
                 $('#textFormatting').hide();
                 $('#imageControls').show();
                 $('#uploadImageBtn').hide();
                 $('#openServerImageModal').show();
+
             }
         });
 
@@ -1329,9 +1437,13 @@
                             </div>
                         `;
                             });
+                            // Show checkout button when designs exist
+                            $('#proceedCheckoutBtn').removeClass('d-none');
                         } else {
                             html =
                                 '<p class="text-center text-muted">No designs saved yet.</p>';
+                            // Hide checkout button when no designs
+                            $('#proceedCheckoutBtn').addClass('d-none');
                         }
                         $('#designPreviewContainer').html(html);
                     }, 'json');
@@ -1380,9 +1492,13 @@
             </div>
                             `;
                             });
+                            // Show checkout button when designs exist
+                            $('#proceedCheckoutBtn').removeClass('d-none');
                         } else {
                             html =
                                 '<p class="text-center text-muted">No designs saved yet.</p>';
+                            // Hide checkout button when no designs
+                            $('#proceedCheckoutBtn').addClass('d-none');
                         }
                         $('#designPreviewContainer').html(html);
                     }, 'json');
@@ -1413,8 +1529,12 @@
             </div>
         `;
                 });
+                // Show checkout button when designs exist on page load
+                $('#proceedCheckoutBtn').removeClass('d-none');
             } else {
                 html = '<p class="text-center text-muted">No designs saved yet.</p>';
+                // Hide checkout button when no designs on page load
+                $('#proceedCheckoutBtn').addClass('d-none');
             }
             $('#designPreviewContainer').html(html);
         }, 'json');
@@ -1478,11 +1598,17 @@
                     $('#imageControls').show();
                     $('#uploadImageBtn').show();
                     $('#openServerImageModal').hide();
+                     // change label content of id lc
+                        $('#lc1').show();
+                        $('#lc2').hide();
                 } else if (mode === 'gallery') {
                     $('#textFormatting').hide();
                     $('#imageControls').show();
                     $('#uploadImageBtn').hide();
                     $('#openServerImageModal').show();
+                     // change label content of id lc
+                    $('#lc2').show();
+                    $('#lc1').hide();
                 }
             });
         });
@@ -1551,11 +1677,19 @@
                                     </div>
                                 `;
                                 });
+                                // Show checkout button when designs exist
+                                $('#proceedCheckoutBtn').removeClass('d-none');
                             } else {
                                 html =
                                     '<p class="text-center text-muted">No designs saved yet.</p>';
+                                // Hide checkout button when no designs
+                                $('#proceedCheckoutBtn').addClass('d-none');
                             }
                             $('#designPreviewContainer').html(html);
+
+                            // Hide the save design button after successful save
+                            $('#saveDesignBtn').hide();
+
                         }, 'json');
                     }
                     if (window.customCanvas) {

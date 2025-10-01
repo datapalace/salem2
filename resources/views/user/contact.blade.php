@@ -1,5 +1,59 @@
 @extends('layout.usermaster')
 @section('usercontent')
+<style>
+    /* FAQ Accordion Orange Active State */
+  #faqAccordion .accordion-button {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  #faqAccordion .accordion-button:hover {
+    background-color: #fff8f0;
+    color: #E2B808;
+  }
+
+  #faqAccordion .accordion-button:not(.collapsed) {
+    background-color: #E2B808 !important;
+    color: #fff !important;
+    font-weight: 600;
+    box-shadow: none;
+  }
+
+  #faqAccordion .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+
+  #faqAccordion .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23333333'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  }
+
+  #faqAccordion .accordion-item {
+    border: 1px solid #e9ecef;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #faqAccordion .accordion-body {
+    background-color: #fff;
+    color: #666;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #faqAccordion .accordion-header {
+    margin-bottom: 0;
+  }
+
+  /* Smooth transition for accordion expand/collapse */
+  #faqAccordion .accordion-collapse {
+    transition: all 0.3s ease-in-out;
+  }
+</style>
 <main class="main">
     <div class="section-box">
         <div class="breadcrumbs-div mb-0">

@@ -200,3 +200,8 @@ Route::post('/remove-design', function(\Illuminate\Http\Request $request) {
     }
     return response()->json(['success' => false]);
 });
+
+// Standalone mobile menu test page
+Route::get('/mobilemenutest', function () {
+    return view('mobilemenutest');
+});

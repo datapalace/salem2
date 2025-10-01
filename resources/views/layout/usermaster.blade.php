@@ -1,9 +1,9 @@
 @include('inc.userinc.head')
 
 
-<!-- header and menu -->
-@include('inc.userinc.header')
-<!-- End header and menu -->
+<!-- Complete Header with Mobile Menu -->
+@include('inc.userinc.complete_header')
+<!-- End Complete Header -->
 
 <!-- Main Content -->
 @yield('usercontent')

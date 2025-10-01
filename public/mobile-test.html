@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+
+        .header {
+            background: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: #f0f0f0;
+            border: 2px solid #E2B808;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: #fff;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu-sidebar.active {
+            left: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            background: #f8f9fa;
+        }
+
+        .mobile-menu-close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            padding: 5px;
+            background: #E2B808;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>SALEM LOGO</div>
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <div class="mobile-menu-sidebar" id="mobileMenuSidebar">
+        <div class="mobile-menu-header">
+            <div>Mobile Menu</div>
+            <button class="mobile-menu-close" id="mobileMenuClose">×</button>
+        </div>
+        <div style="padding: 20px;">
+            <p>Home</p>
+            <p>Shop</p>
+            <p>Categories</p>
+            <p>Contact</p>
+        </div>
+    </div>
+
+    <div style="padding: 20px;">
+        <h1>Test Content</h1>
+        <p>Click the hamburger menu (three lines) in the top right to test the mobile menu.</p>
+        <p>It should slide in from the left with an overlay.</p>
+    </div>
+
+    <script>
+        console.log('Script starting...');
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuSidebar = document.getElementById('mobileMenuSidebar');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        console.log('Elements found:', {
+            toggle: !!mobileMenuToggle,
+            overlay: !!mobileMenuOverlay,
+            sidebar: !!mobileMenuSidebar,
+            close: !!mobileMenuClose
+        });
+
+        function openMobileMenu() {
+            console.log('Opening menu...');
+            mobileMenuOverlay.classList.add('active');
+            mobileMenuSidebar.classList.add('active');
+        }
+
+        function closeMobileMenu() {
+            console.log('Closing menu...');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenuSidebar.classList.remove('active');
+        }
+
+        mobileMenuToggle.addEventListener('click', function() {
+            console.log('Toggle clicked!');
+            openMobileMenu();
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
+            console.log('Close clicked!');
+            closeMobileMenu();
+        });
+
+        mobileMenuOverlay.addEventListener('click', function() {
+            console.log('Overlay clicked!');
+            closeMobileMenu();
+        });
+
+        console.log('Script loaded successfully');
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Debug</title>
+    <style>
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            border: 2px solid red;
+            background: yellow;
+        }
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+        }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-menu-sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: #fff;
+            z-index: 9999;
+            transition: left 0.3s ease;
+            padding: 20px;
+        }
+        .mobile-menu-sidebar.active {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile Menu Debug Test</h1>
+
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <div class="mobile-menu-sidebar" id="mobileMenuSidebar">
+        <h2>Mobile Menu</h2>
+        <p>This is the mobile menu content</p>
+        <button id="mobileMenuClose">Close</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuSidebar = document.getElementById('mobileMenuSidebar');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            console.log('Elements:', {
+                toggle: mobileMenuToggle,
+                overlay: mobileMenuOverlay,
+                sidebar: mobileMenuSidebar,
+                close: mobileMenuClose
+            });
+
+            function openMobileMenu() {
+                console.log('Opening mobile menu');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenuSidebar.classList.add('active');
+            }
+
+            function closeMobileMenu() {
+                console.log('Closing mobile menu');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenuSidebar.classList.remove('active');
+            }
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function(e) {
+                    console.log('Toggle clicked');
+                    e.preventDefault();
+                    openMobileMenu();
+                });
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', function(e) {
+                    console.log('Close clicked');
+                    e.preventDefault();
+                    closeMobileMenu();
+                });
+            }
+
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', function(e) {
+                    console.log('Overlay clicked');
+                    e.preventDefault();
+                    closeMobileMenu();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

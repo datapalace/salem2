@@ -1,9 +1,45 @@
 @extends('layout.usermaster')
 @section('usercontent')
-<title>Shop - Salem Apparel</title>
-<meta name="description" content="Terms and Conditions for our website.">
-<meta name="keywords" content="terms, conditions, user agreement">
-<meta name="author" content="Salem Apparels">
+<title>Salem Apparel - Shop</title>
+<meta name="description" content="Shop for the latest apparel and accessories at Salem Apparel. Discover trendy clothing, shoes, and more to elevate your style.">
+<meta name="keywords" content="apparel, accessories, fashion, clothing, shoes, trendy, style">
+<meta name="author" content="Salem Apparel">
+
+<style>
+/* Pagination Orange Active State */
+.pagination .page-item.active .page-link {
+    background-color: #E2B808 !important;
+    border-color: #E2B808 !important;
+    color: #fff !important;
+}
+
+.pagination .page-item.active .page-link:hover {
+    background-color: #d4a306 !important;
+    border-color: #d4a306 !important;
+    color: #fff !important;
+}
+
+/* Light orange for non-active pagination items */
+.pagination .page-item:not(.active):not(.disabled) .page-link {
+    background-color: #f5e6a3 !important;
+    border-color: #f5e6a3 !important;
+    color: #fff !important;
+}
+
+.pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+    background-color: #E2B808 !important;
+    border-color: #E2B808 !important;
+    color: #fff !important;
+}
+
+/* Disabled pagination items */
+.pagination .page-item.disabled .page-link {
+    background-color: #e9ecef !important;
+    border-color: #dee2e6 !important;
+    color: #6c757d !important;
+}
+</style>
+
 <main class="main">
   <div class="section-box">
     <div class="breadcrumbs-div">
@@ -21,7 +57,6 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-9 order-first order-lg-last">
-          <div class="banner-ads-top mb-30"><a href="/shop"><img src="https://salemapparel.co.uk/userasset/imgs/page/homepage4/cloth_banner.jpg" alt="Salem Apparel"></a></div>
           <div class="box-filters mt-0 pb-5 border-bottom">
             <div class="row">
               <!-- <div class="col-xl-2 col-lg-3 mb-10 text-lg-start text-center"><a class="btn btn-filter font-sm color-brand-3 font-medium" href="#ModalFiltersForm" data-bs-toggle="modal">All Fillters</a></div> -->

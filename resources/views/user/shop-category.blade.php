@@ -3,7 +3,41 @@
 <title>Shop Category - Salem Apparel</title>
 <meta name="description" content="Explore our diverse range of custom apparel, including T-shirts, jackets, and headwear. Personalize your style with unique designs at Salem Apparel.">
 <meta name="keywords" content="Custom Apparel, T-shirts, Jackets, Headwear, Personalized Clothing, Salem Apparel">
-<meta name="author" content="Salem Apparel">    
+<meta name="author" content="Salem Apparel">
+<style>
+/* Pagination Orange Active State */
+.pagination .page-item.active .page-link {
+    background-color: #E2B808 !important;
+    border-color: #E2B808 !important;
+    color: #fff !important;
+}
+
+.pagination .page-item.active .page-link:hover {
+    background-color: #d4a306 !important;
+    border-color: #d4a306 !important;
+    color: #fff !important;
+}
+
+/* Light orange for non-active pagination items */
+.pagination .page-item:not(.active):not(.disabled) .page-link {
+    background-color: #f5e6a3 !important;
+    border-color: #f5e6a3 !important;
+    color: #fff !important;
+}
+
+.pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+    background-color: #E2B808 !important;
+    border-color: #E2B808 !important;
+    color: #fff !important;
+}
+
+/* Disabled pagination items */
+.pagination .page-item.disabled .page-link {
+    background-color: #e9ecef !important;
+    border-color: #dee2e6 !important;
+    color: #6c757d !important;
+}
+</style>
 <main class="main">
   <div class="section-box">
     <div class="breadcrumbs-div">
@@ -144,12 +178,12 @@
           <br>
 
           <div class="box-slider-item">
-            <div class="head pb-15 border-brand-2">
+            {{-- <div class="head pb-15 border-brand-2">
               <h5 class="color-gray-900">Product Tags</h5>
             </div>
             <div class="content-slider mb-50"><a class="btn btn-border mr-5" href="/shop">Headwears</a><a class="btn btn-border mr-5" href="/shop">Gloves</a></div>
-          </div>
-          <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.9</span>
+          </div> --}}
+          <div class="banner-right h-500 text-center mb-30"><span class="text-no font-11">No.1</span>
             <h5 class="font-23 mt-20">Fast Delivery<br class="d-none d-lg-block">is our priority</h5>
             <p class="text-desc font-16 mt-15">We deliver in no time</p><a href="/shop">Get Started</a>
           </div>

@@ -7,7 +7,7 @@
               alt="Salem Apparel"></div>
           <div class="info-right">
             <h5 class="font-lg-bold color-dark-100">Free Delivery</h5>
-            <p class="font-sm color-dark-500">From all orders over £10</p>
+            <p class="font-sm color-dark-500">From all orders over £1000</p>
           </div>
         </div>
       </li>
