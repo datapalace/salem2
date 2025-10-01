@@ -171,10 +171,9 @@ class CheckoutController extends Controller
 
         // dd($order->id . ' ' . $shipping->id);
         // Only fetch what you need for the About Us page
-        if ($request->filled('email')) {
-            Mail::to($request->email)->send(new NewOrderStatus($order));
-        }
-        Mail::to('lawalsherifoyetola2019@gmail.com')->send(new AdminNewOrderStatus($order));
+        
+            Mail::to($user->email)->send(new NewOrderStatus($order));
+            Mail::to('lawalsherifoyetola2019@gmail.com')->send(new AdminNewOrderStatus($order));
 
 
         return redirect("/order-details/{$order->id}");

@@ -51,7 +51,9 @@
                     <div class="info-orders me-3">
                       <h5>{{ $order->product_title }}</h5>
                       <p>
-                        @php $sizes = json_decode($order->sizes, true); @endphp
+                        @php
+                        $sizes = is_string($order->sizes) ? json_decode($order->sizes, true) : $order->sizes;
+                        @endphp
                         <strong>Size(s):</strong>
                         @if(is_array($sizes))
                         @foreach($sizes as $size => $qty)

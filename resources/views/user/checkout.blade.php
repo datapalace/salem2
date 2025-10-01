@@ -221,69 +221,70 @@
                                             : '';
                                     @endphp
 
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="form-control font-sm" type="text"
-                                                value="{{ $firstName }}" placeholder="First name*">
-                                        </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" type="text" value="{{ $firstName }}" placeholder="First name*">
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <input class="form-control font-sm" required type="text"
-                                                value="{{ $lastName }}" placeholder="Last name*">
-                                        </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" required type="text" value="{{ $lastName }}" placeholder="Last name*">
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <input class="form-control font-sm" required type="text"
-                                                placeholder="Address 1*" name="address">
-                                        </div>
+                                </div>
+                                 <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" readonly type="text" placeholder="Email*" value="{{ $user ? $user->email : '' }}" name="email">
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <input class="form-control font-sm" name="address2" type="text"
-                                                placeholder="Address 2">
-                                        </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" required type="text" placeholder="Address 1*" name="address">
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <select name="country"
-                                                class="form-control font-sm select-style1  color-gray-700">
-                                                <option value="">Select a country...</option>
-                                                <option selected value="United Kingdom">United Kingdom</option>
-                                                <option value="United States">United States</option>
-                                                <option value="Canada">Canada</option>
-                                                <option value="Australia">Australia</option>
-                                                <option value="Germany">Germany</option>
-                                                <option value="France">France</option>
-                                                <option value="Spain">Spain</option>
-                                                <option value="Italy">Italy</option>
-                                                <option value="Netherlands">Netherlands</option>
-                                                <option value="Sweden">Sweden</option>
-                                                <option value="India">India</option>
-                                                <option value="Japan">Japan</option>
-                                                <option value="China">China</option>
-                                                <option value="Brazil">Brazil</option>
-                                                <option value="Mexico">Mexico</option>
-                                                <option value="South Africa">South Africa</option>
-                                                <option value="Russia">Russia</option>
-                                                <option value="South Korea">South Korea</option>
-                                                <option value="Turkey">Turkey</option>
-                                                <option value="Saudi Arabia">Saudi Arabia</option>
-                                                <option value="Argentina">Argentina</option>
-                                                <option value="Poland">Poland</option>
-                                                <option value="Belgium">Belgium</option>
-                                                <option value="Switzerland">Switzerland</option>
-                                                <option value="Norway">Norway</option>
-                                                <option value="Denmark">Denmark</option>
-                                                <option value="Finland">Finland</option>
-                                                <option value="Ireland">Ireland</option>
-                                                <option value="Portugal">Portugal</option>
-                                                <option value="Greece">Greece</option>
-                                                <option value="Czech Republic">Czech Republic</option>
-                                                <option value="Hungary">Hungary</option>
-                                                <option value="Austria">Austria</option>
-                                                <option value="New Zealand">New Zealand</option>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input class="form-control font-sm" name="address2" type="text" placeholder="Address 2">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select name="country" class="form-control font-sm select-style1  color-gray-700">
+                                            <option value="">Select a country...</option>
+                                            <option selected value="United Kingdom">United Kingdom</option>
+                                            <option value="United States">United States</option>
+                                            <option value="Canada">Canada</option>
+                                            <option value="Australia">Australia</option>
+                                            <option value="Germany">Germany</option>
+                                            <option value="France">France</option>
+                                            <option value="Spain">Spain</option>
+                                            <option value="Italy">Italy</option>
+                                            <option value="Netherlands">Netherlands</option>
+                                            <option value="Sweden">Sweden</option>
+                                            <option value="India">India</option>
+                                            <option value="Japan">Japan</option>
+                                            <option value="China">China</option>
+                                            <option value="Brazil">Brazil</option>
+                                            <option value="Mexico">Mexico</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="Russia">Russia</option>
+                                            <option value="South Korea">South Korea</option>
+                                            <option value="Turkey">Turkey</option>
+                                            <option value="Saudi Arabia">Saudi Arabia</option>
+                                            <option value="Argentina">Argentina</option>
+                                            <option value="Poland">Poland</option>
+                                            <option value="Belgium">Belgium</option>
+                                            <option value="Switzerland">Switzerland</option>
+                                            <option value="Norway">Norway</option>
+                                            <option value="Denmark">Denmark</option>
+                                            <option value="Finland">Finland</option>
+                                            <option value="Ireland">Ireland</option>
+                                            <option value="Portugal">Portugal</option>
+                                            <option value="Greece">Greece</option>
+                                            <option value="Czech Republic">Czech Republic</option>
+                                            <option value="Hungary">Hungary</option>
+                                            <option value="Austria">Austria</option>
+                                            <option value="New Zealand">New Zealand</option>
 
                                             </select>
                                         </div>
