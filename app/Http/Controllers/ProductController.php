@@ -121,17 +121,22 @@ class ProductController extends Controller
             'attributes' => function ($query) {
                 $query->limit(2);
             }
+        ])
+        ->select('products.*')
+        ->latest()->paginate(15);
 
-        ])->latest()->inRandomOrder()->paginate(9);
+        // order by type alphabetical order
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')->inRandomOrder()->limit(10)
-            ->get();
+            ->groupBy('type')->orderBy('type')->get();
+
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
+        // by price low to high
+       // $productsByPrice = Product::with('galleries')->orderBy('price', 'asc')->paginate(9);
 
-        return view('user.shop', compact('products', 'shopByCatMenus', 'brands',));
+        return view('user.shop', compact('products', 'shopByCatMenus', 'brands'));
     }
 
     //shop by category
@@ -149,23 +154,173 @@ class ProductController extends Controller
             $query->where($column, $value); // additional filter
         }
 
-        $products = $query->latest()->inRandomOrder()->paginate(9);
+        $products = $query->latest()->paginate(15);
 
         $shopByCatMenus = Product::select('type')
             ->selectRaw('COUNT(*) as total')
-            ->groupBy('type')->inRandomOrder()->limit(10)
+            ->groupBy('type')
             ->get();
 
         $brands = Product::select('brand')->groupBy('brand')->inRandomOrder()->limit(6)->get();
 
-        return view('user.shop-category', compact('products', 'shopByCatMenus', 'brands'));
+        // Get all unique sizes from the products table for this category
+        $availableSizes = Product::where('type', $type)
+            ->whereNotNull('size')
+            ->where('size', '!=', '')
+            ->pluck('size')
+            ->flatMap(function ($sizes) {
+                // Split comma-separated sizes and clean them
+                return collect(explode(',', $sizes))
+                    ->map(function ($size) {
+                        return trim($size);
+                    })
+                    ->filter(function ($size) {
+                        return !empty($size);
+                    });
+            })
+            ->unique()
+            ->sort()
+            ->values();
+
+        // Get all unique colors from the products table for this category
+        $availableColors = Product::where('type', $type)
+            ->whereNotNull('rgb')
+            ->where('rgb', '!=', '')
+            ->pluck('rgb')
+            ->unique()
+            ->sort()
+            ->values()
+            ->map(function ($color) {
+                // Convert hex to color name for display
+                return [
+                    'hex' => $color,
+                    'name' => $this->getColorName($color)
+                ];
+            });
+
+        return view('user.shop-category', compact('products', 'shopByCatMenus', 'brands', 'availableSizes', 'availableColors'));
     }
 
+    // Filter products by size and price
+    public function filterProducts(Request $request)
+    {
+        $category = $request->input('category');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $sizes = $request->input('sizes', []);
+        $colors = $request->input('colors', []);
 
+        $query = Product::with([
+            'galleries',
+            'price',
+            'attributes' => function ($query) {
+                $query->limit(3);
+            }
+        ])->where('type', $category);
 
+        // Apply price filter
+        if ($minPrice || $maxPrice) {
+            $query->whereHas('price', function ($q) use ($minPrice, $maxPrice) {
+                if ($minPrice) {
+                    $q->where('single_list_price', '>=', $minPrice);
+                }
+                if ($maxPrice) {
+                    $q->where('single_list_price', '<=', $maxPrice);
+                }
+            });
+        }
 
+        // Apply size filter - using size column from products table
+        if (!empty($sizes)) {
+            $query->where(function ($q) use ($sizes) {
+                foreach ($sizes as $size) {
+                    $q->orWhere('size', 'LIKE', '%' . $size . '%');
+                }
+            });
+        }
 
+        // Apply color filter - using rgb column from products table
+        if (!empty($colors)) {
+            $query->whereIn('rgb', $colors);
+        }
 
+        $products = $query->latest()->get();
+
+        return response()->json([
+            'products' => $products,
+            'total' => $products->count()
+        ]);
+    }
+
+    // Helper method to convert hex color to readable name
+    private function getColorName($hex)
+    {
+        $colorMap = [
+            '#000000' => 'Black',
+            '#FFFFFF' => 'White',
+            '#FF0000' => 'Red',
+            '#00FF00' => 'Green',
+            '#0000FF' => 'Blue',
+            '#FFFF00' => 'Yellow',
+            '#FF00FF' => 'Magenta',
+            '#00FFFF' => 'Cyan',
+            '#808080' => 'Gray',
+            '#800000' => 'Maroon',
+            '#008000' => 'Dark Green',
+            '#000080' => 'Navy',
+            '#800080' => 'Purple',
+            '#008080' => 'Teal',
+            '#C0C0C0' => 'Silver',
+            '#FFA500' => 'Orange',
+            '#A52A2A' => 'Brown',
+            '#FFC0CB' => 'Pink',
+            '#FFD700' => 'Gold',
+            '#4B0082' => 'Indigo',
+            '#EE82EE' => 'Violet',
+            '#90EE90' => 'Light Green',
+            '#F0E68C' => 'Khaki',
+            '#DDA0DD' => 'Plum',
+            '#98FB98' => 'Pale Green',
+            '#F5DEB3' => 'Wheat',
+            '#D2691E' => 'Chocolate',
+            '#FF6347' => 'Tomato',
+            '#40E0D0' => 'Turquoise',
+            '#DA70D6' => 'Orchid',
+        ];
+
+        $hex = strtoupper($hex);
+
+        if (isset($colorMap[$hex])) {
+            return $colorMap[$hex];
+        }
+
+        // If exact match not found, return the hex code
+        return $hex;
+    }
+
+    // Get available sizes for a category
+    public function getCategorySizes($category)
+    {
+        $availableSizes = Product::where('type', $category)
+            ->whereNotNull('size')
+            ->where('size', '!=', '')
+            ->pluck('size')
+            ->flatMap(function ($sizes) {
+                // Split comma-separated sizes and clean them
+                return collect(explode(',', $sizes))
+                    ->map(function ($size) {
+                        return trim($size);
+                    })
+                    ->filter(function ($size) {
+                        return !empty($size);
+                    });
+            })
+            ->unique()
+            ->sort()
+            ->values();
+
+        return response()->json(['sizes' => $availableSizes]);
+    }
 
     // search products
     public function search(Request $request)

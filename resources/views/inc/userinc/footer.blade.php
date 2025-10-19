@@ -7,7 +7,7 @@
               alt="Salem Apparel"></div>
           <div class="info-right">
             <h5 class="font-lg-bold color-dark-100">Free Delivery</h5>
-            <p class="font-sm color-dark-500">From all orders over £1000</p>
+            <p class="font-sm color-dark-500">From all orders over £150</p>
           </div>
         </div>
       </li>
@@ -59,7 +59,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-7 col-sm-12">
-        <h3 class="color-white">Subscribe &amp; Get <span class="color-warning">10%</span> Discount</h3>
+        <h3 class="color-white">Subscribe &amp; Get <span class="">10%</span> Discount</h3>
         <p class="font-lg color-white">Get E-mail updates about our latest shop and <span
             class="font-lg-bold">special offers.</span></p>
       </div>
@@ -91,19 +91,19 @@
           <div class="font-md mb-20 color-dark-900"><strong class="font-md-bold">Phone:</strong> +447487384030
           </div>
           <div class="font-md mb-20 color-dark-900"><strong class="font-md-bold">E-mail:</strong> enquiry@salemapparel.co.uk</div>
-          <div class="font-md mb-20 color-dark-900"><strong class="font-md-bold">Opening Hours:</strong> 9:00 - 20:00, Mon - Sat</div>
+          <div class="font-md mb-20 color-dark-900"><strong class="font-md-bold">Opening Hours:</strong> 10:00AM - 07:00PM, Mon - Sat</div>
           {{-- <div class="mt-30"><a class="icon-socials icon-facebook" href="https://www.facebook.com/share/1Fu7DAVtQH/?mibextid=wwXIfr"></a><a class="icon-socials icon-instagram" href="https://www.instagram.com/salemappareluk?igsh=MXA0czB5Y25ueWN1eQ%3D%3D&utm_source=qr"></a><a class="icon-socials icon-twitter" href="https://x.com/salemappareluk?s=21"></a><a class="icon-socials icon-tiktok" href="https://www.tiktok.com/@salemappareluk?_t=ZN-8vjDBbUEBaY&_r=1"></a></div> --}}
         </div>
         <div class="col-lg-4 width-25 mb-30">
           <h4 class="mb-30 color-dark-1000">Important Links</h4>
           <ul class="menu-footer">
-            <li><a href="/about-us">About Us</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/contact-us">Contact Us</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Return &amp; Refund</a></li>
-            <li><a href="#">Pricing and Process</a></li>
-            <li><a href="#">FAQS</a></li>
+            <li><a href="/about-us" target="_blank">About Us</a></li>
+            <li><a href="/privacy-policy" target="_blank">Privacy Policy</a></li>
+            <li><a href="/contact-us" target="_blank">Contact Us</a></li>
+            <li><a href="/terms-conditions" target="_blank">Terms &amp; Conditions</a></li>
+            <li><a href="/return-refund" target="_blank">Return &amp; Refund</a></li>
+            <li><a href="/pricing-process" target="_blank">Pricing and Process</a></li>
+            <li><a href="/faqs" target="_blank">FAQS</a></li>
           </ul>
         </div>
         <div class="col-lg-4 width-25 mb-30">
@@ -124,10 +124,10 @@
           <h4 class="mb-30 color-dark-1000">Follow Us</h4>
           <p>
           <div class="mt-30">
-            <a class="icon-socials icon-facebook" href="https://www.facebook.com/share/1Fu7DAVtQH/?mibextid=wwXIfr"><span style="padding-left: 40px; color:black; font-weight:bolder;">FACEBOOK</span></a><hr>
-            <a class="icon-socials icon-instagram" href="https://www.instagram.com/salemappareluk?igsh=MXA0czB5Y25ueWN1eQ%3D%3D&utm_source=qr"><span style="padding-left: 40px; color:black; font-weight:bolder;">INSTAGRAM</span></a><hr>
-            <a class="icon-socials icon-twitter" href="https://x.com/salemappareluk?s=21"><span style="padding-left: 40px; color:black; font-weight:bolder;">TWITTER</span></a><hr>
-            <a class="icon-socials icon-tiktok" href="https://www.tiktok.com/@salemappareluk?_t=ZN-8vjDBbUEBaY&_r=1"><span style="padding-left: 40px; color:black; font-weight:bolder;">TIKTOK</span></a>
+            <a class="icon-socials icon-facebook" href="https://www.facebook.com/share/1Fu7DAVtQH/?mibextid=wwXIfr" target="_blank"><span style="padding-left: 40px; color:black; font-weight:bolder;">FACEBOOK</span></a><hr>
+            <a class="icon-socials icon-instagram" href="https://www.instagram.com/salemappareluk?igsh=MXA0czB5Y25ueWN1eQ%3D%3D&utm_source=qr" target="_blank"><span style="padding-left: 40px; color:black; font-weight:bolder;">INSTAGRAM</span></a><hr>
+            <a class="icon-socials icon-x" href="https://x.com/salemappareluk?s=21" target="_blank"><span style="padding-left: 40px; color:black; font-weight:bolder;">X</span></a><hr>
+            <a class="icon-socials icon-tiktok" href="https://www.tiktok.com/@salemappareluk?_t=ZN-8vjDBbUEBaY&_r=1" target="_blank"><span style="padding-left: 40px; color:black; font-weight:bolder;">TIKTOK</span></a>
           </div>
           </p>
           {{-- <ul class="menu-footer">

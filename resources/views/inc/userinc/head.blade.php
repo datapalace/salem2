@@ -9,6 +9,7 @@
     <meta name="description" content="Salem Apparel">
     <meta name="keywords" content="Home, page">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ ('userasset/imgs/template/logo.png') }}">
     <link href="{{ asset('userasset/css/style.css?v=3.0.0') }}" rel="stylesheet">
 

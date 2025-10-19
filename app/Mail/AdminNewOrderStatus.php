@@ -21,7 +21,7 @@ class AdminNewOrderStatus extends Mailable
 
     public function build()
     {
-        return $this->subject('Your Order Status Has Changed')
+        return $this->subject('New Order on Salem Apparel')
             ->view('emails.admin-new-order-status');
     }
 }

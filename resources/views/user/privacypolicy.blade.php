@@ -60,7 +60,7 @@
                                     <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
 
                                     <h6>9. Contact Us</h6>
-                                    <p>If you have any questions or concerns about our Privacy Policy, please contact us at <a href="mailto:support@salemapparels.com">support@salemapparels.com</a>.</p>
+                                    <p>If you have any questions or concerns about our Privacy Policy, please contact us at <a href="mailto:contact@salemapparel.co.uk">contact@salemapparel.co.uk</a>.</p>
                                 </div>
                             </div>
                         </div>

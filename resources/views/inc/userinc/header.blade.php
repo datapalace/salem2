@@ -44,6 +44,17 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
                     <li><a class="" href="/contact-us">Contact Us</a></li>
                   </ul>
                 </li>
+                <li class="has-children"><a href="#">Info</a>
+                  <ul class="sub-menu two-col">
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/contact-us">Contact Us</a></li>
+                    <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+                    <li><a href="/return-refund">Return &amp; Refund</a></li>
+                    <li><a href="/pricing-process">Pricing and Process</a></li>
+                    <li><a href="/faqs">FAQs</a></li>
+                  </ul>
+                </li>
                 <li class=""><a href="/shop">Shop</a></li>
               </ul>
             </nav>
@@ -595,12 +606,25 @@ $waist = DB::table('products')->where('type', 'Waistcoat')->first();
         <div class="mobile-menu-wrap mobile-header-border">
           <nav class="mt-15">
             <ul class="mobile-menu font-heading">
-              <li class="has-children"><a class=" active" href="#">Home</a>
+              <li class="has-children"><a class="" href="/">Home</a>
+                </li>
+              <li class="has-children"><a class=" active" href="#">About Us</a>
                 <ul class="sub-menu two-col">
-                  <li><a class="" href="/">Home</a></li>
+
                   <li><a class="" href="/about-us">About Us</a></li>
                   <li><a class="" href="/privacy-policy">Privacy Policy</a></li>
                   <li><a class="" href="/contact-us">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="has-children"><a href="#">Info</a>
+                <ul class="sub-menu two-col">
+                  <li><a href="/about-us">About Us</a></li>
+                  <li><a href="/privacy-policy">Privacy Policy</a></li>
+                  <li><a href="/contact-us">Contact Us</a></li>
+                  <li><a href="/terms-conditions">Terms &amp; Conditions</a></li>
+                  <li><a href="/return-refund">Return &amp; Refund</a></li>
+                  <li><a href="/pricing-process">Pricing and Process</a></li>
+                  <li><a href="/faqs">FAQs</a></li>
                 </ul>
               </li>
               <li class=""><a href="/shop">Shop</a></li>

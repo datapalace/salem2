@@ -319,6 +319,127 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.log('Stripe initialization error:', error);
     }
 });
+
+// Wishlist functionality
+function toggleWishlist(productId) {
+    console.log('toggleWishlist called with productId:', productId);
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]');
+    if (!csrfToken) {
+        console.error('CSRF token not found');
+        showWishlistToast('Error: Security token not found', 'error');
+        return;
+    }
+
+    console.log('CSRF token found:', csrfToken.getAttribute('content'));
+
+    fetch('/wishlist/toggle', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken.getAttribute('content')
+        },
+        body: JSON.stringify({
+            product_id: productId
+        })
+    })
+    .then(response => {
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+
+        // Check if response is JSON
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            console.error('Response is not JSON. Content-Type:', contentType);
+            throw new Error('Server returned non-JSON response');
+        }
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        if (data.success) {
+            // Update wishlist count in header
+            updateWishlistCount(data.wishlist_count);
+
+            // Update button state
+            const wishlistButton = document.querySelector(`[data-product-id="${productId}"]`);
+            if (wishlistButton) {
+                if (data.action === 'added') {
+                    wishlistButton.classList.add('active');
+                    wishlistButton.setAttribute('aria-label', 'Remove from Wishlist');
+                } else {
+                    wishlistButton.classList.remove('active');
+                    wishlistButton.setAttribute('aria-label', 'Add To Wishlist');
+                }
+            }
+
+            showWishlistToast(data.message, 'success');
+        } else {
+            if (data.redirect) {
+                // User needs to login
+                window.location.href = data.redirect;
+            } else {
+                showWishlistToast(data.message || 'Error updating wishlist', 'error');
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Wishlist error details:', error);
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+        showWishlistToast('Error updating wishlist: ' + error.message, 'error');
+    });function updateWishlistCount(count) {
+    const countElements = document.querySelectorAll('.wishlist-count-header');
+    countElements.forEach(element => {
+        element.textContent = count;
+        if (count > 0) {
+            element.style.display = 'flex';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+}
+
+function showWishlistToast(message, type = 'info') {
+    // Create toast if it doesn't exist
+    let toast = document.getElementById('wishlist-toast-global');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'wishlist-toast-global';
+        toast.className = 'toast-notification-global';
+        toast.innerHTML = '<div class="toast-content-global"><span id="toast-message-global"></span></div>';
+        document.body.appendChild(toast);
+    }
+
+    const toastMessage = document.getElementById('toast-message-global');
+    toastMessage.textContent = message;
+    toast.className = `toast-notification-global show ${type}`;
+    toast.style.display = 'block';
+
+    setTimeout(() => {
+        toast.style.display = 'none';
+        toast.className = 'toast-notification-global';
+    }, 3000);
+}
+
+// Load wishlist count on page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof updateWishlistCount === 'function') {
+        fetch('/wishlist/count')
+            .then(response => response.json())
+            .then(data => {
+                updateWishlistCount(data.count);
+            })
+            .catch(error => {
+                console.error('Error loading wishlist count:', error);
+            });
+    }
+});
 </script>
 
 <!-- DISABLED jQuery Modal Script - Was causing mobile menu issues

@@ -4477,6 +4477,14 @@ a.text-brand-3:hover {
   background: url(../imgs/template/icons/twitter.svg) no-repeat 0px 0px;
   transition-duration: 0.2s;
 }
+.footer .icon-socials.icon-x {
+  background: url(../imgs/template/icons/x-gray.svg) no-repeat 0px 0px;
+  transition-duration: 0.2s;
+}
+.footer .icon-socials.icon-x:hover {
+  background: url(../imgs/template/icons/x.svg) no-repeat 0px 0px;
+  transition-duration: 0.2s;
+}
 .footer .icon-socials.icon-instagram {
   background: url(../imgs/template/icons/instagram-gray.svg) no-repeat 0px 0px;
   transition-duration: 0.2s;
@@ -4491,6 +4499,14 @@ a.text-brand-3:hover {
 }
 .footer .icon-socials.icon-linkedin:hover {
   background: url(../imgs/template/icons/linkedin.svg) no-repeat 0px 0px;
+  transition-duration: 0.2s;
+}
+.footer .icon-socials.icon-tiktok {
+  background: url(../imgs/template/icons/tiktok-gray.svg) no-repeat 0px 0px;
+  transition-duration: 0.2s;
+}
+.footer .icon-socials.icon-tiktok:hover {
+  background: url(../imgs/template/icons/tiktok.svg) no-repeat 0px 0px;
   transition-duration: 0.2s;
 }
 .footer .width-20 {

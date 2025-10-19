@@ -69,7 +69,34 @@
                       </p>
                     </div>
                     <div class="price-orders">
-                      <h3>£{{ number_format($order->total_price, 2) }}</h3>
+                        @php
+                                $i = 1;
+                                $totalPrice = 0;
+                                $customDesigns = is_string($order->custom_designs) ? json_decode($order->custom_designs, true) : $order->custom_designs;
+                            @endphp
+                            {{-- check if custom designs is array and not empty --}}
+                            @if(is_array($customDesigns) && count($customDesigns) > 0)
+                                @foreach($customDesigns as $design)
+                                    @if(isset($design['decoration']) && $design['decoration'] === 'print')
+
+                                    @php
+                                        $totalPrice += 13 * collect(json_decode($order['sizes'], true))->sum();
+                                        $i++;
+                                    @endphp
+                                @elseif(isset($design['decoration']) && $design['decoration'] === 'embroidery')
+
+                                    @php
+                                        $totalPrice += 15 * collect(json_decode($order['sizes'], true))->sum();
+                                        $i++;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @else
+                                @php
+                                    $totalPrice = 0;
+                                @endphp
+                            @endif
+                      <h3>£{{ number_format($totalPrice, 2) }}</h3>
                     </div>
                   </div>
                 </div>

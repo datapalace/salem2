@@ -274,7 +274,7 @@
 
                                     <!-- Decoration Type FIRST, no default selection -->
                                     <div class="mb-2">
-                                        <h4>Step One</h4>
+                                        <h6>Step One</h6>
                                         <label class="form-label d-block mb-2">Decoration Type:</label>
                                         <div class="btn-group" role="group" aria-label="Decoration Type">
                                             <input type="radio" class="btn-check" name="decorationType"
@@ -293,7 +293,7 @@
                                     <!-- Mode selector: hidden until decoration type is picked -->
                                     <div class="mb-2" id="designModeGroup" style="display:none;">
                                         <br>
-                                        <h4>Step Two</h4>
+                                        <h6>Step Two</h6>
                                         <label class="form-label d-block mb-2">Design Content:</label>
                                         <div class="btn-group" role="group" aria-label="Design Mode">
                                             <button type="button" class="btn btn-outline-warning btn-sm mode-btn"
@@ -305,37 +305,301 @@
                                         </div>
                                     </div>
 
-                                    <!-- Print position (radio buttons) -->
+                                    <!-- Print position (visual t-shirt selector) -->
                                     <div class="mb-2" id="positionOptions">
                                         <br>
-                                        <h4>Step Three</h4>
+                                        <h6>Step Three</h6>
                                         <label class="form-label d-block mb-2">Print Position:</label>
-                                        <div class="btn-group btn-group-sm" role="group" aria-label="Positions">
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_left_chest" value="front_left_chest">
-                                            <label class="btn btn-outline-warning" for="pos_front_left_chest">Front Left Chest</label>
+                                        <p class="small text-muted mb-3">Click on the t-shirt area where you want your design printed:</p>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_right_chest" value="front_right_chest">
-                                            <label class="btn btn-outline-warning" for="pos_front_right_chest">Front Right Chest</label>
+                                        <!-- Hidden radio inputs -->
+                                        <input type="radio" class="d-none" name="printPos" id="pos_front_left_chest" value="front_left_chest">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_front_right_chest" value="front_right_chest">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_front_centre_chest" value="front_centre_chest">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_left_sleeve" value="left_sleeve">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_right_sleeve" value="right_sleeve">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_back_top_back" value="back_top_back">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_back_centre" value="back_centre">
+                                        <input type="radio" class="d-none" name="printPos" id="pos_back_bottom" value="back_bottom">
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_front_centre_chest" value="front_centre_chest">
-                                            <label class="btn btn-outline-warning" for="pos_front_centre_chest">Front Centre Chest</label>
+                                        <!-- Visual T-shirt Selector -->
+                                        <div class="tshirt-selector-container" style="max-width: 600px; margin: 0 auto;">
+                                            <div class="row g-3">
+                                                <!-- Front View -->
+                                                <div class="col-md-6">
+                                                    <div class="tshirt-view-card p-3 border rounded">
+                                                        <h6 class="text-center mb-3 fw-bold">Front View</h6>
+                                                        <div class="tshirt-front position-relative d-flex justify-content-center">
+                                                            <svg width="120" height="140" viewBox="0 0 120 140" class="tshirt-svg">
+                                                                <!-- T-shirt outline matching reference image exactly -->
+                                                                <path d="M30 25
+                                                                         C30 20 32 15 35 12
+                                                                         L40 10
+                                                                         C42 8 45 5 48 5
+                                                                         L52 5
+                                                                         C52 2 55 0 60 0
+                                                                         L60 0
+                                                                         C60 0 60 0 60 0
+                                                                         L60 0
+                                                                         C65 0 68 2 68 5
+                                                                         L72 5
+                                                                         C75 5 78 8 80 10
+                                                                         L85 12
+                                                                         C88 15 90 20 90 25
+                                                                         L90 35
+                                                                         L105 40
+                                                                         C108 41 110 43 110 46
+                                                                         L110 55
+                                                                         C110 58 108 60 105 59
+                                                                         L90 54
+                                                                         L90 125
+                                                                         C90 130 88 135 85 135
+                                                                         L35 135
+                                                                         C32 135 30 130 30 125
+                                                                         L30 54
+                                                                         L15 59
+                                                                         C12 60 10 58 10 55
+                                                                         L10 46
+                                                                         C10 43 12 41 15 40
+                                                                         L30 35
+                                                                         Z"
+                                                                      fill="white" stroke="#333" stroke-width="2"/>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_left_sleeve" value="left_sleeve">
-                                            <label class="btn btn-outline-warning" for="pos_left_sleeve">Left Sleeve</label>
+                                                                <!-- Neckline opening (curved inward) -->
+                                                                <path d="M50 5 C54 12 58 15 60 15 C62 15 66 12 70 5"
+                                                                      fill="white" stroke="#333" stroke-width="1.5"/>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_right_sleeve" value="right_sleeve">
-                                            <label class="btn btn-outline-warning" for="pos_right_sleeve">Right Sleeve</label>
+                                                                <!-- Neckline curve detail -->
+                                                                <path d="M50 5 C54 8 58 10 60 10 C62 10 66 8 70 5"
+                                                                      fill="none" stroke="#333" stroke-width="1"/>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_top_back" value="back_top_back">
-                                            <label class="btn btn-outline-warning" for="pos_back_top_back">Back Top Back</label>
+                                                                <!-- Clickable print areas -->
+                                                                <!-- Front Left Chest -->
+                                                                <rect x="35" y="35" width="20" height="15" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="front_left_chest"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="45" y="45" text-anchor="middle" font-size="8" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">L</text>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_centre" value="back_centre">
-                                            <label class="btn btn-outline-warning" for="pos_back_centre">Back Centre</label>
+                                                                <!-- Front Right Chest -->
+                                                                <rect x="65" y="35" width="20" height="15" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="front_right_chest"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="75" y="45" text-anchor="middle" font-size="8" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">R</text>
 
-                                            <input type="radio" class="btn-check" name="printPos" id="pos_back_bottom" value="back_bottom">
-                                            <label class="btn btn-outline-warning" for="pos_back_bottom">Back Bottom</label>
+                                                                <!-- Front Centre Chest -->
+                                                                <rect x="50" y="60" width="20" height="18" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="front_centre_chest"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="60" y="71" text-anchor="middle" font-size="8" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">C</text>
+
+                                                                <!-- Left Sleeve -->
+                                                                <rect x="92" y="45" width="12" height="8" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="left_sleeve"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="98" y="51" text-anchor="middle" font-size="6" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">LS</text>
+
+                                                                <!-- Right Sleeve -->
+                                                                <rect x="16" y="45" width="12" height="8" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="right_sleeve"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="22" y="51" text-anchor="middle" font-size="6" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">RS</text>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Back View -->
+                                                <div class="col-md-6">
+                                                    <div class="tshirt-view-card p-3 border rounded">
+                                                        <h6 class="text-center mb-3 fw-bold">Back View</h6>
+                                                        <div class="tshirt-back position-relative d-flex justify-content-center">
+                                                            <svg width="120" height="140" viewBox="0 0 120 140" class="tshirt-svg">
+                                                                <!-- T-shirt outline (back view - same shape) -->
+                                                                <path d="M30 25
+                                                                         C30 20 32 15 35 12
+                                                                         L40 10
+                                                                         C42 8 45 5 48 5
+                                                                         L52 5
+                                                                         C52 2 55 0 60 0
+                                                                         L60 0
+                                                                         C60 0 60 0 60 0
+                                                                         L60 0
+                                                                         C65 0 68 2 68 5
+                                                                         L72 5
+                                                                         C75 5 78 8 80 10
+                                                                         L85 12
+                                                                         C88 15 90 20 90 25
+                                                                         L90 35
+                                                                         L105 40
+                                                                         C108 41 110 43 110 46
+                                                                         L110 55
+                                                                         C110 58 108 60 105 59
+                                                                         L90 54
+                                                                         L90 125
+                                                                         C90 130 88 135 85 135
+                                                                         L35 135
+                                                                         C32 135 30 130 30 125
+                                                                         L30 54
+                                                                         L15 59
+                                                                         C12 60 10 58 10 55
+                                                                         L10 46
+                                                                         C10 43 12 41 15 40
+                                                                         L30 35
+                                                                         Z"
+                                                                      fill="white" stroke="#333" stroke-width="2"/>
+
+                                                                <!-- Clickable print areas -->
+                                                                <!-- Back Top -->
+                                                                <rect x="45" y="25" width="30" height="15" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="back_top_back"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="60" y="35" text-anchor="middle" font-size="8" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">TOP</text>
+
+                                                                <!-- Back Centre -->
+                                                                <rect x="45" y="50" width="30" height="25" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="back_centre"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="60" y="65" text-anchor="middle" font-size="8" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">CENTER</text>
+
+                                                                <!-- Back Bottom -->
+                                                                <rect x="45" y="85" width="30" height="20" fill="rgba(226, 184, 8, 0.4)"
+                                                                      class="position-area" data-position="back_bottom"
+                                                                      style="cursor: pointer;" rx="2"/>
+                                                                <text x="60" y="97" text-anchor="middle" font-size="8" fill="#333"
+                                                                      class="position-label" style="pointer-events: none;">BOTTOM</text>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                        <!-- Selected position display -->
+                                        <div class="selected-position text-center mt-3">
+                                            <span class="badge bg-secondary" id="selectedPositionDisplay">No position selected</span>
                                         </div>
                                     </div>
+
+                                    <!-- T-shirt Position Selector Styles -->
+                                    <style>
+                                        .tshirt-selector-container {
+                                            background: #f8f9fa;
+                                            border-radius: 15px;
+                                            padding: 25px;
+                                            border: 1px solid #dee2e6;
+                                            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                                        }
+
+                                        .tshirt-view-card {
+                                            background: white;
+                                            border-radius: 12px;
+                                            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                                            transition: transform 0.2s ease;
+                                        }
+
+                                        .tshirt-view-card:hover {
+                                            transform: translateY(-2px);
+                                            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+                                        }
+
+                                        .position-area {
+                                            transition: all 0.3s ease;
+                                            stroke: transparent;
+                                            stroke-width: 2;
+                                        }
+
+                                        .position-area:hover {
+                                            fill: rgba(226, 184, 8, 0.7) !important;
+                                            stroke: #E2B808;
+                                            stroke-width: 2;
+                                            filter: drop-shadow(0 2px 4px rgba(226, 184, 8, 0.3));
+                                        }
+
+                                        .position-area.selected {
+                                            fill: rgba(226, 184, 8, 0.9) !important;
+                                            stroke: #E2B808;
+                                            stroke-width: 3;
+                                            filter: drop-shadow(0 0 8px rgba(226, 184, 8, 0.6));
+                                        }
+
+                                        .position-label {
+                                            font-family: 'Arial', sans-serif;
+                                            font-weight: bold;
+                                            fill: #333;
+                                            transition: all 0.3s ease;
+                                        }
+
+                                        .position-area:hover + .position-label,
+                                        .position-area.selected + .position-label {
+                                            fill: #1a1a1a;
+                                            font-size: 9px;
+                                        }
+
+                                        .tshirt-svg {
+                                            max-width: 100%;
+                                            height: auto;
+                                            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+                                        }
+
+                                        @media (max-width: 768px) {
+                                            .tshirt-selector-container {
+                                                padding: 15px;
+                                            }
+                                            .tshirt-view-card {
+                                                margin-bottom: 15px;
+                                            }
+                                            .tshirt-svg {
+                                                width: 100px;
+                                                height: 120px;
+                                            }
+                                        }
+
+                                        .selected-position .badge {
+                                            font-size: 0.9rem;
+                                            padding: 8px 16px;
+                                            border-radius: 20px;
+                                        }
+                                    </style>                                    <!-- T-shirt Position Selector JavaScript -->
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            const positionAreas = document.querySelectorAll('.position-area');
+                                            const selectedDisplay = document.getElementById('selectedPositionDisplay');
+
+                                            const positionLabels = {
+                                                'front_left_chest': 'Front Left Chest',
+                                                'front_right_chest': 'Front Right Chest',
+                                                'front_centre_chest': 'Front Centre Chest',
+                                                'left_sleeve': 'Left Sleeve',
+                                                'right_sleeve': 'Right Sleeve',
+                                                'back_top_back': 'Back Top',
+                                                'back_centre': 'Back Centre',
+                                                'back_bottom': 'Back Bottom'
+                                            };
+
+                                            positionAreas.forEach(area => {
+                                                area.addEventListener('click', function() {
+                                                    // Remove selected class from all areas
+                                                    positionAreas.forEach(a => a.classList.remove('selected'));
+
+                                                    // Add selected class to clicked area
+                                                    this.classList.add('selected');
+
+                                                    // Update radio button
+                                                    const position = this.getAttribute('data-position');
+                                                    document.getElementById(`pos_${position}`).checked = true;
+
+                                                    // Update display
+                                                    selectedDisplay.textContent = positionLabels[position];
+                                                    selectedDisplay.className = 'badge bg-warning text-dark';
+                                                });
+                                            });
+                                        });
+                                    </script>
 
                                     <!-- Toolbar -->
                                     <div class="row g-2">
@@ -345,7 +609,7 @@
                                                 style="gap: 8px; min-width:180px;">
                                                 <!-- formatting group visible only in Text mode -->
                                                 <div id="textFormatting" style="display:none;">
-                                                    <h4>Step Four</h4>
+                                                    <h6>Step Four</h6>
                                                     <label class="form-label d-block mb-2">Add Text to Design:</label>
 
                                                     <!-- Add Text Button -->
@@ -422,7 +686,7 @@
 
                                                 <!-- upload/gallery controls (visible in upload/gallery modes) -->
                                                 <div id="imageControls" style="display:none;">
-                                                    <h4>Step Four</h4>
+                                                    <h6>Step Four</h6>
                                                     <label class="form-label  mb-2" id="lc1" style="display: none">Upload image/logo to Design:</label>
                                                     <label class="form-label  mb-2" id="lc2" style="display: none">Pick from our Design Gallery:</label>
                                                     <button type="button" id="uploadImageBtn"
@@ -502,7 +766,11 @@
                                     <div class="button-buy">
                                         <button id="loadCustom" class="btn btn-cart" type="button">Add
                                             Customisation</button>
-                                        <a class="btn btn-buy d-none" id="proceedCheckoutBtn">Proceed to Check Out</a>
+                                        @php
+                                            $customDesigns = session('custom_designs', []);
+                                            $hasDesigns = !empty($customDesigns);
+                                        @endphp
+                                        <a class="btn btn-buy {{ $hasDesigns ? '' : 'd-none' }}" id="proceedCheckoutBtn">Proceed to Check Out</a>
                                     </div>
                                     <script>
                                         // Side options
@@ -546,11 +814,15 @@
                                             // show customise area only after user clicks Add Customisation
                                             $('#loadCustom').on('click', function(e) {
                                                 e.preventDefault();
+
+                                                // Check if this is "Add More Customisation" button
+                                                const isAddMore = $(this).text().trim() === 'Add More Customisation';
+
                                                 $('#customiseDivs').show();
                                                 $('[name="decorationType"]').closest('.mb-2').show(); // <-- Show decoration type
                                                 $('#designModeGroup').hide(); // Hide mode until decoration picked
                                                 $('#saveDesignBtn').hide();
-                                                $('#proceedCheckoutBtn').removeClass('d-none');
+                                                // Don't show checkout button here - only show when designs are saved
                                                 $(this).addClass('d-none');
                                                 $('#textFormatting').hide();
                                                 $('#imageControls').hide();
@@ -610,23 +882,45 @@
                                             document.getElementById('uploadImageInput').addEventListener('change', function(e) {
                                                 const file = e.target.files[0];
                                                 if (!file) return;
+
+                                                // Validate file type
+                                                if (!file.type.startsWith('image/')) {
+                                                    alert('Please select an image file.');
+                                                    return;
+                                                }
+
                                                 const reader = new FileReader();
                                                 reader.onload = function(f) {
                                                     fabric.Image.fromURL(f.target.result, function(img) {
+                                                        // Scale image to fit canvas
+                                                        const canvasWidth = customCanvas.getWidth();
+                                                        const canvasHeight = customCanvas.getHeight();
+                                                        const imgScale = Math.min(
+                                                            (canvasWidth * 0.6) / img.width,
+                                                            (canvasHeight * 0.6) / img.height
+                                                        );
+
                                                         img.set({
-                                                            left: 100,
-                                                            top: 100,
-                                                            scaleX: 0.5,
-                                                            scaleY: 0.5
+                                                            left: canvasWidth / 2,
+                                                            top: canvasHeight / 2,
+                                                            originX: 'center',
+                                                            originY: 'center',
+                                                            scaleX: imgScale,
+                                                            scaleY: imgScale
                                                         });
                                                         customCanvas.add(img).setActiveObject(img);
+                                                        customCanvas.requestRenderAll();
                                                     });
                                                 };
                                                 reader.readAsDataURL(file);
+
+                                                // Reset the file input
+                                                e.target.value = '';
                                             });
 
                                             // Custom upload button click handler
                                             document.getElementById('uploadImageBtn').addEventListener('click', function() {
+                                                console.log('Upload button clicked');
                                                 document.getElementById('uploadImageInput').click();
                                             });
 
@@ -775,7 +1069,7 @@
                                             // validate if nameColor is selected
                                             const nameColor = document.querySelector('.nameColor');
                                             if (nameColor && nameColor.textContent === 'Select your favourite color') {
-                                                alert('Please select a color before proceeding.');
+                                                showAlert('Please select a color before proceeding.');
                                                 return;
                                             }
 
@@ -788,14 +1082,14 @@
                                                 }
                                             });
                                             if (!sizesSelected) {
-                                                alert('Please select at least one size with quantity greater than 0.');
+                                                showAlert('Please select at least one size with quantity greater than 0.');
                                                 return;
                                             }
 
                                             // validate total is not 0 or null
                                             const total = parseFloat($('#pTotal').text());
                                             if (isNaN(total) || total <= 0) {
-                                                alert('Please select a size and quantity before proceeding.');
+                                                showAlert('Please select a size and quantity before proceeding.');
                                                 return;
                                             }
 
@@ -858,9 +1152,7 @@
                                             // 9. Submit the form
                                             document.getElementById('customCheckoutForm').submit();
                                         });
-                                    </script>
-
-                                    <div>
+                                    </script>                                    <div>
 
                                     </div>
 
@@ -1043,6 +1335,83 @@
                 </div>
             </div>
         </div>
+
+        <!-- Swiper CSS and JS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var swiper = new Swiper('.swiper-group-3', {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    loop: true,
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 30,
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 40,
+                        },
+                    },
+                });
+            });
+        </script>
+
+        <!-- Custom Swiper Navigation Styling -->
+        <style>
+            .swiper-group-3 .swiper-button-next,
+            .swiper-group-3 .swiper-button-prev {
+                color: #E2B808 !important;
+                background: rgba(226, 184, 8, 0.1);
+                border-radius: 50%;
+                width: 44px !important;
+                height: 44px !important;
+                margin-top: -22px !important;
+                transition: all 0.3s ease;
+            }
+
+            .swiper-group-3 .swiper-button-next:hover,
+            .swiper-group-3 .swiper-button-prev:hover {
+                background: rgba(226, 184, 8, 0.2);
+                transform: scale(1.1);
+            }
+
+            .swiper-group-3 .swiper-button-next::after,
+            .swiper-group-3 .swiper-button-prev::after {
+                font-size: 18px !important;
+                font-weight: bold;
+            }
+
+            .swiper-group-3 .swiper-pagination-bullet {
+                background: #E2B808 !important;
+                opacity: 0.5;
+            }
+
+            .swiper-group-3 .swiper-pagination-bullet-active {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        </style>
         {{-- <section class="section-box mt-90 mb-50">
             <div class="container">
                 <ul class="list-col-5">
@@ -1127,6 +1496,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
     <script>
         $(document).on('click', '#openServerImageModal', function() {
+            console.log('Gallery button clicked');
             $('#serverImageModal').modal('show');
             var $gallery = $('#serverImageGallery');
             var $loading = $('#galleryLoading');
@@ -1134,28 +1504,47 @@
                 $loading.show();
                 $.get('{{ route('custom.gallery.images') }}', function(data) {
                     $gallery.empty();
-                    data.images.forEach(function(url) {
-                        $gallery.append(
-                            `<img src="${url}" alt="Gallery Image" class="img-thumbnail server-gallery-img" style="width:80px;height:80px;object-fit:cover;cursor:pointer;">`
-                        );
-                    });
+                    if (data.images && data.images.length > 0) {
+                        data.images.forEach(function(url) {
+                            $gallery.append(
+                                `<img src="${url}" alt="Gallery Image" class="img-thumbnail server-gallery-img" style="width:80px;height:80px;object-fit:cover;cursor:pointer;margin:5px;">`
+                            );
+                        });
+                    } else {
+                        $gallery.append('<p class="text-center">No images found in gallery.</p>');
+                    }
                     $loading.hide();
+                }).fail(function() {
+                    $loading.hide();
+                    $gallery.append('<p class="text-center text-danger">Failed to load gallery images.</p>');
                 });
             }
         });
 
-        // ADD THIS: Handle gallery image selection and add to canvas
+        // Handle gallery image selection and add to canvas
         $(document).on('click', '.server-gallery-img', function() {
             const imgSrc = $(this).attr('src');
+            console.log('Gallery image selected:', imgSrc);
             if (window.customCanvas) {
                 fabric.Image.fromURL(imgSrc, function(obj) {
+                    // Scale image to fit canvas
+                    const canvasWidth = customCanvas.getWidth();
+                    const canvasHeight = customCanvas.getHeight();
+                    const imgScale = Math.min(
+                        (canvasWidth * 0.6) / obj.width,
+                        (canvasHeight * 0.6) / obj.height
+                    );
+
                     obj.set({
-                        left: 80,
-                        top: 80,
-                        scaleX: 0.4,
-                        scaleY: 0.4
+                        left: canvasWidth / 2,
+                        top: canvasHeight / 2,
+                        originX: 'center',
+                        originY: 'center',
+                        scaleX: imgScale,
+                        scaleY: imgScale
                     });
                     customCanvas.add(obj).setActiveObject(obj);
+                    customCanvas.requestRenderAll();
                 });
             }
             $('#serverImageModal').modal('hide');
@@ -1290,6 +1679,24 @@
     </div>
 </div>
 
+<!-- Alert Modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="alertModalLabel">Alert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="alertModalBody">
+                <!-- Alert message will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <form id="customCheckoutForm" action="{{ route('checkout.custom') }}" method="POST" enctype="multipart/form-data"
     style="display:none;">
     @csrf
@@ -1314,6 +1721,29 @@
 </form>
 
 <script>
+    // Function to show alert modal
+    function showAlert(message, title = 'Alert') {
+       // console.log('showAlert called with:', message); // Debug log
+        $('#alertModalLabel').text(title);
+        $('#alertModalBody').text(message);
+
+        // Try different Bootstrap modal methods
+        try {
+            if (typeof bootstrap !== 'undefined') {
+                // Bootstrap 5
+                var modal = new bootstrap.Modal(document.getElementById('alertModal'));
+                modal.show();
+            } else {
+                // Bootstrap 4 or jQuery
+                $('#alertModal').modal('show');
+            }
+        } catch (e) {
+           // console.error('Modal error:', e);
+            // Fallback to regular alert
+            alert(message);
+        }
+    }
+
     $(document).ready(function() {
         // Hide all customisation controls initially
         $('#customiseDivs').hide();
@@ -1355,27 +1785,36 @@
 
         // Mode selection logic
         $('.mode-btn').on('click', function() {
-            $('.mode-btn').not(this).hide();
+            console.log('Mode button clicked:', $(this).data('mode'));
+            $('.mode-btn').removeClass('active');
             $(this).addClass('active');
             let mode = $(this).data('mode');
             $('#customCanvasWrapper').show(); // Show canvas
             $('#positionOptions').show();
             $('#saveDesignBtn').show();
+
             if (mode === 'text') {
+                console.log('Text mode activated');
                 $('#textFormatting').show();
                 $('#imageControls').hide();
+                $('#lc1').hide();
+                $('#lc2').hide();
             } else if (mode === 'upload') {
+                console.log('Upload mode activated');
                 $('#textFormatting').hide();
                 $('#imageControls').show();
                 $('#uploadImageBtn').show();
                 $('#openServerImageModal').hide();
-
+                $('#lc1').show();
+                $('#lc2').hide();
             } else if (mode === 'gallery') {
+                console.log('Gallery mode activated');
                 $('#textFormatting').hide();
                 $('#imageControls').show();
                 $('#uploadImageBtn').hide();
                 $('#openServerImageModal').show();
-
+                $('#lc1').hide();
+                $('#lc2').show();
             }
         });
 
@@ -1383,21 +1822,19 @@
         $('#saveDesignBtn').on('click', function() {
             // Ensure a decoration type is selected before saving
             if (!$('[name="decorationType"]:checked').length) {
-                alert(
-                    'Please select a decoration type (Print or Embroidery) before saving your design.');
+                showAlert('Please select a decoration type (Print or Embroidery) before saving your design.');
                 return;
             }
             // Ensure a print position is selected before saving
             if (!$('input[name="printPos"]:checked').length) {
-                alert('Please select a print position before saving your design.');
+                showAlert('Please select a print position before saving your design.');
                 return;
             }
 
             $.get('{{ url('/saved-designs-json') }}', function(resp) {
                 let currentCount = resp && resp.designs ? resp.designs.length : 0;
                 if (currentCount >= 3) {
-                    alert(
-                        'You have reached the maximum of 3 designs. Please remove one before adding a new design.');
+                    showAlert('You have reached the maximum of 3 designs. Please remove one before adding a new design.');
                     return;
                 }
                 if (window.customCanvas && customCanvas.getObjects().length > 0) {
@@ -1452,14 +1889,29 @@
                     customCanvas.clear();
                 }
                 $('#pos_front_top').prop('checked', false); // Uncheck after save
-                $('#designModeGroup').show();
                 $('.mode-btn').show().removeClass('active');
-                $('#textFormatting').hide();
-                $('#imageControls').hide();
-                $('#customCanvasWrapper').hide();
-                $('#positionOptions').hide();
-                $('#designModeGroup').hide();
+
+                // FIRST: Uncheck decoration type to prevent event handlers from firing
                 $('[name="decorationType"]').prop('checked', false);
+
+                // After saving design, change button text and show it, hide ALL customization elements
+                $('#loadCustom').text('Add More Customisation').removeClass('d-none');
+
+                // Use setTimeout to ensure hiding happens after any event handlers
+                setTimeout(function() {
+                    // Hide ALL customization related elements
+                    $('#customiseDivs').hide();
+                    $('#textFormatting').hide();
+                    $('#imageControls').hide();
+                    $('#positionOptions').hide();
+                    $('#customCanvasWrapper').hide();
+                    $('#saveDesignBtn').hide();
+                    $('#designModeGroup').hide();
+                    $('[name="decorationType"]').closest('.mb-2').hide();
+
+                    // Clear any active states
+                    $('.mode-btn').removeClass('active');
+                }, 100);
             }, 'json');
         });
         // Remove design from session and update preview section
@@ -1531,10 +1983,18 @@
                 });
                 // Show checkout button when designs exist on page load
                 $('#proceedCheckoutBtn').removeClass('d-none');
+                // Change button text to "Add More" if designs exist
+                $('#loadCustom').text('Add More Customisation');
+                // Hide decoration type selection when designs exist on page load
+                $('[name="decorationType"]').closest('.mb-2').hide();
             } else {
                 html = '<p class="text-center text-muted">No designs saved yet.</p>';
                 // Hide checkout button when no designs on page load
                 $('#proceedCheckoutBtn').addClass('d-none');
+                // Keep original button text if no designs
+                $('#loadCustom').text('Add Customisation');
+                // Keep decoration type hidden initially
+                $('[name="decorationType"]').closest('.mb-2').hide();
             }
             $('#designPreviewContainer').html(html);
         }, 'json');
@@ -1621,21 +2081,21 @@
                 // (keep your existing save logic inside this callback)
                 // Ensure a decoration type is selected before saving
                 if (!$('[name="decorationType"]:checked').length) {
-                    alert(
+                    showAlert(
                         'Please select a decoration type (Print or Embroidery) before saving your design.'
                         );
                     return;
                 }
                 // Ensure a print position is selected before saving
                 if (!$('input[name="printPos"]:checked').length) {
-                    alert('Please select a print position before saving your design.');
+                    showAlert('Please select a print position before saving your design.');
                     return;
                 }
 
                 $.get('{{ url('/saved-designs-json') }}', function(resp) {
                     let currentCount = resp && resp.designs ? resp.designs.length : 0;
                     if (currentCount >= 3) {
-                        alert(
+                        showAlert(
                             'You have reached the maximum of 3 designs. Please remove one before adding a new design.'
                             );
                         return;
@@ -1684,6 +2144,8 @@
                                     '<p class="text-center text-muted">No designs saved yet.</p>';
                                 // Hide checkout button when no designs
                                 $('#proceedCheckoutBtn').addClass('d-none');
+                                // Reset button text when no designs remain
+                                $('#loadCustom').text('Add Customisation');
                             }
                             $('#designPreviewContainer').html(html);
 

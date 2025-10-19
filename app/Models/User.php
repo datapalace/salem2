@@ -24,6 +24,11 @@ class User extends Authenticatable
         'password',
         'role',
         'username',
+        'phone',
+        'address',
+        'city',
+        'country',
+        'notification_preferences',
     ];
 
     /**
@@ -46,6 +51,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'notification_preferences' => 'array',
         ];
     }
 
@@ -55,9 +61,22 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
     // shipping relationship
     public function shipping()
     {
         return $this->hasMany(Shipping::class);
+    }
+
+    // wishlist relationship
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+    // wishlist products relationship
+    public function wishlistProducts()
+    {
+        return $this->belongsToMany(Product::class, 'wishlists');
     }
 }

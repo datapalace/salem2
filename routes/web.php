@@ -65,11 +65,23 @@ Route::middleware('auth:customer')->group(function () {
     //user Dashboard
     Route::get('/logout', [AuthController::class, 'logout']); // logout
 
-
     //my account
     Route::get('/my-account', [UserDashboardController::class, 'myAccount'])->name('my-account'); // my account
     Route::get('/my-account/orders', [UserDashboardController::class, 'orders'])->name('my-account.orders'); // my orders
 
+    // settings routes
+    Route::get('/settings', [UserDashboardController::class, 'settings'])->name('settings'); // settings page
+    Route::put('/settings/profile', [UserDashboardController::class, 'updateProfile'])->name('settings.update.profile'); // update profile
+    Route::put('/settings/password', [UserDashboardController::class, 'updatePassword'])->name('settings.update.password'); // update password
+    Route::put('/settings/notifications', [UserDashboardController::class, 'updateNotifications'])->name('settings.update.notifications'); // update notifications
+    Route::get('/settings/download-data', [UserDashboardController::class, 'downloadData'])->name('settings.download.data'); // download data
+    Route::delete('/settings/delete-account', [UserDashboardController::class, 'deleteAccount'])->name('settings.delete.account'); // delete account
+
+    // wishlist routes
+    Route::get('/wishlist', [App\Http\Controllers\WishlistController::class, 'index'])->name('wishlist.index'); // view wishlist
+    Route::post('/wishlist/add', [App\Http\Controllers\WishlistController::class, 'add'])->name('wishlist.add'); // add to wishlist
+    Route::delete('/wishlist/remove', [App\Http\Controllers\WishlistController::class, 'remove'])->name('wishlist.remove'); // remove from wishlist
+    Route::post('/wishlist/toggle', [App\Http\Controllers\WishlistController::class, 'toggle'])->name('wishlist.toggle'); // toggle wishlist
 
 });
 
@@ -85,6 +97,12 @@ Route::get('/custom-design', [ProductController::class, 'shopNow'])->name('shop-
 
 // shop by category
 Route::get('/shop/category/{type}/{column?}/{value?}', [ProductController::class, 'shopByCategory'])->name('shop-by-category');
+
+// filter products
+Route::post('/filter-products', [ProductController::class, 'filterProducts'])->name('filter-products');
+
+// get category sizes
+Route::get('/category-sizes/{category}', [ProductController::class, 'getCategorySizes'])->name('category-sizes');
 
 // view a product
 
@@ -104,6 +122,29 @@ Route::get('/terms-and-condition', [TermsAndConditionController::class, 'index']
 // privacy policy
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
 
+// new footer pages
+Route::get('/terms-conditions', function () {
+    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+    return view('user.terms-conditions', compact('shopByCatMenus'));
+})->name('terms-conditions');
+
+Route::get('/return-refund', function () {
+    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+    return view('user.return-refund', compact('shopByCatMenus'));
+})->name('return-refund');
+
+Route::get('/pricing-process', function () {
+    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+    return view('user.pricing-process', compact('shopByCatMenus'));
+})->name('pricing-process');
+
+Route::get('/faqs', function () {
+    $shopByCatMenus = Product::select('type')->groupBy('type')->get();
+    return view('user.faqs', compact('shopByCatMenus'));
+})->name('faqs');
+
+// wishlist count (public route)
+Route::get('/wishlist/count', [App\Http\Controllers\WishlistController::class, 'getCount'])->name('wishlist.count');
 
 Route::get('/search-products', [App\Http\Controllers\ProductController::class, 'search'])->name('products.search');
 

@@ -378,7 +378,7 @@
                                 </div>
 
                             </div>
-                            <p> <small>Please note the the colour of the design may change based on the colour of the
+                            <p> <small>Please note the the color of the design may change based on the colou of the
                                     material but it will be confirmed before production</small></p>
                         </div>
 
@@ -412,7 +412,7 @@
                                                         15 * collect(json_decode($c['sizes'], true))->sum();
                                                 }
                                             @endphp
-                                            <div class="mb-3 p-2 border rounded">
+                                            <div class="mb-3 p-2 border rounded font-md color-brand-3">
                                                 <div class="row">
                                                     <div class="col-md-4 text-center">
                                                         @if (!empty($design['image']))
@@ -427,7 +427,7 @@
                                                         <strong>Print Type:</strong>
                                                         {{ ucfirst($design['decoration'] ?? '') }}<br>
                                                         <strong>Print Position:</strong>
-                                                        {{ ucfirst($design['side'] ?? '') }}<br>
+                                                        {{ ucfirst(str_replace('_', ' ', $design['side'] ?? '')) }}<br>
 
                                                         <strong>Cost:</strong>
                                                         @if (isset($design['decoration']) && strtolower($design['decoration']) === 'print')
@@ -446,7 +446,7 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                        <small>Total Design Cost:
+                                        <small class="font-md color-brand-3">Total Design Cost:
                                             £{{ number_format($totalDesignCost, 2) + number_format($c['unit_price'], 2) * collect(json_decode($c['sizes'], true))->sum() }}</small>
                                     </div>
                                 @endif
@@ -587,5 +587,104 @@
             </div>
             </div>
         </section>
+
+        <!-- Stripe JavaScript SDK -->
+        <script src="https://js.stripe.com/v3/"></script>
+
+        <script>
+            // Initialize Stripe
+            const stripe = Stripe('{{ env("STRIPE_KEY") }}');
+            const elements = stripe.elements();
+
+            // Create card element
+            const cardElement = elements.create('card', {
+                style: {
+                    base: {
+                        fontSize: '16px',
+                        color: '#424770',
+                        '::placeholder': {
+                            color: '#aab7c4',
+                        },
+                    },
+                    invalid: {
+                        color: '#9e2146',
+                    },
+                },
+            });
+
+            // Mount card element
+            cardElement.mount('#card-element');
+
+            // Handle real-time validation errors from the card Element
+            const cardErrors = document.getElementById('card-errors');
+            cardElement.on('change', ({error}) => {
+                cardErrors.textContent = error ? error.message : '';
+            });
+
+            // Handle form submission
+            const form = document.getElementById('stripePaymentForm');
+            const payBtn = document.getElementById('payBtn');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                // Disable the submit button to prevent repeated clicks
+                payBtn.disabled = true;
+                payBtn.textContent = 'Processing...';
+
+                // Get shipping form data
+                const shippingForm = document.getElementById('checkOutForm');
+                const shippingFormData = new FormData(shippingForm);
+
+                // Validate required fields
+                const requiredFields = ['address', 'city', 'zip_code', 'phone'];
+                let hasErrors = false;
+
+                for (let field of requiredFields) {
+                    if (!shippingFormData.get(field)) {
+                        alert(`Please fill in the ${field.replace('_', ' ')} field`);
+                        hasErrors = true;
+                        break;
+                    }
+                }
+
+                if (hasErrors) {
+                    payBtn.disabled = false;
+                    payBtn.textContent = 'Pay Now';
+                    return;
+                }
+
+                // Create token with Stripe
+                const {token, error} = await stripe.createToken(cardElement);
+
+                if (error) {
+                    // Show error to customer
+                    cardErrors.textContent = error.message;
+                    payBtn.disabled = false;
+                    payBtn.textContent = 'Pay Now';
+                } else {
+                    // Send token to your server
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', token.id);
+                    form.appendChild(hiddenInput);
+
+                    // Add shipping data to the payment form
+                    for (let [key, value] of shippingFormData.entries()) {
+                        if (key !== '_token') {
+                            const input = document.createElement('input');
+                            input.setAttribute('type', 'hidden');
+                            input.setAttribute('name', key);
+                            input.setAttribute('value', value);
+                            form.appendChild(input);
+                        }
+                    }
+
+                    // Submit the form
+                    form.submit();
+                }
+            });
+        </script>
 
     @endsection

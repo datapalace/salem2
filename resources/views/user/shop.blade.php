@@ -77,7 +77,7 @@
                     <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownSort2">
                       <li><a class="dropdown-item active" href="/shop?page=30">30 items</a></li>
                       <li><a class="dropdown-item" href="/shop?page=50">50 items</a></li>
-                      <li><a class="dropdown-item" href="/shop?page=100">100 items</a></li>
+                      <li><a class="dropdown-item" href="/shop?page=100">1000 items</a></li>
                     </ul>
                   </div>
                 </div>
@@ -90,14 +90,14 @@
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <div class="card-grid-style-3">
                 <div class="card-grid-inner" style="border: 1px, solid, #E2B808;">
-                  <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="/product/customise/{{  $product->slug }}" aria-label="Add To Wishlist"></a><a class="btn btn-compare btn-tooltip mb-10" href="/shop" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
+                  <div class="tools"><a class="btn btn-trend btn-tooltip mb-10" href="#" aria-label="Trend" data-bs-placement="left"></a><a class="btn btn-wishlist btn-tooltip mb-10" href="#" onclick="toggleWishlist({{ $product->id }})" aria-label="Add To Wishlist" data-product-id="{{ $product->id }}"></a><a class="btn btn-compare btn-tooltip mb-10" href="/shop" aria-label="Compare"></a><a class="btn btn-quickview btn-tooltip" aria-label="Quick view" href="#ModalQuickview" data-bs-toggle="modal"></a></div>
                   <div class="image-box">
                     {{-- <span class="label bg-brand-2">-17%</span> --}}
                     <a href="/product/customise/{{  $product->slug }}">
                       <img src="{{ $product->galleries->first()?->image_url ?? asset('userasset/imgs/template/no-image.png') }}" alt="Salem Apparel">
                     </a>
                   </div>
-                  <div class="info-right"><a class="font-xs color-gray-500" href="/shop">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customise/{{  $product->slug }}">{{ $product->title . ' ' . $product->sku }}</a>
+                  <div class="info-right"><a class="font-xs color-gray-500" href="/shop">{{ $product->brand }}</a><br><a class="color-brand-3 font-sm-bold" href="/product/customise/{{  $product->slug }}">{{ $product->title  }}</a>
                     {{-- <div class="rating"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.svg') }}" alt="Salem Apparel"><img src="{{ asset('userasset/imgs/template/icons/star.  svg') }}" alt="Salem Apparel"><span class="font-xs color-gray-500">(65)</span>
                   </div> --}}
 
@@ -115,7 +115,10 @@
             </div>
           </div>
           @endforeach
+
+
         </div>
+
         @php
         $currentPage = $products->currentPage();
         $lastPage = $products->lastPage();
@@ -180,6 +183,17 @@
 
             </ul>
 
+          </div>
+          {{-- by brand --}}
+          <div class="sidebar-head">
+            <h6 class="color-gray-900">Product Brands</h6>
+          </div>
+          <div class="sidebar-content">
+            <ul class="list-nav-arrow">
+              @foreach($brands as $brand)
+              <li><a href="/shop?brand={{ $brand->brand }}">{{ $brand->brand }}<span class="number">{{ $brand->total }}</span></a></li>
+              @endforeach
+            </ul>
           </div>
         </div>
         <br>

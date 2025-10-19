@@ -35,7 +35,10 @@
                         <hr>
                         <div class="mb-3">
                              @php
-                                    $sizes = json_decode($order->sizes, true);
+                                    $sizes = is_array($order->sizes)
+    ? $order->sizes
+    : json_decode($order->sizes, true);
+
                                 @endphp
                             <strong>Product:</strong> {{ $order->product_title }}<br>
                             <strong>Size(s):</strong> @if(is_array($sizes))
@@ -53,55 +56,57 @@
                                             @endif<br>
 
                             @if($order->custom_image)
-                            <table class="table table-bordered mt-3">
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Custom Design</th>
-                                </tr>
-                                <tr>
+                            <div class="row mt-3">
+                                <div class="col-12 col-md-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header py-2">
+                                            <strong>Product</strong>
+                                        </div>
+                                        <div class="card-body d-flex justify-content-center align-items-center" style="min-height:120px;">
+                                            @if($order->custom_image)
+                                                <img src="{{ asset($order->custom_image) }}" alt="Custom Image" style="max-width:100px;">
+                                            @else
+                                                <span>No custom image provided.</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header py-2">
+                                            <strong>Custom Design</strong>
+                                        </div>
+                                        <div class="card-body">
+                                            @php
+                                                $customDesigns = $order->custom_designs;
+                                                if (is_string($customDesigns)) {
+                                                    $customDesigns = json_decode($customDesigns, true) ?: [];
+                                                }
+                                                $customDesigns = is_array($customDesigns) ? $customDesigns : [];
+                                            @endphp
 
-                                    <td>
-                                        @if($order->custom_image)
-                                        <img src="{{ asset($order->custom_image) }}" alt="Custom Image" style="max-width:100px;">
-                                        @else
-                                        No custom image provided.
-                                        @endif
-                                    </td>
-                                    <td style="vertical-align: top;">
-                                        @php
-                                            $customDesigns = $order->custom_designs;
-                                            // Handle case where custom_designs might be a JSON string
-                                            if (is_string($customDesigns)) {
-                                                $customDesigns = json_decode($customDesigns, true) ?: [];
-                                            }
-                                            // Ensure it's an array
-                                            $customDesigns = is_array($customDesigns) ? $customDesigns : [];
-                                        @endphp
-
-                                        @if($customDesigns && count($customDesigns) > 0)
-                                            <div class="row">
-                                                @foreach($customDesigns as $index => $design)
-                                                    <div class="col-6 mb-2">
-                                                        <div class="card card-sm">
-                                                            <div class="card-body p-2">
-                                                                <h6 class="card-title mb-1" style="font-size: 12px;">{{ $design['name'] ?? 'Design ' . ($index + 1) }}</h6>
-                                                                @if(isset($design['image']) && $design['image'])
-                                                                    <img src="{{ $design['image'] }}" alt="Custom Design" class="img-fluid rounded mb-1" style="max-width: 80px; height: auto;">
-                                                                @endif
-
+                                            @if($customDesigns && count($customDesigns) > 0)
+                                                <div class="row">
+                                                    @foreach($customDesigns as $index => $design)
+                                                        <div class="col-6 col-sm-12 mb-2">
+                                                            <div class="card card-sm">
+                                                                <div class="card-body p-2 text-center">
+                                                                    <h6 class="card-title mb-1" style="font-size: 12px;">{{ $design['name'] ?? 'Design ' . ($index + 1) }}</h6>
+                                                                    @if(isset($design['image']) && $design['image'])
+                                                                        <img src="{{ $design['image'] }}" alt="Custom Design" class="img-fluid rounded mb-1" style="max-width: 80px; height: auto;">
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-
-                                        @else
-                                            No custom designs provided.
-                                        @endif
-                                    </td>
-                                </tr>
-
-                            </table>
+                                                    @endforeach
+                                                </div>
+                                            @else
+                                                <span>No custom designs saved.</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             @endif
                         </div>
@@ -124,19 +129,19 @@
                                 @if(isset($design['decoration']) && $design['decoration'] === 'print')
                                     <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                                         <span><strong>{{ $design['name'] ?? 'Design' }} {{ $i }} Price:</strong></span>
-                                        <span>£{{ number_format(13 * $order->unit_price, 2) }}</span>
+                                        <span>£{{ number_format(13 * collect(json_decode($order['sizes'], true))->sum(), 2) }}</span>
                                     </div>
                                     @php
-                                        $totalPrice += 13 * $order->unit_price;
+                                        $totalPrice += 13 * collect(json_decode($order['sizes'], true))->sum();
                                         $i++;
                                     @endphp
                                 @elseif(isset($design['decoration']) && $design['decoration'] === 'embroidery')
                                     <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                                         <span><strong>{{ $design['name'] ?? 'Design' }} {{ $i }} Price:</strong></span>
-                                        <span>£{{ number_format(15 * $order->unit_price, 2) }}</span>
+                                        <span>£{{ number_format(15 * collect(json_decode($order['sizes'], true))->sum(), 2) }}</span>
                                     </div>
                                     @php
-                                        $totalPrice += 15 * $order->unit_price;
+                                        $totalPrice += 15 * collect(json_decode($order['sizes'], true))->sum();
                                         $i++;
                                     @endphp
                                 @endif
@@ -154,7 +159,7 @@
                             @endif
                             <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                                 <span><strong>Total Price:</strong></span>
-                                <span class="text-success font-lg-bold">£{{ number_format($totalPrice, 2) }}</span>
+                                <span class="text-success font-lg-bold">£{{ number_format($totalPrice + ($order->unit_price * collect(json_decode($order['sizes'], true))->sum()), 2) }}</span>
                             </div>
                         </div>
                     </div>

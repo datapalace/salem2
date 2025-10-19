@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 
@@ -133,12 +134,19 @@ class CheckoutController extends Controller
         ]);
         $ref = $_POST['stripe_payment_ref'];
         //dd($ref);
+
+        // Debug: Check what custom_designs data looks like
+        Log::info('Custom designs data:', [
+            'custom_designs' => $checkoutData['custom_designs'] ?? 'null',
+            'type' => gettype($checkoutData['custom_designs'] ?? 'null')
+        ]);
+
         // store the order in the database
         $order = Order::create([
             'user_id' => $me,
             'product_id' => $checkoutData['product_id'],
             'sizes' => $checkoutData['sizes'],
-            'custom_designs' => json_encode($checkoutData['custom_designs'] ?? []), // Save custom designs as JSON
+            'custom_designs' => json_encode($checkoutData['custom_designs'] ?? []), // Ensure it's JSON string
             'product_title' => $checkoutData['product_title'],
             'unit_price' => $checkoutData['unit_price'],
             'embroidery_price' => $checkoutData['embroidery_price'],
@@ -171,9 +179,60 @@ class CheckoutController extends Controller
 
         // dd($order->id . ' ' . $shipping->id);
         // Only fetch what you need for the About Us page
-        
-            Mail::to($user->email)->send(new NewOrderStatus($order));
-            Mail::to('lawalsherifoyetola2019@gmail.com')->send(new AdminNewOrderStatus($order));
+
+        try {
+            // Debug: Log user information
+            Log::info('Order created successfully', [
+                'order_id' => $order->id,
+                'user_id' => $user->id ?? 'null',
+                'user_email' => $user->email ?? 'null',
+                'user_name' => $user->name ?? 'null',
+                'mail_driver' => config('mail.mailers.smtp.host')
+            ]);
+
+            // Send email to customer
+            if ($user && $user->email) {
+                // Try to send the email
+                $customerMail = new NewOrderStatus($order);
+                Mail::to($user->email)->send($customerMail);
+                Log::info('Customer email sent successfully to: ' . $user->email);
+
+                // Alternative: Queue the email if immediate sending fails
+                // Mail::to($user->email)->queue($customerMail);
+
+            } else {
+                Log::error('User or user email not found for order: ' . $order->id);
+            }
+
+            // Send email to admin
+            $adminMail = new AdminNewOrderStatus($order);
+            Mail::to('admin@salemapparel.co.uk')->send($adminMail);
+            Log::info('Admin email sent successfully');
+
+        } catch (\Exception $e) {
+            Log::error('Mail sending failed: ' . $e->getMessage(), [
+                'order_id' => $order->id,
+                'user_email' => $user->email ?? 'null',
+                'exception' => $e->getTraceAsString(),
+                'mail_config' => [
+                    'driver' => config('mail.default'),
+                    'host' => config('mail.mailers.smtp.host'),
+                    'port' => config('mail.mailers.smtp.port')
+                ]
+            ]);
+
+            // Try alternative method - queue the emails
+            try {
+                if ($user && $user->email) {
+                    Mail::to($user->email)->queue(new NewOrderStatus($order));
+                    Log::info('Customer email queued as fallback');
+                }
+                Mail::to('admin@salemapparel.co.uk')->queue(new AdminNewOrderStatus($order));
+                Log::info('Admin email queued as fallback');
+            } catch (\Exception $queueException) {
+
+            }
+        }
 
 
         return redirect("/order-details/{$order->id}");
